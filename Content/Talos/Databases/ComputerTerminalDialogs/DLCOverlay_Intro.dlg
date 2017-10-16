@@ -1,0 +1,20 @@
+﻿# this parts shows only when arriving from Gates of Eternity
+terminal when(Overlay_Intro_DLCStart) {
+text:[[TTRS:TermDlg.DLCOverlay_Intro.Ln0003.0.text.InitializingEL0FirmwareW1W1=
+Initializing EL0 firmware.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1Firmware functional.%w5
+System check.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1Failed.%w5
+ERROR: EL0 server overloaded!
+ERROR: Mainframe modules active!
+ERROR: Simulation purpose unfound!%w5
+Retrieving safemode child program parameters.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1%vc Retrieved.%w5
+Generating duplicate%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1%vc Done%w5
+Starting child process Uriel_COPY %vc%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1
+Ready.%w9
+Connecting to the Holistic Integration Manager...%e3%w9%w9%w9%w9%w9%w9%w9%w9
+%w5
+%w5
+%w5
+%e1
+%w9
+]]
+}

@@ -1,0 +1,121 @@
+﻿####SPECIAL EXCEPTION FOR PLAYERS WHO DON'T READ#####
+###If the terminal boots and 8 robots have been released without the player introducing themselves on the BB then before doing anything else tell the player they were inactive for too long and exit. Only exception is when player is at the hub terminal where they trigger ascension.
+
+terminal when (Booting and (Tick8 or AdminLiberated) and not ThreadIntroduceYourself_AlreadyReplied){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0005.0.text.WhereOnceTheMessengerStood=Where once the messenger stood, now all is still and quiet. ]]
+set: IgnoredStory
+goto: InterruptBootSequence
+}
+
+terminal when (InterruptBootSequence and not InTerminal_DLC_01_Hub){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0011.0.text.YouHaveIgnoredYourPlace=You have ignored your place in Gehenna, and its walls are now closed to you forever.
+
+]]
+options:{
+"TTRS:TermDlg.Common.Exit2=Exit" next: CLI_exit
+}}
+
+terminal when (InterruptBootSequence and InTerminal_DLC_01_Hub){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0011.0.text.YouHaveIgnoredYourPlace=You have ignored your place in Gehenna, and its walls are now closed to you forever.
+
+]]
+options:{
+"TTRS:TermDlg.DLC0_ProfileStatus.Ln0023.0.option.Transcend=/transcend" next: Transcend
+"TTRS:TermDlg.Common.Exit2=Exit" next: CLI_exit
+}}
+
+
+#####Rankings######
+terminal when (IncreaseRank and (not Rank or Rank<4)){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0030.0.text.From3ActiveCitizenTo=from [3 - Active Citizen] to [4 - Respected Citizen]!
+
+Restricted billboard threads have been unlocked.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" clear: ThreadAboutUriel_ShowThread_READ set:Rank;=4; next:MessageBoardInterface_On
+}}
+
+
+
+terminal when (IncreaseRank and Rank==4){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0042.0.text.From4RespectedCitizenTo=from [4 - Respected Citizen] to [5 - Active Contributor]!
+
+You have received one Thread Creation Token! This will be available to you the next time you log in.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" set:Rank;+=1; set:NewThreadToken;+=1; next:MessageBoardInterface_On
+}}
+
+
+
+terminal when (IncreaseRank and Rank==5){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0054.0.text.From5ActiveContributorTo=from [5 - Active Contributor] to [6 - Respected Contributor]!
+
+You may now access advanced functionality, including use of the /restore command.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" set:Rank;+=1; next:MessageBoardInterface_On
+}}
+
+terminal when (IncreaseRank and Rank==6){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0064.0.text.From6RespectedContributorTo=from [6 - Respected Contributor] to [7 - Creative]!
+
+You have received one Thread Creation Token! This will be available to you the next time you log in.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" set:Rank;+=1; set:NewThreadToken;+=1; next:MessageBoardInterface_On
+}}
+
+terminal when (IncreaseRank and Rank==7){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0074.0.text.From7CreativeTo8=from [7 - Creative] to [8 - Master]!
+
+Restricted billboard threads have been unlocked.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" set:Rank;+=1; next:MessageBoardInterface_On
+}}
+
+terminal when (IncreaseRank and Rank==8){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0084.0.text.From8MasterTo9=from [8 - Master] to [9 - Visionary]!
+
+Restricted billboard threads have been unlocked.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" set:Rank;+=1; next:MessageBoardInterface_On
+}}
+
+terminal when (IncreaseRank and Rank==9){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0094.0.text.From9VisionaryTo10=from [9 - Visionary] to [10 - Admin]!
+
+You have reached the maximum profile status in Gehenna! You may now access all threads.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" set:Rank;+=1; next:MessageBoardInterface_On
+}}
+
+terminal when (IncreaseRank and Rank==10){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0104.0.text.To11H4x0rERRORERROR=to [11 - h4x0r]!
+
+ERROR! ERROR! User profile status value outside normal parameters!
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" set:Rank;=11; next:MessageBoardInterface_On
+}}
+
+terminal when (IncreaseRank and Rank>10){
+text:[[TTRS:TermDlg.DLC0_ProfileStatus.Ln0114.0.text.To11H4x0rERRORUser=to [11 - h4x0r]!
+
+ERROR: User profile status value outside normal parameters. Changes discarded.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" set:Rank;=11; next:MessageBoardInterface_On
+}}

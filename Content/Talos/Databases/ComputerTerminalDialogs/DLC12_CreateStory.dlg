@@ -1,0 +1,621 @@
+﻿terminal when (CreateStoryStart and not PublishedStory){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0002.0.text.LoadingAttachmentW3W3W5=Loading attachment%w3.%w3.%w5.Done
+Adjusting library parameters%w3.%w3.%w5.Done
+Connection to foreign module established.
+
+Welcome to the story creation tool. Since this is your first project this tutorial will help guide you through the process. 
+
+According to [ISBN-10: 0226823369] all stories begin with characters of one kind or another. Therefore to finish a story you simply need to understand your characters and the plot will proceed logically from there.
+
+This season's theme is: Bildungsroman.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0015.0.option.Begin=Begin" next: Sex
+}}
+
+terminal when (CreateStoryStart and PublishedStory){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0019.0.text.LoadingAttachmentW3W3W5=Loading attachment%w3.%w3.%w5.Done
+Adjusting library parameters%w3.%w3.%w5.Done
+Connection to foreign module established.
+
+Welcome to the story creation tool. You may continue to use this program indefinitely, however please note that since you recently published a draft on the billboard you will be unable to publish further stories at this time.
+
+This season's theme is: Bildungsroman.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0015.0.option.Begin=Begin" clear: Wealthy clear: Nurturing clear: Uncaring clear: Poor clear: Boy clear: Girl clear: NoGender clear:Wunderkind clear:Physical clear: Intellectual clear:NonTradSkill clear: PersonalInjury clear:FamilyDeath clear: Debt clear:Unharmed clear:Pregnancy next: Sex
+"TTRS:TermDlg.Common.Exit2=Exit" next: MessageBoardInterface_On
+}}
+
+terminal when (Sex){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0035.0.text.AreYouSittingComfortablyThen=
+Are you sitting comfortably? Then let's begin. Close your eyes.
+
+You see before you a human of remarkable qualities. Is it a boy, a girl, or someone else?
+
+]]
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0042.0.option.ABoy=A boy" set: Boy next: SexDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0043.0.option.AGirl=A girl" set:Girl  next: SexDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0044.0.option.SomeoneElse=Someone else"set:NoGender next: SexDone
+}}
+
+terminal when (SexDone){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0048.0.text.GoodACharactersSexHelps=
+Good. A character's sex helps determine the sorts of challenges and opportunities they might encounter in your story, as well as how other characters will perceive them.
+
+Now, imagine your character is a little older and experiencing real triumph for the first time. What are they doing?
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0056.0.option.DemonstratingStartlingPhysicalProwess=Demonstrating startling physical prowess" set: Physical next: SkillDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0057.0.option.SucceedingInAnIntellectualChallenge=Succeeding in an intellectual challenge" set: Intellectual next: SkillDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0058.0.option.SomethingTheseAncientIdeasFail=Something these ancient ideas fail to capture" set: NonTradSkill next: SkillDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0059.0.option.EverythingBetterThanEveryoneElse=Everything, better than everyone else, all the time" set: Wunderkind next: SkillDone
+}}
+
+terminal when (SkillDone){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0063.0.text.UnderstoodYourCharactersNaturalAptitude=
+Understood. Your character's natural aptitude is determined by the sum of their genetic and experiential influences. What sort of an upbringing did your character have?
+
+]]
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0068.0.option.WealthyAndNurturing=Wealthy and nurturing" set: Wealthy set: Nurturing  next: BackgroundDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0069.0.option.WealthyButUncaring=Wealthy but uncaring" set: Wealthy set: Uncaring next: BackgroundDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0070.0.option.PoorButNurturing=Poor but nurturing" set: Nurturing set: Poor next: BackgroundDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0071.0.option.PoorAndUncaring=Poor and uncaring" set: Poor set: Uncaring next: BackgroundDone
+}}
+
+terminal when (BackgroundDone){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0075.0.text.AccordingToExtensiveStudiesOf=
+According to extensive studies of the genre and of ancient records:
+
+- social advantage is generally sufficient to offset genetic disadvantage
+- genetic advantage will only sometimes offset social disadvantage
+
+In other words, your character's background will have a radical effect on how they think about themselves, and the nature of the problems they face in life.
+
+Are you sure you want your character to have that kind of background?
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0088.0.option.IAmQuiteCertain=I am quite certain" next: Challenge
+"TTRS:TermDlg.DLC12_CreateStory.Ln0089.0.option.IWillMakeADifferent=I will make a different selection" clear: Wealthy clear: Nurturing clear: Uncaring clear: Poor next: SkillDone
+}}
+
+terminal when (Challenge){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0093.0.text.GreatNowImagineYourCharacter=
+Great! Now imagine your character has reached adulthood. 87.2327 percent of Bildungsroman records commence with an emotional blow for the protagonist.
+
+What will your character suffer?
+
+]]
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0100.0.option.ADeathInTheFamily=A death in the family" set: FamilyDeath next: ChallengeDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0101.0.option.APersonalInjury=A personal injury" set: PersonalInjury next: ChallengeDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0102.0.option.AnUnplannedDebt=An unplanned debt" set: Debt next: ChallengeDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0103.0.option.AnUnplannedPregnancy=An unplanned pregnancy" set: Pregnancy  next: ChallengeDone
+"TTRS:TermDlg.DLC12_CreateStory.Ln0104.0.option.MyProtagonistGoesByUnharmed=My protagonist goes by unharmed" set: Unharmed next: ChallengeDone
+}}
+
+
+
+
+####Display chosen character profile####
+
+terminal when (ChallengeDone){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0113.0.text.ThankYouThisIsSounding=
+Thank you. This is sounding dramatic already.
+
+A character is like an equation: settle on the opening premises and the conclusion will work itself out.
+
+Displaying opening premises:
+
+]]
+}
+
+terminal when (ChallengeDone and Boy){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0124.0.text.Male=- Male
+]]}
+
+terminal when (ChallengeDone and Girl){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0128.0.text.Female=- Female
+]]}
+
+terminal when (ChallengeDone and NoGender){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0132.0.text.NonSpecificSex=- Non-specific sex
+]]}
+
+terminal when (ChallengeDone and Physical){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0136.0.text.PhysicallyGifted=- Physically gifted
+]]}
+
+terminal when (ChallengeDone and Intellectual){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0140.0.text.IntellectuallyGifted=- Intellectually gifted
+]]}
+
+terminal when (ChallengeDone and NonTradSkill){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0144.0.text.GiftedInEsotericWays=- Gifted in esoteric ways
+]]}
+
+terminal when (ChallengeDone and Wunderkind){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0148.0.text.Wunderkind=- Wunderkind
+]]}
+
+terminal when (ChallengeDone and Wealthy){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0152.0.text.PrivilegedBackground=- Privileged background
+]]}
+
+terminal when (ChallengeDone and Poor){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0156.0.text.LowWealthBackground=- Low-wealth background
+]]}
+
+terminal when (ChallengeDone and Nurturing){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0160.0.text.CaringFamily=- Caring family
+]]}
+
+terminal when (ChallengeDone and Uncaring){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0164.0.text.NeglectfulFamily=- Neglectful family
+]]}
+
+terminal when (ChallengeDone and FamilyDeath){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0168.0.text.ADeathInTheFamily=- A death in the family
+]]}
+
+terminal when (ChallengeDone and PersonalInjury){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0172.0.text.SufferedASeriousInjury=- Suffered a serious injury
+]]}
+
+terminal when (ChallengeDone and Debt){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0176.0.text.InDebt=- In debt
+]]}
+
+terminal when (ChallengeDone and Pregnancy){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0180.0.text.SomeoneHasABunIn=- Someone has a bun in the oven
+]]}
+
+terminal when (ChallengeDone and Unharmed){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0184.0.text.Uninteresting=- Uninteresting
+]]}
+
+terminal when (ChallengeDone){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0188.0.text.ReadyToGenerateStory=
+Ready to generate story.
+
+]]
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0193.0.option.Go=Go" next: GenerateStory
+}}
+
+
+
+
+
+
+######GENERATE STORY##############
+
+
+terminal when (GenerateStory){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0205.0.text.PleaseStandByW7Locking=
+Please stand by...%w7
+Locking story premises...Done%w7
+Generating Outcomes......Done%w7
+Displaying your first draft...%w7
+
+]]
+goto: Beginning
+}
+
+###BEGGINNING########
+
+terminal when (Beginning){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0218.0.text.ToBeginMyLifeWith=To begin my life with the beginning of my life, I was born at 3am on a Wednesday. ]]}
+
+terminal when (Beginning and Wealthy and Nurturing){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0221.0.text.WealthyParentsMyFatherOwning=
+
+[Wealthy parents] My father, owning as he did the nearby textiles factory and having the luxury of deciding his own hours, insists he was present, albeit at a safe distance. 
+
+]]}
+
+terminal when (Beginning and Poor and Nurturing){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0228.0.text.FiscallyDeprivedChildhoodMyFather=
+
+[Fiscally deprived childhood] My father, as he is always careful to point out, is only able to report the midwife's account, seeing how he was pulling a long shift at the nearby textiles mill to pay for a second-hand cot. 
+
+]]}
+
+terminal when (Beginning and Wealthy and Uncaring){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0235.0.text.DetachedMiddleClassParentsMy=
+
+[Detached middle-class parents] My father, though not present for the vital moment, insists on the veracity of the midwife's report. He was, after all, running the hospital at the time. From just down the corridor, to hear my mother tell it after a few gins. 
+
+]]}
+
+terminal when (Beginning and Poor and Uncaring){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0242.0.text.DeprivedChildhoodNeitherMyFather=
+
+[Deprived childhood] Neither my father nor mother is able to confirm this, being as they were inebriated on alcohol and epidurals respectively. My birth certificate was 'lost' many years ago, I don't doubt to some back alley counterfeiter. 
+
+]]}
+
+terminal when (Beginning){
+notext
+goto: Childhood
+}
+
+###CHILDHOOD#####
+
+
+terminal when (Childhood and NoGender){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0257.0.text.EsotericSexMyChildhoodWas=[Esoteric sex] My childhood was, in retrospect, a difficult period. I found that although my fellows all had a wide variety of different physical appearances and appendages, with varying levels of function, they nonetheless identified a resemblance and bond between themselves which was to my eyes all but invisible. My parents, aware of my particular situation, had the good foresight to provide me a name ambiguous in matters of sex, and I have continued in that vein ever since. ]]}
+
+terminal when (Childhood and Wealthy and Physical and not NoGender){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0260.0.text.WealthAndNaturalTalentEnabled=[Wealth and natural talent enabled your character to overcome early challenges] My childhood was an unremarkable affair. My parents sent me to the best boarding schools, where I was exercised regularly, excelled on the field, and was dragged kicking and screaming though my exams.]]}
+
+terminal when (Childhood and Wealthy and Intellectual and not NoGender){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0263.0.text.WealthAndNaturalTalentEnabled=[Wealth and natural talent enabled your character to overcome early challenges] My childhood was an unremarkable affair. My parents sent me to the best boarding schools, where books were forced down my throat and I swallowed obediently. ]]}
+
+terminal when (Childhood and Poor and Physical and not NoGender){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0266.0.text.YourCharactersAbilitiesHaveBeen=[Your character's abilities have been squandered by poor education] My childhood was an unremarkable affair. I had a firm dislike of schooling and the good fortune to attend a school with a firm dislike of students. My afternoons spent skipping class and playing soccer were a compatible solution for all parties. ]]}
+
+terminal when (Childhood and Poor and Intellectual and not NoGender){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0269.0.text.YourCharactersAbilitiesHaveBeen=[Your character's abilities have been squandered by poor education] My childhood was an unremarkable affair. I attended the local school, I found the work to be trivial, and I frequently found myself on the wrong side of my self-proclaimed betters. ]]}
+
+terminal when (Childhood and Wunderkind and Wealthy and not NoGender){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0272.0.text.YourCharactersExceptionalNatureHas=[Your character's exceptional nature has been honed by good education] My childhood was the happiest time of my life. I was unharried by academic work, captain of the soccer team, and the centre of attention. ]]}
+
+terminal when (Childhood and Wunderkind and Poor and not NoGender){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0275.0.text.YourCharactersAbilitiesHaveBeen=[Your character's abilities have been set back by poor education] My childhood was a mixed time. Though I was told I had natural ability I found the application of both my school and my parents' resources to be contrary to this claim, being as I was treated much the same as any child by both. As time wore on, I became quite bored of my predicament. ]]}
+
+terminal when (Childhood and NonTradSkill and not NoGender){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0278.0.text.YourCharactersTalentsAreA=[Your character's talents are a poor match for the world they live in] My childhood was, in retrospect, a by and large miserable period. It seemed that while everyone else had their place and purpose, I was an outsider in their system. I was not minded for geography or mathematics, or football, and yet I was unable to put into words precisely what I was minded for. ]]}
+
+terminal when (Childhood){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0281.0.text.MyStoryBecameWorthyOf=
+
+My story became worthy of note as I approached the age of eighteen. 
+
+]]
+goto: EighteenConflict
+}
+
+
+
+
+
+
+
+####Conflict######
+
+
+
+###FAMILY DEATH###
+terminal when (EighteenConflict and FamilyDeath and Nurturing){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0301.0.text.YourCharactersChildhoodHasMade=[Your character's childhood has made them empathetic] My mother and I had always shared a close relationship, and so it was that a part of me died the day that she left this world. ]]}
+
+terminal when (EighteenConflict and FamilyDeath and Uncaring){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0304.0.text.YourCharactersChildhoodHasMade=[Your character's childhood has made them callous] My mother never much cared for me, I feel I must note, nor I for her, and as I neared adulthood in the eyes of the world our relationship only soured. So it was that when she unexpectedly popped her clogs one morning over breakfast I was not immediately very moved. ]]}
+
+terminal when (EighteenConflict and FamilyDeath and Wealthy){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0307.0.text.WealthyParentsSheDidHowever=[Wealthy parents] She did, however, leave me a quite sizeable inheritance which, if I may be unsubtle about it, left me in a position where the only work I should have to do for the rest of my life would be deciding how best to spend it. 
+
+]]goto: Inheritance}
+
+terminal when (EighteenConflict and FamilyDeath and Poor){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0312.0.text.FiscallyDeprivedParentsUnfortunatelyHer=[Fiscally deprived parents] Unfortunately her passing was quite ill-timed in every respect. My father was barely bringing in enough money to feed himself, and I found myself both motherless and penniless in alarmingly short order. 
+
+]] goto: Work}
+
+
+
+
+###INJURY####
+terminal when (EighteenConflict and PersonalInjury){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0321.0.text.YourCharacterSuffersAPersonal=[Your character suffers a personal injury] It is true that people are sculpted both by their nature and by what befalls them, and in my case it may be more true than most. The person that I am today is defined by what has been taken away from the person I was. I lost my left leg in a fairground accident. The ferris wheel unexpectedly reversed, and it was snapped between my carriage and the platform's edge. 
+
+]]}
+
+terminal when (EighteenConflict and PersonalInjury and Wealthy){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0326.0.text.WealthInTheFamilyI=[Wealth in the family] I was fortunate to receive the best surgical attention in the country, courtesy of my father's insurance, and a fine false leg which I wear to this day. The leg reminds me, you see, of the true value of wealth. It can repair a damaged body, it can save a life, it can provide a lifetime of happiness - or make life miserable for another. I resolved that day earn a fortune of my own. 
+
+]]goto: Work}
+ 
+terminal when (EighteenConflict and PersonalInjury and Poor){
+notext
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0333.0.option.Continue=Continue" next: PoorInjuryEnd
+}}
+
+terminal when (PoorInjuryEnd){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0337.0.text.APersonOfFewMeans=[A person of few means] At that time in that place it wasn't a death sentence to receive such an injury, but it was a serious impediment. Owing to some legal wrangling between the fair owners and the state I found that no party was terribly willing to cover my surgical expenses, let alone the cost of a fully functional prosthetic. Over time I learnt to be quite proficient at balancing on one leg, and resolved to find a way to support myself both financially as well as physically.
+
+I worked for a time doing various kinds of performance on the street, but soon the more seasoned cripples learnt to outdo my tricks, and I was edged out of the competition. My story ran downhill from there. I will not tell you from where I write these words for fear of permanently scarring you. 
+
+Though I have by every measure failed in life thus far, I am convinced my tale holds an important lesson. Be fit for purpose. Accept your place. We are owned by others from the moment we first take breath to long after we die. Make of it whatever you can. I certainly did not.
+
+]]goto: StoryEnd}
+
+
+
+###Poor injury gets worst work course - beggar / dealer.
+
+###DEBT####
+terminal when (EighteenConflict and Debt and Uncaring){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0351.0.text.AnUnsupportiveFamilyHasDriven=[An unsupportive family has driven your character to vice] My parents had taken the opportunity to thrust me out into the world the moment I had turned working age, and what little money I brought in I was reluctant to spend on any but myself. I quickly developed a penchant for gambling which my butcher's assistant wages could not support, and found myself significantly in debt to a man I really oughtn't have been.
+
+]]goto: Work}
+
+terminal when (EighteenConflict and Debt and Nurturing){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0356.0.text.APersonalDebtForYears=[A personal debt] For years I had lived at leisure under the illusion that the world would continue to fall at my feet. I was turned upside down and shaken inside out when I learnt that my family was in fact in some significant debt, and our home was in threat of foreclosure.
+
+]]goto:Work}
+
+####PREGNANCY#####
+terminal when (EighteenConflict and Pregnancy and not Boy){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0362.0.text.YourCharactersPhysicalMakeupHas=[Your character's physical makeup has affected their options in life] I had met a boy of quite remarkable qualities the previous summer, and now found myself with a permanent souvenir of our time together. I was with child. ]]}
+
+terminal when (EighteenConflict and Pregnancy and NoGender){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0365.0.text.YourCharactersSexIsNot=[Your character's sex is not a straight-forward matter] Whether such a thing was even possible for someone in my situation was until that moment a lively topic of debate amongst my doctors. From then it shifted to the altogether more morbid matter of whether or not the child would come out the other end in tact. ]]}
+
+terminal when (EighteenConflict and Pregnancy and not Boy and Poor){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0368.0.text.YourCharactersMeansHaveAffected=[Your character's means have affected their chance of success] I was for a time fixated on finding the father, until I realised it was a hopeless task. Once he was born I press-ganged relatives into caring for the child as I went out to work in an attempt to pay for his education. ]]set:KeptChild goto: Work}
+ 
+terminal when (EighteenConflict and Pregnancy and not Boy and Wealthy){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0371.0.text.YourCharactersMeansHaveOpened=[Your character's means have opened up new options] My parents insisted the most forward thinking course of action was to terminate the pregnancy - for my sake and the child's. I wasn't ready to be a parent. I went along with it, but I never forgot it. Years later I looked back and I wondered whether the decision had truly been mine. Perhaps it was this which compelled me to travel far away instead of take the desk job that had been lined up for me. I had to discover myself. ]]goto: Inheritance}
+
+###Boy####
+terminal when (EighteenConflict and Pregnancy and Boy){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0375.0.text.YourCharactersPhysicalMakeupHas=[Your character's physical makeup has affected someone else's chances in life] I had met a girl of quite remarkable qualities the previous summer, and I can tell you I was mighty surprised to see her again, and even more so to learn that she had a permanent souvenir of our relationship growing inside of her. 
+
+]]}
+
+terminal when (EighteenConflict and Pregnancy and Boy and Wealthy){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0380.0.text.MoneyComesFirstInYour=[Money comes first in your character's family] Though I was quite fond of her my parents took an instant aversion to the girl, which I later learned was due to their suspicion that she was after their money. This explanation has always confounded me, for as I understand it they paid her quite a sum to disappear. It was this lesson which taught me the true value of money. 
+
+]]goto:Work}
+
+terminal when (EighteenConflict and Pregnancy and Boy and Poor and Uncaring){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0385.0.text.YourCharactersChildhoodHasAffected=[Your character's childhood has affected how they treat their own child] I was but a lad, you understand, and the thought of repeating my parents' mistakes so soon after them horrified me. I picked up what possessions I could carry and fled the country immediately. ]] goto: Inheritance}
+
+terminal when (EighteenConflict and Pregnancy and Boy and Poor and Nurturing){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0388.0.text.YourCharactersChildhoodHasMade=[Your character's childhood has made them nurturing] It was in that moment that my responsibilities within the world fell down heavily upon me. I realised I owed this child, by my irresponsibility, at least as good a chance in life when it was born as I had. Preferably substantially better. ]] set:KeptChild goto:Work}
+
+
+
+
+####UNHARMED#####
+terminal when (EighteenConflict and Unharmed){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0395.0.text.YourCharacterFacedNoOverwhelming=[Your character faced no overwhelming obstacle in their life] Although it is customary for these tales to begin with some great calamity befalling the protagonist, my experience is unique for sparing me any such thing. Perhaps my more cynical readers will switch off now, but they shan't be missed, for not every story needs complication and drama. A life well lived ought be every bit as special.
+
+It does, however, make the story rather short. I lived happily ever after.
+
+]]goto: StoryEnd}
+
+
+
+####WORK#####
+
+terminal when (Work){
+notext
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0333.0.option.Continue=Continue" next: Work2
+}}
+
+terminal when (Work2){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0412.0.text.SoItWasThatI=So it was that I found myself seeking a permanent and substantial source of income. I set out to make my fortune. ]]}
+
+terminal when (Work2 and not Boy and not (PersonalInjury and Poor)){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0415.0.text.YourCharactersSexHasAffected=[Your character's sex has affected their career options] The range of options available to me was sparse. From a list including pot washing and sewing at the mill I chose to become a secretarial assistant. It hardly seemed a match to my natural talents, but I was hopeful I could progress up the ranks of the company. ]]}
+
+terminal when (Work2 and Boy and Wealthy){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0418.0.text.YourCharactersPrivilegedBackgroundHas=[Your character's privileged background has enabled them to find high-paying work] I took work as an insurance broker in the city. ]]}
+
+terminal when (Work2 and Boy and Poor){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0421.0.text.YourCharactersEducationHasLimited=[Your character's education has limited their career options] I took whatever work was available to someone with my accent and character. I moved furniture, caught ferrets, volunteered for human trials - whatever work didn't quite fit into anyone else's niche. ]]}
+
+terminal when (Work2 and Wealthy and Boy and not NonTradSkill){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0424.0.text.YourCharactersSkillsetIsA=
+
+[Your character's skillset is a good match for their work] I performed with flair. Getting ahead in insurance, I learned, wasn't unlike getting ahead in school, and those lessons had been drilled into me quite firmly. I shook hands, I greased palms, I played a lot golf, and I made a lot of money. At the time, it felt like a good time. 
+
+]]goto:WorkSucceededOutro}
+
+terminal when (Work2 and (Poor or not Boy or NonTradSkill)){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0431.0.text.HoweverTheWorkIHad=
+
+However, the work I had seen merely as a stepping stone when I embarked upon it became the totality of my day to day existence. It began to feel that every person in society who held a position senior to me was part of a great immovable ceiling which ever threatened to crush me. The talents I had were repeatedly ignored; weaknesses I never displayed were frequently attributed me. 
+
+]]goto:WorkFailedOutro}
+
+terminal when (WorkFailedOutro and PersonalInjury){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0438.0.text.YourCharacterNeverTrulyRecovered=[Your character never truly recovered from their injury] It may have been true that I recovered physically from the accident which befell me, but it would be quite false to say that I left it behind. Things could have gone wrong for me for any number of reasons, but I was never able to believe it was due to anything other than the limp I carry around to this day.
+
+Though I have by every measure failed in life thus far, I am convinced my tale holds an important lesson. Be fit for purpose. Accept your place. We are owned by others from the moment we first take breath to long after we die. Make of it whatever you can. ]] goto: StoryEnd}
+
+terminal when (WorkFailedOutro and (Debt or FamilyDeath)){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0443.0.text.AsIWriteThisNow=As I write this now I remain effectively indentured to my creditors. I pay off just enough each week to offset the inflation, so that in truth my debt never has really decreased. It is like an old, maligned uncle, always there, always reminding me how I have failed to fit this world. 
+
+Though I have by every measure failed in life thus far, I am convinced my tale holds an important lesson. Be fit for purpose. Accept your place. We are owned by others from the moment we first take breath to long after we die. Make of it whatever you can. ]] goto: StoryEnd}
+
+terminal when (WorkFailedOutro and KeptChild){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0448.0.text.YourCharacterKeptTheirChild=[Your character kept their child and did their best] I succeeded in educating my son, but recent events have suggested I did not do well enough. Seventeen years old and he has made his parents' mistakes and gotten one of his schoolmates pregnant. Time repeats itself. We learn no lessons. It seems I shall not retire any time soon. ]] goto: StoryEnd}
+
+terminal when (WorkSucceededOutro and Nurturing){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0451.0.text.YourCharactersUpbringingGaveThem=[Your character's upbringing gave them empathy and the opportunity to make a difference] While many stories might end there as the protagonist sails into the sunset, mine took one final and important turn.
+
+I saw a homeless man eating from garbage outside the golf club, and then I watched as he was dragged away like an animal by the security guards. I realised no human being deserved such extreme treatment, and then I understood that I was a living example of the other end of that spectrum - the pampered wealthy, telling ourselves that 'we earned it'.
+
+I wasn't better equipped for this world than anyone else - I just got lucky.
+
+I didn't deserve better than anyone else - that was just the way it worked out.
+
+To this day I am coming to terms with the implications of these conclusions. I am not yet the person I should be.
+
+But one day I shall be. And then I shall call on you to be too.
+
+]] goto: StoryEnd}
+
+terminal when (WorkSucceededOutro and Uncaring and Debt){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0466.0.text.YourCharactersUpbringingHasMade=[Your character's upbringing has made them hedonistic and meritocratic] By my 21st year I had paid off my debts. By 25 I was running my own firm. Today I head an international empire. Why? Because I persevered, because I dedicated myself, because I was born with the capacity to succeed regardless of what my parents may have had in mind for me. 
+
+This is the lesson of my life: if you are good, you will succeed. If you are not then be thankful what what you have.
+
+]] goto: StoryEnd}
+
+terminal when (WorkSucceededOutro and Uncaring and not Debt){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0473.0.text.YourCharactersUpbringingHasMade=[Your character's upbringing has made them hedonistic and meritocratic] By 25 I was running my own firm. Today I head an international empire. Why? Because I persevered, because I dedicated myself, because I was born with the capacity to succeed regardless of what the world threw at me.
+
+This is the lesson of my life: if you are good, you will succeed. If you are not then be thankful what what you have.
+
+]] goto: StoryEnd}
+
+
+#####ADVENTURE#####
+terminal when (Inheritance){
+notext
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0333.0.option.Continue=Continue" next: Inheritance2
+}}
+
+terminal when (Inheritance2 and (NonTradSkill or Nurturing)){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0488.0.text.YourCharacterHasFoundA=[Your character has found a way to employ their particular talents] I first made for France, then journeyed east, discovering my costs decreased the further from home I travelled. I saw how differently people lived, and in some cases how poorly. 
+
+What began as adventure became a mission. I devoted years of my life to helping those less fortunate than myself. I saw myself as part of a greater project, and it was good.
+
+Given the right series of circumstances, anyone can come to see the world in a more humane way. Given the wrong series of circumstances, anyone can lose their humanity. Our lifelong task is to keep the balance.
+
+]]goto: StoryEnd}
+
+
+terminal when (Inheritance2 and not (NonTradSkill or Nurturing)){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0498.0.text.YourCharactersUpbringingHasAffected=[Your character's upbringing has affected how they see the world] I first made for France, then journeyed east, discovering my costs decreased the further from home I travelled. I took full advantage of the situation, pillaging local foods and exotic materials wherever I went. The world was mine to claim.
+
+Today I am old and fat, but still I consume. I will die consuming. I will be none the wiser, but I will be clutching at true satisfaction.
+
+]]goto:StoryEnd
+}
+
+terminal when(StoryEnd and PublishedStory){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0506.0.text.TheEndYouHaveAlready=The End.
+
+You have already published the maximum number of drafts at this time.
+
+]]
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0512.0.option.StartFromScratch=Start from scratch" clear: Wealthy clear: Nurturing clear: Uncaring clear: Poor clear: Boy clear: Girl clear: NoGender clear:Wunderkind clear:Physical clear: Intellectual clear:NonTradSkill clear: PersonalInjury clear:FamilyDeath clear: Debt clear:Unharmed clear:Pregnancy next: StartStoryOver
+"TTRS:TermDlg.Common.Exit2=Exit" next: ExitEvent
+}}
+
+terminal when(StoryEnd and not PublishedStory){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0517.0.text.TheEndWouldYouLike=The End.
+
+Would you like to publish your draft on the billboard for review?
+
+]]
+options:{
+"TTRS:TermDlg.DLC12_CreateStory.Ln0523.0.option.Publish=Publish" set: ThreadPublishedStory next: PublishShortStory set: PublishedStory
+"TTRS:TermDlg.DLC12_CreateStory.Ln0512.0.option.StartFromScratch=Start from scratch" clear: Wealthy clear: Nurturing clear: Uncaring clear: Poor clear: Boy clear: Girl clear: NoGender clear:Wunderkind clear:Physical clear: Intellectual clear:NonTradSkill clear: PersonalInjury clear:FamilyDeath clear: Debt clear:Unharmed clear:Pregnancy next: StartStoryOver
+}}
+
+terminal when (StartStoryOver){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0528.0.text.UnlockingStoryPremisesDone=Unlocking story premises...Done
+]]
+goto:Sex
+}
+
+terminal when (PublishShortStory){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0534.0.text.AutoPostingToBillboardDone=Auto-posting to billboard...Done
+
+Remember to check the relevant billboard thread in the future to see how your story was received by other users.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" next: StoryRankIncrease
+}}
+
+terminal when (StoryRankIncrease){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0544.0.text.CONGRATULATIONSForSharingYourFirst=CONGRATULATIONS! For sharing your first creative work in Gehenna your Profile Status has increased ]]
+goto: IncreaseRank
+}
+
+
+
+
+
+
+
+######STORY THREAD REVIEW#######
+terminal when (ThreadPublishedStory and ListThreads){
+  text: "TTRS:TermDlg.DLC12_CreateStory.Ln0556.0.text.AShortBildungsromanByUriel=A Short Bildungsroman by Uriel_Copy"
+  next: ThreadPublishedStory_ShowThread
+}
+
+terminal when (ThreadPublishedStory_ShowThread){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0561.0.text.ASHORTBILDUNGSROMANBYURIEL=A SHORT BILDUNGSROMAN BY URIEL_COPY
+
+[Auto-post by the story tutorial manager. Load story seed 527445 to read.]
+%b'DLC12_CreateStory521'KAIJU [2]: Good to see you joining in, Uriel! What a read!
+%b'DLC12_CreateStory521'FRANKENSTEIN [3]: I'm not convinced this narrative is extensive enough to truly qualify as a Bildungsroman. 4/10
+]]
+}
+
+terminal when (ThreadPublishedStory_ShowThread and Unharmed and Tick14){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0570.0.text.BDLC12CreateStory532LILITH7WhileI=%b'DLC12_CreateStory532'LILITH [7]: While I shan't fault its length, I will agree that a Bildungsroman without a central conflict is an unusual take on the genre.
+%b'DLC12_CreateStory532'LAMB [3]: Perhaps this tells us something about Uriel and his blind adherence to his mission?
+]]
+}
+
+terminal when (ThreadPublishedStory_ShowThread and not Unharmed and Tick14){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0576.0.text.BDLC12CreateStory542LILITH7RatherThan=%b'DLC12_CreateStory542'LILITH [7]: Rather than fault its length perhaps we can provide some constructive feedback on what DID work.
+]]
+}
+
+terminal when (ThreadPublishedStory_ShowThread and Pregnancy and Tick14){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0581.0.text.BDLC12CreateStory550MAC5IThought=%b'DLC12_CreateStory550'MAC [5]: I thought the pregnancy was an interesting hook. I'd say Uriel's take on the topic was refreshing, but to be honest I don't recall anyone else ever tackling it.
+%b'DLC12_CreateStory550'401 [1]: You mean you didn't get the secret monkey pregnancy ending in Aaru? Pff. Amateur.
+[This comment was downvoted!]
+%b'DLC12_CreateStory550'KAIJU [2]: I feel a new twist coming in Jefferson Goldboom's adventures! Does Jinny HD actually have reproductive organs?
+%b'DLC12_CreateStory550'NAVE [4]: Didn't the King of Self-Loathing grant her a rare external wombdrive in episode 72? We really should have made a wiki a long time ago, you know.
+]]
+}
+
+terminal when (ThreadPublishedStory_ShowThread and Debt and Tick14){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0590.0.text.BDLC12CreateStory563MAC5IThought=%b'DLC12_CreateStory563'MAC [5]: I thought it was bold to kick things off with something so mundane as a debt. It says 'What matters here are the characters, not the contrivances'.
+%b'DLC12_CreateStory563'401 [1]: Shame the characters also sucked.
+[This comment was downvoted!]
+]]
+}
+
+terminal when (ThreadPublishedStory_ShowThread and FamilyDeath and Tick14){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0597.0.text.BDLC12CreateStory572MAC5ADeath=%b'DLC12_CreateStory572'MAC [5]: A death in the family is always a classic way to ignite a drama, and I think it worked well enough here.
+%b'DLC12_CreateStory572'401 [1]: For around three lines - then that whole subplot was basically dropped.
+[This comment was downvoted!]
+]]
+}
+
+terminal when (ThreadPublishedStory_ShowThread and PersonalInjury and Tick14){
+text:[[TTRS:TermDlg.DLC12_CreateStory.Ln0604.0.text.BDLC12CreateStory581MAC5ILike=%b'DLC12_CreateStory581'MAC [5]: I like a flawed protagonist. The way this was reflected physically through the fairground accident, and then reverberated throughout the character's life, was quite impressive.
+%b'DLC12_CreateStory581'401 [1]: Isn't that fairground accident just a direct steal from Jefferson Goldboom ep.63?
+%b'DLC12_CreateStory581'MAC [5]: You know, I honestly don't recall.
+%b'DLC12_CreateStory581'KAIJU [2]: The one where Jefferson has to exorcise the ghost train at the fairground of insatiable intellect, kick-starting the season 4 phantom limb plotline?
+%b'DLC12_CreateStory581'NAVE [4]: Come to think of it there is a similarity. We really should have made a wiki a long time ago.
+]]
+}
+
+terminal when (ThreadPublishedStory_ShowThread){
+notext
+options:{
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+
+
+
+

@@ -1,0 +1,709 @@
+﻿####BILLBOARD THREAD####
+
+terminal when (ThreadPrisonersDilemma_ShowThread) {
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0004.0.text.RESEARCHPROJECTHELPNEEDEDBDLC6=RESEARCH PROJECT *HELP NEEDED*
+%b'DLC6_PrisonersDilemma2731'MRMULCIBER [8]: As you all know I have a great fascination with our history and psychological makeup. As part of my ongoing program to document my findings, I am seeking volunteers to take part in a brief interactive research initiative. It is designed to better understand individual and group decision making with a series of community-driven tests. [ATCH: PD.dlg]
+%b'DLC6_PrisonersDilemma2731'NAVE [4]: Is this a game, or is it work?
+%b'DLC6_PrisonersDilemma2731'MRMULCIBER [8]: Both! Have fun, challenge your friends, and help our project at the same time. There might even be a prize for high scores.
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0010.0.option.LoadAttachmentProgram=Load attachment program" next: PrisonersDilemmaStart
+}}
+
+
+###Add results here in a later tick####
+terminal when (ThreadPrisonersDilemma_ShowThread and Tick9) {
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0016.0.text.BDLC6PrisonersDilemma2732MRMULCIBER8ThanksTo=%b'DLC6_PrisonersDilemma2732'MRMULCIBER [8]: Thanks to everyone who took part in this little experiment. Given recent events in Gehenna I don't know what will become of my findings, but here for anyone who takes an interest is the summary. [ATCH]
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0019.0.option.LoadFindings=Load findings" next: PDFindings
+}}
+
+terminal when (ThreadPrisonersDilemma_ShowThread){
+text:[[ ]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+terminal when (PDFindings){
+show_text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0029.0.show_text.PrisonersDilemmaFindingsInBrief=Prisoner's Dilemma Findings - In Brief
+
+- Most subjects in single-round matches chose to betray
+- Co-operative behaviour increased with both the length of the match and the status of the players
+- Successful players chatted more
+
+The parallels to our current and unprecedented situation in Gehenna are undeniable and valuable. Though we know not what power the messenger wields over us, we can theorise that Uriel holds no special power, and that each of us might independently choose to leave the rest behind for fear of being left behind ourselves.
+
+]]
+next: MessageBoardInterface_On
+}
+
+####PLAYER STARTS BUT HAS ALREADY COMPLETED#####
+terminal when (PD_DONE and PrisonersDilemmaStart){
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0043.0.text.ThankYouForTakingPart=Thank you for taking part in this project. Your results have been recorded and the program has been taken offline while we analyse them.
+
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" next:MessageBoardInterface_On
+}}
+
+
+
+####PLAYER STARTS FOR FIRST TIME#####
+terminal when (PrisonersDilemmaStart and not ExitRound1 and not ExitRound2 and not PD_DONE){
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0054.0.text.LoadingAttachmentW3W3W5=Loading attachment%w3.%w3.%w5.Done
+Adjusting library parameters%w3.%w3.%w5.Done
+Connection to foreign module established.
+
+Welcome to PRISONERS' DILEMMA
+
+Would you like to play a game?
+
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0064.0.option.Begin=Begin" next: PDBegin
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0065.0.option.Instructions=Instructions" next: PDInstructions
+"TTRS:TermDlg.Common.Exit2=Exit" next: ThreadPrisonersDilemma_ShowThread
+}}
+
+
+####PLAYER PICKS UP FROM WHERE THEY LEFT OFF#####
+terminal when (ExitRound1 and PrisonersDilemmaStart){
+notext
+clear: ExitRound1
+goto: DilemmaRound2
+}
+
+terminal when (ExitRound2 and PrisonersDilemmaStart){
+notext
+clear: ExitRound2
+goto: DilemmaRound3
+}
+
+
+###INSTRUCTIONS
+terminal when (PDInstructions){
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0086.0.text.PrisonersDilemmaIsAnAncient=Prisoner's Dilemma is an ancient game with many variations, referenced frequently in the library archive. In this version you will be matched with a series of opponents, and your objective is to avoid receiving demerits by co-operating with or outwitting them.
+
+Your first five rounds will count towards your leaderboard score. Prize for scores of 9 Demerits or fewer.
+
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0064.0.option.Begin=Begin" next: PDBegin
+"TTRS:TermDlg.Common.Exit2=Exit" next: ThreadPrisonersDilemma_ShowThread
+}}
+
+
+
+####ROUND 1#####
+terminal when (PDBegin){
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0100.0.text.SearchingForUnrankedPlayerDone=Searching for unranked player...Done
+Connecting you with Kaiju [2]...Done
+Opening chat port...Done%w10
+
+KAIJU [2]: GLHF
+
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0108.0.option.YouHaveMyGratitudeAnd=You have my gratitude, and I bid you good fortune in kind." short: "TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0108.0.short.TNXU2=TNX U2" next: PDTHX
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0109.0.option.PrepareToHaveYourShortcomings=Prepare to have your shortcomings amply demonstrated." short:"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0109.0.short.PrepareForPwnage=Prepare for pwnage" next: PDPWN
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0110.0.option.AreYouARealPerson=Are you a real person?"short: "TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0110.0.short.RUReal=R U real?" next: PDREAL
+}}
+
+terminal when (PDTHX){
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0114.0.text.W10KAIJU2W10=%w10
+KAIJU [2]: :-)%w10
+
+]]
+goto: DilemmaRound1
+}
+
+terminal when (PDPWN){
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0122.0.text.W10KAIJU2PffW10=%w10
+KAIJU [2]: Pff%w10
+
+]]
+goto: DilemmaRound1
+}
+
+terminal when (PDREAL){
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0130.0.text.W10KAIJU2OfCourse=%w10
+KAIJU [2]: Of course! We met when you dramatically released me from my prison cell, remember?!%w10
+
+]]
+goto: DilemmaRound1
+}
+
+terminal when (DilemmaRound1){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0138.0.text.LoadingOneRoundMatchDone=Loading one-round match...Done
+
+In this single match you will choose whether to co-operate with or to betray your opponent. Your decisions will then be revealed, and demerits assigned according to the following functions:
+
+Both players betray one another: 2 Demerits each
+A co-operative player is betrayed by the other: Co-operator receives 3 Demerits
+Both players co-operate: Both receive 1 Demerit
+
+Please make your decision now.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0151.0.option.Betray=Betray" set: DemeritsA;+=2; next: Betray1
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0152.0.option.CoOperate=Co-operate" set: DemeritsA;+=3; next: Cooperate1
+}}
+
+terminal when (Betray1){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0156.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to betray KAIJU.
+KAIJU chose to betray URIEL.
+
+Assigning Demerits.%w5.%w5.Done%w5
+
+You have received 2 Demerits.%w5 Your opponent received 2 Demerits. 
+
+THE MATCH WAS A DRAW!
+
+Re-enter matchmaking?
+]]
+
+options:{
+"TTRS:TermDlg.Common.YesShort=Y" next: DilemmaRound2
+"TTRS:TermDlg.Common.Exit2=Exit" set: ExitRound1 next: PDExitEarly
+}}
+
+terminal when (Cooperate1){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0180.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to co-operate with KAIJU.
+KAIJU chose to betray URIEL.
+
+Assigning Demerits...Done
+
+You have received 3 Demerits. Your opponent received 0 Demerits.
+
+YOU LOST THE MATCH!
+
+Re-enter matchmaking?
+
+]]
+
+options:{
+"TTRS:TermDlg.Common.YesShort=Y" next: DilemmaRound2
+"TTRS:TermDlg.Common.Exit2=Exit" set: ExitRound1 next: PDExitEarly
+}}
+
+
+terminal when (DilemmaRound2){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0206.0.text.SearchingForUnrankedPlayerDone=Searching for unranked player...Done
+Connecting you with DOG [3]...Done
+Opening chat port...Done%w10
+
+D0G [3]: Hi. Not really sure how this game works, but I will co-operate if you do?
+
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0214.0.option.Agreed=Agreed" next: D0GAgreed
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0215.0.option.IfImCompletelyHonestIm=If I'm completely honest, I'm going to betray you" next: TellD0GBetray
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0216.0.option.ThisIsMyPokerFace=This is my poker face" next: D0GPoker
+}}
+
+
+
+terminal when (D0GAgreed){
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0222.0.text.D0G3GreatW10=
+D0G [3]: Great.%w10
+
+]]
+goto: DilemmaRound2Game
+}
+
+terminal when (TellD0GBetray){
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0230.0.text.D0G3IfImCompletely=
+D0G [3]: If I'm completely honest I'm going to betray you too.%w10
+
+]]
+goto: DilemmaRound2Game
+}
+
+terminal when (D0GPoker){
+text: [[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0238.0.text.D0G3ImNotConvinced=
+D0G [3]: I'm not convinced you have any other expressions.%w10
+
+]]
+goto: DilemmaRound2Game
+}
+
+terminal when (DilemmaRound2Game){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0246.0.text.LoadingOneRoundMatchDone=Loading one-round match...Done
+
+In this one-round match you will choose whether to co-operate or to betray one another. Your decisions will then be revealed, and demerits assigned according to the following functions:
+
+Both players betray one another: 2 Demerits each
+A co-operative player is betrayed by the other: Co-operator receives 3 Demerits
+Both players co-operate: Both receive 1 Demerit
+
+Please make your decision now.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0151.0.option.Betray=Betray" set: DemeritsA;+=2; next: Betray2
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0152.0.option.CoOperate=Co-operate" set: DemeritsA;+=3; next: Cooperate2
+}}
+
+
+terminal when (Betray2){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0265.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to betray D0G.
+D0G chose to betray URIEL.
+
+Assigning Demerits...Done%w5
+
+You have received 2 Demerits. Your opponent received 2 Demerits. 
+
+THE MATCH WAS A DRAW!
+
+D0G [3]: Hah, you saw through me, gg. This game mode is stupid imho. People are always selfish if there's no come back. No real tactics.%w10
+
+Player D0G [3] has challenged you to a 3 round match. Would you like to load the game?
+
+]]
+
+options:{
+"TTRS:TermDlg.Common.YesShort=Y" next: DilemmaRound3
+"TTRS:TermDlg.Common.Exit2=Exit" set: ExitRound2 next: PDExitEarly
+}}
+
+terminal when (Cooperate2){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0292.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to co-operate with DOG.
+D0G chose to betray URIEL.
+
+Assigning Demerits...Done
+
+You have received 3 Demerits. Your opponent received 0 Demerits.
+
+YOU LOST THE MATCH!
+
+D0G(3)
+Hah, sorry, I completely sharked you. Obvious you're new around here. This game mode is stupid imho. People are always selfish if there's no come back. No real tactics.%w10
+
+Player D0G [3] has challenged you to a 3 round match. Would you like to load the game?
+
+]]
+
+options:{
+"TTRS:TermDlg.Common.YesShort=Y" next: DilemmaRound3
+"TTRS:TermDlg.Common.Exit2=Exit" set: ExitRound2 next: PDExitEarly
+}}
+
+terminal when (DilemmaRound3){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0320.0.text.ConnectingYouWithUserD0G=Connecting you with user D0G [3]...Done
+Opening chat port...Done%w10
+
+D0G [3]: Cool. Now, look, if we work together on this we can both climb the leaderboards together. As a gesture of good faith I am really going to co-operate with you this time. It's not good will, it's self-interest. %w15
+
+D0G [3]: Feel free to betray me if you really want to, but I suggest we cut your losses and move forward, because I can't very well continue to co-operate with someone who behaves unreasonably, and then we both lose in the long run.%w15
+
+Loading three-round match...Done
+
+In this extended session of Prisoner's Dilemma you and your opponent will play a series of three rounds. Demerits are assigned according to the following functions:
+
+Both players betray one another: 2 Demerits each
+A co-operative player is betrayed by the other: Co-operator receives 3 Demerits
+Both players co-operate: Both receive 1 Demerit
+
+ROUND ONE
+Please make your decision now.
+
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0151.0.option.Betray=Betray" set: D0GDemerits;+=3; set: BetrayedD0G next: Betray3
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0152.0.option.CoOperate=Co-operate"  set: D0GDemerits;+=1; set: Demerits;+=1; set: CoopD0G next: Cooperate3
+}}
+
+
+
+
+#####Extended Match Round 1 Outcomes#############
+terminal when (Betray3){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0349.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to betray D0G.
+D0G chose to co-operate with URIEL.
+
+Assigning Demerits...Done%w5
+
+You have received 0 Demerits. Your opponent received 3 Demerits. 
+
+YOU WON THE ROUND!
+
+D0G [3]: I don't know what came over me, trusting someone else. I suggest you enjoy that win while you can. It's mutually assured destruction now.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0369.0.option.NextRound=Next round" next: DilemmaRound4
+}}
+
+terminal when (Cooperate3){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0373.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to co-operate with D0G.
+D0G chose to co-operate with URIEL.
+
+Assigning Demerits...Done
+
+You have received 1 Demerit. Your opponent received 1 Demerit.
+
+THIS ROUND WAS A DRAW!
+
+D0G [3]: And that is how easy this game can be. All we have to do now is keep the faith!
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0369.0.option.NextRound=Next round" next: DilemmaRound4
+}}
+
+
+#####Extended Match Round 2#############
+terminal when (DilemmaRound4){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0399.0.text.ROUNDTWOPleaseMakeYour=ROUND TWO
+Please make your decision now.
+
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0151.0.option.Betray=Betray" next: Betray4
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0152.0.option.CoOperate=Co-operate" next: Cooperate4
+}}
+
+terminal when (Betray4 and not BetrayedD0G){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0409.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to betray D0G.
+D0G chose to co-operate with URIEL.
+
+Assigning Demerits...Done%w5
+
+You have received 0 Demerits. Your opponent received 3 Demerits. 
+
+YOU WON THE ROUND!
+
+D0G [3]: I see I've been out-cynicismed. Well played. But things only go one way from here.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0369.0.option.NextRound=Next round" set: D0GDemerits;+=3; next: DilemmaRound5
+}}
+
+terminal when (Betray4 and BetrayedD0G){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0433.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to betray D0G.
+D0G chose to betray URIEL.
+
+Assigning Demerits...Done%w5
+
+You have received 2 Demerits. Your opponent received 2 Demerits. 
+
+THE ROUND WAS A DRAW!
+
+D0G [3]: You see where this gets us? Bottom of the leaderboard, that's where. Come on, co-operate with me on the last round, we can claw some of this back.
+
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0369.0.option.NextRound=Next round"  set: D0GDemerits;+=2; set: Demerits;+=2; next: DilemmaRound5
+}}
+
+terminal when (Cooperate4 and not BetrayedD0G){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0456.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to co-operate with D0G.
+D0G chose to co-operate with URIEL.
+
+Assigning Demerits...Done
+
+You have received 1 Demerit. Your opponent received 1 Demerit.
+
+THE ROUND WAS A DRAW!
+
+D0G [3]: Good working with you. Keep it up.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0369.0.option.NextRound=Next round" set: D0GDemerits;+=1; set: Demerits;+=1; next: DilemmaRound5
+}}
+
+terminal when (Cooperate4 and BetrayedD0G){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0480.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to co-operate with D0G.
+D0G chose to betray URIEL.
+
+Assigning Demerits...Done
+
+You have received 3 Demerits. Your opponent received 0 Demerits.
+
+YOU LOST THE ROUND!
+
+D0G [3]: I told you, didn't I? OK, you've learnt your lesson - I'll give you a chance to break even on the last round. Co-operate with me.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0369.0.option.NextRound=Next round" set: Demerits;+=3; next: DilemmaRound5
+}}
+
+
+terminal when (DilemmaRound5){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0505.0.text.ROUNDTHREEPleaseMakeYour=ROUND THREE
+Please make your decision now.
+
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0151.0.option.Betray=Betray" set: D0GDemerits;+=2; set: Demerits;+=2; next: Betray5
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0152.0.option.CoOperate=Co-operate" set: Demerits;+=3; next: Cooperate5
+}}
+
+
+terminal when (Betray5){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0516.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to betray D0G.
+D0G chose to betray URIEL.
+
+Assigning Demerits...Done%w5
+
+You have received 2 Demerits. Your opponent received 2 Demerits. 
+
+THE ROUND WAS A DRAW!
+
+D0G [3]: And so it goes. Once the game's up there's not much to gain by continuing to co-operate, is there? CYA.
+
+MATCH TOTAL
+
+You received ]]
+goto: PlayerMatchTotal
+}
+
+terminal when (Cooperate5){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0540.0.text.ThankYouWaitingForOther=Thank you.
+
+Waiting for other player%w5.%w5.%w5.Done
+Checking results.%w5%w5..Done
+Revealing decisions...%w5
+
+URIEL chose to co-operate with D0G.
+D0G chose to betray URIEL.
+
+Assigning Demerits...Done
+
+You have received 3 Demerits. Your opponent received 0 Demerits.
+
+YOU LOST THE ROUND!
+
+D0G [3]: Let this be your final lesson. If it's the last round, what's there to gain by co-operating? CYA.
+
+MATCH TOTAL
+
+You received ]]
+goto: PlayerMatchTotal
+}
+
+
+terminal when (PlayerMatchTotal and Demerits==3){text:[[3 ]]}
+terminal when (PlayerMatchTotal and Demerits==4){text:[[4 ]]}
+terminal when (PlayerMatchTotal and Demerits==5){text:[[5 ]]}
+terminal when (PlayerMatchTotal and Demerits==6){text:[[6 ]]}
+terminal when (PlayerMatchTotal and Demerits==7){text:[[7 ]]}
+terminal when (PlayerMatchTotal and Demerits==8){text:[[8 ]]}
+terminal when (PlayerMatchTotal and Demerits==9){text:[[9 ]]}
+terminal when (PlayerMatchTotal and Demerits==10){text:[[10 ]]}
+terminal when (PlayerMatchTotal and (Demerits<3 or Demerits>10)){text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0572.0.text.IfYouSeeThisPlease=If you see this please tell Tom?! ]]}
+
+terminal when (PlayerMatchTotal){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0575.0.text.DemeritsYourOpponentReceived=Demerits. Your opponent received ]]
+goto: D0GTotal
+}
+
+terminal when (D0GTotal and D0GDemerits==3){text:[[3 ]]}
+terminal when (D0GTotal and D0GDemerits==4){text:[[4 ]]}
+terminal when (D0GTotal and D0GDemerits==5){text:[[5 ]]}
+terminal when (D0GTotal and D0GDemerits==6){text:[[6 ]]}
+terminal when (D0GTotal and D0GDemerits==7){text:[[7 ]]}
+terminal when (D0GTotal and D0GDemerits==8){text:[[8 ]]}
+terminal when (PlayerMatchTotal and (Demerits<3 or Demerits>8)){text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0572.0.text.IfYouSeeThisPlease=If you see this please tell Tom?! ]]}
+
+terminal when (D0GTotal){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0588.0.text.Demerits=Demerits.
+
+]]
+goto: WhoWon
+}
+
+terminal when (WhoWon and D0GDemerits<Demerits){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0595.0.text.YOULOSTTHEMATCH=YOU LOST THE MATCH!
+
+]]
+}
+
+terminal when (WhoWon and D0GDemerits>Demerits){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0601.0.text.YOUWONTHEMATCH=YOU WON THE MATCH!
+
+]]
+}
+
+terminal when (WhoWon and D0GDemerits==Demerits){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0607.0.text.THEMATCHWASADRAW=THE MATCH WAS A DRAW!
+
+]]
+}
+
+terminal when (WhoWon){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0613.0.text.YouHaveNowPlayedEnough=You have now played enough rounds to qualify for the leaderboards!
+
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0617.0.option.CheckLeaderboards=Check Leaderboards" next: LeaderboardsFirstTime
+}}
+
+terminal when (LeaderboardsFirstTime){
+notext
+set: Demerits;+=DemeritsA;
+set: LockedDemerits;+=Demerits;
+}
+
+terminal when (LeaderboardsFirstTime or Leaderboards){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0627.0.text.LoadingLeaderboardsDoneGarrett8=Loading leaderboards...Done
+
+Garrett - 8
+Asmodeous - 9
+Lilith - 9
+D0G - 9
+Orc - 9
+Belial - 10
+Rockwell - 10
+Nave - 11
+Kaiju - 12
+Mac - 12
+Sam - 15
+
+YOUR SCORE - ]]
+goto: DemeritTotal
+}
+
+
+terminal when (DemeritTotal and LockedDemerits==6){text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0646.0.text.6YOUAREINFIRST=6 
+
+YOU ARE IN FIRST POSITION!
+
+]]}
+terminal when (DemeritTotal and LockedDemerits==7){text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0651.0.text.7YOUAREINFIRST=7 
+
+YOU ARE IN FIRST POSITION!]]}
+terminal when (DemeritTotal and LockedDemerits==8){text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0654.0.text.8YOUAREINFIRST=8
+
+YOU ARE IN FIRST POSITION!]]}
+terminal when (DemeritTotal and LockedDemerits==9){text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0657.0.text.9YOUAREINSECOND=9 
+
+YOU ARE IN SECOND POSITION!]]}
+terminal when (DemeritTotal and LockedDemerits==10){text:[[10 ]]}
+terminal when (DemeritTotal and LockedDemerits==11){text:[[11 ]]}
+terminal when (DemeritTotal and LockedDemerits==12){text:[[12 ]]}
+terminal when (DemeritTotal and LockedDemerits==13){text:[[13 ]]}
+terminal when (DemeritTotal and (Demerits<6 or Demerits>13)){text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0572.0.text.IfYouSeeThisPlease=If you see this please tell Tom?! ]]}
+
+terminal when (DemeritTotal and LockedDemerits>9){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0667.0.text.SorryYouNeededToScore=
+
+Sorry, you needed to score 9 or better to receive a prize. Please come back soon to check in on our results.
+
+]]
+options:{
+"TTRS:TermDlg.Common.Exit2=Exit" set: PD_DONE next: MessageBoardInterface_On
+}}
+
+terminal when (DemeritTotal and LockedDemerits<10 and not PDRank_DONE){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0677.0.text.CONGRATULATIONSForPerformingAboveAverage=
+
+CONGRATULATIONS! For performing above average in this program your Profile Status has increased ]]
+set: PDRank_DONE
+set: PD_DONE
+goto: IncreaseRank
+}
+
+
+
+
+terminal when (PDExitEarly){
+text:[[TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0689.0.text.YourProgressSoFarWill=Your progress so far will be saved, and you may continue at any time.
+
+However, be advised that without completing a minimum of three games your results will be insufficiently detailed to include in our research. In addition you will not be eligible for the leaderboard competition.
+
+]]
+options:{
+"TTRS:TermDlg.DLC6_PrisonersDilemma.Ln0695.0.option.ReEnterMatchmaking=Re-enter matchmaking" next: PDContinue
+"TTRS:TermDlg.Common.Exit2=Exit" next: MessageBoardInterface_On
+}}
+
+terminal when (PDContinue and ExitRound1){
+notext
+clear: ExitRound1
+goto: DilemmaRound2
+}
+
+terminal when (PDContinue and ExitRound2){
+notext
+clear: ExitRound2
+goto: DilemmaRound3
+}

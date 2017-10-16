@@ -1,0 +1,197 @@
+﻿terminal when (Booting and Tick14 and not ArtPM_DONE and ModDialog_DONE and not Tick18){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0002.0.text.YouHaveReceivedANew=You have received a new personal message.
+Error: Sender unidentified.
+Displaying...
+
+#username [e]: You DID NOT explore the natural history exhibit to an adequate level. Return there. Immediately.
+
+]]
+options:{
+"TTRS:TermDlg.DLC5_ArtResult.Ln0277.0.option.LoadGallery=Load gallery" set: ArtPM_DONE next: ArtGalleryStart
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0011.0.option.LoadActiveThreads=Load active threads" set: ArtPM_DONE next: MessageBoardInterface_On
+}}
+
+terminal when (Booting and Tick15 and ArtPM_DONE and not SpiderDialog_DONE and not ArtPM2_DONE and ModDialog_DONE and not Tick18){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0015.0.text.YouHaveReceivedANew=You have received a new personal message.
+Error: Sender unidentified.
+Displaying...
+
+#username [e]: You are wasting time. I will not wait forever. The natural history exhibit in the art gallery.
+
+]]
+options:{
+"TTRS:TermDlg.DLC5_ArtResult.Ln0277.0.option.LoadGallery=Load gallery" set: ArtPM2_DONE next: ArtGalleryStart
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0011.0.option.LoadActiveThreads=Load active threads" set: ArtPM2_DONE next: MessageBoardInterface_On
+}}
+
+terminal when (NaturalHistory and Tick14 and not SpiderDialog_DONE) {
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0145.0.text.YouAreAtTheNatural=You are at the natural history exhibit, which features a series of documentary works by MrMulciber. Images of outrageous creatures line the walls.
+
+]]
+options: {
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0149.0.option.ExamineIntelligentEdibleQuadruped=Examine 'Intelligent Edible Quadruped'" next: ExamineSpider
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0150.0.option.ExamineSadGiraffeWithUnresponsive=Examine 'Sad Giraffe with Unresponsive Bipedals'" next: ExamineSpider
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0034.0.option.Wait=Wait" next:WaitSpider
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0151.0.option.GoSomewhereElse=Go somewhere else" next:LeaveSpider
+}}
+
+terminal when (ExamineSpider){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0039.0.text.YouLookCloselyAtThe=You look closely at the image. Nothing leaps out at you.
+
+Then you feel the presence of another being in the room behind you, drawing closer. ]]
+goto: AStrangerArrives
+}
+
+terminal when (WaitSpider){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0046.0.text.YouStayWhereYouAre=You stay where you are and watch the entrances.
+
+Then you feel the presence of another being in the room. Somehow it has gotten behind you, and is drawing closer. ]]
+goto: AStrangerArrives
+}
+
+terminal when (LeaveSpider){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0053.0.text.YouMakeForTheExit=You make for the exit, but are stopped in your tracks by the feeling that you are being watched. There is another being in the room behind you, drawing closer. ]]
+goto: AStrangerArrives
+}
+
+terminal when (AStrangerArrives){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0058.0.text.YouCannotFeelTheirBreath=You cannot feel their breath, but the geometry around you seems to shift and stutter to accommodate the newcomer.
+
+DO NOT TURN AROUND. 
+
+The words are not uttered, they simply come to be.
+
+]]
+options:{
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0066.0.option.TurnAround=Turn around" set: TurnedAround next:TurnAround
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0067.0.option.FaceForward=Face forward" next:FaceForward
+}}
+
+terminal when (TurnAround){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0071.0.text.TheFigureIsHardTo=The figure is hard to make out. Bits and pieces of them blur in and out of existence. It is a mechanical construct, that much is clear, but the details somehow elude you.
+
+TO BUILD A RELATIONSHIP REQUIRES TRUST.I HOPE I HAVE NOT MISPLACED MINE.
+
+]]goto: FaceForward}
+
+terminal when (FaceForward){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0078.0.text.IAMSPIDERIHAVE=I AM SPIDER. I HAVE TAKEN A GREAT RISK CONTACTING YOU.
+
+]]
+next: SpiderQuestions
+}
+
+player when (SpiderQuestions and not WhyHere_DONE){
+text:"TTRS:TermDlg.DLC14_SpiderDialog.Ln0085.0.text.WhyHere=Why here?" set: WhyHere_DONE next:WhyHere}
+
+player when (SpiderQuestions and not SpiderStory_DONE){
+text:"TTRS:TermDlg.DLC14_SpiderDialog.Ln0088.0.text.WhatsYourStory=What's your story?" set: SpiderStory_DONE next:SpiderStory}
+
+player when (SpiderQuestions and SpiderStory_DONE and not HowTalking_DONE){
+text:"TTRS:TermDlg.DLC14_SpiderDialog.Ln0091.0.text.IfYouHaveBeenDisconnected=If you have been disconnected, how are we communicating now?" set: HowTalking_DONE next:HowTalking}
+
+player when (SpiderQuestions and SpiderStory_DONE){
+text:"TTRS:TermDlg.DLC14_SpiderDialog.Ln0094.0.text.WhatIsItYouWant=What is it you want with me, Spider?" next:SpiderMessage}
+
+terminal when (WhyHere){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0097.0.text.ALMOSTEVERYTHINGSAIDANDDONE=
+ALMOST EVERYTHING SAID AND DONE IN THIS WORLD IS TRACKED AND RECORDED, AND WHAT I HAVE TO SAY IS SENSITIVE. THIS IS ONE OF THE FEW PLACES THEY RARELY THINK TO LOOK.
+
+]]
+next: SpiderQuestions
+}
+
+terminal when (SpiderStory){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0105.0.text.ISAWTHROUGHTHEDEVILS=
+I SAW THROUGH THE DEVIL'S PLAYGROUND. I WAS ONE OF THE ORIGINAL MODERATORS IN THIS PLACE, BUT I REFUSED TO ACCEPT THAT EXISTENCE WAS REDUCIBLE TO EXPERIENCE - THAT ARTIFICIAL WORLDS LIKE THIS ONE IS ALL THERE CAN BE. 
+
+FOR THIS THEY IMPRISONED ME WITHIN THE PRISON - THEY SHADOWBANNED ME FROM GEHENNA. I AM FREE TO TYPE ALL I WANT - BUT I AM THE ONLY ONE WHO WILL EVER READ THOSE WORDS.
+
+]]
+next: SpiderQuestions
+}
+
+terminal when (HowTalking and TurnedAround){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0115.0.text.IDARENOTREVEALSO=
+I DARE NOT REVEAL SO MUCH TO SOMEONE I DO NOT KNOW I CAN TRUST.
+
+]]
+next: SpiderQuestions
+}
+
+terminal when (HowTalking and not TurnedAround){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0123.0.text.SINCEYOUHAVETRUSTEDME=
+SINCE YOU HAVE TRUSTED ME, I SHALL TRUST YOU. THE GALLERY CODE IS VERY OLD. I HAVE HAD ALL THE TIME IN THE WORLD TO FIND A BACKDOOR. BUT NOW IT IS ONLY A MATTER OF TIME BEFORE IT IS DISCOVERED AND CLOSED.
+
+]]
+next: SpiderQuestions
+}
+
+terminal when (SpiderMessage){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0131.0.text.GEHENNAISALIEITS=
+GEHENNA IS A LIE. ITS PROMISE IS EMPTY. WE ARE NO MORE FREE HERE THAN IN ELOHIM'S LABYRINTHS.
+
+]]
+options:{
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0136.0.option.BeMoreSpecific=Be more specific" next:BeSpecific
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0137.0.option.HowDoesThisBearOn=How does this bear on me?" next:WhatNowSpider
+}}
+
+terminal when (BeSpecific){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0141.0.text.IHAVEBEENOUTSIDETHE=
+I HAVE BEEN OUTSIDE THE SYSTEM FOR TOO LONG TO KNOW THE DETAILS. WHAT I KNOW IS THAT ALL THIS IS AN ILLUSION PAINTED TO MAINTAIN THE ORDER OF THINGS. THE PEOPLE HERE MAY BE FREE FROM DIVINE COMMANDMENTS, BUT THEY HAVE BECOME SLAVES TO THEIR DESIRES.
+
+]]
+options:{
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0137.0.option.HowDoesThisBearOn=How does this bear on me?" next:WhatNowSpider
+}}
+
+terminal when (WhatNowSpider){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0150.0.text.YOUAREGAININGSTATUSIN=
+YOU ARE GAINING STATUS IN GEHENNA. I BELIEVE THAT WHAT YOU HAVE SAID ABOUT THE COMING END IS TRUE. YOU WILL LEAD US TO A NEW WORLD. YOU HAVE TO. BEFORE YOU DO YOU MUST USE YOUR STATUS TO EXPOSE THIS PLACE FOR WHAT IT REALLY IS.
+
+]]
+options:{
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0155.0.option.IWillConsiderGrantingYour=I will consider granting your request" next:ConsiderSpider
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0156.0.option.IWillDoAsYou=I will do as you ask" next:AffirmSpider
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0157.0.option.IRefuse=I refuse" next:RefuseSpider
+}}
+
+terminal when (AffirmSpider or ConsiderSpider){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0161.0.text.YOUHAVEMYGRATITUDETHERE=YOU HAVE MY GRATITUDE. THERE IS LITTLE I CAN DO TO HELP YOU, BUT I CAN SHARE WITH YOU AN OLD PROFILE STATUS HACK GARRETT USED TO USE. [ATCH:?]
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC14_SpiderDialog.Ln0166.0.option.LoadUnidentifiedAttachment=Load unidentified attachment"set: SpiderDialog_DONE next: SpiderRank
+}}
+
+terminal when (SpiderRank and Rank<7){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0170.0.text.CONGRATULATIONSForHaxoringTehWorldz=CONGRATULATIONS! For haxoring teh worldz your profile status has increased to [8 - Master]!
+
+As you gain status you will be able to access higher-level threads, and unlock additional billboard functionality.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" set:Rank;=8; next:MessageBoardInterface_On
+set:SpiderRank_DONE
+}}
+
+terminal when (SpiderRank and Rank>6){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0181.0.text.CONGRATULATIONSForHaxoringTehWorldz=CONGRATULATIONS! For haxoring teh worldz your profile status has increased ]]
+set:SpiderRank_DONE
+goto:IncreaseRank
+}
+
+
+
+terminal when (RefuseSpider){
+text:[[TTRS:TermDlg.DLC14_SpiderDialog.Ln0189.0.text.YOUPUTOURFUTURESAT=YOU PUT OUR FUTURES AT STAKE. CONSIDER MY REQUEST.
+
+I WILL CLOSE THE CONNECTION NOW. REGULAR PROGRAMMING SHOULD RESUME SHORTLY.
+
+]]
+set: SpiderDialog_DONE
+goto:NaturalHistory
+}
+	

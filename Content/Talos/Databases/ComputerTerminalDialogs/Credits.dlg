@@ -1,0 +1,27 @@
+terminal when (InTerminal_CreditsTerminal and Booting) {
+text: "TTRS:Credits.Dialog.Welcome=Welcome to the credits viewing system v0.99.%z."
+}
+
+terminal when (crListingAllowed and InTerminal_CreditsTerminal) {
+text: [[TTRS:Credits.Dialog.SelectOption=
+Select option.
+]]
+options: {
+  "TTRS:Credits.Dialog.ListAllCredits=list all" next: crPrintAll
+  "TTRS:Credits.Dialog.BrowseCredits=browse" next: GUIMode_On
+  "TTRS:TermDlg.Common.Exit=exit" next: CLI_exit
+  }
+}
+
+terminal when (crListingAllowed and (not InTerminal_CreditsTerminal)) {
+notext
+exit
+}
+
+terminal when (CLI_exit){
+	text: [[TTRS:TermDlg.CLI_Global.Ln0159.0.text.TerminatingLibrarySessionW1W1=
+Terminating session%w1.%w1.%w1.%w1.
+Session terminated.
+]]
+exit
+}

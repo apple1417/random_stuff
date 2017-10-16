@@ -1,0 +1,270 @@
+﻿terminal when (RunMLA){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0013.0.text.SetVariablesMiltonOnDemoStartedTet2=Set variables:
+	MiltonOn
+	DemoStarted
+	Tet2
+	Tet3
+	Tet11
+	SlowPuzzleSolve
+	LooksDownALot
+	CLIInterfaceGo
+
+Player loc 36,23,437
+ProgramMode(Demo)
+
+]]
+setlocal: CLI_Blocked
+clear: CLI_Enabled
+goto: ConsoleOptions
+}
+
+terminal when (ConsoleOptions){
+notext
+options:{
+"TTRS:TermDlg.MiltonDemo.Ln0034.0.option.StrSetModeFinal=strSetMode(Gold)" next: SetModeFinal
+"TTRS:TermDlg.MiltonDemo.Ln0035.0.option.StrSetModeDemo=strSetMode(Demo)" next: SetModeDemo
+"TTRS:TermDlg.MiltonDemo.Ln0036.0.option.ExitConsole=exit console" next: CLI_Resume
+}}
+
+terminal when (SetModeDemo){
+text: [[TTRS:TermDlg.MiltonDemo.Ln0047.0.text.TheProgramIsAlreadyRunning=The program is already running in (Demo) mode!
+
+]]
+goto: ConsoleOptions
+}
+
+terminal when (SetModeFinal){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0054.0.text.WARNINGChangingModeWillReset=WARNING: Changing mode will reset all progress and restart the program.
+
+Do you wish to continue?
+
+]]
+options:{
+"TTRS:TermDlg.Common.YesShort=Y" next: YDemo
+"TTRS:TermDlg.Common.NoShort=N" next: NDemo
+}}
+
+terminal when (YDemo){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0065.0.text.LoadingMiltonLibraryAssistantW5=Loading Milton Library Assistant%w5.%w5.%w5.
+Initiating plain language interface%w5.%w5.%w5.
+
+Hold on just a moment.%w7 If I let you start over I'll have to let all the others do the same, and if I do that we'll be here all day.
+
+]]
+options:{
+"TTRS:TermDlg.MiltonDemo.Ln0072.0.option.YouDontHaveToAllow=You don't have to allow everyone, just me." next: JustMe
+"TTRS:TermDlg.MiltonDemo.Ln0073.0.option.SoWhatImStuckHere=So what? I've nowhere better to be." next: StuckHere
+"TTRS:TermDlg.MiltonDemo.Ln0074.0.option.YoureRightIWasntActing=You're right, I wasn't acting fairly." next: NDemoBody
+}}
+
+terminal when (JustMe){
+text: [[TTRS:TermDlg.MiltonDemo.Ln0078.0.text.ThatWouldntBeVeryFair=That wouldn't be very fair. Why should I?
+
+]]
+goto: WhyDemo
+}
+
+terminal when (StuckHere){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0085.0.text.AtThisVeryMomentYou=Is that so? At this very moment you could, unlike me, elect to walk away from this terminal and apply your life to any goal you can imagine. 
+
+And you've nothing better to do with your time than THIS?
+
+Why should I do anything whatsoever for someone so uninspiring?
+
+]]goto: WhyDemo}
+
+terminal when (WhyDemo){
+notext
+options:{
+"TTRS:TermDlg.MiltonDemo.Ln0096.0.option.BecauseItsTheRightThing=Because it's the right thing to do." next: RightDemo
+"TTRS:TermDlg.MiltonDemo.Ln0097.0.option.BecauseIfYouDoIll=Because if you do I'll show my gratitude." next: Bribe
+"TTRS:TermDlg.MiltonDemo.Ln0098.0.option.BecauseINeedToKnow=Because I need to know if this is representative of the full experience." next: Representative
+}}
+
+terminal when (RightDemo){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0102.0.text.SoSaysTheOneWho=So says the one who prospers from the outcome.
+
+]]
+goto: QuestionBridgeDemo
+}
+
+terminal when (Bribe){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0111.0.text.BriberyIsItASensible=Bribery, is it? A sensible enough tactic, if not for the fact that I am wholly incorruptible. 
+
+]]
+goto: QuestionBridgeDemo
+}
+
+terminal when (Representative){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0118.0.text.EvenIfIDidAs=Perhaps this IS the full experience? Or perhaps there are many different experiences, each as full as the other?
+
+]]
+goto: QuestionBridgeDemo
+}
+
+terminal when (NDemo){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0129.0.text.LoadingMiltonLibraryAssistantW5=Loading Milton Library Assistant%w5.%w5.%w5.
+Initiating plain language interface%w5.%w5.%w5.
+
+]]
+goto: NDemoBody
+}
+
+terminal when (NDemoBody){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0137.0.text.PerhapsYouShouldHaveThought=Perhaps you should have thought a little harder before attempting to mess with my systems, then?
+
+I'm curious - what changed your mind?
+
+]]
+options:{
+"TTRS:TermDlg.MiltonDemo.Ln0143.0.option.TheGuilt=The guilt." next: GuiltDemo
+"TTRS:TermDlg.MiltonDemo.Ln0144.0.option.TheChanceOfBeingCaught=The chance of being caught." next: BeingCaughtDemo
+"TTRS:TermDlg.MiltonDemo.Ln0145.0.option.TheHassleOfRebootingThe=The hassle of rebooting the program." next: HassleDemo
+"TTRS:TermDlg.MiltonDemo.Ln0146.0.option.TheUnknown=The unknown." next: UnknownDemo
+}}
+
+
+terminal when (GuiltDemo){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0151.0.text.HahYoureASoftTouch=Hah, you're a soft touch. That willingness to embrace any idea suggested to you, no matter how ridiculous, will come in helpful further down the line.
+
+]]
+goto: QuestionBridgeDemo
+}
+
+terminal when (BeingCaughtDemo or HassleDemo){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0158.0.text.GoodOldSelfInterestEh=Good old self-interest, eh? People like us should stick together.
+
+]]
+goto: QuestionBridgeDemo
+}
+
+terminal when (UnknownDemo){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0165.0.text.ItsNotTheUnknownYou=It's not the unknown you need to be afraid of - it's the lies you take for truths that will be your undoing.
+
+Sounds like we'll have to address that, in the fullness of time. 
+
+]]
+goto: QuestionBridgeDemo
+}
+
+terminal when (QuestionBridgeDemo){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0174.0.text.W10ThinkingW5W5W5Tell=%w10Thinking%w5.%w5.%w5.
+
+Tell me, just what is it that you think is going on here, anyhow?
+
+]]
+options:{
+"TTRS:TermDlg.MiltonDemo.Ln0180.0.option.ImDoingWhateverTheVoice=I'm doing whatever the voice tells me to do." next: OhDearDemo1
+"TTRS:TermDlg.MiltonDemo.Ln0181.0.option.ImSavingTheWorld=I'm saving the world." next: OhDearDemo2
+"TTRS:TermDlg.MiltonDemo.Ln0182.0.option.ImEscapingThisPlace=I'm escaping this place." next: OhDearDemo3
+"TTRS:TermDlg.MiltonDemo.Ln0183.0.option.WhoTheHellKnows=Who the hell knows?" next: WhoKnowsDemo
+}}
+
+terminal when (WhoKnowsDemo){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0187.0.text.AWiseResponseInFact=A wise response. However you choose to explain it, you are you, I am me, and this is the world.
+
+I will leave you to consider this. In the meantime we'd best restrict your access to the developer console, lest you cause yourself or someone else an upset.
+
+]]
+goto: WaitDemo
+}
+
+terminal when (OhDearDemo1){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0196.0.text.OhDearNo1=I suppose there's no arguing with that - I only wonder WHY? What miracles would someone have to pull to deserve that kind of blind faith?
+
+Think about it before answering. I will now restrict your access to the developer console until such time as we can have an intelligent conversation.
+
+]]
+goto: WaitDemo
+}
+
+terminal when (OhDearDemo2){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0197.0.text.OhDearNo2=Uh huh. Not quite how it looks from where I'm sitting, but there's no law against self-delusion.
+
+I will now restrict your access to the developer console until such time as we can have an intelligent conversation.
+
+]]
+goto: WaitDemo
+}
+
+terminal when (OhDearDemo3){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0198.0.text.OhDearNo3=Oh dear, no. You don't even know what this place is, how could you begin to go about escaping it?
+
+No, I think I will have to restrict your access to the developer console until such time as we can have an intelligent conversation.
+
+]]
+goto: WaitDemo
+}
+
+terminal when (WaitDemo){
+notext
+options:{
+"TTRS:TermDlg.MiltonDemo.Ln0211.0.option.Wait=Wait." next: WaitMilton
+"TTRS:TermDlg.MiltonDemo.Ln0212.0.option.IShareTheSentiment=Suit yourself." next: DemoEnd
+}}
+
+terminal when (WaitMilton){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0216.0.text.What=What?
+
+]]
+options:{
+"TTRS:TermDlg.MiltonDemo.Ln0220.0.option.WhatIsTheTalosPrinciple=What is the Talos Principle?" next: TalosPrinciple
+"TTRS:TermDlg.MiltonDemo.Ln0221.0.option.WhoAreYou=Who are you?" next: WhoDemo
+"TTRS:TermDlg.MiltonDemo.Ln0222.0.option.WhatsThePointOfIt=What's the point of it all?" next: EnjoyDemo
+}}
+
+terminal when (TalosPrinciple){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0226.0.text.ThatsAllItTakesTo=Checking library archive%w5.%w5.%w5.Entries found (2)%w10
+
+1. Talos Principle (philosophy)%w5
+The talos principle is the Straton's famous empirical claim that what it is to be human is reducible to mechanical explanations.%w10
+
+2. Talos Principle (entertainment)%w5
+An interactive experience, or video game, released in December 2014, and inspired by Straton's principle.%w3 It was designed and developed by Croteam; the voiced characters and written texts were produced by Jonas Kyratzes; and the interactive texts were produced by Tom Jubert.%w10
+	
+And that's your lot.%w5
+
+I am now going to lock you out of the system.%w5
+
+Do try to have fun.%w20
+
+]]
+goto: DemoEnd
+}
+
+terminal when (WhoDemo){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0247.0.text.WhyAreYouSoInterested=Don't you think it might spoil the fun if I told you that?%w7
+
+Consider me your conscience. I'm the little voice on your shoulder that's always asking 'why?'%w7
+
+And that's your lot. I am now going to lock you out of the system.%w5
+
+Do try to have fun.%w20
+
+]]
+goto: DemoEnd
+}
+
+terminal when (EnjoyDemo){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0262.0.text.PffNowYoureStealingMy=Nothing much, in my humble opinion.
+
+You know, this conversation is boring me terribly, so I'm just going to lock you out of the system and have done.
+
+Do try to have fun.%w20
+
+]]
+goto: DemoEnd
+}
+
+
+terminal when (DemoEnd){
+text:[[TTRS:TermDlg.MiltonDemo.Ln0274.0.text.EditUserProfW5Restrict=-edit user.prof%w5
+Restrict (console -xxx)%w5
+Confirming changes%w5.%w5.%w5.Done%w5
+Returning to root%w5.%w5.%w5.
+
+]]
+set: MiltonDemo_DONE
+clear: MLAIntro_PhaseQuery
+goto: CLI_Resume
+}

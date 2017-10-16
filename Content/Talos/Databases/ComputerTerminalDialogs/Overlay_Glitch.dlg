@@ -1,0 +1,9 @@
+terminal when(ItemVirtualizationGlitch) {
+text:[[TTRS:notrans=
+HIM ERROR 33: Recording inconsistency detected!%w3
+Attempting autofix%w1.%w1.%w1.%w1%s0FAILED%w3
+Spawning fixer bot%w1.%w1.%w1.%w1%s0FAILED%w3
+Looking for last stable state%w1.%w1.%w1.%w1FOUND%w3
+Rewinding%w1.%w1.%w1.%w1%e9%w9%w9%w9%w9%w9
+]]
+}

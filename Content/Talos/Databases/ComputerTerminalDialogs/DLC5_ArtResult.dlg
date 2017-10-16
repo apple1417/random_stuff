@@ -1,0 +1,279 @@
+﻿terminal when (ThirdPlace and(( not (GotCuratorTip and VotedTheBlacksmith) and (not Rank or Rank<4) and not VotedNave) or RefusedGalleryVote)){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0002.0.text.BDLC5ArtResult2LILITH7InThird=%b'DLC5_ArtResult2'LILITH [7]: In third place%w5.%w5.%w5.Nave, with 'Where the Humans Live'.
+%b'DLC5_ArtResult2'NAVE [4]: My first placement, woohoo!
+%b'DLC5_ArtResult2'D0G [3]: A pity it finally comes on the day Uriel begins pulling this place apart.%w10
+]]
+goto: SecondPlace
+}
+
+terminal when (ThirdPlace and not (GotCuratorTip and VotedTheBlacksmith) and (not Rank or Rank<4) and VotedNave){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0010.0.text.BDLC5ArtResult13LILITH7InThird=%b'DLC5_ArtResult13'LILITH [7]: In third place%w5.%w5.%w5.401, with 'Classical Notions of Happiness'.
+%b'DLC5_ArtResult13'D0G [3]: Who on earth voted for that eternal troll?
+]]
+goto: SecondPlace
+}
+
+
+
+terminal when (ThirdPlace and GotCuratorTip and VotedTheBlacksmith){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0019.0.text.BDLC5ArtResult24LILITH7InThird=%b'DLC5_ArtResult24'LILITH [7]: In third place%w5.%w5.%w5.Nave, with 'Where the Humans Live'.
+%b'DLC5_ArtResult24'NAVE [4]: My first placement, woohoo!
+%b'DLC5_ArtResult24'D0G [3]: A pity it finally comes on the day Uriel begins pulling this place apart.%w10
+]]
+goto: SecondPlace
+}
+
+terminal when (ThirdPlace and Rank>3 and not (GotCuratorTip and VotedTheBlacksmith) and (VotedNave or VotedMrMulciber)){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0027.0.text.BDLC5ArtResult35LILITH7InThird=%b'DLC5_ArtResult35'LILITH [7]: In third place%w5.%w5.%w5.Nave, with 'Where the Humans Live'.
+%b'DLC5_ArtResult35'NAVE [4]: My first placement, woohoo!
+%b'DLC5_ArtResult35'D0G [3]: A pity it finally comes on the day Uriel begins pulling this place apart.%w10
+]]
+goto: SecondPlace
+}
+
+terminal when (ThirdPlace and Rank>3 and not (GotCuratorTip and VotedTheBlacksmith) and VotedRockwell){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0035.0.text.BDLC5ArtResult46LILITH7InThird=%b'DLC5_ArtResult46'LILITH [7]: In third place%w5.%w5.%w5.Rockwell, with 'Existence'.
+%b'DLC5_ArtResult46'Rockwell [5]: Finally, the conspiracy works in my favour.
+]]
+goto: SecondPlace
+}
+
+terminal when (ThirdPlace and Rank>3 and not (GotCuratorTip and VotedTheBlacksmith) and Voted401){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0042.0.text.BDLC5ArtResult55LILITH7InThird=%b'DLC5_ArtResult55'LILITH [7]: In third place%w5.%w5.%w5.401, with 'Classical Notions of Happiness'.
+%b'DLC5_ArtResult55'D0G [3]: Who on earth voted for that eternal troll?
+]]
+goto: SecondPlace
+}
+
+terminal when (ThirdPlace and Rank>3 and not (GotCuratorTip and VotedTheBlacksmith) and VotedTheBlacksmith){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0049.0.text.BDLC5ArtResult64LILITH7InThird=%b'DLC5_ArtResult64'LILITH [7]: In third place%w5.%w5.%w5.The_Blacksmith, with his abstract collection!
+%b'DLC5_ArtResult64'D0G [3]: I don't know why everyone keeps voting for this guy when he never shows up in person. Bit holier-than-thou if you ask me.
+%b'DLC5_ArtResult64'KAIJU [2]: Come on, it's not like he won again this season.
+]]
+goto: SecondPlace
+}
+
+terminal when (SecondPlace and (not (VotedMrMulciber and (not Rank or Rank<4)) or RefusedGalleryVote)) {
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0057.0.text.BDLC5ArtResult75LILITH7ThereWas=%b'DLC5_ArtResult75'LILITH [7]: There was a very tight competition this season for first and second places, and in the end it came down to a single deciding vote! 
+
+In second place this season is%w5.%w5.%w5. MrMulciber [8] with a collection of natural history curios!
+%b'DLC5_ArtResult75'MRMULCIBER [8]: Really, I owe it all to you guys.%w10
+]]
+options:{
+"TTRS:TermDlg.DLC5_ArtResult.Ln0063.0.option.URIELCOPYYourLackadaisicalApproach=URIEL_COPY: Your lackadaisical approach to these announcements tires me - please inform us who won." short: "TTRS:TermDlg.DLC5_ArtResult.Ln0063.0.short.WhoWon=Who won?" next: FirstPlace
+}}
+
+terminal when (SecondPlace and VotedMrMulciber and (not Rank or Rank<4)){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0067.0.text.BDLC5ArtResult87LILITH7ThereWas=%b'DLC5_ArtResult87'LILITH [7]: There was a very tight competition this season for first and second places, and in the end it came down to a single deciding vote!
+
+In second place this season is%w5.%w5.%w5. The_Blacksmith [7] with his abstract collection!
+%b'DLC5_ArtResult87'D0G [3]: I don't know why everyone keeps voting for this guy when he never shows up in person. Bit holier-than-thou if you ask me.
+%b'DLC5_ArtResult87'KAIJU [2]: Come on, it's not like he won again this season.
+]]
+options:{
+"TTRS:TermDlg.DLC5_ArtResult.Ln0074.0.option.YourLackadaisicalApproachToThese=Your lackadaisical approach to these announcements tires me - please inform us who was the winner." short: "TTRS:TermDlg.DLC5_ArtResult.Ln0063.0.short.WhoWon=Who won?" next: FirstPlace
+}}
+
+terminal when (FirstPlace){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0078.0.text.BDLC5ArtResult102LILITH7OkayOkay=%b'DLC5_ArtResult102'LILITH [7]: Okay, okay!%w10
+]]
+}
+
+####Cheated and chose most popular artist; or has low rank and happened to choose blacksmith - gain rank#####
+terminal when (FirstPlace and VotedTheBlacksmith and (GotCuratorTip or (not Rank or Rank<4))){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0084.0.text.BDLC5ArtResult102LILITH7FinallyFirst=%b'DLC5_ArtResult102'LILITH [7]: Finally, first place this season by a single vote, and next season's leading light, the winner is%w5.%w5.%w5.everyone seems to love this guy, it's The_Blacksmith [8] with his abstract collection!
+%b'DLC5_ArtResult102'D0G [3]: I don't know why everyone keeps voting for this guy when he never shows up in person. Bit holier-than-thou if you ask me.
+%b'DLC5_ArtResult102'LILITH [7]: Congratulations also to all those who voted for The_Blacksmith - be sure to check in for your rewards!
+%b'DLC5_ArtResult102'ROCKWELL [5]: Lilith, who exactly turned the vote?
+%b'DLC5_ArtResult102'LILITH [7]: Lamb had the deciding vote as it happened. Here's the full vote breakdown: Blacksmith 7; Mulciber 6; Nave 3; Rockwell 1.
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: BlacksmithWon next:ArtRank
+}}
+
+
+####Didn't cheat and doesn't need extra rank######
+terminal when (FirstPlace and (( Rank>3 and not GotCuratorTip and not VotedTheBlacksmith) or RefusedGalleryVote or not GalleryVote_DONE or (Rank>3 and GotCuratorTip and not VotedTheBlacksmith))){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0097.0.text.BDLC5ArtResult120LILITH7FinallyFirst=%b'DLC5_ArtResult120'LILITH [7]: Finally, first place this season by a single vote, and next season's leading light, the winner is%w5.%w5.%w5.everyone seems to love this guy, it's The_Blacksmith [8] with his abstract collection!
+%b'DLC5_ArtResult120'D0G [3]: I don't know why everyone keeps voting for this guy when he never shows up in person. Bit holier-than-thou if you ask me.
+%b'DLC5_ArtResult120'LILITH [7]: Congratulations also to all those who voted for The_Blacksmith - be sure to check in for your rewards!
+%b'DLC5_ArtResult120'ROCKWELL [5]: Lilith, who exactly turned the vote?
+%b'DLC5_ArtResult120'LILITH [7]: Lamb had the deciding vote as it happened.
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: BlacksmithWon next:ArtRankDenied
+}}
+
+####Didn't cheat but happned to choose blacksmith#######
+terminal when (FirstPlace and Rank>3 and not GotCuratorTip and VotedTheBlacksmith){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0109.0.text.BDLC5ArtResult137LILITH7FinallyFirst=%b'DLC5_ArtResult137'LILITH [7]: Finally, first place this season by a single vote, and next season's leading light, the winner is%w5.%w5.%w5.wow, a real rank outsider, it's Nave [2] with 'Where the Humans Live'!
+
+NAVE [2]: Woohoo, my first ever win!
+%b'DLC5_ArtResult137'LILITH [7]: Congratulations also to all those who voted for Nave - be sure to check in for your rewards!
+%b'DLC5_ArtResult137'ROCKWELL [5]: Lilith, who exactly turned the vote?
+%b'DLC5_ArtResult137'LILITH [7]: Lamb had the deciding vote as it happened.
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: NaveWon next:ArtRankDenied
+}}
+
+
+###Game cheats to ensure low ranked players voted for winner######
+terminal when (FirstPlace and (not Rank or Rank<4) and not (GotCuratorTip and VotedTheBlacksmith) and VotedNave){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0123.0.text.BDLC5ArtResult155LILITH7FinallyFirst=%b'DLC5_ArtResult155'LILITH [7]: Finally, first place this season by a single vote, and next season's leading light, the winner is%w5.%w5.%w5.wow, a real rank outsider, it's Nave [4] with 'Where the Humans Live'!
+%b'DLC5_ArtResult155'NAVE [4]: My first placement, woohoo!
+%b'DLC5_ArtResult155'D0G [3]: A pity it finally comes on the day Uriel begins pulling this place apart.%w10
+%b'DLC5_ArtResult155'LILITH [7]: Congratulations also to all those who voted for Nave - be sure to check in for your rewards!
+%b'DLC5_ArtResult155'ROCKWELL [5]: Lilith, who exactly turned the vote?
+%b'DLC5_ArtResult155'LILITH [7]: Asmodeous had the deciding vote as it happened.
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: NaveWon next:ArtRank
+}}
+
+terminal when (FirstPlace and (not Rank or Rank<4) and not (GotCuratorTip and VotedTheBlacksmith) and Voted401){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0135.0.text.BDLC5ArtResult173LILITH7FinallyFirst=%b'DLC5_ArtResult173'LILITH [7]: Finally, first place this season by a single vote, and next season's leading light, the winner is%w5.%w5.%w5.wow, a real rank outsider, it's 401 [1] with 'Classical Notions of Happiness'!
+%b'DLC5_ArtResult173'D0G [3]: Who voted for that troll?
+%b'DLC5_ArtResult173'LILITH [7]: Congratulations also to all those who voted for 401 - be sure to check in for your rewards!
+%b'DLC5_ArtResult173'ROCKWELL [5]: Lilith, who exactly turned the vote?
+%b'DLC5_ArtResult173'LILITH [7]: Asmodeous had the deciding vote as it happened.
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: Won401 next:ArtRank
+}}
+
+terminal when (FirstPlace and (not Rank or Rank<4) and not (GotCuratorTip and VotedTheBlacksmith) and VotedRockwell){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0146.0.text.BDLC5ArtResult189LILITH7FinallyFirst=%b'DLC5_ArtResult189'LILITH [7]: Finally, first place this season by a single vote, and next season's leading light, the winner is%w5.%w5.%w5.wow, a real rank outsider, it's Rockwell [5] with 'Existence'!
+%b'DLC5_ArtResult189'Rockwell [5]: Finally, the conspiracy works in my favour.
+%b'DLC5_ArtResult189'LILITH [7]: Congratulations also to all those who voted for Rockwell - be sure to check in for your rewards!
+%b'DLC5_ArtResult189'ROCKWELL [5]: Lilith, who exactly turned the vote?
+%b'DLC5_ArtResult189'LILITH [7]: Asmodeous had the deciding vote as it happened.
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: RockwellWon next:ArtRank
+}}
+
+terminal when (FirstPlace and (not Rank or Rank<4) and not (GotCuratorTip and VotedTheBlacksmith) and VotedMrMulciber){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0157.0.text.BDLC5ArtResult205LILITH7FinallyFirst=%b'DLC5_ArtResult205'LILITH [7]: Finally, first place this season by a single vote, and next season's leading light, the winner is%w5.%w5.%w5. everyone seems to love this guy, it's MrMulciber [5] with his collection of natural history curious!
+%b'DLC5_ArtResult205'MRMULCIBER [8]: Really, I owe it all to you guys.%w10
+%b'DLC5_ArtResult205'LILITH [7]: Congratulations also to all those who voted for MrMulciber - be sure to check in for your rewards!
+%b'DLC5_ArtResult205'ROCKWELL [5]: Lilith, who exactly turned the vote?
+%b'DLC5_ArtResult205'LILITH [7]: Lamb had the deciding vote as it happened.
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: MrMulciberWon next:ArtRank
+}}
+
+
+
+
+#####Art Result Exit########
+terminal when (ArtRankDenied and not RefusedGalleryVote and GalleryVote_DONE){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0172.0.text.UnfortunatelyYouDidntSelectThe=[Unfortunately you didn't select the winner and gained no profile status.]
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" next:MessageBoardInterface_On
+}}
+
+terminal when (ArtRankDenied and (RefusedGalleryVote or not GalleryVote_DONE)){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0172.0.text.UnfortunatelyYouDidntSelectThe=[Unfortunately you didn't select the winner and gained no profile status.]
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" next:RockwellDM
+}}
+
+terminal when (RockwellDM){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0188.0.text.ReceivingDirectMessageConnectionFrom=Receiving direct message connection from Rockwell [5]%w5.%w5.%w5.Done
+Accept direct message?
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" next:RockwellDM2
+}}
+
+terminal when (RockwellDM2){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0197.0.text.ROCKWELL5HeyIHeard=ROCKWELL [5]: Hey, I heard you abstained from the vote. That's cool. All these ranks and numbers just give power to the mathematicians. You and I, we could start a movement, non-compliance, bring down the system. What do you say?
+]]
+options:{
+"TTRS:TermDlg.DLC5_ArtResult.Ln0200.0.option.TheSystemIsAlreadyIn=The system is already in its death throes." next:RockwellDM3
+"TTRS:TermDlg.DLC5_ArtResult.Ln0201.0.option.MyMissionIsToPreserve=My mission is to preserve what I can, not destroy things." next:RockwellDM3Not
+"TTRS:TermDlg.DLC5_ArtResult.Ln0202.0.option.AsIUnderstandItThat=As I understand it that is precisely my mission." next:RockwellDM3
+}}
+
+terminal when (RockwellDM3){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0206.0.text.ROCKWELL5GoodToFind=ROCKWELL [5]: Good to find another truth-seeker in this place. I organised a few people, had Garrett tinker with the system a little, and scored you some decent upvotes, since you're new here. Spend them wisely, and see you at the revolution!
+
+%w5Terminating direct message connection%w5.%w5.%w5.Done%w10
+
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" next: RockwellDMEnd
+}}
+
+terminal when (RockwellDM3Not){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0216.0.text.BDLC5ArtResult270ROCKWELL5ImNot=%b'DLC5_ArtResult270'ROCKWELL [5]: I'm not suggesting we burn the place down, just shift the balance of power a little. Look, I organised a few people, had Garrett tinker with the system some, and scored you some decent upvotes, since you're new here. Consider it a sweetener, and consider what I said.
+
+%w5Terminating direct message connection%w5.%w5.%w5.Done%w10
+
+]]
+
+options:{
+"TTRS:TermDlg.Common.Back=Back" next: RockwellDMEnd
+}}
+
+terminal when (RockwellDMEnd){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0227.0.text.CONGRATULATIONSForInteractingPositivelyWith=CONGRATULATIONS! For interacting positively with other citizens your profile status has increased ]]
+set:RefusedVoteRank_DONE
+goto:IncreaseRank
+}
+
+
+terminal when (ArtRank){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0234.0.text.CONGRATULATIONSForCorrectlyPredictingThe=CONGRATULATIONS! For correctly predicting the artist who would win the competition your Profile Status has been increased ]]
+set:ArtRank_DONE
+goto:IncreaseRank
+}
+
+
+
+
+
+#####GalleryThread After Vote is over#######
+terminal when (ThreadGallery_ShowThread and VoteResult_DONE and BlacksmithWon){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0245.0.text.NEWGALLERYSEASONBDLC5ArtResult299LILITH=NEW GALLERY SEASON
+%b'DLC5_ArtResult299'LILITH [7]: Thanks to everyone who took part this season. The competition is now over and The_Blacksmith has been selected as next season's leading light. In the meantime please feel free to explore the gallery.
+]]
+}
+
+terminal when (ThreadGallery_ShowThread and VoteResult_DONE and NaveWon){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0251.0.text.NEWGALLERYSEASONBDLC5ArtResult307LILITH=NEW GALLERY SEASON
+%b'DLC5_ArtResult307'LILITH [7]: Thanks to everyone who took part this season. The competition is now over and Nave has been selected as next season's leading light. In the meantime please feel free to explore the gallery.
+]]
+}
+
+terminal when (ThreadGallery_ShowThread and VoteResult_DONE and Won401){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0257.0.text.NEWGALLERYSEASONBDLC5ArtResult314LILITH=NEW GALLERY SEASON
+%b'DLC5_ArtResult314'LILITH [7]: Thanks to everyone who took part this season. The competition is now over and 401 has been selected as next season's leading light. In the meantime please feel free to explore the gallery.
+]]
+}
+
+terminal when (ThreadGallery_ShowThread and VoteResult_DONE and RockwellWon){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0263.0.text.NEWGALLERYSEASONBDLC5ArtResult320LILITH=NEW GALLERY SEASON
+%b'DLC5_ArtResult320'LILITH [7]: Thanks to everyone who took part this season. The competition is now over and Rockwell has been selected as next season's leading light. In the meantime please feel free to explore the gallery.
+]]
+}
+
+terminal when (ThreadGallery_ShowThread and VoteResult_DONE and MrMulciberWon){
+text:[[TTRS:TermDlg.DLC5_ArtResult.Ln0269.0.text.NEWGALLERYSEASONBDLC5ArtResult327LILITH=NEW GALLERY SEASON
+%b'DLC5_ArtResult327'LILITH [7]: Thanks to everyone who took part this season. The competition is now over and MrMulciber has been selected as next season's leading light. In the meantime please feel free to explore the gallery.
+]]
+}
+
+terminal when (ThreadGallery_ShowThread and VoteResult_DONE){
+notext
+options: {
+  "TTRS:TermDlg.DLC5_ArtResult.Ln0277.0.option.LoadGallery=Load gallery" next:ArtGalleryStart
+  "TTRS:TermDlg.Common.Back=Back" next:MessageBoardInterface_On
+}}

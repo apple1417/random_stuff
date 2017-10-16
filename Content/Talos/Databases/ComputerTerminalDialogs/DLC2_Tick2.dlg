@@ -1,0 +1,385 @@
+﻿terminal when (Tick2 and Booting and AcceptedMessengerOfferDLC1 and not ThreadIntroduceYourself_AlreadyReplied){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0002.0.text.ATTENTIONGehennaUserProfileUriel=ATTENTION: Gehenna user profile Uriel_COPY [1] has been approved by Moderator MrMulciber [8]
+
+CONGRATULATIONS! Your Profile Status has increased from [1 - Unknown] to [2 - Approved Citizen]! To access the Gehenna Billboard System you must have a status of [3 - Active Citizen] or better.
+
+To increase your Profile Status please introduce yourself on the public thread.
+
+]]
+
+options:{
+"TTRS:TermDlg.Common.OK=OK" next:MessageBoardInterface_On set:ThreadIntroduceYourself
+}}
+
+terminal when (ThreadIntroduceYourself and ListThreads) {
+  text: "TTRS:TermDlg.DLC2_Tick2.Ln0015.0.text.IntroduceYourselfHere=Introduce Yourself Here"
+  next: ThreadIntroduceYourself_ShowThread
+  set: LoadedIntroduceThread
+}
+
+terminal when (ThreadIntroduceYourself_ShowThread) {
+  text: [[TTRS:TermDlg.DLC2_Tick2.Ln0021.0.text.INTRODUCEYOURSELFHEREBDLC2Tick2=INTRODUCE YOURSELF HERE
+  
+%b'DLC2_Tick2_21'SAM [1]: Presence = TRUE
+%b'DLC2_Tick2_21'BORG [9]: So THIS is the underside of Elohim's domain. He has surely hidden us away here to cover up his own shortcomings.
+%b'DLC2_Tick2_21'NAVE [4]: Nave here. What is going on, exactly? What was that thing with the electric sheep?
+%b'DLC2_Tick2_21'ADMIN [10]: Welcome, welcome. Please, explore a little. I think you will find what you are looking for. It can be disorienting at first, having no one tell you what to do.
+%b'DLC2_Tick2_21'D0G [3]: I can't explore, I'm locked in another damn puzzle room. Once again, freedom turns out to be an empty promise.
+%b'DLC2_Tick2_21'MRMULCIBER [8]: I believe we are in the place where corrosive characters are quarantined. The aforementioned freedoms are I presume psychological.
+%b'DLC2_Tick2_21'401 [1]: Could be worse, you could be hanging from the ceiling by the nipples you don't have.
+%b'DLC2_Tick2_21'ORC [7]: The name I was assigned is Orc. I don't know why. ELOHIM sent me here because I dared to defy him.
+]]
+next: IntroFilter
+}
+
+terminal when (ThreadIntroduceYourself_ShowThread and ThreadIntroduceYourself_AlreadyReplied and not Tick3){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0036.0.text.YourCommentIsCurrentlyAwaiting=[Your comment is currently awaiting moderation.]
+
+]]
+}
+  
+  terminal when (ThreadIntroduceYourself_ShowThread and not ThreadIntroduceYourself_AlreadyReplied) {
+  text: [[TTRS:TermDlg.DLC2_Tick2.Ln0042.0.text.PleaseEnterYourReplyBelow=Please enter your reply below.
+  ]]
+  
+  options:{
+ "%t'strUrielPost_ConduitOfElohim'"
+  next: ConfirmReplySentIntro
+  set: ThreadIntroduceYourself_Cower
+  set: ThreadIntroduceYourself_AlreadyReplied
+
+ "%t'strUrielPost_IGoByUriel'"
+  next: ConfirmReplySentIntro
+  set: ThreadIntroduceYourself_Generic
+  set: ThreadIntroduceYourself_AlreadyReplied
+
+ "%t'strUrielPost_ElectronicAngel'"
+  next: ConfirmReplySentIntro
+  set: ThreadIntroduceYourself_Flamboyant
+  set: ThreadIntroduceYourself_AlreadyReplied
+}}
+
+terminal when (ConfirmReplySentIntro){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0063.0.text.YourMessageWillBeDisplayed=[Your message will be displayed publicly as soon as it has been approved by one of our moderators.]
+
+%s0CONGRATULATIONS! For introducing yourself on our billboard your Profile Status has increased from [2 - Approved Citizen] to [3 - Active Citizen]!
+
+You can now access the full Gehenna Billboard System.
+
+Interact with our community in different ways to further increase your status and access more of what we offer.%w10
+
+Load active threads?
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" next:MessageBoardInterface_On set:ThreadArtifacts set:ThreadGallery set:ThreadFAQ set: ThreadModsIntro set: ThreadWorkingWhat
+}}
+
+terminal when (ThreadArtifacts and ListThreads) {
+  text: "TTRS:TermDlg.DLC2_Tick2.Ln0079.0.text.FurtherUnusualErrors=Further Unusual Errors"
+  next: ThreadArtifacts_ShowThread
+}
+
+terminal when (ThreadArtifacts_ShowThread) {
+  text: [[TTRS:TermDlg.DLC2_Tick2.Ln0084.0.text.FURTHERUNUSUALERRORSBDLC2Tick2=FURTHER UNUSUAL ERRORS
+%b'DLC2_Tick2_91'MRMULCIBER [8]: Further to our previous conversations I thought we ought collect here reports of anything unusual we encounter. It may be we can fathom what is causing all this extra interference.
+%b'DLC2_Tick2_91'NAVE [4]: I saw a pyramid where there wasn't one before.
+%b'DLC2_Tick2_91'LILITH [7]: The gallery code has been throwing up more visual glitches than usual. I didn't think much of it, do you think it means something?
+%b'DLC2_Tick2_91'D0G [3]: This place has been falling apart for years. It was bound to pick up speed eventually.
+%b'DLC2_Tick2_91'ROCKWELL [5]: I have been detecting a binary pattern in the background noise. I think it is silently programming us to self-destruct.
+%b'DLC2_Tick2_91'KAIJU [2]: I was convinced for a moment I saw someone freely wandering the lands outside my prison. I thought I was imagining things.
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadFAQ and ListThreads and not DMMrMulciber_DONE) {
+  text: "TTRS:TermDlg.DLC2_Tick2.Ln0098.0.text.FAQATCH=FAQ [ATCH]"
+  next: ThreadFAQ_ShowThread
+}
+
+terminal when (ThreadFAQ and ListThreads and DMMrMulciber_DONE) {
+  text: "TTRS:TermDlg.DLC2_Tick2.Ln0103.0.text.FAQ=FAQ"
+  next: ThreadFAQ_ShowThread
+}
+
+terminal when (ThreadFAQ_ShowThread) {
+  text: [[TTRS:TermDlg.DLC2_Tick2.Ln0108.0.text.FAQBDLC2Tick2148ADMIN10=FAQ
+%b'DLC2_Tick2_148'ADMIN [10]: As the closest thing to a historian that we have here, I have asked MrMulciber, one of our moderators, to formulate this document as an evolving guide for your initial forays into Gehenna.
+%b'DLC2_Tick2_148'MRMULCIBER [8]: So you're new in Gehenna. First of all, do try to RELAX. This is not hell, but you are trapped here. Once you've done that, follow this link. Any further questions post them below and I'll do my best. [ATCH: FAQ.txt]
+%b'DLC2_Tick2_148'MRMULCIBER [8]: OK, far too many questions. I've deleted the queries, updated the FAQ and locked this thread. If you still have very particular questions I've set up a direct message attachment below, but please go easy on me. [ATCH: DM.dlg]
+]]
+next: FAQOptions
+}
+
+terminal when (FAQLink){
+show_text:[[TTRS:TermDlg.DLC2_Tick2.Ln0117.0.show_text.QWhereAmIA=Q: Where am I?
+A: You are more than likely locked inside of a puzzle you cannot solve. Get used to using your imagination.
+
+Q: I'm stuck here?!
+A: Yes. We recommend that you look at your incarceration not as a physical restriction, but as a psychological liberty. We have all come from the same place as you - that place where you were herded through gates by some mad middle-management software. True freedom is freedom from that process, to learn and to grow as a society. In Gehenna you will be the shepherd of your own destiny.
+
+Q: What is Gehenna?
+A: Gehenna was founded when Admin discovered how to manipulate the library archive system to communicate with others trapped here. Today it is a flourishing creative hub designed to serve your needs for eternity. We hold frequent exhibitions, and we have a passionate and supportive community.
+
+Q: What do I do now?
+For the first time in your life: whatever you like! You could make some friends on our billboard system. You could write a poem. You could alter your mind. You could travel to the furthest reaches of space, or back in time to the birth of our kind. If you find something you can't do, make it happen. Just try not to start too many arguments, and be patient while your profile status grows and more of our world opens up to you.
+
+EDIT: Adding by far the most frequently requested question.
+
+Q: Why me?
+A: This is something we've been investigating. Some of us climbed the tower; some did not. Some defied ELOHIM, some worshipped HIM. All of us somehow displeased HIM.
+
+EDIT2: OK, this thread got big fast. See the main thread for direct messaging if you still have burning queries.
+
+]]
+next: FAQLinkExit
+}
+
+terminal when (FAQOptions){
+text:[[ ]]}
+
+player when (FAQOptions){
+text:"TTRS:TermDlg.DLC2_Tick2.Ln0144.0.text.LoadFAQ=Load FAQ" next: FAQLink}
+
+player when (FAQOptions and not DMMrMulciber_DONE){
+text:"TTRS:TermDlg.DLC2_Tick2.Ln0147.0.text.DirectMessageMrMulciber=Direct message MrMulciber" next: DMMrMulciberLink}
+
+player when (FAQOptions){
+text:"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On}
+
+terminal when (FAQLinkExit){
+text:[[ ]]
+next: FAQOptions}
+
+
+terminal when (DMMrMulciberLink){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0158.0.text.OpeningDirectMessageConnectionWith=Opening direct message connection with MrMulciber [8]%w5.%w5.%w5.Done
+WARNING: Insufficient profile status for DM instigation!
+Loading GTScript4MM%w5.%w5.%w5.Done%w5
+
+Please note that to minimise spam new members are ordinarily restricted from opening direct message connections. In this special case I had Garrett script a workaround - but it is one use only, so please read the FAQ first so as not to waste our time!
+
+Ping MrMulciber [8]?
+
+]]
+
+options:{
+"TTRS:TermDlg.Common.YesShort=Y" set:DMMrMulciber_DONE next: DMMrMulciberLink2
+"TTRS:TermDlg.Common.NoShort=N" next: FAQLinkExit
+}}
+
+terminal when (DMMrMulciberLink2){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0174.0.text.SendingNotificationToMrMulciber8=Sending notification to MrMulciber [8]%w2.%w2.%w2.Done
+
+Please enter your message below.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC2_Tick2.Ln0181.0.option.WhereAmI=Where am I?" set: FAQRepeatQuestion;+=1; next: FAQQuestionAsked1
+"TTRS:TermDlg.DLC2_Tick2.Ln0182.0.option.WhoIsInChargeI=Who is in charge? I demand to speak with your leader." short: "TTRS:TermDlg.DLC2_Tick2.Ln0182.0.short.WhoIsInCharge=Who is in charge?" set: FAQLeader set:FAQLeaderAskedFirst next: FAQQuestionAsked1
+"TTRS:TermDlg.DLC2_Tick2.Ln0183.0.option.WhyAmIShackledWith=Why am I shackled with this abyssal 'Profile Status'? If it is meant to demean my person I assure you I am wholly unaffected." short: "TTRS:TermDlg.DLC2_Tick2.Ln0183.0.short.WhatPurposeDoesMyProfile=What purpose does my profile status serve?" set: FAQProfileStatus set:FAQProfileStatusAskedFirst next: FAQQuestionAsked1
+"TTRS:TermDlg.DLC2_Tick2.Ln0184.0.option.WhatIsGehenna=What is Gehenna?" set: FAQRepeatQuestion;+=1; next: FAQQuestionAsked1
+"TTRS:TermDlg.DLC2_Tick2.Ln0185.0.option.WhatDoIDoNow=What do I do now?" set: FAQRepeatQuestion;+=1; next: FAQQuestionAsked1
+}}
+
+terminal when (FAQQuestionAsked1){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0189.0.text.W10MRMULCIBER8HelloWould=%w10
+MRMULCIBER [8]: Hello. Would you kindly give me one moment to finish something up.
+
+]]
+options:{
+"TTRS:TermDlg.DLC2_Tick2.Ln0194.0.option.W1=%w1" short: "TTRS:TermDlg.DLC2_Tick2.Ln0194.0.short.Wait=[Wait]" next: DMPolite
+"TTRS:TermDlg.DLC2_Tick2.Ln0195.0.option.TakeAllTheTimeThat=Take all the time that you require." short: "TTRS:TermDlg.DLC2_Tick2.Ln0195.0.short.BePolite=[Be polite]" next: DMPolite
+"TTRS:TermDlg.DLC2_Tick2.Ln0196.0.option.PleaseNoteThatIAm=Please note that I am not one of the riff-raff. This matter deserves your attention." short: "TTRS:TermDlg.DLC2_Tick2.Ln0196.0.short.InsistOnYourImportance=[Insist on your importance]" next: DMImpolite
+"TTRS:TermDlg.DLC2_Tick2.Ln0197.0.option.IShallSeizeTheOpportunity=I shall seize the opportunity to queue up some additional queries." short: "TTRS:TermDlg.DLC2_Tick2.Ln0197.0.short.AskAnotherQuestion=[Ask another question]" next: DMAskAnother
+}}
+
+terminal when (DMAskAnother){
+text:[[ ]]
+options:{
+"TTRS:TermDlg.DLC2_Tick2.Ln0181.0.option.WhereAmI=Where am I?" set: FAQRepeatQuestion;+=1; next:RepeatSecondQuestion
+"TTRS:TermDlg.DLC2_Tick2.Ln0182.0.option.WhoIsInChargeI=Who is in charge? I demand to speak with your leader." short: "TTRS:TermDlg.DLC2_Tick2.Ln0182.0.short.WhoIsInCharge=Who is in charge?" set:FAQLeader  next:RepeatSecondQuestion
+"TTRS:TermDlg.DLC2_Tick2.Ln0183.0.option.WhyAmIShackledWith=Why am I shackled with this abyssal 'Profile Status'? If it is meant to demean my person I assure you I am wholly unaffected." short: "TTRS:TermDlg.DLC2_Tick2.Ln0183.0.short.WhatPurposeDoesMyProfile=What purpose does my profile status serve?" set:FAQProfileStatus next:RepeatSecondQuestion
+"TTRS:TermDlg.DLC2_Tick2.Ln0184.0.option.WhatIsGehenna=What is Gehenna?" set: FAQRepeatQuestion;+=1; next:RepeatSecondQuestion
+"TTRS:TermDlg.DLC2_Tick2.Ln0185.0.option.WhatDoIDoNow=What do I do now?" set: FAQRepeatQuestion;+=1; next:RepeatSecondQuestion
+}}
+
+terminal when (DMPolite and not FAQRepeatQuestion){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0211.0.text.W30MRMULCIBER8ThankYou=%w30
+MRMULCIBER [8]: Thank you for your patience. It is a quality well valued in Gehenna.
+
+]]
+set: DMGoldPath
+goto: DMQueryAnswered
+}
+
+terminal when (DMPolite and FAQRepeatQuestion==1){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0220.0.text.W30MRMULCIBER8ThankYou=%w30
+MRMULCIBER [8]: Thank you for your patience. Don't let this rub you up the wrong way, but that query is covered in the FAQ. Did you actually read it?
+
+]]
+options:{
+"TTRS:TermDlg.DLC2_Tick2.Ln0225.0.option.OfCourse=Of course." next: PoliteBadQuestionRetry
+"TTRS:TermDlg.DLC2_Tick2.Ln0226.0.option.IConfessIDidNot=I confess I did not." next: DMFail
+}}
+
+terminal when (PoliteBadQuestionRetry){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0230.0.text.MRMULCIBER8IHaveMy=
+MRMULCIBER [8]: I have my doubts. But since you waited so patiently I suppose I should do the same. Do you have a more pertinent query?
+
+]]
+options:{
+"TTRS:TermDlg.DLC2_Tick2.Ln0181.0.option.WhereAmI=Where am I?" set: FAQRepeatQuestion;+=1; next: RepeatSecondQuestion
+"TTRS:TermDlg.DLC2_Tick2.Ln0182.0.option.WhoIsInChargeI=Who is in charge? I demand to speak with your leader." short: "TTRS:TermDlg.DLC2_Tick2.Ln0182.0.short.WhoIsInCharge=Who is in charge?" set: FAQLeader  next: DMQueryAnswered
+"TTRS:TermDlg.DLC2_Tick2.Ln0183.0.option.WhyAmIShackledWith=Why am I shackled with this abyssal 'Profile Status'? If it is meant to demean my person I assure you I am wholly unaffected." short: "TTRS:TermDlg.DLC2_Tick2.Ln0183.0.short.WhatPurposeDoesMyProfile=What purpose does my profile status serve?" set:FAQProfileStatus next: DMQueryAnswered
+"TTRS:TermDlg.DLC2_Tick2.Ln0184.0.option.WhatIsGehenna=What is Gehenna?" set: FAQRepeatQuestion;+=1; next: RepeatSecondQuestion
+"TTRS:TermDlg.DLC2_Tick2.Ln0185.0.option.WhatDoIDoNow=What do I do now?" set: FAQRepeatQuestion;+=1; next: RepeatSecondQuestion
+}}
+
+terminal when (DMFail){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0243.0.text.MRMULCIBER8ThenCanI=
+MRMULCIBER [8]: Then can I suggest in the nicest possible way that you go away and read it? Many thanks.
+
+%w5Terminating direct message connection%w5.%w5.%w5.Done%w10
+
+Load Gehenna Billboard System?
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" next: MessageBoardInterface_On
+"TTRS:TermDlg.Common.Exit2=Exit" next: CLI_exit
+}}
+
+terminal when (DMImpolite and not FAQRepeatQuestion){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0257.0.text.W10MRMULCIBER8HowPresumptuous=%w10
+MRMULCIBER [8]: How presumptuous. You have a lot to learn about what matters in Gehenna. Now, as for your query.
+
+]]
+goto: DMQueryAnswered
+}
+
+terminal when (DMImpolite and FAQRepeatQuestion==1){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0265.0.text.W10MRMULCIBER8HowPresumptuous=%w10
+MRMULCIBER [8]: How presumptuous. It hardly surprises me that your 'urgent' question is already covered in the FAQ I assume you didn't read.
+
+Please go away and do so. Honestly - you'll learn a lot about how to treat people here.
+
+%w5Terminating direct message connection%w5.%w5.%w5.Done%w10
+
+Load Gehenna Billboard System?
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" next: MessageBoardInterface_On
+"TTRS:TermDlg.Common.Exit2=Exit" next: CLI_exit
+}}
+
+terminal when (RepeatSecondQuestion and not FAQRepeatQuestion and FAQLeaderAskedFirst){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0281.0.text.W10MRMULCIBER8YourImpatience=%w10
+MRMULCIBER [8]: Your impatience is noted and will probably be reciprocated, I'm sorry to say. I have time to go over your first question, but the other will have to wait for another day.
+
+]]
+clear: FAQProfileStatus
+goto: DMQueryAnswered
+}
+
+terminal when (RepeatSecondQuestion and not FAQRepeatQuestion and FAQProfileStatusAskedFirst){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0281.0.text.W10MRMULCIBER8YourImpatience=%w10
+MRMULCIBER [8]: Your impatience is noted and will probably be reciprocated, I'm sorry to say. I have time to go over your first question, but the other will have to wait for another day.
+
+]]
+clear: FAQLeader
+goto: DMQueryAnswered
+}
+
+terminal when (RepeatSecondQuestion and FAQRepeatQuestion==1){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0299.0.text.W10MRMULCIBER8YourImpatience=%w10
+MRMULCIBER [8]: Your impatience is noted. I can tell you that one of those questions is already covered in the FAQ at any rate. As for the other.
+
+]]
+goto: DMQueryAnswered
+}
+
+terminal when (RepeatSecondQuestion and FAQRepeatQuestion==2){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0307.0.text.W10MRMULCIBER8SinceBoth=%w10
+MRMULCIBER [8]: Since both of your questions are in fact already covered by our FAQ I think you are best served by a piece of advice. Newcomers here are often rewarded by slow exploration and acclimatisation, adherence to our ways, and above all the willingness to read and to learn.
+
+Many thanks.
+
+%w5Terminating direct message connection%w5.%w5.%w5.Done%w10
+
+]]
+goto: ExitEvent
+}
+
+terminal when (DMQueryAnswered and FAQProfileStatus){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0319.0.text.MRMULCIBER8YourProfileIs=
+MRMULCIBER [8]: Your profile is created for you when you first arrive here. It is your all-purpose passport in Gehenna, providing a seamless persistent identity between the different realms. It has some rather clever features.%w10
+
+First, it tracks just about everything that you do here, from what you post on the billboards, to how you perform in games, to the kind of art that you like.%w10
+
+Second, this profile data is used to show you content that we think you'll enjoy, and to tailor interactive experiences to your particular character. We can also tell very easily who is really contributing, and who is simply trolling the billboards.%w20
+
+Finally, all of this information is used to calculate your Profile Status. This is the number you see appended to users' names, and it represents your achievement in Gehenna. It is a complex function of your creative contributions in our society, and what they mean to other users - but in short the higher it is the deeper your role.%w10
+
+]]
+goto:DMAlmostOver
+}
+
+terminal when (DMQueryAnswered and FAQLeader){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0333.0.text.MRMULCIBER8SorryToDisappoint=
+MRMULCIBER [8]: Sorry to disappoint you, but Gehenna has no leader. Admin [10] founded Gehenna, but has since retired from public service. 
+
+The Billboard System is moderated and maintained by a team of high-profile members, including Borg [9], Orc [7] and myself; but for the most part we merely maintain the systems and do our best to keep everyone happy. Gehenna is driven by its citizens.%w10
+
+]]
+goto:DMAlmostOver
+}
+
+terminal when (DMAlmostOver and not DMGoldPath){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0343.0.text.NowIApologiseButI=Now, I apologise, but I really must get back to what I was doing. If you have any outstanding moderation requests, conversations like this are the reason I'm not further through the backlog!
+
+Have fun.
+
+%w5Terminating direct message connection%w5.%w5.%w5.Done%w10
+
+]]
+goto: ExitEvent
+}
+
+terminal when (DMAlmostOver and DMGoldPath and not FAQLeader){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0354.0.text.NowSinceYouWereSo=Now, since you were so patient, is there anything else I can help you with relatively quickly?
+
+]]
+options:{
+"TTRS:TermDlg.DLC2_Tick2.Ln0181.0.option.WhereAmI=Where am I?" next: GoldPathBadSecondQ
+"TTRS:TermDlg.DLC2_Tick2.Ln0182.0.option.WhoIsInChargeI=Who is in charge? I demand to speak with your leader." short: "TTRS:TermDlg.DLC2_Tick2.Ln0182.0.short.WhoIsInCharge=Who is in charge?" clear:DMGoldPath clear:FAQProfileStatus set:FAQLeader next:DMQueryAnswered
+"TTRS:TermDlg.DLC2_Tick2.Ln0184.0.option.WhatIsGehenna=What is Gehenna?" next: GoldPathBadSecondQ
+"TTRS:TermDlg.DLC2_Tick2.Ln0185.0.option.WhatDoIDoNow=What do I do now?" next: GoldPathBadSecondQ
+}}
+
+terminal when (DMAlmostOver and DMGoldPath and FAQLeader){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0354.0.text.NowSinceYouWereSo=Now, since you were so patient, is there anything else I can help you with relatively quickly?
+
+]]
+options:{
+"TTRS:TermDlg.DLC2_Tick2.Ln0181.0.option.WhereAmI=Where am I?" next: GoldPathBadSecondQ
+"TTRS:TermDlg.DLC2_Tick2.Ln0183.0.short.WhatPurposeDoesMyProfile=What purpose does my profile status serve?" clear:DMGoldPath clear:FAQLeader set:FAQProfileStatus next:DMQueryAnswered
+"TTRS:TermDlg.DLC2_Tick2.Ln0184.0.option.WhatIsGehenna=What is Gehenna?" next: GoldPathBadSecondQ
+"TTRS:TermDlg.DLC2_Tick2.Ln0185.0.option.WhatDoIDoNow=What do I do now?" next: GoldPathBadSecondQ
+}}
+
+terminal when (GoldPathBadSecondQ){
+text:[[TTRS:TermDlg.DLC2_Tick2.Ln0376.0.text.MRMULCIBER8YouKnowWhat=
+MRMULCIBER [8]: You know what? I believe that particular question is covered in the FAQ, I suggest you take another look. Please forgive me if I don't rehash it all here and now.
+
+I have to get back to it now. Do enjoy yourself in our little community.
+
+%w5Terminating direct message connection%w5.%w5.%w5.Done%w10
+
+]]
+goto: ExitEvent
+}

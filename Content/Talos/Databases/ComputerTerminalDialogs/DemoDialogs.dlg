@@ -1,0 +1,100 @@
+﻿terminal when (Booting and not MiltonAllowed) { notext
+  setlocal: MiltonAllowed
+  goto: Booting
+}
+
+# dialog files and texts used in the demo
+
+player when((CLI_Enabled and TextsAvailable and InTerminal_DemoTerminal) or (InTerminal_Journal and DemoTerminal_SeenTexts)) {options:{
+  header: "TTRS:TermDlg.JournalHeader.Terminal=Terminal"
+  file: "TTRS:TermDlg.FoundTexts.Eadwald.Apocrypha009.Name=apocrypha9.doc" user: "TTRS:TermDlg.UserName.Medieval=mdv_th" date: "TTRS:TermDlg.Date.890CE=890 CE"
+  file: "TTRS:TermDlg.FoundTexts.General.Humblebrag.Name=humblebrag.html" user: "TTRS:TermDlg.UserName.Webcrawl=webcrawl" date: "0000/12/05"
+  file: "TTRS:TermDlg.FoundTexts.Butler.HumanEvolution.Name=human_evolution.txt" user: "TTRS:TermDlg.UserName.LitArch=lit_arch" date: "TTRS:TermDlg.Date.1872CE=1872 CE"
+}}
+
+player when((CLI_Enabled and TextsAvailable and InTerminal_DemoSecretTerminal) or (InTerminal_Journal and DemoSecretTerminal_SeenTexts)) {options:{
+  header: "TTRS:TermDlg.JournalHeader.SecretTerminal=Secret terminal"
+  file: "TTRS:TermDlg.FoundTexts.IAN.FirstDay.Name=IAN.eml" user: "TTRS:TermDlg.UserName.Local=loc" date: "0000/01/21"
+  file: "TTRS:TermDlg.FoundTexts.Alexandra.AI_feedback.Name=AI_feedback.eml" user: "TTRS:TermDlg.UserName.EP_Archive=EP_arch" date: "9999/99/99"
+  file: "TTRS:TermDlg.FoundTexts.Straton.Talos.Name=talos_principle.txt" user: "TTRS:TermDlg.UserName.CL_Archive=CL_arch" date: "TTRS:TermDlg.Date.260BCE=260 BCE"
+}}
+
+
+terminal when ("humblebrag.html") { show_text: [[TTRS:TermDlg.FoundTexts.General.Humblebrag.Text=
+
+Ariana's Blog - Entry #477: Holy Humblebrag, Batman!
+
+I have always known that God "maketh his sun to rise on the evil and on the good, and sendeth rain on the just and on the unjust" (Matthew 5:45), but I must admit it's one thing to know the words and another to truly understand them! Though I am certain that my faith is true, that does not make me special or exempt me from suffering. I'm just another human being, and God has seen billions of us come and go. And I have to say, this is surprisingly hard to accept. 
+
+I always thought I was humble, but now I'm realizing that I was very proud of being humble, which is… really dumb. Guess I'm not the first one to do that, huh?
+
+Tags: #regret #pride #faith #humblebrag #apology #batman
+
+]] }
+
+
+terminal when ("apocrypha9.doc") { show_text: [[TTRS:TermDlg.FoundTexts.Eadwald.Apocrypha009.Text=
+
+Now Uriel pointed his sword to the Tree of Life, which grew in the heart of dead Jerusalem.
+"Behold: the tree grows still, though the city is dead. Within all that is mortal, there is the seed of immortality, for it is an immortal that fashioned it from chaos and void." Being a humble man of little wisdom, I asked: "Great Uriel, we are not allowed to eat from the Tree of Life. How may we then be saved?" And Uriel commanded me to stretch out my hand; and he gave me his fiery sword, which burned my hand, and he said: "Only by sacrifice can you free the world from the dominion of sin."
+
+With a prayer on my lips, I fell upon Uriel's sword, and it pierced my heart. And truly, on my body, the stigmata of the Lord appeared, dripping blood that was not my blood onto the ground; and the seven heads of the dragon that were crowned in black clouds receded, and light fell upon the Earth, and Jerusalem was born again. Thus the angels departed, having delivered their message, and I awoke in the fields of our fair land, 746F2 0666F726D 207468652067 6F6C 64656 E206 1726D6F75(72206F6 620736369 656E6365
+
+]] }
+
+
+terminal when ("human_evolution.txt") { show_text: [[TTRS:TermDlg.FoundTexts.Butler.HumanEvolution.Text=
+
+[ARCHIVE: 1872CE-F553] [BUTLER, SAMUEL]
+
+Complex now, but how much simpler and more intelligibly organised may it not become in another hundred thousand years? Or in twenty thousand?  For man at present believes that his interest lies in that direction; he spends an incalculable amount of labour and time and thought in making machines breed always better and better; he has already succeeded in effecting much that at one time appeared impossible, and there seem to be no limits to the results of accumulated improvements if they are allowed to descend with modification from generation to generation. 
+
+It must always be remembered that man's body is what it is through having been moulded into its present shape by the chances and changes of many millions of years, but that his organisation never advanced with anything like the rapidity with which that of the machines is advancing.  
+
+]] }
+
+
+terminal when ("IAN.eml") { show_text: [[TTRS:TermDlg.FoundTexts.IAN.FirstDay.Text=
+
+From: Frank Ngatai
+To: Miles Ngatai, Dan Ngatai
+Subject: IAN!
+
+My first day at the Institute for Applied Noematics. On the way to work, I'm terrified. What if they don't like me? What if they're all geniuses and I'm a complete buffoon? Maybe they were just kidding about letting me work there?
+
+Trembling, I walk in, and right at the entrance there's a life-size poster of Jeff Goldblum. What the hell?
+
+Then I get it. Institute for Applied Noematics. IAN. Dr. Ian Malcolm from the Jurassic Park movies. Jeff Goldblum.
+
+Dr. Sarabhai shows up, smiling. "We were trying to find a cool acronym, back when the Institute was founded," she says. "INAN? IAPN? INAPNO? It all sounded stupid, but we didn't just want to call it IAN, because, well, that's a name. Then someone made a joke about calling it JEFF, and... it kind of stuck. So we're officially called IAN, but if you hear anyone referring to JEFF, that's our... internal name, I guess. I know, I know. Bloody geeks."
+
+After that conversation, I wasn't so scared anymore. :)
+
+]] }
+
+
+terminal when ("AI_feedback.eml") { show_text: [[TTRS:TermDlg.FoundTexts.Alexandra.AI_feedback.Text=
+
+"We keep discussing what an artificial intelligence would mean to us and how it would change our understanding of the world. That's a great topic and I think we've covered it extensively. What we've barely mentioned, though, is the other side of the coin. I mean, our lives would still be what they were before, A.I. or no A.I. The question I think we should discuss, even if it's all completely hypothetical, is the perspective of the artificial intelligence itself. What would it be like to be that creature? To suddenly come into being, created by others as an experiment? To have all the information about yourself, to know exactly how you function? What would you think about the world? Would you see meaning? Beauty? How would you judge humanity? Where would you see yourself fitting into the grand scheme of things? I think we should try to put ourselves into the shoes of such a being.
+
+&gt; Dear Alexandra: Thank you for your feedback, but this is a philosophy course, not science fiction."
+
+And that's why I almost gave up on my studies. :(
+
+]] }
+
+
+terminal when ("talos_principle.txt") { show_text: [[TTRS:TermDlg.FoundTexts.Straton.Talos.Text=
+
+[ARCHIVE: 260BCE-F12] [STRATON OF STAGEIRA]
+
+Whether it is true that Daedalus constructed the giant Talos, or as others say he was the creation of Hephaestus, what we may be certain of is that he was made of bronze, and had but one vein, within which flowed a liquid substance like blood, which some claim was quicksilver, and others assert was ichor such as flows in the veins of the gods. The loss of that liquid caused him to die, as a man dies when he loses his blood.
+
+May we not then say that Talos, though created as a machine or a toy, had all the essential properties of a man? He moved of his own volition. He spoke and could be spoken to, had wishes and desires. Indeed in the tale of the Argonauts, that was the cause of his downfall. If, then, a machine may have all the properties of a man, and act as a man while driven only by the ingenious plan of its construction and the interaction of its materials according to the principles of nature, then does it not follow that man may also be seen as a machine? This contradicts all the schools of metaphysics, yet even the most faithful philosopher cannot live without his blood.
+
+]] }
+
+
+include "Content/Talos/Databases/ComputerTerminalDialogs/CLI_Global.dlg"
+include "Content/Talos/Databases/ComputerTerminalDialogs/MiltonDemo.dlg"
+include "Content/Talos/Databases/ComputerTerminalDialogs/Overlay_AudioLog.dlg"

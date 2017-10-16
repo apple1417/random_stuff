@@ -1,0 +1,250 @@
+﻿###############
+
+terminal when (Sam_Intro) {
+text: [[TTRS:TermDlg.Common.LoadingAttachmentW3W3W5=
+Loading attachment%w3.%w3.%w5.Done%w3
+Adjusting library parameters%w3.%w3.%w5.Done%w3
+Connection to foreign module established.%w3
+
+Close your eyes.%w3
+
+]]
+goto: Sam_Start
+}
+
+terminal when (Sam_Start) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0016.0.text.SERIOUSSAMTHETEXTENCOUNTER=
+
+SERIOUS SAM:
+THE TEXT ENCOUNTER
+
+A very serious experience.
+Only for serious people.
+If you're not serious, don't play this.
+Seriously.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0028.0.option.StartNewGame=Start New Game" short: "TTRS:TermDlg.DLC_Sam.Ln0028.0.short.NewGame=[New Game]" next: Sam_New
+"TTRS:TermDlg.Common.Credits=Credits" short: "TTRS:TermDlg.Common.Credits2=[Credits]" next: Sam_Credits
+"TTRS:TermDlg.DLC_Sam.Ln0030.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.Common.ExitBrackets=[Exit]" next: MessageBoardInterface_On
+	}
+}
+
+terminal when (Sam_Credits) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0035.0.text.WrittenBy401InspiredBy=
+Written by 401.
+
+Inspired by the tales of Sam Stone that are documented in the Archive, and by the obstinate ghost in the machine that calls itself Milton.
+
+This is better than The_Blacksmith's work by far.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0028.0.option.StartNewGame=Start New Game" short: "TTRS:TermDlg.DLC_Sam.Ln0028.0.short.NewGame=[New Game]" next: Sam_New
+"TTRS:TermDlg.DLC_Sam.Ln0030.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.Common.ExitBrackets=[Exit]" next: MessageBoardInterface_On
+	}
+}
+
+terminal when (Sam_New) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0050.0.text.YouAreSamSeriousStone=
+You are Sam "Serious" Stone. 
+You've fought the invaders on more planets than you can count. 
+You've won battles against hordes that seemed impossible to overcome.
+You've kicked asses that seemed impossible to kick.
+You fight like a Sirian Werebull and you make love like a rocket launcher.
+You're the #1 badass of your age and weight.
+You're a friggin' one-man army.
+
+But there's one battle you're failing to win... the battle against ennui.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0063.0.option.Ennui=Ennui?" next: Sam_Ennui
+	}
+}
+
+terminal when (Sam_Ennui) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0068.0.text.EnnuiAFeelingOfSadness=
+Ennui. A feeling of sadness and boredom. It's been creeping up on you ever since the mission in Rome. Man, that **** was not fun. In fact, **** that ******* **** and *** ******* *********** ***!
+
+So, yeah, ennui. You sit there in a cold room in the military base and you feel like even a good old flamethrower couldn't warm you up.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0075.0.option.SeriouslyEnnui=Seriously? Ennui?" next: Sam_Seriously
+	}
+}
+
+terminal when (Sam_Seriously) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0080.0.text.OhYeahSeriouslyEnnuiSays=
+'Oh yeah, seriously,' Ennui says smirkingly. 'I mean, what did you expect? You thought the war against Mental was over? You keep winning victories, but you're gonna lose the war.'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0085.0.option.Resist=Resist" next: Sam_Resist
+"TTRS:TermDlg.DLC_Sam.Ln0086.0.option.GiveIn=Give in" next: Sam_GiveIn
+	}
+}
+
+terminal when (Sam_Resist) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0091.0.text.EnnuiTicklesYourChinCome=
+Ennui tickles your chin.
+
+'Come on, big man. Admit it. What's the point? Is shooting another horde of headless exploding dudes gonna make you feel better?'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0098.0.option.ArgueThatThisFeelingIs=Argue that this feeling is temporary" next: Sam_Argue1
+"TTRS:TermDlg.DLC_Sam.Ln0099.0.option.ArgueThatTheWarCan=Argue that the war can be won" next: Sam_Argue2
+	}
+}
+
+terminal when (Sam_GiveIn) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0104.0.text.EnnuiPatsYouOnThe=
+Ennui pats you on the head.
+
+'I can see that you want to admit it. You've asked yourself the same thing: what's the point? Is shooting another horde of headless exploding dudes gonna make you feel better?'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0098.0.option.ArgueThatThisFeelingIs=Argue that this feeling is temporary" next: Sam_Argue1
+"TTRS:TermDlg.DLC_Sam.Ln0099.0.option.ArgueThatTheWarCan=Argue that the war can be won" next: Sam_Argue2
+	}
+}
+
+terminal when (Sam_Argue1) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0117.0.text.LookYouSayIMay=
+'Look,' you say, 'I may feel like a dead monkey right now, but that's just cause I kicked so much ass, they named a new type of boot after me. So yeah, I'm down, but I've been down before. I never stay down.'
+
+Ennui laughs at your bravado, unimpressed.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0124.0.option.ArgueThatLifeIsFundamentally=Argue that life is fundamentally a struggle" next: Sam_Argue3
+"TTRS:TermDlg.DLC_Sam.Ln0125.0.option.ArgueThatMeaningIsConstructed=Argue that meaning is constructed" next: Sam_Argue4
+	}
+}
+
+terminal when (Sam_Argue2) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0130.0.text.DoesItLookBadSometimes=
+'Does it look bad sometimes?' you ask rhetorically. 'Sure, wars ain't easy, and sometimes they don't seem to want to end. But we're gonna win. And I'm gonna be there when we do, even if I have to chase Mental to the other end of the galaxy.'
+
+Ennui laughs at your bravado, unimpressed.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0124.0.option.ArgueThatLifeIsFundamentally=Argue that life is fundamentally a struggle" next: Sam_Argue3
+"TTRS:TermDlg.DLC_Sam.Ln0125.0.option.ArgueThatMeaningIsConstructed=Argue that meaning is constructed" next: Sam_Argue4
+	}
+}
+
+terminal when (Sam_Argue3) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0143.0.text.WhatYouThinkThisIs=
+'What, you think this is tough? Listen up, Ennui. Life's tough. Life's a struggle. I knew this philosopher, right? Man, he was nasty, brutish and short. But he said...'
+
+You start explaining your argument that life is fundamentally a struggle, and that meaning is derived from how that struggle is fought, but Ennui yawns.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0150.0.option.ArgueThatSocialContextIs=Argue that social context is required" next: Sam_Argue5
+"TTRS:TermDlg.DLC_Sam.Ln0151.0.option.ArgueThatExistenceIsInherently=Argue that existence is inherently positive" next: Sam_Argue6
+	}
+}
+
+terminal when (Sam_Argue4) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0156.0.text.YouAttemptToArgueThat=
+You attempt to argue that life does not have an inherent meaning, but that meaning can be constructed through self-reflection and the setting of goals, but Ennui yawns.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0150.0.option.ArgueThatSocialContextIs=Argue that social context is required" next: Sam_Argue5
+"TTRS:TermDlg.DLC_Sam.Ln0151.0.option.ArgueThatExistenceIsInherently=Argue that existence is inherently positive" next: Sam_Argue6
+	}
+}
+
+terminal when (Sam_Argue5) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0167.0.text.YouArgueThatAnIndividual=
+You argue that an individual can only find meaning within the greater social context. You quote Einstein: 'The individual is what he is and has the significance that he has not so much in virtue of his individuality, but rather as a member of a great human society, which directs his material and spiritual existence from the cradle to the grave.' You couldn't be the badass that you are if your actions didn't exist within this social context and serve a purpose greater than yourself.
+
+Ennui sneers and says you're just trying to intellectually justify the fact that you're a brainless shooter guy.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0174.0.option.ListenToEnnuiSomeMore=Listen to Ennui some more" next: Sam_More
+	}
+}
+
+terminal when (Sam_Argue6) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0179.0.text.YouArgueThatMereExistence=
+You argue that mere existence is already a positive fact, since non-existence is considerably more likely, meaning that all life has an inherently positive slant. To not merely exist, but to also be as awesome as Serious Sam, can then only be truly positive, and in the long run that positivity must win out.
+
+Ennui starts giggling.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0174.0.option.ListenToEnnuiSomeMore=Listen to Ennui some more" next: Sam_More
+	}
+}
+
+terminal when (Sam_More) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0191.0.text.YouSeeSamYouCan=
+'You see, Sam, you can talk and talk and talk, but I'm always gonna outtalk you. I'll twist your words in your mouth and make you feel like an idiot. I'll take every positive thing you say and turn it into something horrible by reducing your arguments to their most extreme and absurd forms.'
+
+Ennui laughs in your face. You feel weak.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0198.0.option.ArgueThatEnnuiIsInconsistent=Argue that Ennui is inconsistent" next: Sam_Inconsistent
+"TTRS:TermDlg.DLC_Sam.Ln0199.0.option.ArgueThatEnnuiIsIncontinent=Argue that Ennui is incontinent" next: Sam_Incontinent
+"TTRS:TermDlg.DLC_Sam.Ln0200.0.option.ArgueThatFrogsArePeople=Argue that frogs are people too" next: Sam_Frog
+	}
+}
+
+terminal when (Sam_Inconsistent) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0205.0.text.InconsistentWhoEverClaimedI=
+'Inconsistent? Who ever claimed I was consistent? I don't need to be consistent, you big oaf, because I'm not making any claims. I don't believe anything. I am merely suggesting that maybe you should consider the possibility that perhaps life is a dull and individuality a pointless illusion.'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0210.0.option.SHOOTENNUI=SHOOT ENNUI" next: Sam_Shoot
+	}
+}
+
+terminal when (Sam_Incontinent) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0215.0.text.ReallySamPooJokesI=
+'Really, Sam? Poo jokes? I thought you were better than this. You're not like that other guy, that nuclear aristocrat who's always late to the party. No, you're supposed to be the real deal, a real hero. What happened to you, man? Did you recognize the inescapably pointless nature of existence? Is that why you're talking to me like that?'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0210.0.option.SHOOTENNUI=SHOOT ENNUI" next: Sam_Shoot
+	}
+}
+
+terminal when (Sam_Frog) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0225.0.text.WhoaThereYouMustBe=
+'Whoa there, you must be going a little crazy. Do you really wanna argue that? Because I'm gonna point out a million problems with that argument, even if it has nothing to do with what we were talking about. Like, if people are citizens, are frogs citizens? Do you think frogs can vote? Have you seen any frogs sending letters to the editor complaining about the decline in moral standards lately?'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0210.0.option.SHOOTENNUI=SHOOT ENNUI" next: Sam_Shoot
+	}
+}
+
+terminal when (Sam_Shoot) {
+text: [[TTRS:TermDlg.DLC_Sam.Ln0235.0.text.IWantToArgueThat=
+'I want to argue that... I'm tired of listening to your crap,' you growl, and shoot Ennui in the face.
+
+You immediately feel better.
+
+Oh yeah.
+
+Seriously.
+
+-- THE END --
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Sam.Ln0030.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_Sam.Ln0248.0.short.End=[End]" next: MessageBoardInterface_On
+	}
+}

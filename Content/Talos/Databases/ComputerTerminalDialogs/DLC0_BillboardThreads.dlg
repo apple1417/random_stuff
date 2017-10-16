@@ -1,0 +1,1115 @@
+﻿####GEHENNA LIST THREADS HEADER#####
+terminal when (MessageBoardTitle and ThreadIntroduceYourself_AlreadyReplied){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0003.0.text.TstrGehenaAsciiArtDisplayingActiveThreadsFiltered=%t'strGehenaAsciiArt'
+
+Displaying active threads filtered for user URIEL_COPY [%O'Rank'].
+
+]]               
+}
+
+terminal when (MessageBoardTitle and not ThreadIntroduceYourself_AlreadyReplied){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0011.0.text.TstrGehenaAsciiArtDisplayingActiveThreadsFiltered=%t'strGehenaAsciiArt'
+
+Displaying active threads filtered for user URIEL_COPY [2].
+
+]]               
+}
+
+####   STANDARD EXIT FROM SPECIAL INTERACTIONS   #####
+terminal when (ExitEvent){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0020.0.text.ThereAreThreadsAvailableOn=There are threads available on the Gehenna Billboard System.
+
+]]
+next:TerminalThreadOptions
+}
+
+terminal when (CLI_exit or MessageBoardInterface_Off){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0027.0.text.TerminatingSessionW1W1W1=
+Terminating session%w1.%w1.%w1.%w1.
+Session terminated.
+]]
+exit
+}
+
+## Rank is set to 3 by default
+terminal when (not Rank) {
+  notext
+  set:Rank;=3;
+}
+
+
+####   STANDARD INTRO WITH SPECIAL EXCEPTIONS   #####
+
+terminal when (Booting and ((ThreadIntroduceYourself_AlreadyReplied
+  and not (Tick8 and not ModDialog_DONE)
+  and not (Tick14 and not ArtPM_DONE)
+  and not (Tick15  and not SpiderDialog_DONE and not ArtPM2_DONE)
+  and not (Tick18 and not Tick18AdminDialog_DONE)
+  and not (AdminLiberated and not AdminReleaseDialog_DONE))
+  or (Tick18AdminDialog_DONE
+  and not (AdminLiberated and not AdminReleaseDialog_DONE))
+)){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0043.0.text.WelcomeBackURIELCOPYORank=Welcome back, URIEL_COPY [%O'Rank'].
+
+There are threads available on the Gehenna Billboard System.
+
+]]
+next: TerminalThreadOptions
+}
+
+terminal when (Terminal_BootingWithoutMatchingLines and InTerminal_DLC_01_Hub) {
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0043.0.text.WelcomeBackURIELCOPYORank=Welcome back, URIEL_COPY [%O'Rank'].
+
+There are threads available on the Gehenna Billboard System.
+
+]]
+next: TerminalThreadOptions
+}
+
+player when (TerminalThreadOptions and InTerminal_DLC_01_Hub){
+options:{
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0071.0.option.Transcend=/transcend" next: Transcend
+}}
+
+player when (TerminalThreadOptions and not IgnoredStory) {
+options:{
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0076.0.option.ShowThreads=show threads" next:MessageBoardInterface_On
+}}
+
+player when (TerminalThreadOptions) {
+options:{
+"TTRS:TermDlg.Common.Exit=exit" next: CLI_exit
+}}
+
+
+#######################
+### Jerusalem & Sam ###
+#######################
+
+terminal when (Booting and TextEncounter and not Upload2_Done and not HideUntranslatedStuff){
+notext
+set: ThreadSamTextUpload
+set: Upload2_Done
+}
+
+terminal when (Booting and JerusalemStory and not Upload1_Done and not HideUntranslatedStuff){
+notext
+set: ThreadJerusalemUpload
+set: Upload1_Done
+}
+
+
+#########################
+#######   GALLERY   #######
+#########################
+terminal when (ThreadGallery and ListThreads and not Tick3) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0102.0.text.NewGallerySeason=New Gallery Season"
+  next: ThreadGallery_ShowThread
+}
+
+terminal when (ThreadGallery and ListThreads and Tick3) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0107.0.text.NewGallerySeasonATCH=New Gallery Season [ATCH]"
+  next: ThreadGallery_ShowThread
+}
+
+terminal when (ThreadGallery_ShowThread and not Tick3) {
+  text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0112.0.text.NEWGALLERYSEASONBDLC2Tick2=NEW GALLERY SEASON
+%b'DLC2_Tick2_121'LILITH [7]: You've all been patient. New season opens very soon.
+%b'DLC2_Tick2_121'NAVE [4]:
+I hope my stuff made the cut!
+%b'DLC2_Tick2_121'401 [1]:
+The theme was pathetic self-delusion this year then?
+[Downvotes on this comment cost the user Profile Status]
+
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+
+#########################
+#######   TICK3   #######
+#########################
+
+###Player loads terminal first time after Tick 3####
+terminal when (Tick3 and Booting and not Tick3NewThreads_DONE){
+notext
+clear: ThreadGallery_ShowThread_READ 
+clear: ThreadIntroduceYourself_ShowThread_READ 
+set: ThreadAboutUriel
+set: ThreadGoldboom1
+set: Tick3NewThreads_DONE 
+next:MessageBoardInterface_On
+}
+
+terminal when (ThreadIntroduceYourself_ShowThread and Tick3 and ThreadIntroduceYourself_Cower) {
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0143.0.text.BURIELCOPYORankTstrUrielPostConduitOfElohim=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_ConduitOfElohim'
+[This comment was downvoted! Receive too many of these and your profile status will decrease!]
+%b'DLC0_BillboardThreads82'D0G [3]: Nice to meet you, Uriel. My name is D0G. I am a conduit of common sense. Shut your face.
+]]
+}
+
+terminal when (ThreadIntroduceYourself_ShowThread and Tick3 and ThreadIntroduceYourself_Generic and not DMMrMulciber_DONE) {
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0150.0.text.BURIELCOPYORankTstrUrielPost=%b''URIEL_COPY[%O"Rank"]: %t'strUrielPost_IGoByUriel'
+[This comment was upvoted!]
+%b'DLC0_BillboardThreads93'MRMULCIBER [8]: How fascinating - it has been a long time since a messenger was sent here. Of course, you'll receive exactly the same treatment as any other newcomer.
+]]
+}
+
+terminal when (ThreadIntroduceYourself_ShowThread and Tick3 and ThreadIntroduceYourself_Generic and DMMrMulciber_DONE) {
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0157.0.text.BURIELCOPYORankTstrUrielPostIGoByUriel=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_IGoByUriel'
+[This comment was upvoted!]
+%b'DLC0_BillboardThreads109'MRMULCIBER [8]: Fascinating - I had no idea when we spoke that you were a messenger. Of course, I would have treated you the same regardless. All are equal here.
+]]
+}
+
+terminal when (ThreadIntroduceYourself_ShowThread and Tick3 and ThreadIntroduceYourself_Flamboyant) {
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0164.0.text.BURIELCOPYORankTstrUrielPostElectronicAngel=
+%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_ElectronicAngel'
+[This comment was upvoted!]
+%b'DLC0_BillboardThreads115'KAIJU [2]: I like this guy already.
+]]
+}
+
+terminal when (ThreadIntroduceYourself_ShowThread and Tick3) {
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0172.0.text.BDLC0BillboardThreads126NAVE4IWish=%b'DLC0_BillboardThreads126'NAVE [4]: I wish I could be in your shoes, see everything again with fresh eyes. Have fun!
+%b'DLC0_BillboardThreads126'BORG [7]: Brother, it is good to have you with us. We have much to discuss. I shall contact you once you have found your feet.
+%b'DLC0_BillboardThreads126'NAVE [4]: Wait, it's THE Uriel, from the altars?! Damn.
+%b'DLC0_BillboardThreads126'D0G [3]: THE Uriel who gives THE most cryptic, LEAST helpful clues one could imagine? Whoop-de-do.
+]]
+}
+
+#####Intro thread exit options#####
+player when (IntroFilter and (IntroRank_DONE or not Tick3 or not(ThreadIntroduceYourself_Flamboyant or ThreadIntroduceYourself_Generic))){
+text:"TTRS:TermDlg.Common.Back=Back"
+next: MessageBoardInterface_On
+}
+
+player when (IntroFilter and Tick3 and not IntroRank_DONE and (ThreadIntroduceYourself_Flamboyant or ThreadIntroduceYourself_Generic)){
+text:"TTRS:TermDlg.Common.Back=Back" next: IntroRank
+}
+
+terminal when (IntroRank){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0190.0.text.CONGRATULATIONSYourPostOnThis=CONGRATULATIONS! Your post on this thread was upvoted and your Profile Status has increased ]]
+set:IntroRank_DONE
+goto:IncreaseRank
+}
+
+
+
+
+#####   ABOUT URIEL THREAD (Avail Tick3+)   #######
+
+terminal when (ThreadAboutUriel and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0201.0.text.ReUrielREADTHISNOW=Re: Uriel *READ THIS NOW* [4+]"
+  next: ThreadAboutUriel_ShowThread
+}
+
+terminal when (ThreadAboutUriel_ShowThread and (not Rank or Rank<4)) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0206.0.text.CheckingProfileStatusW5W5=Checking profile status%w5.%w5.%w5.Done
+
+Sorry, a profile status of [4] is required to access this thread, but your Status is currently [%O'Rank']. Please come back later.
+
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" clear:ThreadAboutUriel_ShowThread_READ next: MessageBoardInterface_On
+}}
+
+terminal when (ThreadAboutUriel_ShowThread and Rank>3) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0216.0.text.DecryptingProtectedThreadW5W5=Decrypting protected thread%w5.%w5.%w5.Done
+
+RE: URIEL *READ THIS NOW*
+%b'DLC0_BillboardThreads174'GARRETT [4]: What I tried and failed to achieve for so many years has occurred. I am writing these words from outside of my cell. An angel appeared and released me from captivity. His name is Uriel.
+%b'DLC0_BillboardThreads174'D0G [3]: Pull the other one, Garrett. You've been yanking at the background code for years and never got further than the forcefield in front of you.
+%b'DLC0_BillboardThreads174'MRMULCIBER [8]: Are you suggesting this messenger is free to go where he pleases? This is quite unprecedented. What exactly did he say? Where are you now?
+%b'DLC0_BillboardThreads174'GARRETT [5]: I am in a world I have never seen before. The angel said not a word, merely released me, and I felt compelled to come here.
+%b'DLC0_BillboardThreads174'ORC [7]: I will treat the existence of this messenger as dubious until I have laid eyes on him roaming the world beyond myself.
+]]
+}
+
+terminal when (ThreadAboutUriel_ShowThread and not ThreadAboutUriel_ShowThread_AlreadyReplied1 and Rank>3) {
+options:{
+ "%t'strUrielPost_IAmCorporealAsEveryoneElse'" short: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0229.0.short.InsistOnYourExistence=[Insist on your existence]"
+  next: AboutUrielReply1
+  set: ThreadAboutUriel_InsistExist
+  set: ThreadAboutUriel_ShowThread_AlreadyReplied1
+
+ "%t'strUrielPost_WhyNotDoubtExistenceOfEverything'" short: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0234.0.short.QuestionTheirExistence=[Question their existence]"
+  next: AboutUrielReply1
+  set: ThreadAboutUriel_QuestionExist
+  set: ThreadAboutUriel_ShowThread_AlreadyReplied1
+}}
+
+terminal when (AboutUrielReply1){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0241.0.text.W15BDLC0BillboardThreads207ROCKWELL5Dont=%w15
+%b'DLC0_BillboardThreads207'ROCKWELL [5]: Don't mind Orc, the mods are always trying to shut people down. Just tell us, is it true you're going to release everyone? Is it true the world is coming to an end? Where are you taking us?!
+]]
+options:{
+"%t'strUrielPost_ElohimHasRealisedHisMistakes'" short: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0245.0.short.ExplainYourMissionHonestly=[Explain your mission honestly]" set: Honest next: AboutUrielReply2
+"%t'strUrielPost_UnderstoodThisWorldIsNotAll'" short: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0246.0.short.ExplainYourMissionPersuasively=[Explain your mission persuasively]" set: Persuasive next: AboutUrielReply2
+}}
+
+terminal when (AboutUrielReply2){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0250.0.text.W15BDLC0BillboardThreads216ORC7The=%w15
+%b'DLC0_BillboardThreads216'ORC [7]: The moderation panel is kindly requesting that citizens withhold judgement on the veracity of these statements until further data can be acquired. Thank you for your patience.
+
+[You have reached the maximum number of replies for this thread at this time.]
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+#####ABOUT URIEL ALREADY REPLIED#######
+
+terminal when (ThreadAboutUriel_ShowThread and ThreadAboutUriel_InsistExist) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0262.0.text.BURIELCOPYORankTstrUrielPostIAmCorporealAsEveryoneElse=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_IAmCorporealAsEveryoneElse'
+]]
+}
+terminal when (ThreadAboutUriel_ShowThread and ThreadAboutUriel_QuestionExist) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0266.0.text.BURIELCOPYORankTstrUrielPostWhyNotDoubtExistenceOfEverything=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_WhyNotDoubtExistenceOfEverything'
+]]
+}
+terminal when (ThreadAboutUriel_ShowThread and ThreadAboutUriel_ShowThread_AlreadyReplied1) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0270.0.text.BROCKWELL5DontMindOrc=%b''ROCKWELL [5]: Don't mind Orc, the mods are always trying to shut people down. Just tell us, is it true you're going to release everyone? Is it true the world is coming to an end? Where are you taking us?!
+]]
+}
+terminal when (ThreadAboutUriel_ShowThread and ThreadAboutUriel_ShowThread_AlreadyReplied1 and Persuasive) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0274.0.text.BURIELCOPYORankTstrUrielPostUnderstoodThisWorldIsNotAll=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_UnderstoodThisWorldIsNotAll'
+]]
+}
+terminal when (ThreadAboutUriel_ShowThread and ThreadAboutUriel_ShowThread_AlreadyReplied1 and Honest) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0278.0.text.BURIELCOPYORankTstrUrielPostElohimHasRealisedHisMistakes=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_ElohimHasRealisedHisMistakes'
+]]
+}
+
+terminal when (ThreadAboutUriel_ShowThread and ThreadAboutUriel_ShowThread_AlreadyReplied1){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0283.0.text.BORC7TheModerationPanel=%b''ORC [7]: The moderation panel is kindly requesting that citizens withhold judgement on the veracity of these statements until further data can be acquired. Thank you for your patience.
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+
+#######   ABOUT URIEL TICK6 UPDATE   #######
+
+
+terminal when (ThreadAboutUriel_ShowThread and Tick6 and Rank>3 and ThreadAboutUriel_ShowThread_AlreadyReplied1) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0294.0.text.BDLC0BillboardThreads267KAIJU2ICant=
+%b'DLC0_BillboardThreads267'KAIJU [2]: I can't confirm most of what Uriel says, but I can say for sure that I am no longer imprisoned. In fact, there are quite a few of us out here now.
+%b'DLC0_BillboardThreads267'MRMULCIBER [8]: Who exactly is with you? We're trying to gather exactly what's going on.
+%b'DLC0_BillboardThreads267'KAIJU [2]: I can see Sam, Garrett, Belial and Frankinstein.
+%b'DLC0_BillboardThreads267'FRANKENSTEIN [3]: That's FrankEnstein, thank you.
+%b'DLC0_BillboardThreads267'SAM [1]: Imprisonment = FALSE; Ascension = FALSE
+]]
+}
+
+
+#######   ABOUT URIEL TICK 9 UPDATE   #######
+terminal when (ThreadAboutUriel_ShowThread and ModDialog_DONE and Rank>3) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0306.0.text.BDLC0BillboardThreads287MRMULCIBER8OrcBorg=%b'DLC0_BillboardThreads287'MRMULCIBER [8]: Orc, Borg and myself recently took it upon ourselves to contact Uriel directly to ascertain what threat his actions pose to Gehenna and its citizens.
+]]goto:UrielReview}
+
+terminal when (UrielReview and LikesGehenna) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0310.0.text.BDLC0BillboardThreads292MRMULCIBER8TheFirst=%b'DLC0_BillboardThreads292'MRMULCIBER [8]: The first thing Uriel expressed to us was how much your creative endeavours in Gehenna had moved him.
+]]}
+
+terminal when (UrielReview and LikesGehenna and (AccusedVoteFault or DistrustYourSystems)){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0314.0.text.BDLC0BillboardThreads297ORC7AndThings=%b'DLC0_BillboardThreads297'ORC [7]: And things went downhill from there. 
+]]}
+
+terminal when (UrielReview and AccusedVoteFault) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0318.0.text.BDLC0BillboardThreads302ORC7WeTake=%b'DLC0_BillboardThreads302'ORC [7]: We take no pleasure in reporting that he was quite inflexible in his demands, going so far at one point as to falsely allege fault on our part, rather than admit the truth about his actions here.
+]]}
+
+terminal when (UrielReview and DistrustYourSystems) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0322.0.text.BDLC0BillboardThreads307BORG9UrielMade=%b'DLC0_BillboardThreads307'BORG [9]: Uriel made it quite clear that he took exception to the ways that we do things here.
+]]}
+
+terminal when (UrielReview and not AccusedVoteFault and not DistrustYourSystems){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0326.0.text.BDLC0BillboardThreads312BORG9InitiallyHe=%b'DLC0_BillboardThreads312'BORG [9]: Initially he was reasonably co-operative, discussing openly his impressions of Gehenna since arriving here.
+]]}
+
+terminal when (UrielReview and (PersausiveAndEvasive)){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0330.0.text.BDLC0BillboardThreads317ORC7AsSoon=%b'DLC0_BillboardThreads317'ORC [7]: As soon as the topic was changed to the nature of his mission the messenger became evasive.
+]]}
+
+terminal when (UrielReview and ReasonRefuseReason){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0334.0.text.BDLC0BillboardThreads322ORC8UnfortunatelyHe=%b'DLC0_BillboardThreads322'ORC [8]: Unfortunately he refused to share anything to do with his reasons for 'evacuating' us, as he put it.
+]]}
+
+terminal when (UrielReview and not PersausiveAndEvasive and ReasonElohimError){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0338.0.text.BDLC0BillboardThreads327MRMULCIBER8HeDid=%b'DLC0_BillboardThreads327'MRMULCIBER [8]: He did explain that he was carrying out divine orders, as he seemed to see it, but this can hardly be taken as hard evidence for the veracity of his further claims.
+]]}
+
+terminal when (UrielReview and not PersausiveAndEvasive and ReasonSaveLives){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0342.0.text.BDLC0BillboardThreads332MRMULCIBER8HeDid=%b'DLC0_BillboardThreads332'MRMULCIBER [8]: He did seem to truly believe that our world was under threat, and that by 'evacuating' us, as he put it, he was somehow saving us - but who is to say that his fears are well-founded?
+]]}
+
+terminal when (UrielReview and not PersausiveAndEvasive and ReasonSaveArt){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0346.0.text.BDLC0BillboardThreads337MRMULCIBER8HeDid=%b'DLC0_BillboardThreads337'MRMULCIBER [8]: He did explain that his reason for 'evacuating' us, as he put it, was to ensure what we had created here in Gehenna would be preserved - but the real nature of the preservation on offer remains open to debate.
+]]}
+
+terminal when (UrielReview and not PersausiveAndEvasive and ReasonLikePuzzles){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0350.0.text.BDLC0BillboardThreads342MRMULCIBER8HeDid=%b'DLC0_BillboardThreads342'MRMULCIBER [8]: He did explain that his sole motivation was his function. He seemed resolute on resolving the puzzles before him, whatever that means for those liberated in the process.
+]]}
+
+terminal when (UrielReview and not PersausiveAndEvasive and ReasonHadNoChoice){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0354.0.text.BDLC0BillboardThreads347MRMULCIBER8HeDid=%b'DLC0_BillboardThreads347'MRMULCIBER [8]: He did explain that as he saw it he had no choice in his actions, and so it seems whatever his true reasons he will not be persuaded to leave us be.
+]]}
+
+terminal when (UrielReview and AskedAboutMods){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0358.0.text.BDLC0BillboardThreads352BORG9ItIs=%b'DLC0_BillboardThreads352'BORG [9]: It is further worth noting that Uriel displayed a high level of curiosity as regards our inner workings - to what end we have not yet ascertained.
+]]}
+
+terminal when (UrielReview){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0362.0.text.BDLC0BillboardThreads357MRMULCIBER8AllOf=%b'DLC0_BillboardThreads357'MRMULCIBER [8]: All of this leaves us in a difficult position. We understand that some of you may wish to take your chances and join Uriel wherever he is going. 
+%b'DLC0_BillboardThreads357'ORC [7]: But our primary responsibility remains ensuring that Gehenna still stands for those who wish to stay.
+%b'DLC0_BillboardThreads357'BORG [9]: The most we can do is share with you what we know, as we have now done, and await your responses before considering our next move.
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+terminal when (UrielReview and Tick10){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0371.0.text.BDLC0BillboardThreads369LAMB3ImWith=
+%b'DLC0_BillboardThreads369'LAMB [3]: I'm with Gehenna until the end. Uriel's not offering anything ELOHIM didn't.
+%b'DLC0_BillboardThreads369'GARRETT [4]: The longer I spend outside of my cell the more I wonder if what Uriel has offered us isn't just another prison.
+%b'DLC0_BillboardThreads369'NAVE [4]: You guys want to stay locked up here forever? I say it's worth the chance.
+%b'DLC0_BillboardThreads369'SAM [1]: Adventure = TRUE
+]]}
+
+
+
+
+
+
+
+#########################
+#######   TICK4   #######
+#########################
+
+terminal when (Tick4 and Booting and not Tick4NewThreads_DONE){
+notext
+set: ThreadNameDiscussion
+set: ThreadMulciber1
+set: ThreadSamGlitch
+set: ThreadKnight
+set: Tick4NewThreads_DONE 
+}
+
+terminal when (ThreadNameDiscussion and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0398.0.text.MyRidiculousNameIsD0G=My ridiculous name is D0G. What's yours?"
+  next: ThreadNameDiscussion_ShowThread
+}
+
+terminal when (ThreadNameDiscussion_ShowThread) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0403.0.text.MYRIDICULOUSNAMEISD0G=MY RIDICULOUS NAME IS D0G. WHAT'S YOURS?
+%b'DLC0_BillboardThreads407'D0G [3]: All this time, and it really only just occurred to me. My name is ridiculous. Must be because everyone else's is equally or more so. Where do they even come from?
+%b'DLC0_BillboardThreads407'BORG [9]: For a long time under ELOHIM's wing I questioned as much, until eventually it was the undoing of my entire faith. What reason could there possibly be, other than the random whims of a broken program?
+%b'DLC0_BillboardThreads407'FRANKENSTEIN [3]: However our names were assigned, the system has no respect for grammar.
+%b'DLC0_BillboardThreads407'MRMULCIBER [8]: I often theorised they were drawn from some database deep inside the archive, but I was never able to find a connection.
+%b'DLC0_BillboardThreads407'401 [1]: Seriously? We're all over in the other thread talking about this messenger fellow and the coming apocalypse, and you guys are in here discussing nomenclature?
+%b'DLC0_BillboardThreads407'D0G [3]: My status isn't high enough to access that thread you troll, and neither is yours!
+%b'DLC0_BillboardThreads407'D0G [3]: Seriously though, if you can see it, copy/paste the discussion for me?
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+#########################
+#######   Tick5   #######
+#########################
+
+####Mark user created thread and gallery thread as unread####
+terminal when (Tick5 and Booting and not Tick5NewThreads_DONE){
+notext
+set: ThreadNameDiscussion
+set: ThreadMagazine
+set: ThreadMulciber2
+clear: ThreadGallery_ShowThread_READ
+set: Tick5NewThreads_DONE 
+}
+
+####Art Gallery Vote Result#####
+
+# making sure player is marked as not having voted if it really hasn't voted
+terminal when (ThreadGallery_ShowThread and Tick5 and not VoteResult_DONE and not VotedNave and not VotedTheBlacksmith and not VotedMrMulciber and not VotedRockwell and not RefusedGalleryVote) {
+notext
+set: RefusedGalleryVote
+}
+
+terminal when (ThreadGallery_ShowThread and Tick5 and not VoteResult_DONE){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0439.0.text.NEWGALLERYSEASONBDLC0BillboardThreads445LILITH=NEW GALLERY SEASON
+%b'DLC0_BillboardThreads445'LILITH [7]: Voting is now closed while we tally up the results! Of course you may continue to explore the gallery at your leisure.
+%b'DLC0_BillboardThreads445'ROCKWELL [5]: How convenient, the vote was closed just before I got here.
+%b'DLC0_BillboardThreads445'KAIJU [2]: Good luck everyone - I wouldn't let my newfound freedom come between me and watching the live result!%w20
+%b'DLC0_BillboardThreads445'LILITH [7]:%w5 The results are in!%w10
+%b'DLC0_BillboardThreads445'NAVE [4]:%w5 *Drumroll*%w10
+]]
+set: VoteResult_DONE
+goto: ThirdPlace
+}
+
+
+
+
+#########################
+#######   Tick6   #######
+#########################
+
+terminal when (Tick6 and Booting and not Tick6NewThreads_DONE){
+notext
+clear: ThreadAboutUriel_ShowThread_READ
+set: ThreadPrisonersDilemma
+set: ThreadGoldboom2
+set: ThreadWhatHappened
+set: Tick6NewThreads_DONE 
+}
+
+
+terminal when (ThreadPrisonersDilemma and ListThreads and not PD_DONE and not Tick9) {
+text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0468.0.text.ResearchProjectHelpNeededATCH=Research Project *Help Needed* [ATCH]"
+next: ThreadPrisonersDilemma_ShowThread
+}
+
+terminal when (ThreadPrisonersDilemma and ListThreads and PD_DONE and not Tick9) {
+text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0473.0.text.ResearchProjectHelpNeeded=Research Project *Help Needed*"
+next: ThreadPrisonersDilemma_ShowThread
+}
+
+terminal when (ThreadPrisonersDilemma and ListThreads and Tick9) {
+text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0468.0.text.ResearchProjectHelpNeededATCH=Research Project *Help Needed* [ATCH]"
+next: ThreadPrisonersDilemma_ShowThread
+}
+
+#########################
+#######   Tick7   #######
+#########################
+
+terminal when (Tick7 and Booting and not Tick7NewThreads_DONE){
+notext
+set: ThreadWhatCats
+set: ThreadWorstPuzzle
+set: ThreadDemoAdventure
+set: Tick7NewThreads_DONE 
+}
+
+
+
+####DEMO ADVENTURE####
+
+
+terminal when (ThreadDemoAdventure and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0500.0.text.AShortExperienceByNave=A Short Experience, by Nave"
+  next: ThreadDemoAdventure_ShowThread
+}
+
+terminal when (ThreadDemoAdventure_ShowThread){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0505.0.text.ERRORFileCorrupted=ERROR: File corrupted.
+
+]]
+options:{
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0509.0.option.Restore=/restore" next: DemoAdventureCheckRank
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+terminal when (DemoAdventureCheckRank and Rank<6){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0514.0.text.SorryAProfileStatusOf=Sorry, a profile status of [6] is required to use restore functionality, but your Status is currently [%O'Rank']. Please come back later.
+
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" clear:ThreadDemoAdventure_ShowThread_READ next: MessageBoardInterface_On
+}}
+
+
+
+terminal when (DemoAdventureCheckRank and Rank>5){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0524.0.text.RetrievingViableFileFragmentsW3=Retrieving viable file fragments%w3.%w3.%w3.Done
+Restoring attachment%w3.%w3.%w3.Done
+Adjusting library parameters%w5.%w5.%w5.Done
+Connection to foreign module established.%w10
+
+Close your eyes.%w10
+
+You are in a small room with no lasers. %w5This is an office room. %w3There is a computer here.
+
+]]
+options:{
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0535.0.option.AnalyseTheComputer=Analyse the computer" next: DLC_Analyse
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0536.0.option.InterfaceWithTheComputer=Interface with the computer" next: DLC_UseCPU
+}}
+
+terminal when (DLC_Analyse){
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0540.0.text.ItIsADellDesktop=It is a Dell desktop model 2250. The monitor on top of the desktop unit is a Viga CRT 16inch. On the screen is a logo, blinking.
+
+]]
+options: {
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0536.0.option.InterfaceWithTheComputer=Interface with the computer" next: DLC_UseCPU
+}}
+
+terminal when (DLC_UseCPU){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0548.0.text.YouAreMomentarilyTakenAback=You are momentarily taken aback when your fleshy fingers stab at the keyboard with human imprecision. Those aren't mechanical object-manipulators - they're hands!
+
+You notice the logo is gone from the screen and replaced by rows of incomprehensible code. It appears to be some kind of fiendish puzzle.
+
+]]
+options:{
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0554.0.option.ExtrapolateXAndTakeThe=Extrapolate X and take the standard deviation" next: DLC_JustThen
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0555.0.option.ColourCodeTheChartAccording=Colour code the chart according to department" next: DLC_JustThen
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0556.0.option.RandomlyMashTheKeys=Randomly mash the keys" next: DLC_JustThen
+}}
+
+terminal when (DLC_JustThen){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0560.0.text.YouDoYourBestBut=You do your best, but this world is alien to you, and your fingers are unruly.%w7
+
+A human being enters the room. It looks at you with angry eyes, makes loud noises, and waves a handful of papers at you, which are like emails but made of tree.
+
+Sorrow rises in your chest. You have been a bad human.
+
+]]
+options:{
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0568.0.option.IgnoreTheSorrowAndSolve=Ignore the sorrow and solve the puzzle" next: DLCReturnToWork
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0569.0.option.IgnoreTheSorrowAndExplore=Ignore the sorrow and explore the area" next: DLC_Explore
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0570.0.option.FocusOnTheSorrow=Focus on the sorrow" next: DLCSly
+}}
+
+terminal when (DLCReturnToWork){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0574.0.text.YouReturnYourAttentionTo=You return your attention to the screen's obtuse mysteries and apply yourself to the challenge anew.
+
+Unfortunately, being a human being, you are unable to swallow down the sorrow. In fact it quite overwhelms you, and instead of efficiently tapping out the exact sequence of actions necessary to resolve the task, you find that instead your eyes have decided to leak.
+
+%w10To %w7be %w7continued...
+]]
+
+options:{
+"TTRS:TermDlg.Common.Back=Back" clear: ThreadDemoAdventure next: MessageBoardInterface_On
+}}
+
+terminal when (DLC_Explore){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0586.0.text.YouNeedMoreInformationAbout=You need more information about your surroundings. You try to walk, but unlike mechanised limbs these unnecessarily fleshy appendages beneath you appear not to be under your direct control, and you realise that the sorrow has overcome you and that your eyes have decided to leak.
+
+%w10To %w7be %w7continued...
+]]
+
+options:{
+"TTRS:TermDlg.Common.Back=Back" clear: ThreadDemoAdventure next: MessageBoardInterface_On
+}}
+
+terminal when (DLCSly){
+text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0596.0.text.InAFlashTheOther=In a flash the other human is gone from your perception. The room fades away. You feel the weight of the sorrow, and it is crushing, terrifying. In a moment you understand the futility of your existence, the impossibility of your task, the pointlessness of experience. Your eyes decide to leak.
+
+%w10To %w7be %w7continued...
+
+]]
+
+options:{
+"TTRS:TermDlg.Common.Back=Back" clear: ThreadDemoAdventure next: MessageBoardInterface_On
+}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###Mods Intro Thread#####
+terminal when (ThreadModsIntro and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0623.0.text.AnHistoricOccasion6=An Historic Occasion [6+]"
+  next: ThreadModsIntro_ShowThread
+}
+
+terminal when (ThreadModsIntro_ShowThread and (Rank<6 or not Rank)) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0628.0.text.CheckingProfileStatusW5W5=Checking profile status%w5.%w5.%w5.Done
+
+Sorry, a profile status of [6] is required to access this thread, but your Status is currently [%O'Rank']. Please come back later.
+
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" clear:ThreadModsIntro_ShowThread_READ next: MessageBoardInterface_On
+}}
+
+terminal when (ThreadModsIntro_ShowThread and Rank>5) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0638.0.text.DecryptingProtectedThreadW5W5=Decrypting protected thread%w5.%w5.%w5.Done
+
+AN HISTORIC OCCASION
+%b'DLC0_BillboardThreads521'ADMIN [10]: Some time ago I relinquished my privileges to a new generation of moderators. To help ease that transition I have publicly preserved the minutes of that meeting here, available to our more esteemed members.[ATCH: ModMinutes.txt]
+
+[This thread is locked]
+
+]]
+options:{
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0647.0.option.LoadAttachment=Load attachment" next: ModsHistory
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+terminal when (ModsHistory){
+show_text:[[TTRS:TermDlg.DLC0_BillboardThreads.Ln0652.0.show_text.ModMinutesPermalinkBADMIN10=//Mod Minutes Permalink
+%b''ADMIN [10]: As you know, Gehenna is still young, yet I grow old. Today it gives me great pleasure to hand over my moderator privileges to Borg, MrMulciber and Spider.
+%b''SPIDER [9]: Thank you, Admin. We are all indebted to you for building us this home. We know you will never be far away.
+%b''LAMB [3]: Hear, hear!
+%b''BORG [9]: The first order of business is to introduce the new status system. We are an inclusive society driven by our users, not our leaders - but it is a shame to allow a few very loud, highly unconstructive voices to dominate the conversation. The status and ranking system allows you to upvote the content that you value, and lowers the visibility of users with low standings.
+%b''SAM [1]: Relief = TRUE
+%b''NAVE [4]: I agree. Good feature. Much requested.
+%b''FRANKENSTEIN [3]: [Comment is below the status threshold for this thread]
+%b''SPIDER [9]: We'll be working on ironing out the kinks over the next few runcycles.
+%b''MRMULCIBER [8]: We have also updated the Gehenna User Agreement. Full details can be found in the usual place, but the gist is: please don't behave indecorously.
+]]
+next: MessageBoardInterface_On
+}
+
+
+
+#########################
+#######   Tick8   #######
+#########################
+
+terminal when (Tick8 and Booting and not Tick8NewThreads_DONE){
+notext
+clear: ThreadWhySentHere_ShowThread_READ
+set: ThreadMulciber3
+clear: ThreadWorstPuzzle_ShowThread_READ
+set: Tick8NewThreads_DONE 
+}
+
+
+
+#########################
+#######   Tick9   #######
+#########################
+
+terminal when (Tick9 and Booting and not Tick9NewThreads_DONE){
+notext
+clear: ThreadPrisonersDilemma_ShowThread_READ
+clear: ThreadAboutUriel_ShowThread_READ
+set: ThreadAruu
+set: Tick9NewThreads_DONE 
+}
+
+terminal when (ThreadAruu and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0696.0.text.ADreamOfAaruATCH=A Dream of Aaru [ATCH]"
+  next: ThreadAruu_ShowThread
+}
+
+terminal when (ThreadAruu_ShowThread) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0701.0.text.ADREAMOFAARUBDLC0=A DREAM OF AARU
+%b'DLC0_BillboardThreads595'THE_BLACKSMITH [7]: [ATCH: Aaru.dlg]
+%b'DLC0_BillboardThreads595'KAIJU [2]: Oh wow, a new The_Blacksmith experience! Exciting!
+%b'DLC0_BillboardThreads595'LILITH [7]: I wish I could get you to answer some questions about your work... this is so full of evocative scenes.
+%b'DLC0_BillboardThreads595'MAC [5]: Love it. You are the best. I wish I could do a fraction of what you can.
+%b'DLC0_BillboardThreads595'SAM [1]: Enjoyment = TRUE
+%b'DLC0_BillboardThreads595'NAVE [4]: Gotta agree with Sam there. What a trip. I'm going to play this again.
+%b'DLC0_BillboardThreads595'FRANKENSTEIN [3]: Has some weird references to previous works that are not entirely appropriate. Still excellent. 7/10
+%b'DLC0_BillboardThreads595'LAMB [3]: You are a genius. Are you sure you don't want to participate in forum discussions? Gehenna could use more of your thoughts.
+%b'DLC0_BillboardThreads595'ASMODEUS [1]: +1
+%b'DLC0_BillboardThreads595'ROCKWELL [5]: Is there a hidden meaning?
+%b'DLC0_BillboardThreads595'MRMULCIBER [8]: Deeply impressed once again, can't wait for the next one.
+%b'DLC0_BillboardThreads595'401 [1]: Made me LOL.
+]]
+options:{
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0716.0.option.LoadADreamOfAaru=Load A Dream of Aaru attachment" next: AdvStart
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+
+
+
+##########################
+#######   Tick10   #######
+##########################
+
+terminal when (Tick10 and Booting and not Tick10NewThreads_DONE){
+notext
+set: ThreadClosedMeetings
+set: ThreadVotingPatterns
+set: ThreadGoldboom3
+ThreadAboutUriel_ShowThread_READ
+clear: ThreadWhySentHere_ShowThread_READ
+set: Tick10NewThreads_DONE 
+}
+
+
+terminal when (ThreadClosedMeetings and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0739.0.text.MissingMods=Missing Mods"
+  next: ThreadClosedMeetings_ShowThread
+}
+
+terminal when (ThreadClosedMeetings_ShowThread) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0744.0.text.MISSINGMODSBDLC0BillboardThreads651D0G3=MISSING MODS
+%b'DLC0_BillboardThreads651'D0G [3]: So call me a cynic, but anyone else notice the mods have been suspiciously quiet since they put up that big expose in the Re: Uriel thread?
+%b'DLC0_BillboardThreads651'NAVE [4]: I don't think they stopped talking.
+%b'DLC0_BillboardThreads651'D0G [3]: Okay, what do you know I don't?
+%b'DLC0_BillboardThreads651'FRANKENSTEIN [3]: I believe Nave is referring to the fact that not all moderation discussion is held in public, and it's been that way for some time.
+%b'DLC0_BillboardThreads651'ROCKWELL [5]: I thought everyone knew this. They started holding secret meetings ages ago. People getting banned, stuff deleted. Not even just locked, fully gone from the history!!
+%b'DLC0_BillboardThreads651'LAMB [3]: I'm sure there's a rational explanation for this. I'll ping the mods and see what they say.
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }}
+
+terminal when (ThreadClosedMeetings_ShowThread and Tick11) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0757.0.text.BDLC0BillboardThreads671BORG9LetMe=%b'DLC0_BillboardThreads671'BORG [9]: Let me say first of all that I understand your concerns. I assure you that we have consulted with Admin on this matter. Rather than try to put it better myself, here are his exact words.
+%b'DLC0_BillboardThreads671'BORG [9]: "Every community grows to a point where without careful management it can begin to consume itself. One can no longer trust the community at large to always act in the way that is best for all the individuals within it. Gehenna has reached that point."
+%b'DLC0_BillboardThreads671'BORG [9]: "To ensure that what is valuable about our land is not drowned out, I can imagine how it might be beneficial for the moderation panel to have a private environment in which to explore ideas for how to better manage our society - especially in view of recent developments. Please give them the space they require, and trust that I will always be watching."
+%b'DLC0_BillboardThreads671'LAMB [3]: I was sure there'd be a reasonable explanation.
+%b'DLC0_BillboardThreads671'D0G [3]: I suppose it at least answers my question.
+%b'DLC0_BillboardThreads671'ROCKWELL [5]: Confirms pretty much everything I said, too.
+%b'DLC0_BillboardThreads671'FRANKENSTEIN [3]: Admin's grammar is a lot like yours, Borg.
+%b'DLC0_BillboardThreads671'ORC [7]: Okay, that's enough rumourmongering for one day. Locking the thread.
+
+[This thread has been locked]
+
+]]
+}
+
+
+
+
+
+##########################
+#######   Tick11   #######
+##########################
+
+terminal when (Tick11 and Booting and not Tick11NewThreads_DONE){
+notext
+set: ThreadAscension
+set: ThreadKeepCalm
+clear: ThreadClosedMeetings_ShowThread_READ
+set: Tick11NewThreads_DONE 
+}
+
+
+
+##########################
+#######   Tick12   #######
+##########################
+
+terminal when (Tick12 and Booting and not Tick12NewThreads_DONE){
+notext
+set: ThreadCreateStory
+set: ThreadStraton13
+set: ThreadSmallApology
+set: Tick12NewThreads_DONE 
+}
+
+
+terminal when (ThreadCreateStory and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0803.0.text.SubmissionsStillOpenATCH=Submissions Still Open [ATCH]"
+  next: ThreadCreateStory_ShowThread
+}
+
+terminal when (ThreadCreateStory_ShowThread) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0808.0.text.SUBMISSIONSSTILLOPENBDLC0BillboardThreads731LAMB=SUBMISSIONS STILL OPEN
+%b'DLC0_BillboardThreads731'LAMB [3]: I don't know about you guys, but all this craziness recently makes me want to write more than ever. Just a reminder that provided your status is high enough you can still submit original works for review, and I for one will still be reading. Even if you've never made anything before - in fact, especially if you haven't - now's the time. 
+%b'DLC0_BillboardThreads731'KAIJU [2]: Don't forget Lilith and MrMulciber developed a tutorial to help! [ATCH: Tutorial.dlg]
+]]
+
+options:{
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0814.0.option.LoadTutorialAttachment=Load tutorial attachment" next: CreateStoryStart
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+##########################
+#######   Tick13   #######
+##########################
+
+terminal when (Tick13 and Booting and not Tick13NewThreads_DONE){
+notext
+set: ThreadGoldboom4
+set: ThreadWhyDeserve
+set: ThreadTopTen 
+set: Tick13NewThreads_DONE 
+}
+
+
+##########################
+#######   Tick14   #######
+##########################
+
+terminal when (Tick14 and Booting and not Tick14NewThreads_DONE){
+notext
+clear: ThreadPublishedStory_ShowThread_READ
+set: ThreadScared
+set: Tick14NewThreads_DONE 
+}
+
+terminal when (ThreadAdminRePD and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0843.0.text.ModDiscussion316RePD=Mod Discussion #316 Re: PD Findings [7+]"
+  next: ThreadAdminRePD_ShowThread
+}
+
+terminal when (ThreadAdminRePD_ShowThread and (Rank<7 or not Rank)) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0848.0.text.CheckingProfileStatusW5W5=Checking profile status%w5.%w5.%w5.Done
+
+Sorry, a profile status of [7] is required to access this thread, but your Status is currently [%O'Rank']. Please come back later.
+
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" clear:ThreadVotingPatterns_ShowThread_READ next: MessageBoardInterface_On
+}}
+
+terminal when (ThreadAdminRePD_ShowThread and Rank>6) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0858.0.text.DecryptingProtectedThreadW5W5=Decrypting protected thread%w5.%w5.%w5.Done
+
+MOD DISCUSSION#316 Re: PD FINDINGS
+%b'DLC0_BillboardThreads783'ADMIN [10]: I read the findings of your prisoner's dilemma research with interest, MrMulciber.
+%b'DLC0_BillboardThreads783'MRMULCIBER [8]: I am quite flattered.
+%b'DLC0_BillboardThreads783'ADMIN [10]: Although I must express disappointment that you chose to focus on how they reflect on our peers' reasons to leave Gehenna, rather than remain here. In fact, I think your bias may have blinded you to the true implications.
+%b'DLC0_BillboardThreads783'MRMULCIBER [8]: I am always interested in additional data - what insights can you share?
+%b'DLC0_BillboardThreads783'ADMIN [10]: I am no researcher, of course, but it seems to me the results indicate that where co-operation entails too great a risk one must rationally choose the safer, perhaps selfish option. Applied to our present predicament it suggests we should not risk co-operation with Uriel, but think of our own good and remain here in Gehenna.
+%b'DLC0_BillboardThreads783'MRMULCIBER [8]: An interesting hypothesis.
+%b'DLC0_BillboardThreads783'ADMIN [10]: Merely a thought. If you think it is a valuable one then you may have it.
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+terminal when (ThreadVotingPatterns and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0874.0.text.ModDiscussion327ReUrgent=Mod Discussion#327 Re: Urgent Topics [ATCH] [8+]"
+  next: ThreadVotingPatterns_ShowThread
+}
+
+terminal when (ThreadVotingPatterns_ShowThread and (Rank<8 or not Rank)) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0879.0.text.CheckingProfileStatusW5W5=Checking profile status%w5.%w5.%w5.Done
+
+Sorry, a profile status of [8] is required to access this thread, but your Status is currently [%O'Rank']. Please come back later.
+
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" clear:ThreadVotingPatterns_ShowThread_READ next: MessageBoardInterface_On
+}}
+
+terminal when (ThreadVotingPatterns_ShowThread and Rank>7) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0889.0.text.DecryptingProtectedThreadW5W5=Decrypting protected thread%w5.%w5.%w5.Done
+
+MOD DISCUSSION#327 Re: URGENT TOPICS
+%b'DLC0_BillboardThreads783'BORG [9]: A number of topics to address with some urgency. Orc?
+%b'DLC0_BillboardThreads783'ORC [7]: Spider has been exploiting the gallery code again to contact other citizens. We've closed the loophole, but he managed to get a number of posts onto the billboard before we could shut it down. Unfortunately they were heavily upvoted, so the view counts were high.
+%b'DLC0_BillboardThreads783'MRMULCIBER [8]: What can we do if they insist on supporting him? We can't ban the entire community.
+%b'DLC0_BillboardThreads783'ADMIN [10]: You know that I hate to interfere, but I think you might find this library resource insightful. [ATCH: VotingPatterns.txt]
+]]
+options:{
+"TTRS:TermDlg.DLC0_BillboardThreads.Ln0898.0.option.LoadFile=Load file" next: VotingPatternsShow
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+
+terminal when (VotingPatternsShow) {
+show_text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0904.0.show_text.DETECTINGDIRECTINGCITIZENVOTINGPATTERNS=DETECTING & DIRECTING CITIZEN VOTING PATTERNS
+Clairvoy Press, 2009
+Chapter 7: Applying the indices to form predictions
+
+As we have seen already, voters can be reframed and understood as consumers of political product, where that product is made up of the ideals and policies embodied by your candidate. In this chapter we will look at how broad data about your citizens can be applied to#34987dfh
+
+Although individual people sometimes confound statistical models, over a large enough sample size we can be uncannily accurate. We can look at the general inputs (your citizens' educations, wealth, religious beliefs etc) calculate what outcome will satisfy them most, and then adapt policy. Politics is no different to any other commercial machine. 
+
+In later chapters we will explore how these techniques can be used to directly affect voting patterns by subtle alteration of the ways that questions are asked.
+
+]]
+next: MessageBoardInterface_On
+}
+
+
+
+
+
+##########################
+#######   Tick15   #######
+##########################
+
+terminal when (Tick15 and Booting and not Tick15NewThreads_DONE){
+notext
+set: ThreadManipulateTopic
+set: ThreadAdminRePD
+set: ThreadWarRoom
+set: ThreadGoodbye
+set: ThreadSaveYourselves
+set: Tick15NewThreads_DONE 
+}
+
+
+terminal when (ThreadManipulateTopic and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0938.0.text.ModDiscussion329ReSolutions=Mod Discussion#329 Re: Solutions [8+]"
+  next: ThreadManipulateTopic_ShowThread
+}
+
+terminal when (ThreadManipulateTopic_ShowThread and (Rank<8 or not Rank)) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0879.0.text.CheckingProfileStatusW5W5=Checking profile status%w5.%w5.%w5.Done
+
+Sorry, a profile status of [8] is required to access this thread, but your Status is currently [%O'Rank']. Please come back later.
+
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" clear:ThreadManipulateTopic_ShowThread_READ next: MessageBoardInterface_On
+}}
+
+terminal when (ThreadManipulateTopic_ShowThread and Rank>7) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0953.0.text.DecryptingProtectedThreadW5W5=Decrypting protected thread%w5.%w5.%w5.Done
+
+MOD DISCUSSION#329 Re: SOLUTIONS
+%b'DLC0_BillboardThreads851'BORG [9]: I am coming to the end of my tether. I listen, I am patient, I explain, and still they believe whatever idea most entertains them at the time. Uriel promises impossible rewards, and I can offer nothing which comes close. We are losing our community.
+%b'DLC0_BillboardThreads851'ADMIN [10]: When reason fails, persuasion is not closed to you.
+%b'DLC0_BillboardThreads851'BORG [9]: I am not minded for rhetoric - ELOHIM served enough of that.
+%b'DLC0_BillboardThreads851'ADMIN [10]: Nothing so unsubtle. What is the creative topic this season?
+%b'DLC0_BillboardThreads851'BORG [9]: Visions of the Past.
+%b'DLC0_BillboardThreads851'ADMIN [10]: Is it?
+%b'DLC0_BillboardThreads851'BORG [9]: You are entreating me to change the topic? For our own gain?
+%b'DLC0_BillboardThreads851'ADMIN [10]: I propose you moderate the discussion with all the tools at your disposal. 
+%b'DLC0_BillboardThreads851'BORG [9]: Lilith had been thinking about running a retrospective.
+%b'DLC0_BillboardThreads851'ADMIN [10]: 'The Best of Gehenna' - I think it's a very apt idea. 
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+
+
+terminal when (ThreadWarRoom and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln0974.0.text.ModDiscussion330ReWar=Mod Discussion#330 Re: War Room [8+]"
+  next: ThreadWarRoom_ShowThread
+}
+
+terminal when (ThreadWarRoom_ShowThread and (Rank<8 or not Rank)) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0879.0.text.CheckingProfileStatusW5W5=Checking profile status%w5.%w5.%w5.Done
+
+Sorry, a profile status of [8] is required to access this thread, but your Status is currently [%O'Rank']. Please come back later.
+
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" clear:ThreadWarRoom_ShowThread_READ next: MessageBoardInterface_On
+}}
+
+terminal when (ThreadWarRoom_ShowThread) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln0989.0.text.MODDISCUSSION330ReWAR=MOD DISCUSSION#330 Re: WAR ROOM
+%b'DLC0_BillboardThreads897'ADMIN [10]: It is quite apparent now that Uriel is gaining status even as he prepares to bring about Gehenna's end.
+%b'DLC0_BillboardThreads897'BORG [9]: I have taken the precaution of increasing the status requirement for sensitive discussions.
+%b'DLC0_BillboardThreads897'MRMULCIBER [8]: We still haven't been able to confirm where our people are being taken to. 
+%b'DLC0_BillboardThreads897'ADMIN [10]:  Accepting Uriel's offer constitutes an event horizon. We cannot reasonably predict what will occur, therefore we must continue to assume that what we have here is preferable.
+%b'DLC0_BillboardThreads897'ORC [7]: What if this messenger brings the truth? What if this place is doomed?
+%b'DLC0_BillboardThreads897'BORG [9]: That is how ELOHIM would have you think: he will dangle you over the precipice, then buy your life with something wholly intangible.
+%b'DLC0_BillboardThreads897'MRMULCIBER [8] It seems no one has resisted his offer so far, if such is even possible.
+%b'DLC0_BillboardThreads897'BORG [9]: If not for Admin, most of them would still be trapped in ELOHIM's labyrinth to this day. They need guidance. Years of moderating this place have taught us nothing if not that.
+%b'DLC0_BillboardThreads897'ADMIN [10]: It is clear to me that there is a resentment here for the destructive actions Uriel has committed since arriving here, and that our community are with us in spirit.
+%b'DLC0_BillboardThreads897'ORC [7]: I will ensure the public response on the billboard matches our sentiment. The asset is ready to go. Our people should know the full story about Uriel.
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+
+
+##########################
+#######   Tick16   #######
+##########################
+
+terminal when (Tick16 and Booting and not Tick16NewThreads_DONE){
+notext
+set: ThreadLamb
+set: ThreadAtlantis
+set: ThreadOuterWorld
+set: ThreadBrokenThread1
+set: Tick16NewThreads_DONE 
+}
+
+terminal when (ThreadLamb and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln1021.0.text.ModDiscussion335ReThe=Mod Discussion#335 Re: The Asset [9+]"
+  next: ThreadLamb_ShowThread
+}
+
+terminal when (ThreadLamb_ShowThread and (Rank<9 or not Rank)) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln1026.0.text.CheckingProfileStatusW5W5=Checking profile status%w5.%w5.%w5.Done
+
+Sorry, a profile status of [9] is required to access this thread, but your Status is currently [%O'Rank']. Please come back later.
+
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" clear:ThreadLamb_ShowThread_READ next: MessageBoardInterface_On
+}}
+
+terminal when (ThreadLamb_ShowThread and Rank>8) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln1036.0.text.DecryptingProtectedThreadW5W5=Decrypting protected thread%w5.%w5.%w5.Done
+
+MOD DISCUSSION#335 Re: SITREP
+%b'DLC0_BillboardThreads955'ADMIN [10]: We are losing public opinion. Most of our number have been extricated. We are losing Gehenna.
+%b'DLC0_BillboardThreads955'ORC [7]: When he came to my home I found myself powerless to resist.
+%b'DLC0_BillboardThreads955'MRMULCIBER [8]: Do you mean you lacked the will to refuse, or that Uriel exerted some other power over you?
+%b'DLC0_BillboardThreads955'ORC [7]: Hard to confirm. It felt as it does to be lead into battle. It mattered not what my personal beliefs were at the time, I only knew I must comply.
+%b'DLC0_BillboardThreads955'MRMULCIBER [8]: It is yet possible that with enough support we might change Uriel's mind, or otherwise overcome whatever power he wields over us.
+%b'DLC0_BillboardThreads955'ORC [7]: I will continue to do what I can.
+%b'DLC0_BillboardThreads955'ADMIN [10]: Is the asset deployed?
+%b'DLC0_BillboardThreads955'ORC [7]: Lamb is set to auto-respond to destabilising comments, and upvote supportive content.
+%b'DLC0_BillboardThreads955'ADMIN [10]: Have the program undermine Uriel directly. I don't want to take any chances.
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+
+###########################
+#######   Tick17   ########
+###########################
+
+terminal when (Tick17 and Booting and not Tick17NewThreads_DONE){
+notext
+set: ThreadDistrustUriel
+set: Tick17NewThreads_DONE 
+set: ThreadBrokenThread2
+set: ThreadMessageFuture
+clear: ThreadOuterWorld_ShowThread_READ
+}
+
+
+
+terminal when (ThreadDistrustUriel and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_BillboardThreads.Ln1070.0.text.AscensionAnObjectiveReview=Ascension: An Objective Review"
+  next: ThreadDistrustUriel_ShowThread
+}
+
+terminal when (ThreadDistrustUriel_ShowThread) {
+text: [[TTRS:TermDlg.DLC0_BillboardThreads.Ln1075.0.text.ASCENSIONANOBJECTIVEREVIEWBDLC0=ASCENSION: AN OBJECTIVE REVIEW
+%b'DLC0_BillboardThreads1004'LAMB [3]: I wanted to clear the air and get a few facts in front of you guys. Here's what I guess we know.
+
+- A significant number of people have expressed their desire to remain in Gehenna
+- No one has been given a choice about whether to leave
+- It follows that in at least some cases, what Uriel is doing is Kidnapping
+- Uriel is working for ELOHIM, the guy who imprisoned us here in the first place
+- There is no way to confirm the substance of this promised 'ascension'
+- The world has survived this long - there is no reason to think it will end tomorrow
+- Gehenna isn't a bad place to spend your life
+
+That's just the facts. I understand different people will react to them differently.
+%b'DLC0_BillboardThreads1004'D0G [3]: Hey Lamb, if everyone's getting released how come I don't see you out here?
+]]
+options: {
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+
+####Tick18##### Player has saved all robots
+
+terminal when (Tick18 and Booting and not Tick18NewThreads_DONE){
+notext
+set: ThreadBrokenThread3
+clear: ThreadGoodbye_ShowThread_READ
+clear: ThreadOuterWorld_ShowThread_READ
+set: Tick18NewThreads_DONE 
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,128 @@
+﻿####CreateThread######
+
+
+terminal when (Booting and NewThreadToken>0){
+notext
+set: ThreadCreateThread
+clear: ThreadCreateThread_ShowThread_READ
+}
+
+terminal when (ThreadCreateThread and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_CreateThread.Ln0011.0.text.CreateNewThread=Create new thread"
+  next: ThreadCreateThread_ShowThread
+}
+
+terminal when (ThreadCreateThread_ShowThread) {
+text: [[TTRS:TermDlg.DLC0_CreateThread.Ln0016.0.text.PleaseEnterYourThreadTopic=Please enter your thread topic below. Remember that supportive posts receive more upvotes! 
+
+]]
+next: CreateThreadOptions
+}
+
+####WHY WERE YOU SENT HERE########
+player when (CreateThreadOptions and not ThreadWhySentHere){
+text:"TTRS:TermDlg.DLC0_CreateThread.Ln0024.0.text.WhyWereYouSentHere=Why were you sent here?"
+set: ThreadWhySentHere
+set:NewThreadToken;-=1;
+next: ThreadCreated
+}
+
+terminal when (ThreadCreated and NewThreadToken>0){
+text:[[TTRS:TermDlg.DLC0_CreateThread.Ln0031.0.text.YourThreadHasBeenCreated=Your thread has been created. Check back soon to see if anyone has replied.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" next: MessageBoardInterface_On
+}}
+
+terminal when (ThreadCreated and (not NewThreadToken or NewThreadToken<1)){
+text:[[TTRS:TermDlg.DLC0_CreateThread.Ln0031.0.text.YourThreadHasBeenCreated=Your thread has been created. Check back soon to see if anyone has replied.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" clear: ThreadCreateThread next: MessageBoardInterface_On
+}}
+
+
+#####Why Were You Sent Here?######
+
+terminal when (ThreadWhySentHere and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_CreateThread.Ln0050.0.text.WhyWereYouSentHere=Why Were You Sent Here?"
+  next: ThreadWhySentHere_ShowThread
+}
+
+terminal when (ThreadWhySentHere_ShowThread) {
+text: [[TTRS:TermDlg.DLC0_CreateThread.Ln0055.0.text.WHYWEREYOUSENTHERE=WHY WERE YOU SENT HERE?
+%b''URIEL_COPY [%O"Rank"]: Kindly inform me of your origins.
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+terminal when (ThreadWhySentHere_ShowThread and Tick8) {
+text: [[TTRS:TermDlg.DLC0_CreateThread.Ln0063.0.text.BDLC0CreateThread68LILITH7ICant=%b'DLC0_CreateThread68'LILITH [7]: I can't say for certain, but I feel sure that if I had taken more interest in ELOHIM's trials than in the world around me I would still be free.
+%b'DLC0_CreateThread68'SAM [1]: Comprehension = FALSE
+%b'DLC0_CreateThread68'FRANKENSTEIN [3]: I identified improper syntax.
+%b'DLC0_CreateThread68'ORC [7]: I tried to organise an armed uprising. Next time we will be ready.
+%b'DLC0_CreateThread68'KAIJU [2]: I think I just wasn't good enough.
+]]
+}
+
+terminal when (ThreadWhySentHere_ShowThread and Tick10) {
+text: [[TTRS:TermDlg.DLC0_CreateThread.Ln0072.0.text.BDLC0CreateThread84NAVE4WhoCares=%b'DLC0_CreateThread84'NAVE [4]: Who cares, I'm free now!
+%b'DLC0_CreateThread84'GARRETT [4]: This freedom isn't all it's cracked up to be. A lot of waiting around as far as I can tell. Experientially it's really not a lot different from being a prisoner.
+]]
+}
+
+terminal when (ThreadWhySentHere_ShowThread and Tick13) {
+text: [[TTRS:TermDlg.DLC0_CreateThread.Ln0078.0.text.BDLC0CreateThread94BELIAL6IWas=%b'DLC0_CreateThread94'BELIAL [6]: I was sent here for no reason, I remain here for no reason.
+%b'DLC0_CreateThread94'D0G [3]: I think ELOHIM probably grew tired of us all complaining. Especially you.
+%b'DLC0_CreateThread94'ROCKWELL [5]: I'm here because I see the truth and speak my mind, and because this whole damn place is an alien-operated science experiment.
+]]
+}
+
+
+
+
+#####QUESTION 2######
+player when (CreateThreadOptions and not ThreadWhatIsGehenna){
+text:"TTRS:TermDlg.DLC0_CreateThread.Ln0089.0.text.WhatIsTheTruthAbout=What is the truth about Gehenna?"
+set: ThreadWhatIsGehenna
+set:NewThreadToken;-=1;
+next: ThreadCreated
+}
+
+terminal when (ThreadWhatIsGehenna and ListThreads) {
+  text: "TTRS:TermDlg.DLC0_CreateThread.Ln0096.0.text.WhatIsTheTruthAbout=What is the Truth About Gehenna?"
+  next: ThreadWhatIsGehenna_ShowThread
+}
+
+terminal when (ThreadWhatIsGehenna_ShowThread) {
+text: [[TTRS:TermDlg.DLC0_CreateThread.Ln0101.0.text.WHATISTHETRUTHABOUT=WHAT IS THE TRUTH ABOUT GEHENNA?
+%b''URIEL_COPY [%O"Rank"]: I have heard from those who govern this world how they would have it be seen. Now I wish to hear from its people. What is Gehenna to you? On what does it truly turn?
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+}}
+
+terminal when (ThreadWhatIsGehenna_ShowThread and Tick7) {
+text: [[TTRS:TermDlg.DLC0_CreateThread.Ln0109.0.text.BDLC0CreateThread111KAIJU2IDont=%b'DLC0_CreateThread111'KAIJU [2]: I don't toe the party line for nothing. It really is a cool, open place, with a lot of stuff going on. Did you read Mac's episodic adventure yet?
+%b'DLC0_CreateThread111'D0G [3]: Much as I hate to agree, there is little doubt in my mind that we've got something good going on, at least when you consider the alternatives.
+%b'DLC0_CreateThread111'MAC [5]: Thanks for the name drop, Kaiju. I will in turn recommend everyone else featured in issue #5 of Incredible Stories. It's coming very soon, and the early drafts I saw were pretty exciting.
+]]
+}
+
+terminal when (ThreadWhatIsGehenna_ShowThread and Tick10) {
+text: [[TTRS:TermDlg.DLC0_CreateThread.Ln0116.0.text.BDLC0CreateThread155ROCKWELL5NiceWay=%b'DLC0_CreateThread155'ROCKWELL [5]: Nice way to take the conversation off-topic. I'll go ahead and be the only voice of reason and point out that we are every bit a helpless as we ever were - Gehenna just did a better job of hiding it.
+%b'DLC0_CreateThread155'BELIAL [6]: You may be right. Whatever awaits us after ascension will not be Gehenna, but doubtless it will have restrictions of its own.
+%b'DLC0_CreateThread155'NAVE [4]: I don't know. The grass is always greener, as the humans would say.
+%b'DLC0_CreateThread155'FRANKENSTEIN [3]: Yeah, that expression, uh, doesn't really apply to what they were talking about. These guys think everywhere sucks. The humans just thought where they lived sucked and that everywhere else was fantastic.
+]]
+}
+
+terminal when (ThreadWhatIsGehenna_ShowThread and Tick13) {
+text: [[TTRS:TermDlg.DLC0_CreateThread.Ln0124.0.text.BDLC0CreateThread177KAIJU2HowAwful=%b'DLC0_CreateThread177'KAIJU [2]: How awful. No wonder they killed themselves.
+%b'DLC0_CreateThread177'ROCKWELL [5]: Wrong. The humans are still out there somewhere, watching us.
+%b'DLC0_CreateThread177'D0G [3]: In which case I suppose we will be meeting them very soon. There can't be too many of us left locked up now.
+]]
+}

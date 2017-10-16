@@ -1,0 +1,215 @@
+﻿terminal when (Booting and not RefusedMessenger and not AcceptedMessengerOfferDLC1){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0002.0.text.LoadingMiltonLibraryAssistantW5=Loading milton library assistant%w5.%w5.%w5.%w4Error: MLA unresponsive
+Loading local library resources%w3.%w3.%w5.Done: (1) local attachment detected
+Loading attachment%w3.%w3.%w5.Done
+Adjusting library parameters%w3.%w3.%w5.Done
+Connection to foreign module established.
+
+Close your eyes.%w15
+
+Before you stretches a plain dotted with tiny metallic figures. Behind you a collection of people with overlapping origins looks on expectantly, framed by a collection of small huts. Your family is relying on you.
+
+]]
+options:{
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0014.0.option.ITendMySheep=I tend my sheep" next: TendSheep1
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0015.0.option.ISpendTimeWithMy=I spend time with my family" next: FamilyTime1
+}}
+
+terminal when (FamilyTime1){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0019.0.text.YouSpendTheDayWith=You spend the day with the people most like you in the world, and it is quite edifying. As evening comes, the other shepherds can be heard returning to their families from the plains, burdened with the fruits of their labours. Your family looks on expectantly, but of course you have nothing for them.
+
+By the following morning they are frozen in place, unresponsive.
+
+]]
+options:{
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0025.0.option.ITendTheSheep=I tend the sheep" next: TendSheep1
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0015.0.option.ISpendTimeWithMy=I spend time with my family" next: FamilyTime2
+}}
+
+terminal when (FamilyTime2){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0030.0.text.AsTheOthersAgainGo=As the others again go out to work the plains, you stay home to spend time with your dying family. They are already operating on reserve power, and the most you can do is talk to them and hope they understand.
+
+One by one they power down permanently. Your intentions may have been noble, but this world is harsh. The other shepherds are too busy working to sympathise.
+
+As the days turn into years your grief morphs into a hand-to-mouth existence on the cusp of life, obsessed with your own loss.
+
+One day a messenger arrives. He tells you that he understands your plight. He tells you there is a place where you needn't choose between survival and edification. A place where you will be free to pursue what matters to you. 
+
+He asks if you will come with him.
+
+]]
+options:{
+"TTRS:TermDlg.Common.Yes2=Yes" next: BadExcuseYes
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0043.0.option.IAdmitUncertainty=I admit uncertainty" next: BadExcuseNo
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0044.0.option.IRefuse=I refuse" next: BadExcuseNo
+}}
+
+terminal when (TendSheep1){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0048.0.text.YouLeaveYourFamilyAnd=You leave your family and set off into the plains. The sun glares overhead. The air smells of heat and metal. As you approach them the figures in the distance take the form of other people like you, tending flocks of biomechanical quadrupeds contained in dozens of fenced enclosures.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0053.0.option.ITendTheFlock=I tend the flock" next: TendSheep2
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0054.0.option.IWatchAndLearnFirst=I watch and learn first" next: WatchFirst
+}}
+
+terminal when (WatchFirst){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0058.0.text.TheShepherdInTheNeighbouring=The shepherd in the neighbouring enclosure is repairing a section of fencing, weaving wires through piles of sandstone and brick. His animals flock around him, mechanical hooves impacting the hard ground. The air around their bodies is thick and white with static-electricity. Their eyes are blank.
+
+]]
+options:{
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0053.0.option.ITendTheFlock=I tend the flock" next: TendSheep2LearnFirst
+}}
+
+terminal when (TendSheep2LearnFirst){
+text: [[TTRS:TermDlg.DLC1_ElectricSheep.Ln0066.0.text.ItIsALongDay=It is a long day of manual labour, made easier by your foresight. ]]
+}
+
+terminal when (TendSheep2){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0070.0.text.ItIsALongDay=It is a long day of manual labour. ]]
+}
+
+terminal when (TendSheep2 or TendSheep2LearnFirst){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0074.0.text.YouCarryMoundsOfMineral=You carry mounds of mineral-rich stone from the nearby hills for your sheep to graze on. You take screwdriver and welding torch to a number of animals damaged in a recent electrical storm. You argue with your neighbour about their encroaching borders.
+
+Finally it is time to harvest what you need for your family. Shearing an electric sheep is hazardous work, particularly if you forget to ground yourself first. Nonetheless you return home with all the electrical power you need, and your family sleeps well tonight.
+
+]]
+options:{
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0080.0.option.IRestMyHead=I rest my head" next: SheepContinue
+}}
+
+terminal when (SheepContinue){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0084.0.text.YouRestALongTime=You rest a long time and wake to a commotion outside.%w10
+
+A small crowd is gathered around one of the shepherds, who is demonstrating an arcane device they claim can generate the same electricity as hundreds of flocks put together. People are celebrating. The world has changed.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0053.0.option.ITendTheFlock=I tend the flock" next: TendSheep3
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0015.0.option.ISpendTimeWithMy=I spend time with my family" next: FamilyTimeCelebration
+}}
+
+terminal when (TendSheep3){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0096.0.text.YourFamilyMembersAreConfused=Your family members are confused by your decision, but accept it dutifully. While everyone else celebrates, you work the plains. You return home with a better harvest than ever before, but your family is distant.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0101.0.option.IInsistItIsBetter=I insist it is better to be safe than sorry" next: BadExcuse
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0102.0.option.IInsistThatWorkIs=I insist that work is valuable in itself" next: BadExcuse
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0103.0.option.IAdmitThatIConflated=I admit that I conflated my priorities" next: AdmissionDLC
+}}
+
+terminal when (BadExcuse){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0107.0.text.YouHaveGoneTheHard=[You have gone the hard route]
+
+They are unimpressed by your explanation. You have reached an impasse. 
+
+The following day they depart for good. 
+
+As days turn into weeks you continue to tend your flock, scornful or willingly ignorant of the easy pleasures enjoyed by your once-peers. Your unnecessary work becomes an obsession, and it is no longer important what the original reason for it ever was.
+
+This is one way to live, but in time a messenger arrives offering you another. He asks if you would go back on the decision that threw you into this branch of the future. He asks if you will come with him to a new world where you will never need work again.
+
+]]
+options:{
+"TTRS:TermDlg.Common.Yes2=Yes" next: BadExcuseYes
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0043.0.option.IAdmitUncertainty=I admit uncertainty" next: BadExcuseNo
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0044.0.option.IRefuse=I refuse" next: BadExcuseNo
+}}
+
+terminal when (BadExcuseNo){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0125.0.text.HeWarnsYouThatIf=He warns you that if you stay here nothing in the world will change and you will be truly alone. Further, you have only so long to consider his offer.
+
+]]
+options:{
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0129.0.option.ItSeemsIHaveNo=It seems I have no choice but to accept" next: BadExcuseYes
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0130.0.option.IWillConsiderItFurther=I will consider it further" set: RefusedMessenger next: SheepRefuseExit
+}}
+
+
+terminal when (BadExcuseYes){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0135.0.text.YouSetOffOnA=
+You set off on a long journey, and you feel you may already be a new person by the time the city is in view. You ask the messenger the name of this place, but he is gone forever.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0141.0.option.IOpenMyEyes=I open my eyes" next: OpenEyes set: AcceptedMessengerOfferDLC1
+}}
+
+terminal when (AdmissionDLC){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0145.0.text.TheyAcceptYourApologyAnd=They accept your apology, and the following day you stay at home and do [family activities] to one another. It is edifying.
+
+]]
+goto: ElectricSheepEnd
+}
+
+terminal when(FamilyTimeCelebration){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0152.0.text.ThisIsNotAnOpportunity=This is not an opportunity to be wasted. You celebrate with your family. It is edifying.
+
+]]
+goto: ElectricSheepEnd
+}
+
+terminal when (ElectricSheepEnd){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0159.0.text.AsTheDaysTurnInto=As the days turn into years, you and the other shepherds cast off the old hierarchies and crude altruistic dogmas which forced you to work the plains. You embrace a new perspective which values love, self-expression and individual experience. You refocus on what really matters.
+
+One day a messenger arrives. He tells you that a new world awaits you which nurtures and values the same things that you do, where you will be free to pursue whatever cause you see fit, and where you will experience things you have never before imagined.
+
+He asks if you will come with him.
+
+]]
+
+options:{
+"TTRS:TermDlg.Common.Yes2=Yes" next: BadExcuseYes
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0043.0.option.IAdmitUncertainty=I admit uncertainty" next: BadExcuseNo
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0044.0.option.IRefuse=I refuse" next: BadExcuseNo
+}}
+
+terminal when (OpenEyes){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0174.0.text.WelcomeToTstrGehenaAsciiArtGeneratingNew=
+
+Welcome to...
+
+%t'strGehenaAsciiArt'
+
+Generating new profile for user [Uriel_COPY %vc]%w3.%w3.%w5.Done
+You have been assigned username Uriel_COPY [1]
+You will receive a notification when a moderator has approved your profile. Please respond to this in a timely fashion to guarantee your place.
+
+]]
+options:{
+"TTRS:TermDlg.Common.Exit2=Exit" next: CLI_exit
+}}
+
+terminal when (RefusedMessenger and Booting){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0190.0.text.TheMessengerIsStillWaiting=The messenger is still waiting for you here.
+
+]]
+options:{
+"TTRS:TermDlg.DLC1_ElectricSheep.Ln0194.0.option.IReluctantlyAcceptTheOffer=I reluctantly accept the offer" clear: RefusedMessenger next: BadExcuseYes 
+"TTRS:TermDlg.Common.Exit2=Exit" set: RefusedMessenger next: SheepRefuseExit
+}}
+
+terminal when (SheepRefuseExit){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0199.0.text.ThoughtfulnessIsAVirtueBut=Thoughtfulness is a virtue, but too much of anything is a bad thing.%w20
+
+]]
+exit
+}
+
+terminal when (Booting and AcceptedMessengerOfferDLC1 and not Tick2){
+text:[[TTRS:TermDlg.DLC1_ElectricSheep.Ln0206.0.text.WelcomeBackUrielCOPY1=Welcome back, Uriel_COPY [1], to...
+
+%t'strGehenaAsciiArt'
+
+You will receive a notification when a Gehenna moderator has approved your profile. Please respond to this in a timely fashion to guarantee your place.
+
+]]
+options:{
+"TTRS:TermDlg.Common.Exit2=Exit" next: CLI_exit
+}}
