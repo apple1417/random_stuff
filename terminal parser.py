@@ -79,11 +79,12 @@ def print_buttons(dict):
         else:
             return dict[buttons[i - 1]]
 
-# Only a function to prevent more indentation
+# Basiclly just a function to prevent more indentation
 def parse_command(command):
     content = command.group("content")
     result = None
-    if command.group("type").lower() == "terminal":
+    print("t", command.group("type"))
+    if command.group("type").lower() == "terminal": # BUG: breaks when reading a bit w/o a goto
         text = re.search(R_TEXT, content)
         if text:
             print_s_vars(get_translation(text))
@@ -92,13 +93,17 @@ def parse_command(command):
             # Replace with actual image eventually
             print("IMAGE:", image.group("path"))
         options = re.search(R_OPTIONS, content)
-        if not options: # <--- YOU WERE WORKING HERE returns leading into infinite print loop somehow
-            return result
+        print("c", content)
+        if not options:
+            if image or text:
+                return "success" # BUG: Used to return 'None', meaning extra parsing would kick in, repeating text
+            else:
+                return None # BUG: I still need to do this sometimes though
         options = re.finditer(R_T_OPTIONS, options.group("content"))
         buttons = {}
         for i in options:
             buttons[get_translation(i)] = i.group("commands")
-        result = check_actions(buttons[print_buttons(buttons)])
+        result = check_actions(print_buttons(buttons))
     elif command.group("type").lower() == "player":
         files = re.search(R_J_OPTIONS, content)
         if files:
@@ -148,11 +153,11 @@ def check_actions(text):
 
 with open(FILE_PATH, encoding="utf-8") as FILE:
     g_vars = set()
+    strings = {}
     for match in re.finditer(R_STR, FILE.read()):
         strings[match.group("id")] = get_translation(match)
     # Going to be at the end of the file now, so might as well grab size
     FILE_SIZE = FILE.tell()
-    FILE.seek(0)
     while True:
         buffer = ""
         state = "Booting"
@@ -192,6 +197,7 @@ with open(FILE_PATH, encoding="utf-8") as FILE:
         elif option == 3:
             break
         vars = set((state, "InTerminal_" + TERMINAL_NAME)) | g_vars
+        FILE.seek(0)
         # Yes I know this only works in cmd, I'll fix when I make my own display
         system("cls")
         while True:
@@ -203,22 +209,27 @@ with open(FILE_PATH, encoding="utf-8") as FILE:
             # Devs use lots of brackets so just letting python handle it should be fine
             if eval("(" + re.sub(R_REQ, r"('\1' in vars)", command.group("req")) + ")"):
                 result = parse_command(command)
+                print("r1", result)
                 if not result:
-                    result = check_actions(command.group("content"))
+                    result = check_actions(command.group("content")) # BUG: Loop always happens when this part runs?
+                print("r2", result)
                 if result == "goto":
                     FILE.seek(0)
                 elif result == "exit":
                     break
-            # If we reach the end of the file and have no player options we have
-            #  no choice but to exit
-            if FILE.tell() != FILE_SIZE:
+            # 'FILE.tell()' is weird, sometimes it returns values like '18446744073709568986'
+            # This is at consistent locations, so it's possible to hardcode fixes
+            # Hopefully won't need to do that though
+            if not FILE.tell() == FILE_SIZE:
                 continue
             print("At end of file")
+            # If we reach the end of the file and have no player options we have
+            #  no choice but to exit
             if not player_options:
                 print("No player_options")
                 break
             print("player_options")
-            result = check_actions(player_options[print_buttons(player_options)])
+            result = check_actions(print_buttons(player_options))
             player_options = {}
             if result == "exit":
                 break
