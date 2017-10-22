@@ -79,53 +79,6 @@ def print_buttons(dict):
         else:
             return dict[buttons[i - 1]]
 
-# Basiclly just a function to prevent more indentation
-def parse_command(command):
-    content = command.group("content")
-    result = None
-    print("t", command.group("type"))
-    if command.group("type").lower() == "terminal": # BUG: breaks when reading a bit w/o a goto
-        text = re.search(R_TEXT, content)
-        if text:
-            print_s_vars(get_translation(text))
-        image = re.search(R_IMAGE, content)
-        if image:
-            # Replace with actual image eventually
-            print("IMAGE:", image.group("path"))
-        options = re.search(R_OPTIONS, content)
-        print("c", content)
-        if not options:
-            if image or text:
-                return "success" # BUG: Used to return 'None', meaning extra parsing would kick in, repeating text
-            else:
-                return None # BUG: I still need to do this sometimes though
-        options = re.finditer(R_T_OPTIONS, options.group("content"))
-        buttons = {}
-        for i in options:
-            buttons[get_translation(i)] = i.group("commands")
-        result = check_actions(print_buttons(buttons))
-    elif command.group("type").lower() == "player":
-        files = re.search(R_J_OPTIONS, content)
-        if files:
-            # Journal stuff, don't really know how to handle it
-            # Hopefully it never comes up
-            print("")
-            buttons = {}
-            for i in re.finditer(R_J_OPTIONS, content):
-                name = get_translation(i)
-                buttons[name] = name
-                print(name)
-            chosen_file = print_buttons(buttons)
-            print(chosen_file)
-        else:
-            # This is the same as stuff in terminal option groups, just one (?)
-            #  value at a time
-            # Need to compile it over the whole file, so we don't instantly ask
-            options = re.finditer(R_T_OPTIONS, content)
-            for i in options:
-                player_options[get_translation(i)] = i.group("commands")
-    return result
-
 def check_actions(text):
     global state, g_vars, vars
     # These aren't mutually exclusive
@@ -154,6 +107,7 @@ def check_actions(text):
 with open(FILE_PATH, encoding="utf-8") as FILE:
     g_vars = set()
     strings = {}
+    last_try = False
     for match in re.finditer(R_STR, FILE.read()):
         strings[match.group("id")] = get_translation(match)
     # Going to be at the end of the file now, so might as well grab size
@@ -185,7 +139,7 @@ with open(FILE_PATH, encoding="utf-8") as FILE:
                 new_var = input("> ")
                 g_vars.add(new_var)
             # Will add "" when you exit, could leave it as it would be removed
-            #  by next bit, but it looks messy
+            #  by next bit anyway, but it looks messy
             g_vars.discard("")
             print("Current Global Vars:")
             print(", ".join(g_vars))
@@ -198,7 +152,6 @@ with open(FILE_PATH, encoding="utf-8") as FILE:
             break
         vars = set((state, "InTerminal_" + TERMINAL_NAME)) | g_vars
         FILE.seek(0)
-        # Yes I know this only works in cmd, I'll fix when I make my own display
         system("cls")
         while True:
             buffer += FILE.readline()
@@ -206,12 +159,59 @@ with open(FILE_PATH, encoding="utf-8") as FILE:
             if not command:
                 continue
             buffer = ""
+            # TEST STUFF REMEMBER TO REMOVE
+            r = command.group("req")
+            if "CLI_Booting" in r or "MiltonAllowed" in r or "InTerminal_Cloud_1_01" in r:
+                # print("r", r)
+                pass
             # Devs use lots of brackets so just letting python handle it should be fine
             if eval("(" + re.sub(R_REQ, r"('\1' in vars)", command.group("req")) + ")"):
-                result = parse_command(command)
+                content = command.group("content")
+                result = None
+                if command.group("type").lower() == "terminal":
+                    text = re.search(R_TEXT, content)
+                    if text:
+                        print_s_vars(get_translation(text))
+                        result = "text"
+                    image = re.search(R_IMAGE, content)
+                    if image:
+                        # Replace with actual image eventually
+                        print("IMAGE:", image.group("path"))
+                        result = "image"
+                    options = re.search(R_OPTIONS, content)
+                    if options:
+                        options = re.finditer(R_T_OPTIONS, options.group("content"))
+                        buttons = {}
+                        for i in options:
+                            buttons[get_translation(i)] = i.group("commands")
+                        result = check_actions(print_buttons(buttons))
+                elif command.group("type").lower() == "player":
+                    files = re.search(R_J_OPTIONS, content)
+                    print(files)
+                    if files:
+                        # Journal stuff, don't really know how to handle it
+                        # Hopefully it never comes up
+                        print("")
+                        buttons = {}
+                        for i in re.finditer(R_J_OPTIONS, content):
+                            name = get_translation(i)
+                            buttons[name] = name
+                            print(name)
+                        chosen_file = print_buttons(buttons)
+                        print(chosen_file)
+                    else:
+                        # This is the same as stuff in terminal option groups,
+                        #  just one (?) value at a time
+                        # Need to compile it over the whole file, so we don't
+                        #  instantly ask w/o knowing all options
+                        options = re.finditer(R_T_OPTIONS, content)
+                        print("o", options)
+                        for i in options:
+                            print("adding player options")
+                            player_options[get_translation(i)] = i.group("commands")
                 print("r1", result)
                 if not result:
-                    result = check_actions(command.group("content")) # BUG: Loop always happens when this part runs?
+                    result = check_actions(command.group("content"))
                 print("r2", result)
                 if result == "goto":
                     FILE.seek(0)
@@ -223,12 +223,22 @@ with open(FILE_PATH, encoding="utf-8") as FILE:
             if not FILE.tell() == FILE_SIZE:
                 continue
             print("At end of file")
+            # Loop over the file again because we may have opened up dialoges
+            #  that were skipped in the first pass
+            if not last_try:
+                print("last_try")
+                FILE.seek(0)
+                last_try = True
+                continue
             # If we reach the end of the file and have no player options we have
             #  no choice but to exit
             if not player_options:
                 print("No player_options")
                 break
             print("player_options")
+            # But if we do have player options we can check them and loop over
+            #  the file again
+            last_try = False
             result = check_actions(print_buttons(player_options))
             player_options = {}
             if result == "exit":
@@ -236,3 +246,4 @@ with open(FILE_PATH, encoding="utf-8") as FILE:
             # We need to do this regardless of if we got a goto command, as 
             #  options might have changed opening new paths
             FILE.seek(0)
+print(vars)
