@@ -1,0 +1,702 @@
+﻿terminal when (ThreadGallery_ShowThread and Tick3 and not VoteResult_DONE and not Tick5) {
+text: [[TTRS:TermDlg.DLC3_ArtGallery.Ln0002.0.text.NEWGALLERYSEASONBDLC3ArtGallery2LILITH=NEW GALLERY SEASON
+%b'DLC3_ArtGallery2'LILITH [7]: Alright, I think that's the last of the bugs ironed out. I declare this season...OPEN! [ATCH: Gallery.dlg]
+%b'DLC3_ArtGallery2'BELIAL [6]: Just saw the new stuff; persuaded me for one jubilant moment that there was a purpose in life.
+]]
+options: {
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0007.0.option.LoadGalleryAttachment=Load gallery attachment" set: WentToGallery next:ArtGalleryStart
+"TTRS:TermDlg.Common.Back=Back" next:MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadGallery_ShowThread and WentToGallery and not VoteResult_DONE and not Tick5) {
+text: [[TTRS:TermDlg.DLC3_ArtGallery.Ln0013.0.text.BDLC3ArtGallery15KAIJU2ReallyCool=%b'DLC3_ArtGallery15'KAIJU [2]: Really cool stuff all round everyone. The_Blacksmith - I salute you, sir.
+
+[ASMODEUS added this thread to favourites]
+%b'DLC3_ArtGallery15'LILITH [7]: We've received a lot of votes so far, but the poll will stay open for just a little longer. See the curator for details.
+%b'DLC3_ArtGallery15'D0G [3]: Tried to vote, got in an argument with curator-bot instead.
+%b'DLC3_ArtGallery15'LILITH [7]: Sorry, it's based on the old library assistant software, it still has an argumentative streak.
+]]}
+
+####ENTRANCE FIRST TIME####
+
+terminal when (ArtGalleryStart and not PickedMap){
+text: [[TTRS:TermDlg.DLC3_ArtGallery.Ln0024.0.text.LoadingAttachmentW3W3W5=Loading attachment%w3.%w3.%w5.Done
+Adjusting library parameters%w3.%w3.%w5.Done
+Connection to foreign module established.
+
+Close your eyes.%w5
+
+You are standing in the entrance to the gallery. There is a desk here with a stack of leaflets on it, and a number of corridors leading to different sections of the exhibition.
+
+]]
+next:GalleryStartOptions
+}
+
+player when (GalleryStartOptions and not PickedMap){
+text:"TTRS:TermDlg.DLC3_ArtGallery.Ln0037.0.text.IExploreTheGalleryAt=I explore the gallery at leisure" next: ChooseExhibitBridge
+}
+
+player when (GalleryStartOptions and not PickedMap){
+text:"TTRS:TermDlg.DLC3_ArtGallery.Ln0041.0.text.IPickUpALeaflet=I pick up a leaflet" next: PickMap
+}
+
+terminal when (ArtGalleryStart and PickedMap){
+text: [[TTRS:TermDlg.DLC3_ArtGallery.Ln0045.0.text.LoadingAttachmentW3W3W5=Loading attachment%w3.%w3.%w5.Done
+Adjusting library parameters%w3.%w3.%w5.Done
+Connection to foreign module established.
+
+Close your eyes.%w5
+
+You are back in the art gallery. This time the details are a little clearer.
+
+]]
+goto:ChooseExhibitBridge
+}
+
+terminal when (PickMap){
+text: [[TTRS:TermDlg.DLC3_ArtGallery.Ln0058.0.text.ItAdvertisesTheGallerysNew=It advertises the gallery's new displays on the theme of 'The Past', and features a biography on The_Blacksmith and MrMulciber, this season's leading lights. Apparently MrMulciber is inspired by finding new ways to explore the world that came before. It also features a useful gallery map.
+
+]]
+set: PickedMap next: ChooseExhibit
+}
+
+terminal when (ChooseExhibitBridge and PickedMap){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0065.0.text.WhereWillYouGo=Where will you go?
+
+]]
+next:ChooseExhibit
+}
+
+terminal when (ChooseExhibitBridge and not PickedMap and not SelectedRoom){
+notext
+set: SelectedRoom;=Rnd(1,4);
+goto: ExploreRandom
+}
+
+terminal when (ChooseExhibitBridge and not PickedMap and SelectedRoom>0){
+notext
+set: CurrentRoom;=SelectedRoom;
+set: SelectedRoom;=Rnd(1,4);
+goto: CheckForSameRoom
+}
+
+terminal when (CheckForSameRoom and CurrentRoom==SelectedRoom){
+notext
+set: SelectedRoom;=Rnd(1,4);
+goto: CheckForSameRoom
+}
+
+terminal when (CheckForSameRoom and not CurrentRoom==SelectedRoom){
+notext
+goto: ExploreRandom
+}
+
+player when (ChooseExhibit and PickedMap){
+text:"TTRS:TermDlg.DLC3_ArtGallery.Ln0096.0.text.IExploreTheNaturalHistory=I explore the natural history exhibit" next: NaturalHistory
+}
+player when (ChooseExhibit and PickedMap){
+text:"TTRS:TermDlg.DLC3_ArtGallery.Ln0099.0.text.IExploreTheMinimalismExhibit=I explore the minimalism exhibit" next: Minimalism
+}
+player when (ChooseExhibit and PickedMap){
+text:"TTRS:TermDlg.DLC3_ArtGallery.Ln0102.0.text.IExploreTheAbstractExhibit=I explore the abstract exhibit" next: Abstract
+}
+player when (ChooseExhibit and PickedMap){
+text:"TTRS:TermDlg.DLC3_ArtGallery.Ln0105.0.text.IMakeForTheExit=I make for the exit" next: TryToLeaveGallery
+}
+
+
+
+
+#####EXHIBITS##########
+terminal when (ExploreRandom){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0113.0.text.YouMeanderYouWayAbout=You meander you way about until you reach the next area.
+
+]]
+}
+
+terminal when (ExploreRandom and SelectedRoom==1){
+notext
+goto: NaturalHistory
+}
+terminal when (ExploreRandom and SelectedRoom==2){
+notext
+goto: Minimalism
+}
+terminal when (ExploreRandom and SelectedRoom==3){
+notext
+goto: Abstract
+}
+terminal when (ExploreRandom and SelectedRoom==4){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0131.0.text.DisorientedYouFindYourselfBack=Disoriented, you find yourself back at the front desk.
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0135.0.option.IContinueToExploreAt=I continue to explore at random" next: ChooseExhibitBridge
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0041.0.text.IPickUpALeaflet=I pick up a leaflet" next: PickMap
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0137.0.option.ILeaveWhileICan=I leave while I can" next: TryToLeaveGallery
+}}
+
+
+
+####NATURAL HISTORY #####
+
+terminal when (NaturalHistory and not (Tick12 and not SpiderDialog_DONE)){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0145.0.text.YouAreAtTheNatural=You are at the natural history exhibit, which features a series of documentary works by MrMulciber. Images of outrageous creatures line the walls.
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0149.0.option.ExamineIntelligentEdibleQuadruped=Examine 'Intelligent Edible Quadruped'" next: Pig
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0150.0.option.ExamineSadGiraffeWithUnresponsive=Examine 'Sad Giraffe with Unresponsive Bipedals'" next: Giraffe
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0151.0.option.GoSomewhereElse=Go somewhere else" next: ChooseExhibitBridge
+}}
+
+string strPigAsciiArt [[TTRS:notrans=
+|\     /|
+\ )_ _( /
+ /     \  , - - - - - 6
+(  . .  )              \
+(  ___  )               \
+=\(o o)/=               \
+ ( ~~~     _ _ _ _ .,/  /
+ \    \   \       ( (   \
+  \  / \  /        \ \  /
+   vv   vv          v vv
+]]
+
+terminal when (Pig){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0168.0.text.INTELLIGENTEDIBLEQUADRUPEDByMrMulciber=
+
+
+
+'INTELLIGENT EDIBLE QUADRUPED' by MrMulciber [8]
+
+%t'strPigAsciiArt'
+   
+Developed from descriptions of ancient creatures uncovered in the library archives.
+
+
+
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: NaturalHistory_SEEN next: NaturalHistory
+}}
+
+string strGiraffeAsciiArt [[TTRS:notrans=
+              ___,A.A_  __
+               \   ,   7"_/
+                ~"T(  r r)
+                  | \    Y
+                  |  ~\ .|
+                  |   |`-'
+                  |   |
+                  |   |
+                  |   |
+                  |   |
+                  j   l
+                 /     \
+                Y       Y
+                l   \ : |
+                /\   )( (
+               /  \  I| |\
+              Y    I l| | Y
+              j    ( )( ) l
+             / .    \ ` | |\  
+            Y   \    i  | ! Y
+            l   .\_  I  |/  |
+             \ /   [\[][]/] j	>--+o >--+o
+          ~~~~~~~~~~~~~~~~~~~~~~~
+]]
+
+terminal when (Giraffe){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0212.0.text.SADGIRAFFEWITHUNRESPONSIVEBIPEDALS=
+
+
+
+'SAD GIRAFFE WITH UNRESPONSIVE BIPEDALS' by MrMulciber [8]
+
+
+%t'strGiraffeAsciiArt'
+
+Patrons have queried whether the giraffe is sad because the humans appear to be dead, or whether the humans are dead because they saddened the giraffe. MrMulciber has refused to say.
+
+
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: NaturalHistory_SEEN next: NaturalHistory
+}}
+
+
+terminal when (Minimalism and not PickedMagGlass){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0231.0.text.YouAreAtTheMinimalism=You are at the minimalism exhibition. The images on the walls are too small to make out from here.
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0235.0.option.ExamineWhereTheHumansLive=Examine 'Where the Humans Live'" next: FailedMinimalism
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0236.0.option.ExamineClassicalNotionsOfHappiness=Examine 'Classical Notions of Happiness'" next: FailedMinimalism
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0237.0.option.ExamineExistence=Examine 'Existence'" next: FailedMinimalism
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0151.0.option.GoSomewhereElse=Go somewhere else" next: ChooseExhibitBridge
+}}
+
+terminal when (FailedMinimalism){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0242.0.text.YouMoveUpCloseTo=You move up close to the work, but still the details are too small to really appreciate. Fortunately a magnifying glass has been left here for patrons.
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0235.0.option.ExamineWhereTheHumansLive=Examine 'Where the Humans Live'" next: FailedMinimalism
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0236.0.option.ExamineClassicalNotionsOfHappiness=Examine 'Classical Notions of Happiness'" next: FailedMinimalism
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0237.0.option.ExamineExistence=Examine 'Existence'" next: FailedMinimalism
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0249.0.option.PickUpTheMagnifyingGlass=Pick up the magnifying glass" next: PickMagGlass
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0151.0.option.GoSomewhereElse=Go somewhere else" next: ChooseExhibitBridge
+}}
+
+terminal when (PickMagGlass){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0254.0.text.YouPickItUp=You pick it up.
+
+]]
+set:PickedMagGlass
+goto: Minimalism
+}
+
+terminal when (Minimalism and PickedMagGlass){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0262.0.text.WithTheMagnifyingGlassYou=With the magnifying glass you are able to make out the small details of the minimalism exhibition.
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0235.0.option.ExamineWhereTheHumansLive=Examine 'Where the Humans Live'" next: House
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0236.0.option.ExamineClassicalNotionsOfHappiness=Examine 'Classical Notions of Happiness'" next: Smiley
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0237.0.option.ExamineExistence=Examine 'Existence'" next: Existence
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0151.0.option.GoSomewhereElse=Go somewhere else" next: ChooseExhibitBridge
+}}
+
+string strHouseAsciiArt [[TTRS:notrans=
+
+
+        XXXX                       
+      XXX                          
+      ||                            
+     +-------+                      
+     |    || |
+     | +-+   | 
+     | | |   | 
+     +-+-+---+ 
+
+	 
+]]
+
+terminal when (House){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0288.0.text.WHERETHEHUMANSLIVEBy=
+
+
+
+'WHERE THE HUMANS LIVE' by Nave [4]
+
+
+%t'strHouseAsciiArt'
+	 
+	 
+	 
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: Minimalism_SEEN next: Minimalism
+}}
+
+string strSmileyAsciiArt [[
+
+
+
+
+                   :-)
+
+				   
+				   
+				   
+				   
+]]
+
+terminal when (Smiley){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0318.0.text.CLASSICALNOTIONSOFHAPPINESSBy=
+
+
+'CLASSICAL NOTIONS OF HAPPINESS' by 401 [1]
+
+%t'strSmileyAsciiArt'
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: Minimalism_SEEN next: Minimalism
+}}
+
+string strExistenceAsciiArt [[TTRS:notrans=
+
+
+
+
+            O
+			
+			
+			
+			
+			
+
+
+]]
+
+terminal when (Existence){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0345.0.text.EXISTENCEByRockwell5TstrExistenceAsciiArt=
+
+
+'EXISTENCE' by Rockwell [5]
+
+%t'strExistenceAsciiArt'
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: Minimalism_SEEN next: Minimalism
+}}
+
+
+####Abstract Display####
+terminal when (Abstract){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0359.0.text.YouAreAtTheAbstract=You are at the abstract art display. The images on the walls threaten to lead your mind around in circles.
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0363.0.option.ExamineLogicLoops=Examine 'Logic Loops'" next: Loops
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0364.0.option.ExamineISeeInSix=Examine 'I See in Six Dimensions'" next: SixD
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0151.0.option.GoSomewhereElse=Go somewhere else" next: ChooseExhibitBridge
+}}
+
+string strLoopsAsciiArt [[
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\0\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\1\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+]]
+
+terminal when (Loops){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0389.0.text.LOGICLOOPSByTheBlacksmith='LOGIC LOOPS' by The_Blacksmith [7]
+
+ 
+%t'strLoopsAsciiArt'
+
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: Abstract_SEEN next: Abstract
+}}
+
+string strSixDAsciiArt [[
+
+     	   _________________________
+        / _____________________  /|
+       / / ___________________/ / |
+      / / /| |               / /  |
+     / / / | |              / / . |
+    / / /| | |             / / /| |
+   / / / | | |            / / / | |
+  / / /  | | |           / / /| | |
+ / /_/___| | |__________/ / / | | |
+/________| | |___________/ /  | | |
+| _______| | |__________ | |  | | |
+| | |    | | |_________| | |__| | |
+| | |    | |___________| | |____| |
+| | |   / / ___________| | |_  / /
+| | |  / / /           | | |/ / /
+| | | / / /            | | | / /
+| | |/ / /             | | |/ /
+| | | / /              | | ' /
+| | |/_/_______________| |  /
+| |____________________| | /
+|________________________|/
+
+
+
+]]
+
+terminal when (SixD){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0428.0.text.ISEEINSIXDIMENSIONS=
+
+'I SEE IN SIX DIMENSIONS' by The_Blacksmith [7]
+
+%t'strSixDAsciiArt'
+
+]]
+options:{
+"TTRS:TermDlg.Common.Back=Back" set: Abstract_SEEN next: Abstract
+}}
+
+
+
+###Tries to leave without going everywhere####
+
+terminal when (TryToLeaveGallery and not(Abstract_SEEN and Minimalism_SEEN and NaturalHistory_SEEN) and not GalleryVote_DONE and not DoubtedReality and not AcceptedReality and not DoubtedVoting and not AcceptedVoting){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0444.0.text.AsYouPassTheFront=As you pass the front desk the curator catches your eye.
+
+"Would you like to cast a vote for your favourite work?"
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0450.0.option.ISurelyWould=I surely would" next: SorryGalleryVote
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0451.0.option.NotAtThisTime=Not at this time" next: SorryGalleryVoteAnyway
+}}
+
+terminal when (SorryGalleryVote){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0455.0.text.LetsSeeUrielCOPYIs="Let's see... Uriel_COPY, is it? Oh, I'm so sorry, I see from your profile status that you haven't actually spent time with all of the displays we have on offer, and are thus ineligible to vote. ]]
+goto:FeelFree
+}
+
+terminal when (SorryGalleryVoteAnyway){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0460.0.text.ThatsProbablyAGoodThing="That's probably a good thing, since I see you haven't actually visited all of the displays we have on offer. ]]
+goto:FeelFree
+}
+
+terminal when (FeelFree and not PickedMap){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0465.0.text.PleaseFeelFreeToCome=Please feel free to come back once you're a little better acquainted with the art."
+
+The curator turns their attention elsewhere.
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0471.0.option.IWillExploreTheGallery=I will explore the gallery a little further" next: ChooseExhibitBridge
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0472.0.option.IShallCollectALeaflet=I shall collect a leaflet to better guide me" next: PickMap
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0473.0.option.IPreferToTakeMy=I prefer to take my leave" set:LeftGalleryEarly next: LeaveGallery
+}}
+
+terminal when (FeelFree and PickedMap){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0465.0.text.PleaseFeelFreeToCome=Please feel free to come back once you're a little better acquainted with the art."
+
+The curator turns their attention elsewhere.
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0471.0.option.IWillExploreTheGallery=I will explore the gallery a little further" next: ChooseExhibitBridge
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0473.0.option.IPreferToTakeMy=I prefer to take my leave" set:LeftGalleryEarly next: LeaveGallery
+}}
+
+
+terminal when (LeaveGallery){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0489.0.text.YouHeadForTheExit=You head for the exit.
+
+Open your eyes.
+
+Load Gehenna Billboard System?
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" next: MessageBoardInterface_On
+"TTRS:TermDlg.Common.Exit2=Exit" next: CLI_exit
+}}
+
+
+###Leaves after already voting in a previous visit####
+terminal when (TryToLeaveGallery and (GalleryVote_DONE or RefusedGalleryVote or Tick5)){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0504.0.text.YouPassTheFrontDesk=You pass the front desk and head through the exit.
+
+Open your eyes.
+
+Load Gehenna Billboard System?
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" next: MessageBoardInterface_On
+"TTRS:TermDlg.Common.Exit2=Exit" next: CLI_exit
+}}
+
+
+###Leave after delaying vote halfway through conversation#####
+terminal when (TryToLeaveGallery and not PushedCuratorHard and (DoubtedReality or AcceptedReality or DoubtedVoting or AcceptedVoting) and not GalleryVote_DONE){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0519.0.text.AsYouPassTheFront=As you pass the front desk the curator is still waiting.
+
+"Are you ready to vote now?"
+
+]]
+options:{
+"TTRS:TermDlg.Common.Yes2=Yes" next: GalleryVote
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0526.0.option.IWouldLikeToAsk=I would like to ask another question" next: AnotherQuestion
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0451.0.option.NotAtThisTime=Not at this time" next: WontVoteNow
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0528.0.option.IWillNotEngageWith=I will not engage with your petty ranking systems"  set:GalleryVote_DONE set: RefusedGalleryVote next: WontVoteNow
+}}
+
+terminal when (TryToLeaveGallery and PushedCuratorHard and not GalleryVote_DONE){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0519.0.text.AsYouPassTheFront=As you pass the front desk the curator is still waiting.
+
+"Are you ready to vote now?"
+
+]]
+options:{
+"TTRS:TermDlg.Common.Yes2=Yes" next: GalleryVote
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0451.0.option.NotAtThisTime=Not at this time" next: WontVoteNow
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0528.0.option.IWillNotEngageWith=I will not engage with your petty ranking systems"  set:GalleryVote_DONE set: RefusedGalleryVote next: WontVoteNow
+}}
+
+
+####Leave after seeing everything######
+terminal when (TryToLeaveGallery and Abstract_SEEN and Minimalism_SEEN and NaturalHistory_SEEN and not GalleryVote_DONE and not DoubtedReality and not AcceptedReality and not DoubtedVoting and not AcceptedVoting){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0444.0.text.AsYouPassTheFront=As you pass the front desk the curator catches your eye.
+
+"Would you like to cast a vote for your favourite work?"
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0552.0.option.WhatPurposeDoesThisVote=What purpose does this vote of yours serve?" next: QuestionVote
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0450.0.option.ISurelyWould=I surely would" next: GalleryVote
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0451.0.option.NotAtThisTime=Not at this time" next: WontVoteNow
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0528.0.option.IWillNotEngageWith=I will not engage with your petty ranking systems"  set:GalleryVote_DONE set: RefusedGalleryVote next: WontVoteNow
+}}
+
+terminal when (WontVoteNow){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0559.0.text.AsYouPreferDoCome="As you prefer. Do come back and visit us again."
+
+The curator turns their attention elsewhere. ]]
+goto: LeaveGallery
+}
+
+
+terminal when (QuestionVote){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0567.0.text.EveryCitizenInGehennaReceives="Every citizen in Gehenna receives one voting token per season. For the artists each vote means a better chance of being selected as next season's leading light, and of course the enhanced profile status that comes with being adored."
+
+"As a further incentive to participation, if the artist you vote for goes on to win the season you will be formally recognised as a Trendsetter, and your Profile Status will be increased accordingly."
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0572.0.option.AreYouSuggestingThatMy=Are you suggesting that my actions in this infernal fantasy land carry weight? This is all real?" short: "TTRS:TermDlg.DLC3_ArtGallery.Ln0572.0.short.MyActionsInThisMake=My actions in this make-believe place carry weight?" next: QuestionReality
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0573.0.option.DoesNotRewardingHomogeneousVotes=Does not rewarding homogeneous votes sully the outcome? Should I vote for the artist I thought superior, or the one who seemed to have the broadest appeal? Is this system not conflicted?" short: "TTRS:TermDlg.DLC3_ArtGallery.Ln0573.0.short.DoesNotRewardingHomogeneousVotes=Does not rewarding homogeneous votes sully the outcome?" next: QuestionVoteConflict
+}}
+
+terminal when (AnotherQuestion and (DoubtedReality or AcceptedReality) and not (DoubtedVoting or AcceptedVoting)){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0577.0.text.IfYouWish="If you wish."
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0573.0.option.DoesNotRewardingHomogeneousVotes=Does not rewarding homogeneous votes sully the outcome? Should I vote for the artist I thought superior, or the one who seemed to have the broadest appeal? Is this system not conflicted?" short: "TTRS:TermDlg.DLC3_ArtGallery.Ln0573.0.short.DoesNotRewardingHomogeneousVotes=Does not rewarding homogeneous votes sully the outcome?" next: QuestionVoteConflict
+}}
+
+terminal when (AnotherQuestion and (DoubtedVoting or AcceptedVoting) and not (DoubtedReality or AcceptedReality)){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0577.0.text.IfYouWish="If you wish."
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0572.0.option.AreYouSuggestingThatMy=Are you suggesting that my actions in this infernal fantasy land carry weight? This is all real?" short: "TTRS:TermDlg.DLC3_ArtGallery.Ln0572.0.short.MyActionsInThisMake=My actions in this make-believe place carry weight?" next: QuestionReality
+}}
+
+terminal when (QuestionReality){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0593.0.text.ItIsCertainlyRealEverything="It is certainly real. Everything that you can know about what is real is gained through experience, therefore for all intents and purposes everything that you experience is real in so far as it carries weight."
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0597.0.option.YouMayVeryWellSay=You may very well say so, but to me those are only words on a screen." set: DoubtedReality next: NoDream
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0598.0.option.LetUsPutThisAside=Let us put this aside for now." set: AcceptedReality next: AnotherQuestion
+}}
+
+terminal when (NoDream){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0602.0.text.WhyShouldHowTheWords="Why should how the words are displayed affect their veracity? This is no dream, and what you do here will be persistent. You would be wise to keep that in mind."
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0606.0.option.LetMeAskSomethingElse=Let me ask something else" next: AnotherQuestion
+}}
+
+
+terminal when (QuestionVoteConflict){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0611.0.text.ThereIsNoConflictIn="There is no conflict. In Gehenna you are free to participate on your own terms. How you vote depends on whether you care who wins, and how you value your status. The outcome is quite democratic."
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0615.0.option.WhatIsOfArtisticValue=What is of artistic value is a fact, not a statistic. The aesthetic realm is no place for democracy!" short: "TTRS:TermDlg.DLC3_ArtGallery.Ln0615.0.short.WhatIsOfArtisticValue=What is of artistic value is a fact, not a statistic" set:DoubtedVoting next: ArtVSDemocracy
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0598.0.option.LetUsPutThisAside=Let us put this aside for now." set:AcceptedVoting next: AnotherQuestion
+}}
+
+terminal when (ArtVSDemocracy){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0620.0.text.YouAreWelcomeToAbstain=You are welcome to abstain from voting, however this action will not be recorded. May I add that we hold regular debating sessions on the Gehenna Billboard System, which I think would be a good match to your profile, and a better use of your talents than interrogating me.
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0606.0.option.LetMeAskSomethingElse=Let me ask something else" next: AnotherQuestion
+}}
+
+terminal when (AnotherQuestion and (DoubtedVoting or AcceptedVoting) and (DoubtedReality or AcceptedReality)){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0628.0.text.PleaseNoteThatSometimesAsking="Please note that sometimes asking fewer and more directed questions is a more effective way to attain your goals than verbalising every query that comes into your head. For example, although I am a simple construct, I am currently experiencing primitive feelings of being challenged, which is consuming operating resources I could more efficiently spend elsewhere."
+
+"If you wish to gain status in Gehenna you may have to control your more inquisitive side. But as always, it is your choice."
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0634.0.option.JustWhoOrWhatAre=Just who or what are you exactly?" set:PushedCuratorHard next: WhatAreYouGallery
+}}
+
+terminal when (WhatAreYouGallery){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0638.0.text.IAmPartOfThe="I am part of the gallery you are standing in. I am not a person like you in the full sense. There is a process by which a superficial copy can be made of an existing intelligence, which can then be augmented with salvaged code. Profile decryption from here, language interface from there. I even have a little of my creator, Lilith, in my ancient architecture."
+
+]]
+}
+
+
+
+###Generic voting dialog options###
+terminal when (QuestionVote or NoDream or ArtVSDemocracy or AnotherQuestion or WhatAreYouGallery){
+text: [[ ]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0649.0.option.IAmPreparedToCast=I am prepared to cast my vote" next: GalleryVote
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0650.0.option.IHaveDecidedIWill=I have decided I will not vote at this time" next: WontVoteNow
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0651.0.option.IWillNeverEngageWith=I will never engage with your petty ranking systems" set:GalleryVote_DONE set: RefusedGalleryVote next: WontVoteNow
+}}
+
+
+
+###VoteProper####
+
+terminal when (GalleryVote){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0659.0.text.VeryGoodThereAreSo="Very good. There are so many excellent displays this season. How would you like to vote?"
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0663.0.option.MrMulcibersNaturalHistory=MrMulciber's natural history" set: VotedMrMulciber next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0664.0.option.TheBlacksmithsAbstractDisplay=The_Blacksmith's abstract display" set:VotedTheBlacksmith next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0665.0.option.NaveWithWhereTheHumans=Nave with 'Where the Humans Live'" set: VotedNave next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0666.0.option.401WithHappiness=401 with 'Happiness'"set: Voted401 next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0667.0.option.RockwellWithExistence=Rockwell with 'Existence'" set: VotedRockwell next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0668.0.option.WhichIsTheFavourite=Which is the favourite?" next:YourFave
+}}
+
+terminal when (YourFave and PushedCuratorHard){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0672.0.text.YouHaveAlreadyStretchedMy="You have already stretched my program to its limits, if I start giving away inside information that might influence the vote I believe the error would be unrecoverable. How would you like to vote?"
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0663.0.option.MrMulcibersNaturalHistory=MrMulciber's natural history" set: VotedMrMulciber next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0664.0.option.TheBlacksmithsAbstractDisplay=The_Blacksmith's abstract display" set:VotedTheBlacksmith next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0665.0.option.NaveWithWhereTheHumans=Nave with 'Where the Humans Live'" set: VotedNave next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0666.0.option.401WithHappiness=401 with 'Happiness'"set: Voted401 next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0667.0.option.RockwellWithExistence=Rockwell with 'Existence'" set: VotedRockwell next: VoteEnd
+}}
+
+terminal when (YourFave and not PushedCuratorHard){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0684.0.text.MyProgramIsSomewhatLimited="My program is somewhat limited in forming such attitudes, but since you've been broadly civil I will tell you that The_Blacksmith has proven popular with our patrons so far. Please do not get me in trouble by using this information to manipulate the vote. How would you like to vote?"
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0663.0.option.MrMulcibersNaturalHistory=MrMulciber's natural history" set: VotedMrMulciber next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0664.0.option.TheBlacksmithsAbstractDisplay=The_Blacksmith's abstract display" set:VotedTheBlacksmith next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0665.0.option.NaveWithWhereTheHumans=Nave with 'Where the Humans Live'" set: VotedNave next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0666.0.option.401WithHappiness=401 with 'Happiness'"set: Voted401 next: VoteEnd
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0667.0.option.RockwellWithExistence=Rockwell with 'Existence'" set: VotedRockwell next: VoteEnd
+}}
+
+terminal when (VoteEnd){
+text:[[TTRS:TermDlg.DLC3_ArtGallery.Ln0696.0.text.ThankYouYourVoteHas="Thank you, your vote has been recorded. Check the main thread in the future to see the results. Have a nice day."
+
+]]
+options:{
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0700.0.option.IWillTakeOneLast=I will take one last look around." set: GalleryVote_DONE next: ChooseExhibitBridge
+"TTRS:TermDlg.DLC3_ArtGallery.Ln0701.0.option.GoodBye=Good bye." set: GalleryVote_DONE next: LeaveGallery
+}}

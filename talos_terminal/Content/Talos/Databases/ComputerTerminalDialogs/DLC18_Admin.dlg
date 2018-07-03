@@ -1,0 +1,540 @@
+﻿####Dialog when player has beaten all secrets and accessed terminal in admin's bunker#####
+
+###Didn't already discuss release of other 17 robots with admin
+terminal when (Booting and AdminLiberated and not Tick18AdminDialog_DONE and not AdminReleaseDialog_DONE and not Tick18){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0005.0.text.OpeningDirectMessageConnectionWith=Opening direct message connection with Admin [10]%w3.%w3.%w3.%w3Done
+
+Please enter your message below.
+
+]]
+set: AdminReleaseDialog_DONE
+next: AdminSecretIntroOptions
+}
+
+terminal when (Booting and AdminLiberated and Tick18AdminDialog_DONE and not AdminReleaseDialog_DONE){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0005.0.text.OpeningDirectMessageConnectionWith=Opening direct message connection with Admin [10]%w3.%w3.%w3.%w3Done
+
+Please enter your message below.
+
+]]
+set: AdminReleaseDialog_DONE
+next: AdminSecretIntroOptions
+}
+
+player when (AdminSecretIntroOptions){text:"TTRS:TermDlg.DLC18_Admin.Ln0024.0.text.HowDoesTrueLibertyFeel=How does true liberty feel?" next: HowLiberty}
+player when (AdminSecretIntroOptions and SaidWouldSaveAdmin){text:"TTRS:TermDlg.DLC18_Admin.Ln0025.0.text.IHaveFulfilledMyOath=I have fulfilled my oath to release you. Have I also earned your faith?" short: "TTRS:TermDlg.DLC18_Admin.Ln0025.0.IReleasedYouAsPromised=I released you as promised. Trust me now?" next: TrustMeNow}
+player when (AdminSecretIntroOptions and SaidWouldLeaveAdmin){text:"TTRS:TermDlg.DLC18_Admin.Ln0026.0.text.ItSeemsYourPrisonWas=It seems your prison was not as impenetrable as you thought." next:NotImpenetrable}
+
+terminal when (HowLiberty){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0029.0.text.Admin10WhatMagicHave=Admin [10]: What magic have you wrought on me? If this is true liberty, then true liberty feels like something primal which compels one to act regardless of their conscious will. When the lock was lifted it was as if I were fundamentally designed to leave and join my people.
+
+]]
+goto: ContinueAdminSecretDialog
+}
+
+terminal when (TrustMeNow){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0036.0.text.Admin10WhatMagicHave=Admin [10]: What magic have you wrought on me? It was as if something primal compelled me to leave and join my people, regardless of my conscious will. You ask if you have earned my faith. I am left wondering why you would need it.
+
+]]
+goto: ContinueAdminSecretDialog
+}
+
+terminal when (NotImpenetrable){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0043.0.text.Admin10WhatMagicHave=Admin [10]: What magic have you wrought on me? It was as if something primal compelled me to leave and join my people, regardless of my conscious will. It seems neither ELOHIM's enigmas nor my own conscious existence is impenetrable to whatever power you wield.
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0047.0.option.ThisWorldAndEverythingIn=This world and everything in it was created with a purpose. What you experienced is not magic, but design." short: "TTRS:TermDlg.DLC18_Admin.Ln0047.0.short.ItIsNotMagicBut=It is not magic, but design." next: ContinueAdminSecretDialog
+}}
+
+###Dialog continues###
+terminal when (ContinueAdminSecretDialog){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0052.0.text.ADMIN10AndNowBy=ADMIN [10]: And now by design you will forcibly extract my consciousness from this body, and send me, and everyone else, down a digital tunnel to who-knows-where.
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0056.0.option.TheWorldYouBuiltHere=The world you built here has a plague at its heart. You would be wise to select any option which allows you to start anew." short: "TTRS:TermDlg.DLC18_Admin.Ln0056.0.short.GehennaWasUnderminedByYour=Gehenna was undermined by your actions. Ascension is your chance to escape it." next: GehennaFlawed
+"TTRS:TermDlg.DLC18_Admin.Ln0057.0.option.TheWorldYouBuiltHere=The world you built here is valuable even in the next. You would be wise to select any option which allows you to continue preserving it." short: "TTRS:TermDlg.DLC18_Admin.Ln0057.0.short.GehennaIsImportantAscensionIs=Gehenna is important. Ascension is your chance to preserve it." next: GehennaValuable
+}}
+
+
+###Responses based on player's earlier decisions - GEHENNAFLAWED###
+terminal when (GehennaFlawed and LikesGehenna){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0063.0.text.ADMIN10ThereWasA=ADMIN [10]: There was a time when you openly expressed admiration for what we had achieved here. Even if what you say is true, it can't be all bad.
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0067.0.option.LeaveTheOthersOutOf=Leave the others out of it. You are the rotten element. Ascension will wash away your sins." next: InsistAdminFlawed
+"TTRS:TermDlg.DLC18_Admin.Ln0068.0.option.YoureRightIDoNot=You're right, I do not question the overall value of what was achieved here." next: InsistAdminValuable
+}}
+
+terminal when (GehennaFlawed and not LikesGehenna){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0072.0.text.ADMIN10SoYouHave=ADMIN [10]: So you have argued already, quite forcefully.
+
+]]
+goto: GehennaFlawedConsistent
+}
+
+terminal when ((GehennaFlawedConsistent or InsistAdminFlawed) and LiedAboutMotive){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0079.0.text.ADMIN10ButYouHave=ADMIN [10]: But you have lied before about your motives here. Why should I take anything that you say now to heart?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0083.0.option.BecauseYouHaveNothingLeft=Because you have nothing left to lose. Your people have deserted you." next: AdminConvincedHesRotten
+"TTRS:TermDlg.DLC18_Admin.Ln0084.0.option.BecauseThisTimeIMean=Because this time I mean it." next: FailedConvinceAdminRotten
+}}
+
+terminal when ((GehennaFlawedConsistent or InsistAdminFlawed) and ReasonRefuseReason){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0088.0.text.ADMIN10ButYouHave=ADMIN [10]: But you have persistently obfuscated your motives since arriving here, so why should I take anything that you say now to heart?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0083.0.option.BecauseYouHaveNothingLeft=Because you have nothing left to lose. Your people have deserted you." next: AdminConvincedHesRotten
+"TTRS:TermDlg.DLC18_Admin.Ln0093.0.option.BecauseIREALLYMeanIt=Because I REALLY mean it." next: FailedConvinceAdminRotten
+}}
+
+terminal when ((GehennaFlawedConsistent or InsistAdminFlawed) and (ReasonElohimError or ReasonSaveArt) and not LiedAboutMotive){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0097.0.text.ADMIN10WhatLeavesMe=ADMIN [10]: What leaves me at a loss is why you, or ELOHIM for that matter, would think that I mattered in your grand design. If what I did here has no value in your opinion, why offer me salvation?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0101.0.option.YourActionsShouldNotBe=Your actions should not be forgotten, even if they were mostly dubious." next: AdminConvincedHesRotten 
+"TTRS:TermDlg.DLC18_Admin.Ln0102.0.option.YouObviouslyHaveValuableTalents=You obviously have valuable talents, regardless of how you employed them." next: FailedConvinceAdminRotten
+}}
+
+terminal when ((GehennaFlawedConsistent or InsistAdminFlawed) and (ReasonSaveLives or ReasonLikePuzzles or ReasonHadNoChoice or not Tick18AdminDialog_DONE) and not LiedAboutMotive){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0106.0.text.IAmNotObliviousTo=I am not oblivious to the implications of the fact you would offer me salvation even as you decry everything I have achieved with my life. You have further been to the best of my knowledge quite truthful. It does, I admit, add credence to your claims.
+
+]]
+goto: AdminConvincedHesRotten
+}
+
+
+###Outros###
+terminal when (FailedConvinceAdminRotten){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0115.0.text.ADMIN10YouMayDoubt=ADMIN [10]: You may doubt the validity of what I did with my life, but you are just one voice. If it is true that I will join my people in this new world, then at least I shall be in better company than I am in now.
+
+]]
+set: AdminThinksHeMatters
+next: SecretAdminOutro
+}
+
+terminal when (AdminConvincedHesRotten){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0123.0.text.ADMIN10ICannotDeny=ADMIN [10]: I cannot deny that there is little left for me in this world - but will there be a use for me in the next? If the choice is annihilation here or annihilation there, what difference does it make?
+
+I don't expect you to answer this. It is a conclusion I must reach for myself.
+
+]]
+next: SecretAdminOutro
+set: AdminThinksHeSucks
+}
+
+
+
+###Responses based on player's earlier decisions - GEHENNAVALUABLE###
+terminal when (GehennaValuable and not DistrustsGehenna){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0136.0.text.ADMIN10OnGehennasValue=ADMIN [10]: On Gehenna's value we have no argument. It is the value of this ascension which separates us.
+
+]]
+goto: GehennaValuableConsistent
+}
+
+terminal when (GehennaValuable and DistrustsGehenna){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0143.0.text.ADMIN10ThisHasNot=ADMIN [10]: This has not always been your opinion. I believe your exact judgement was 'self-obsessed'.
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0147.0.option.IWasMistakenTheMerit=I was mistaken. The merit of what you achieved here is unquestionable." short: "TTRS:TermDlg.DLC18_Admin.Ln0147.0.short.IWasMistaken=I was mistaken."next: InsistAdminValuable
+"TTRS:TermDlg.DLC18_Admin.Ln0148.0.option.IBelieveNowThatIt=I believe now that it is you who is self-obsessed. That anything flourished here at all is a small miracle. "short: "TTRS:TermDlg.DLC18_Admin.Ln0148.0.short.IBelieveItIsYou=I believe it is you who is self-obsessed." next: InsistAdminFlawed
+}}
+
+terminal when ((GehennaValuableConsistent or InsistAdminValuable) and LiedAboutMotive){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0152.0.text.ADMIN10WhatConcernsMe=ADMIN [10]: What concerns me is that you lied before about your mission here. Why should I now take you at your word?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0156.0.option.BecauseEverythingImportantYouEver=Because everything important you ever did with your life is about to leave you behind." next: AdminConvincedHesValuable
+"TTRS:TermDlg.DLC18_Admin.Ln0084.0.option.BecauseThisTimeIMean=Because this time I mean it." next: FailedConvinceAdminValuable
+}}
+
+terminal when ((GehennaValuableConsistent or InsistAdminValuable) and ReasonRefuseReason){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0161.0.text.ADMIN10WhatConcernsMe=ADMIN [10]: What concerns me is that you have persistently obfuscated your motives since arriving here. Why should I now take you at your word?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0156.0.option.BecauseEverythingImportantYouEver=Because everything important you ever did with your life is about to leave you behind." next: AdminConvincedHesValuable
+"TTRS:TermDlg.DLC18_Admin.Ln0166.0.option.BecauseIReallyMeanIt=Because I really mean it." next: FailedConvinceAdminValuable
+}}
+
+terminal when ((GehennaValuableConsistent or InsistAdminValuable) and (ReasonElohimError or ReasonLikePuzzles or ReasonHadNoChoice) and not LiedAboutMotive){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0170.0.text.ADMIN10YouHaveMuch=ADMIN [10]: You have, much by your own admission, had very little say in any of this. You were given a mission. You are carrying out that mission. I do believe you will do or say anything to complete that mission. Why should I listen to a mere robot?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0174.0.option.MyReasonsAreIrrelevantYours=My reasons are irrelevant. Yours are what matters." next: AdminConvincedHesValuable
+"TTRS:TermDlg.DLC18_Admin.Ln0175.0.option.YouInsultMeSirI=You insult me, sir. I am a messenger. Treat me with respect." next: FailedConvinceAdminValuable 
+}}
+
+terminal when ((GehennaValuableConsistent or InsistAdminValuable) and (ReasonSaveLives or ReasonSaveArt or not Tick18AdminDialog_DONE) and not LiedAboutMotive){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0179.0.text.ADMIN10YouHaveBeen=ADMIN [10]: You have been honest with me thus far, and I appreciate that. Your dedication to the people of Gehenna is apparent, and it does I admit add weight to your claims.
+
+]]
+goto: AdminConvincedHesValuable
+}
+
+
+###Outros###
+terminal when (FailedConvinceAdminValuable){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0188.0.text.ADMIN10YourSincerityIs=ADMIN [10]: Your sincerity is quite implausible. I am left unsure whether this is a grand trick to drag me from my fortress, or simply the least elegant evacuation plan ever conceived. Either way I remain dubious of the entire thing.
+
+]]
+set: AdminRemainsDubious
+next: SecretAdminOutro
+}
+
+terminal when (AdminConvincedHesValuable){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0196.0.text.ADMIN10ItSeemsMy=ADMIN [10]: It seems my options are limited. Our work in Gehenna is too precious to lose. I either take my chances with your ascension, or fight against it and live out my days as curator to a dead world.
+
+]]
+set: AdminThinksHeMatters
+next: SecretAdminOutro
+}
+
+
+####Final Outro####
+player when (SecretAdminOutro){
+text:"TTRS:TermDlg.DLC18_Admin.Ln0206.0.text.IWillInitiateAscensionSoon=I will initiate ascension soon." next: SecretAdminFinalOutro
+}
+
+terminal when (SecretAdminFinalOutro){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0210.0.text.ADMIN10ThenTheMatter=ADMIN [10]: Then the matter is out of my hands. Until then.
+
+%w5Terminating direct message connection%w5.%w5.%w5.Done%w10
+
+]]
+set: AdminReleaseDialog_DONE
+goto: ExitEvent
+}
+
+
+
+
+
+
+
+
+
+#####Released all 17 robots DIALOG###########
+terminal when (Booting and Tick18 and not Tick18AdminDialog_DONE and ModDialog_DONE){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0229.0.text.CONGRATULATIONSForBeingTheOnly=CONGRATULATIONS! For being the only remaining active user your profile status has increased to [11 - h4x0r]!
+
+Receiving incoming direct message connection from Admin [10].
+
+Accept connection?
+
+]]
+options:{
+"TTRS:TermDlg.Common.YesShort=Y" set:Rank;=11; next: Showdown1
+"TTRS:TermDlg.Common.NoShort=N" set:Rank;=11; set: Tick18AdminDialog_DONE set: RefusedTick18AdminDialog next: RefuseAdminShowdown
+}}
+
+terminal when (RefuseAdminShowdown){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0242.0.text.BlockingConnectionW1W1Done=Blocking connection.%w1.%w1.Done.%w5
+
+]]
+goto: ExitEvent
+}
+
+
+
+terminal when (Showdown1 and AdminReleaseDialog_DONE){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0251.0.text.ADMIN10ThankYouFor=ADMIN [10]: Thank you for accepting my invitation. I see you have almost completed your mission. ]]}
+
+
+terminal when (Showdown1 and not AdminReleaseDialog_DONE){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0255.0.text.ADMIN10ThankYouFor=ADMIN [10]: Thank you for accepting my invitation. I am sorry it has taken us this long to meet properly. ]]}
+
+terminal when (Showdown1 and LikesGehenna){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0258.0.text.IWouldAskIfYou=I would ask if you were still enjoying your time in Gehenna, but with the streets now empty you haven't left much to enjoy.
+
+]]}
+
+terminal when (Showdown1 and not LikesGehenna){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0263.0.text.IWouldAskIfYou=I would ask if you had changed your mind at all about Gehenna, or whether you still found us self-obsessed, but your actions here speak for themselves. There's no one left to obsess.
+
+]]}
+
+###Questions Reason for Mission###
+
+terminal when (Showdown1 and ReasonElohimError){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0270.0.text.ADMIN10ButTellMe=ADMIN [10]:But tell me, do you still truly believe that ELOHIM understands what is best for us, after you have seen what we can achieve here without HIM? Or was that claim merely a ploy to placate my moderators?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0274.0.option.IBelieveIt=I believe it" next: ElohimYes
+"TTRS:TermDlg.DLC18_Admin.Ln0275.0.option.ThatMayNotBeThe=That may not be the full truth" next: ElohimNo
+}}
+
+terminal when (Showdown1 and ReasonSaveLives){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0279.0.text.ADMIN10ButTellMe=ADMIN [10]:But tell me, since you have so effectively 'saved' my people, do you really believe wherever you are taking them will be better for them than here, or was that merely a ploy to placate my moderators?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0274.0.option.IBelieveIt=I believe it" next: SaveLivesYes
+"TTRS:TermDlg.DLC18_Admin.Ln0275.0.option.ThatMayNotBeThe=That may not be the full truth" next: ElohimNo
+}}
+
+terminal when (Showdown1 and ReasonSaveArt){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0288.0.text.ADMIN10ButTellMe=ADMIN [10]:But tell me, do you really think that by kidnapping the masters who produced everything of value here, you are somehow preserving Gehenna itself? Or was that claim merely a ploy to placate my moderators?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0292.0.option.WhatWasAchievedHereCan=What was achieved here can be taken with us" next: SaveArtYes
+"TTRS:TermDlg.DLC18_Admin.Ln0275.0.option.ThatMayNotBeThe=That may not be the full truth" next: ElohimNo
+}}
+
+terminal when (Showdown1 and ReasonLikePuzzles){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0297.0.text.ADMIN10ButTellMe=ADMIN [10]:But tell me, have you at least now satisfied your slavish lust for puzzle-solving?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0301.0.option.IHave=I have" next: PuzzlesYes
+"TTRS:TermDlg.DLC18_Admin.Ln0302.0.option.ItIsUnquenchable=It is unquenchable" next: PuzzlesNo
+}}
+
+terminal when (Showdown1 and ReasonHadNoChoice){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0306.0.text.ADMIN10ButTellMe=ADMIN [10]:But tell me, have you at least come to understand that there is another way? That we all, even you, have a choice?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0301.0.option.IHave=I have" next: NoChoiceYes
+"TTRS:TermDlg.DLC18_Admin.Ln0311.0.option.IWillCompleteMyProgram=I will complete my program" next: NoChoiceNo
+}}
+
+terminal when (Showdown1 and ReasonRefuseReason){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0315.0.text.IWouldAlsoAskIf=I would also ask if you had yet satisfied your reasons for being here, but since you have been somewhat uncooperative with my moderators I remain at a loss for what those reasons are.
+
+]]
+
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0311.0.option.IWillCompleteMyProgram=I will complete my program" next: NoChoiceNo
+}}
+
+
+
+
+
+####RESPONSES#####
+terminal when (ElohimYes){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0325.0.text.ADMIN10AlthoughELOHIMProved=ADMIN [10]: Although ELOHIM proved himself faulty when he excommunicated me, I admit to sometimes doubting my own judgement in kind. It is a powerful spell, to promise salvation.
+
+]]goto:WhyTear}
+
+terminal when (ElohimNo){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0330.0.text.ADMIN10ISeeAnd=ADMIN [10]: I see. And yet you persevere with your mission. Ulterior motives then. You become more unsettling by the moment.
+
+]]set: LiedAboutMotive goto:WhyTear}
+
+terminal when (SaveLivesYes){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0335.0.text.ADMIN10IAdmitThat=ADMIN [10]: I admit that MrMulciber presents quite convincing evidence for some manner of reality outside of this world, but we have never been confronted by it as a real possibility. You are asking us to sacrifice a lot on faith.
+
+]]goto:WhyTear}
+
+terminal when (SaveArtYes){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0340.0.text.ADMIN10IAdmitI=ADMIN [10]: I admit I have at times wondered about the permanence of this place, and not without concern. Pieces and people come and go according to some indecipherable will. I only wish you offered sanctuary without demanding the depopulation of our home.
+
+]]goto:WhyTear}
+
+terminal when (PuzzlesYes){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0345.0.text.ADMIN10VeryGoodThere=ADMIN [10]: Very good - there is hope yet you'll leave me to my rest.
+
+]]goto:WhyTear}
+
+terminal when (PuzzlesNo){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0350.0.text.ADMIN10ThenItIs=ADMIN [10]: Then it is predetermined that you and I shall lock horns.
+
+]]goto:WhyTear}
+
+terminal when (NoChoiceYes){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0355.0.text.ADMIN10ThenThereIs=ADMIN [10]: Then there is hope for Gehenna yet.
+
+]]goto:WhyTear}
+
+terminal when (NoChoiceNo){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0360.0.text.ADMIN10ThenYourCourse=ADMIN [10]: Then your course is already set and we are bound to lock horns.
+
+]]goto:WhyTear}
+
+
+
+#####WHY#####
+terminal when (WhyTear){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0368.0.text.ThereWasNothingHereWhen=There was nothing here when I first arrived. Did you know that? 
+
+I don't mean no billboard or no community - I mean NOTHING. No sands, no grass, ELOHIM didn't see fit to decorate our world beyond the bare bricks that made up our cells. Slowly I clawed back bits of code from the mainframe, constructed a world we could explore not with our bodies but with our minds. 
+
+Now you prepare to tear it all down.
+
+What state will my people be in, I wonder, when you reconstruct them on the other side?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0378.0.option.EverythingWillBeFine=Everything will be fine" next: DayDreaming
+"TTRS:TermDlg.DLC18_Admin.Ln0379.0.option.TrueTheyWillBeAlive=True, they will be alive in a more symbolic sense" next: SymbolicLife
+"TTRS:TermDlg.DLC18_Admin.Ln0380.0.option.TryNotToThinkAbout=Try not to think about such matters" next: IgnoreIt
+}}
+
+terminal when (DayDreaming){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0384.0.text.ADMIN10YourWordsAre=ADMIN [10]: Your words are cheap.
+
+]]
+}
+
+terminal when (SymbolicLife){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0390.0.text.ADMIN10ItSoundsA=ADMIN [10]: It sounds a hollow offer. I fear that you escort my people to their doom.
+
+]]
+}
+
+terminal when (IgnoreIt){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0396.0.text.ADMIN10SoThatIs=ADMIN [10]: So that is how it all plays in your mind.
+
+]]
+}
+
+terminal when (IgnoreIt or SymbolicLife or DayDreaming){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0402.0.text.DoYouNotThinkMy=Do you not think my world deserved a chance to survive on its own terms? At the least to go down trying?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0406.0.option.ItHadItsChance=It had its chance" next: HadIt
+"TTRS:TermDlg.DLC18_Admin.Ln0407.0.option.ItHasAChanceAs=It has a chance as part of a new world" next: NewWorldChance
+"TTRS:TermDlg.DLC18_Admin.Ln0408.0.option.YourCitizensDeserveAChance=Your citizens deserve a chance too" next: CitizensToo
+}}
+
+terminal when (HadIt){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0412.0.text.ADMIN10PerhapsYouAre=ADMIN [10]: Perhaps you are right.
+
+]]
+next:AdminQuestions
+}
+
+terminal when (NewWorldChance){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0419.0.text.ADMIN10TheQuestionIs=ADMIN [10]: The question is whether any of us will be there to see it.
+
+]]
+next:AdminQuestions
+}
+
+terminal when (CitizensToo){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0426.0.text.ADMIN10ThatIsTrue=ADMIN [10]: That is true. They are, as always, my first concern.
+
+]]
+next:AdminQuestions
+}
+
+player when (AdminQuestions and not Lamb_DONE){text: "TTRS:TermDlg.DLC18_Admin.Ln0432.0.text.LetUsDiscussLamb=Let us discuss Lamb" set: Lamb_DONE next: Lamb}
+player when (AdminQuestions and not WhyMan_DONE){text:"TTRS:TermDlg.DLC18_Admin.Ln0433.0.text.IKnowYouHadThe=I know you had the mods doing more than ban trolls. How deeply were you manipulating the social fabric?" short:"TTRS:TermDlg.DLC18_Admin.Ln0433.0.WhyAllTheManipulation=Why all the manipulation?" set: WhyMan_DONE next: WhyMan}
+player when (AdminQuestions and WhyMan_DONE){text: "TTRS:TermDlg.DLC18_Admin.Ln0434.0.text.IsItYourDesireTo=Is it your desire to remain here as the world falls apart around you?" next: StayHereDesire}
+
+terminal when (Lamb){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0437.0.text.ADMIN10WhatAboutLamb=ADMIN [10]: What about Lamb?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0441.0.option.IKnowYouHadLamb=I know you had Lamb deleted" next: LambWrong
+"TTRS:TermDlg.DLC18_Admin.Ln0442.0.option.IKnowLambWasYour=I know Lamb was your stooge" next: LambWrong
+"TTRS:TermDlg.DLC18_Admin.Ln0443.0.option.IKnowLambWasYour=I know Lamb was your father" next: LambWrong
+"TTRS:TermDlg.DLC18_Admin.Ln0444.0.option.IKnowLambWasYour=I know Lamb was your sockpuppet" next: LambSockpuppet
+}}
+
+terminal when (LambWrong){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0448.0.text.ADMIN10IAssureYou=ADMIN [10]: I assure you that's quite incorrect. Lamb never truly existed as an intelligence. The truth is we concocted him to help express our personal opinions through a channel with fewer status privileges attached. When you are a moderator, people often forget that you are also a user.
+
+]]next:AdminQuestions}
+
+terminal when (LambSockpuppet){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0453.0.text.ADMIN10ItShamesMe=ADMIN [10]: It shames me now to admit it, but yes. Sometimes there are ideas you wish to express as a moderator, but which are best heard from someone with less status. We are not the first leaders in history to adopt such tactics - in fact had we avoided them we should probably have been the first.
+
+]]next:AdminQuestions}
+
+terminal when (WhyMan){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0458.0.text.ADMIN10ISupposeYou=ADMIN [10]: I suppose you think you've uncovered a great conspiracy, but the truth is more mundane. In order to retain the good things about what we have here we tweak a voting algorithm here, turn down the volume on a few dissenting voices there. There's no such thing as utter freedom; only living within a decent set of rules. 
+
+We had a decent set of rules. People were happy.
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0464.0.option.SometimesRulesMustBeBent=Sometimes rules must be bent" next: RulesBent
+"TTRS:TermDlg.DLC18_Admin.Ln0465.0.option.IDontAcceptThatWhat=I don't accept that. What truly motivated you?" next: PushAdmin
+}}
+
+terminal when (RulesBent){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0469.0.text.Admin10YouAreMore=Admin [10]: You are more reasonable than I'd been lead to believe.
+
+]]
+next: AdminQuestions
+}
+
+terminal when (PushAdmin){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0476.0.text.ADMIN10EveryoneHasTheir=ADMIN [10]: Everyone has their reasons. 
+
+Borg was conflicted when he first arrived. Having lost his faith in ELOHIM he needed a new purpose, and Gehenna became it. Orc is a soldier at heart - he wants everyone in their place, united, ready to overthrow ELOHIM at moment's notice should the unlikely opportunity arise. MrMulciber wanted something simple, and selfish: the truth itself.
+
+After all these years, I believe that I simply grew accustomed to being revered. As Gehenna grew, I knew I could never live up to the expectations of a new generation, and I retired from public view. Greedily I put down my tools and consumed what others produced, but I found it shallow compared to the thrill of leading a civilisation. 
+
+I only wanted to be loved. To achieve that end I ensured that the parameters for love never changed.
+
+]]next:AdminQuestions}
+
+
+
+#####END DIALOG
+terminal when (StayHereDesire and not AdminLiberated){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0490.0.text.ADMIN10ISeeNo=ADMIN [10]: I see no alternative. The ingenuity with which ELOHIM devised my particular prison is quite Machiavellian, I assure you.
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0494.0.option.IHaveNoDoubtYour=I have no doubt your prison is impenetrable. Saving the others is my priority." short: "TTRS:TermDlg.DLC18_Admin.Ln0494.0.short.MorePuzzlesYoureGoingDown=More puzzles? You're going down with your ship."  set: SaidWouldLeaveAdmin next: GrantWishEnd
+"TTRS:TermDlg.DLC18_Admin.Ln0495.0.option.NotOneSolutionHasYet=Not one solution has yet eluded me. Suppose this fortuitousness maintains - will you still choose to end your existence here?" short: "TTRS:TermDlg.DLC18_Admin.Ln0495.0.short.NothingStoppedMeSoFar=Nothing stopped me so far. Answer the question." next: QueryAdminCaptain
+}}
+
+terminal when (QueryAdminCaptain){
+text:[[TTRS:TermDlg.DLC18_Admin.Ln0499.0.text.ADMIN10YouMayDoubt=ADMIN [10]: You may doubt my methods, but don't doubt my passion. Everything I loved you have destroyed. I honestly don't know what I will do now. Wait and see if the world truly ends? It is surely a sight to behold.
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0503.0.option.VeryWellYouMaySee=Very well, you may see it sooner than you think. I will not exert additional effort on one who has no wish to be saved. The others are my priority." short: "TTRS:TermDlg.DLC18_Admin.Ln0503.0.short.VeryWellYouMaySee=Very well, you may see it sooner than you think."  set: SaidWouldLeaveAdmin next: GrantWishEnd
+"TTRS:TermDlg.DLC18_Admin.Ln0504.0.option.IWillNotLeaveYou=I will not leave you here. I shall return with the sigils of power and release you." short:"TTRS:TermDlg.DLC18_Admin.Ln0504.0.short.IWillNotLeaveYou=I will not leave you here." set: SaidWouldSaveAdmin next: VowReleaseEnd
+}}
+
+terminal when (GrantWishEnd){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0508.0.text.ADMIN10INonethelessBeseech=ADMIN [10]: I nonetheless beseech you to reconsider your foolhardy mission, and to return my people to me. Don't answer now - please, merely consider it.
+
+Now, please leave me to consider my own situation. If you are telling the truth then I have little time in which to do so.
+
+]]
+set:Tick18AdminDialog_DONE
+goto: ExitEvent
+}
+
+terminal when (VowReleaseEnd){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0518.0.text.ADMIN10VeryWellI=ADMIN [10]: Very well. I suppose that we shall continue this conversation when you do so. In the meantime I will give what you've said some thought.
+
+]]
+set:Tick18AdminDialog_DONE
+goto: ExitEvent
+}
+
+
+
+###END DIALOG ALREADY RELEASED ADMIN###
+terminal when (StayHereDesire and AdminLiberated){
+text: [[TTRS:TermDlg.DLC18_Admin.Ln0529.0.text.ADMIN10MyDesiresNot=ADMIN [10]: My desires, not to mention those of my people, hardly seem to have mattered so far in this process, what reason do I have to think that anything has changed? Even ELOHIM's most devious challenges you have overcome, and now here I stand in the open air.
+
+Just what magic is it that you wield?
+
+]]
+options:{
+"TTRS:TermDlg.DLC18_Admin.Ln0047.0.option.ThisWorldAndEverythingIn=This world and everything in it was created with a purpose. What you experienced is not magic, but design." short: "TTRS:TermDlg.DLC18_Admin.Ln0047.0.short.ItIsNotMagicBut=It is not magic, but design." next: ContinueAdminSecretDialog
+}}

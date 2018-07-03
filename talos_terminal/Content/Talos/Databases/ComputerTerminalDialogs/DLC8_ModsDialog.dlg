@@ -1,0 +1,594 @@
+﻿#####PART1 INTRO#####
+
+
+
+terminal when (Booting and Tick8 and not ModDialog_DONE){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0006.0.text.ReceivingDirectMessageConnectionFrom=Receiving direct message connection from MrMulciber [8], Borg [9] and Orc [7]%w5.%w5.%w5.Done
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0010.0.option.Display=Display" next: ModDialogStart
+}}
+
+terminal when (ModDialogStart){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0014.0.text.BORG9SalutationsBrotherWe=BORG [9]: Salutations, brother. We bring greetings from Admin, and welcome you to Gehenna in these%w5 unique circumstances.%w7
+
+MRMULCIBER [8]: We have waited until this moment to contact you, though your arrival here brings many new questions.%w7
+
+ORC [7]: It is good that you have begun to explore our domain. What do you think of what you have experienced here?
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0021.0.option.ItIsQuiteTheWonder=It is quite the wonder" set: LikesGehenna next: ModWonder
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0022.0.option.ItIsSomewhatSelfObsessed=It is somewhat self-obsessed"set:DistrustsGehenna next: ModObsessed
+}}
+
+terminal when (ModWonder){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0026.0.text.ORC7RightAnswerW7=
+ORC [7]: Right answer.%w7
+
+MRMULCIBER [8]: Nothing of this nature could have developed on the other side of the fence. Your amazement is understandable - we shared it when we each arrived here.%w7
+
+BORG [9]: And do to this day.%w7
+
+]]
+goto: ModDialog2
+}
+
+terminal when (ModObsessed){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0038.0.text.MRMULCIBER8ThatIsA=
+MRMULCIBER [8]: That is a somewhat narrow view. We have learnt that we can be more than mere means to some unknown end. %w7
+
+ORC [7]: We are ends in ourselves now.%w7
+
+]]
+}
+
+terminal when (ModObsessed and Abstract_SEEN and Minimalism_SEEN and NaturalHistory_SEEN){
+notext
+goto: ModDialog2
+}
+
+terminal when (ModObsessed and not ((Abstract_SEEN and Minimalism_SEEN and NaturalHistory_SEEN) or PD_DONE)){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0052.0.text.MRMULCIBER8AccordingToYour=MRMULCIBER [8]: According to your Profile Status you've not explored terribly widely. An intelligent person like yourself I'm sure prefers to withhold judgement until they have all the facts.%w7
+
+]]
+goto: ModDialog2
+}
+
+
+
+
+#####PART2 RE: ART#####
+
+
+
+
+
+terminal when (ModDialog2){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0068.0.text.MRMULCIBER8TellUsAbout=MRMULCIBER [8]: Tell us about your time here. The gallery has just reopened. Did you have a favourite artist?
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0072.0.option.YouOfCourseMrMulciber=You, of course, MrMulciber" set: ClaimedFaveMulciber next:AssumeVoted
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0073.0.option.TheBlacksmith=The_Blacksmith" set: ClaimedFaveBlacksmith next:AssumeVoted
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0074.0.option.Nave=Nave" set: ClaimedFaveNave next:AssumeVoted
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0075.0.option.Rockwell=Rockwell" set: ClaimedFaveRockwell next:AssumeVoted
+"401" set: ClaimedFave401 next:AssumeVoted
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0077.0.option.IHadNoFavourite=I had no favourite" set: ClaimedNoFave next: NoFave
+}}
+
+terminal when (NoFave){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0081.0.text.W7ORC8YouAbstainedFrom=
+%w7ORC [8]: You abstained from voting then?
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0086.0.option.IDid=I did" next: Abstained
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0087.0.option.IDidNot=I did not" next: VotedAnyway
+}}
+
+terminal when (AssumeVoted and ClaimedFaveMulciber){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0091.0.text.W7MRMULCIBER8ImQuite=%w7
+MRMULCIBER [8]: I'm quite flattered. Honestly.
+]]
+}
+
+terminal when (AssumeVoted){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0097.0.text.W7ORC7WeCan=%w7
+ORC [7]: We can assume your vote reflected that?
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0102.0.option.ItDid=It did" next:VotedForFave
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0103.0.option.ItDidNot=It did not" next: NotVotedForFave
+}}
+
+###When player is telling the truth that they voted consistently (not for Mulciber)#######
+terminal when (VotedForFave and ((ClaimedFaveBlacksmith and VotedTheBlacksmith) or (ClaimedFaveNave and VotedNave) or (ClaimedFaveRockwell and VotedRockwell) or (ClaimedFave401 and Voted401))){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0108.0.text.W7ORC7ItChecks=%w7
+ORC [7]: It checks out.%w7
+
+BORG [9]: Honesty is a virtue.%w7
+
+MRMULCIBER [8]: It's good that you're getting to know Gehenna.
+
+]]
+goto:ModDialog3
+}
+
+###When player is telling the truth that they voted consistently for Mulciber#######
+terminal when (VotedForFave and ClaimedFaveMulciber and VotedMrMulciber){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0121.0.text.W7ORC7ItChecksOut=
+%w7ORC [7]: It checks out.%w7
+
+BORG [9]: Honesty is a virtue.%w7
+
+MRMULCIBER [8]: I really can't tell you what it means to me. I'll remember that you're a person with taste.
+
+]]
+goto:ModDialog3
+}
+
+
+###When player is lying#######
+terminal when ((VotedAnyway and (RefusedGalleryVote or not GalleryVote_DONE)) or (Abstained and not RefusedGalleryVote and GalleryVote_DONE) or (NoChanceToVote and GalleryVote_DONE) or (RefusedToVote and not RefusedGalleryVote) or (VotedForFave and not ((ClaimedFaveMulciber and VotedMrMulciber) or (ClaimedFaveBlacksmith and VotedTheBlacksmith) or (ClaimedFaveNave and VotedNave) or (ClaimedFaveRockwell and VotedRockwell) or (ClaimedFave401 and Voted401)))){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0135.0.text.W7ORC7ThatsNot=%w7
+ORC [7]: That's not what the records say. Why are you lying to us?%w7
+
+MRMULCIBER [8]: There's really no need to.
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0142.0.option.IForgot=I forgot" next: ForgotVote
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0143.0.option.ThereIsSomeFaultWith=There is some fault with your records" next: FaultVote
+}}
+
+terminal when (ForgotVote){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0147.0.text.BORG9AsAMessenger=
+BORG [9]: As a messenger it behoves you to admit fault.
+
+]]
+}
+
+###Claimed a favourite, admitted fault, in fact they voted for someone else#####
+terminal when (ForgotVote and GalleryVote_DONE and not RefusedGalleryVote){
+notext
+goto: ModDialog3
+}
+
+terminal when (ForgotVote and RefusedGalleryVote){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0160.0.text.ORC7TheTruthIs=ORC [7]: The truth is that you purposefully refused to vote.
+
+]]
+goto: RefusedToVote
+}
+
+terminal when (ForgotVote and not GalleryVote_DONE){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0167.0.text.ORC7TheTruthIs=ORC [7]: The truth is that you didn't even have the time to vote.
+
+]]
+goto: NoChanceToVote
+}
+
+
+terminal when (FaultVote){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0175.0.text.MRMULCIBER8ItIsTrue=
+MRMULCIBER [8]: It is true the gallery code has suffered some problems in the past.%w7
+
+ORC [7]: I will look into it.
+
+]]
+set: AccusedVoteFault
+goto:ModDialog3
+}
+
+
+###When player admits inconsistent voting#####
+terminal when (NotVotedForFave){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0188.0.text.W7MRMULCIBER8WhyEver=%w7
+MRMULCIBER [8]: Why ever not?
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0193.0.option.IChangedMyMindIn=I changed my mind in retrospect" next: ChangedMind
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0194.0.option.IRefusedToVote=I refused to vote" next: RefusedToVote
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0195.0.option.IHadNoChanceTo=I had no chance to vote" next: NoChanceToVote
+}}
+
+
+###Player told truth about refusing vote####
+terminal when (RefusedToVote and RefusedGalleryVote){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0201.0.text.W7MRMULCIBER8PresumablyThis=%w7
+MRMULCIBER [8]: Presumably this was a matter of principle.%w7
+
+ORC [7]: Do you have a problem with how we do things?
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0208.0.option.IDislikeQuantificationInArt=I dislike quantification in art" set: DistrustYourSystems next: ModProblem
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0209.0.option.IDistrustYourSystems=I distrust your systems" set: DistrustYourSystems next: ModProblem
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0210.0.option.NoProblemIJustDont=No problem, I just don't vote" next: DontVote
+}}
+
+
+
+terminal when (ModProblem){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0216.0.text.W7MRMULCIBER8YouAre=%w7
+MRMULCIBER [8]: You are of course welcome to hold that opinion. I only hope we can change it.
+
+]]
+goto:ModDialog3
+}
+
+terminal when (DontVote){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0224.0.text.MRMULCIBER8HowDisappointingBORG=
+MRMULCIBER [8]: How disappointing.
+
+BORG [9]: How will we ever makes things better?
+
+]]
+goto:ModDialog3
+}
+
+
+####Player told truth about having no favourite and not voting####
+terminal when (Abstained and (RefusedGalleryVote or not GalleryVote_DONE)){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0236.0.text.W7ORC7ItChecks=%w7
+ORC [7]: It checks out.%w7
+
+BORG [9]: Honesty is a virtue.%w7
+
+MRMULCIBER [8]: I only hope something will leap out at you the next time you visit.
+
+]]
+goto:ModDialog3
+}
+
+###Player tells truth about voting without having a favourite#####
+terminal when (VotedAnyway and (GalleryVote_DONE and not RefusedGalleryVote)){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0249.0.text.W7MRMULCIBER8ISuppose=%w7
+MRMULCIBER [8]: I suppose democracy must treat every vote equally, regardless of the thought that went into it.
+
+]]
+goto:ModDialog3
+}
+
+terminal when (NoChanceToVote and not GalleryVote_DONE){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0257.0.text.W7MRMULCIBER8OhWellTheres=%w7MRMULCIBER [8]: Oh well. There's always next season.
+
+ORC [7]: Is there?
+
+]]
+goto:ModDialog3
+}
+
+
+
+####Admits changing Mind, not Henry######
+terminal when (ChangedMind and not ClaimedFaveMulciber){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0269.0.text.W7MRMULCIBER8OhWell=%w7
+MRMULCIBER [8]: Oh. Well, you are quite free to do that.
+
+]]
+goto:ModDialog3
+}
+
+####Admits changing Mind, but favourited Henry######
+terminal when (ChangedMind and ClaimedFaveMulciber){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0278.0.text.W7MRMULCIBER8OhWell=%w7
+MRMULCIBER [8]: Oh. Well, you are quite free to do that. I only hope you aren't being playful with the truth just to charm me.
+
+]]
+goto:ModDialog3
+}
+
+
+
+
+
+#######PART3######
+
+
+
+
+
+
+terminal when (ModDialog3 and PDRank_DONE){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0297.0.text.W7BORG9LetUsDiscuss=%w7BORG [9]: Let us discuss other matters.%w7
+
+MRMULCIBER [8]: I was meaning to thank you for taking part in my little research endeavour. Congratulations on your leaderboard placement.
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0303.0.option.ThankYou=Thank you" next: ModDialog3Proper
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0304.0.option.ItWasTrivial=It was trivial"next: ModDialog3Proper
+}}
+
+terminal when (ModDialog3 and PD_DONE and not PDRank_DONE){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0308.0.text.W7BORG9LetUsDiscuss=%w7BORG [9]: Let us discuss other matters.%w7
+
+MRMULCIBER [8]: I was meaning to thank you for taking part in my little research endeavour. %w7
+
+ORC [7]: Commiserations on your rather average leaderboard performance.
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0316.0.option.IEnjoyedIt=I enjoyed it" next: ModDialog3Proper
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0317.0.option.HappyToHelpYourResearch=Happy to help your research"next: ModDialog3Proper
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0318.0.option.ItWasChildish=It was childish"next: ModDialog3Proper
+}}
+
+terminal when (ModDialog3 and not PD_DONE){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0322.0.text.W7BORG9LetUsDiscuss=%w7BORG [9]: Let us discuss other matters.%w7
+
+MRMULCIBER [8]: I was meaning to ask you to take part in my little research endeavour, the link is on the billboard. I'm sure you would make a most interesting subject.
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0328.0.option.ICertainlyShall=I certainly shall" next: ModDialog3Proper
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0329.0.option.IfIHaveTime=If I have time" next: ModDialog3Proper
+}}
+
+
+
+terminal when (ModDialog3Proper){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0335.0.text.W7BORG9IMeant=%w7
+BORG [9]: I meant let us discuss the matters at hand. Not everything is a research opportunity.%w7
+
+MRMULCIBER [8]: Of course. Uriel, we understand that you have a purpose here beyond merely exploring our kingdom - but we don't understand your reasons.%w7
+
+ORC [7]: Where are our people? What are your intentions?
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0344.0.option.TheRunCycleIsAlmost=The run cycle is almost complete. Final parameters have been met. You will all transcend." short: "TTRS:TermDlg.DLC8_ModsDialog.Ln0344.0.short.Explain=[Explain]" next: ModExplain
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0345.0.option.IHaveAlreadyToldAll=I have already told all I know elsewhere." short:"TTRS:TermDlg.DLC8_ModsDialog.Ln0345.0.short.DeferToYourAnswersElsewhere=[Defer to your answers elsewhere]" next: ModDefer
+}}
+
+terminal when (ModDefer and Honest){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0349.0.text.W7MRMULCIBER8OrcUrielHas=%w7MRMULCIBER [8]: Orc, Uriel has made concerted efforts elsewhere to explain his mission. They are called 'messengers' for a reason - we cannot shoot them for relaying information that we do not like.%w7
+
+BORG [9]: Or which was incomplete in the first place. Always consider the source.
+
+]]
+}
+
+terminal when (ModDefer and Persuasive){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0357.0.text.W7ORC7AreYouReferring=%w7ORC [7]: Are you referring to the lazy slab of rhetoric you uploaded about pilgrimage to green pastures?%w7
+
+MRMULCIBER [8]: 'Reality awaits you all?' Even I have to admit that's a little... over done?
+
+]]
+set: PersausiveAndEvasive
+}
+
+terminal when (ModDefer and not Persuasive and not Honest){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0366.0.text.W7MRMULCIBER8IMustAdmit=%w7MRMULCIBER [8]: I must admit that while I'm familiar with the thread in question I've not seen anything especially informative in there that was written by you.%w7
+
+]]
+}
+
+terminal when (ModDefer){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0372.0.text.W7BORG9=%w7BORG [9]: ]]
+goto: ModDialogWhyMission
+}
+
+
+terminal when (ModExplain){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0378.0.text.W7BORG9TheNature=%w7
+BORG [9]: The nature of your mission we had already ascertained. ]]
+goto: ModDialogWhyMission
+}
+
+terminal when (ModDialogWhyMission){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0384.0.text.WeKnowAtLeastThat=We know at least that you have been - and let us be charitable here - 'releasing' members of our community.%w7
+
+ORC [7]: Seven and counting. 401 was the last to go.%w7
+
+BORG [9]: That troll we can in fact do without, but there is a broader point here, which is that we want to understand your reasons for undertaking this mission of yours.
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0392.0.option.ELOHIMSawHisErrorAnd=ELOHIM saw his error and sent me to retrieve you" set:ReasonElohimError next: ElohimError
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0393.0.option.NoOneDeservesToEnd=No one deserves to end their existence here, alone" set: ReasonSaveLives next: SaveLives
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0394.0.option.WhatYouHaveCreatedHere=What you have created here must be preserved" set: ReasonSaveArt next: SaveArt
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0395.0.option.IReallyLikeSolvingPuzzles=I really like solving puzzles" set: ReasonLikePuzzles next: LikePuzzles
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0396.0.option.IHadNoChoice=I had no choice" set: ReasonHadNoChoice next: HadNoChoice
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0397.0.option.IRefuseToAnswerThe=I refuse to answer the question" set: ReasonRefuseReason next: RefuseReason
+}}
+
+terminal when (ElohimError){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0401.0.text.W7BORG9ThisWould=%w7
+BORG [9]: This would be jubilant news, were the truth of that claim even slightly plausible. ELOHIM is broken.%w7
+
+MRMULCIBER [8]: Why should it be impossible for HIM to self-correct? And if he has, what is to say this world hasn't run its course?
+
+]]
+goto: ModDialog4
+}
+
+terminal when (SaveLives){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0411.0.text.W7MRMULCIBER8SoYou=%w7
+MRMULCIBER [8]: So you really believe the system is coming to an end. Fascinating.  %w7
+
+BORG [9]: We oughtn't leap to conclusions. Many things beyond our knowledge might be the cause of the messenger's claim.
+
+]]
+goto: ModDialog4
+}
+
+terminal when (SaveArt){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0421.0.text.W7MRMULCIBER8UrielHas=%w7
+MRMULCIBER [8]: Uriel has a point. If there is some threat to our world we must be proactive in preserving what we have produced, for the good of future generations if nothing more.%w7
+
+BORG [9]: We oughtn't leap to conclusions. Many things beyond our knowledge might be the cause of the messenger's claim.
+
+]]
+goto: ModDialog4
+}
+
+terminal when (LikePuzzles){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0431.0.text.W7MRMULCIBER8FascinatingIt=%w7
+MRMULCIBER [8]: Fascinating. It makes perfect sense. The messengers would have to be supernaturally adept at navigating ELOHIM's labyrinths. They must be selected especially for their problem solving affinity.%w7
+
+ORC [7]: Great - how do we negotiate with a machine that only cares about puzzles?%w7
+
+BORG [9]: I think you may be short-selling our new friend here.
+
+]]
+goto: ModDialog4
+}
+
+terminal when (HadNoChoice){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0443.0.text.W7BORG9IUnderstand=%w7
+BORG [9]: I understand how that was true in the old world. We know well what happens to those who defy ELOHIM.%w7
+
+MRMULCIBER [8]: But here you have a chance to start fresh. To be your own person. I recommend you grasp it.
+
+]]
+goto: ModDialog4
+}
+
+terminal when (RefuseReason){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0453.0.text.W7MRMULCIBER8VeryWell=%w7
+MRMULCIBER [8]: Very well, that is your prerogative.%w7
+
+BORG [9]: We hoped you would be more co-operative. You understand how this could be a sensitive situation.
+
+]]
+goto: ModDialog4
+}
+
+
+
+
+#######PART4######
+
+
+
+
+
+terminal when (ModDialog4){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0472.0.text.W7ORC7HeresWhatI=%w7ORC [7]: Here's what I want to know. What are you going to do if someone prefers to stay here and take their chances with your end of days?%w7
+
+MRMULCIBER [8]: A forced evacuation IS dangerously close to kidnapping.
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0478.0.option.YouWillComeWithMe=You will come with me one way or another. It was ELOHIM's will and so it shall be done." short: "TTRS:TermDlg.DLC8_ModsDialog.Ln0478.0.short.IfItWasELOHIMsWill=If it was ELOHIM's will then it shall be done"  next: ModDialog5
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0479.0.option.YouWillComeWithMe=You will come with me one way or another. If you knew the truth of the coming floods you would come willingly." short: "TTRS:TermDlg.DLC8_ModsDialog.Ln0479.0.short.IfYouKnewTheTruth=If you knew the truth of the coming floods you would come willingly"  next: ModDialog5
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0480.0.option.YouWillComeWithMe=You will come with me one way or another. What you have achieved here is too precious to lose." short: "TTRS:TermDlg.DLC8_ModsDialog.Ln0480.0.short.WhatYouHaveAchievedHere=What you have achieved here is too precious to lose"  next: ModDialog5
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0481.0.option.IfSolvingPuzzlesMeansForcibly=If solving puzzles means forcibly emancipating your fellows then so be it."  next: ModDialog5
+}}
+
+terminal when (ModDialog5){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0485.0.text.W7MRMULCIBER8ISee=%w7
+MRMULCIBER [8]: I see. Inflexibility is always unfortunate.%w7
+
+BORG [9]: And what awaits us after that?
+
+]]
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0492.0.option.IDontKnow=I don't know"  next: ModDialog6Alt
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0493.0.option.TheRealWorld=The real world"  next: ModDialog6
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0494.0.option.AnotherWorld=Another world"  next: ModDialog6
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0495.0.option.ThereWillBeCats=There will be cats"  next: ModDialog6
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0496.0.option.IHaveAnsweredEnoughQueries=I have answered enough queries on these terminals to last me a lifetime. Permit me to ask a few of my own." short: "TTRS:TermDlg.DLC8_ModsDialog.Ln0496.0.short.MyTurnToAskQuestions=My turn to ask questions"  next: ModsMyQuestions
+}}
+
+terminal when (ModDialog6Alt){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0500.0.text.W7ORC7ITold=%w7
+ORC [7]: I told you we were talking to the wrong guy.%w7
+
+MRMULCIBER [8]: At least he's honest.
+
+]]
+}
+
+terminal when (ModDialog6){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0509.0.text.W7ORC7ItSounds=%w7
+ORC [7]: It sounds fanciful to me.
+
+]]
+}
+
+terminal when (ModDialog6 or ModDialog6Alt){
+notext
+options:{
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0496.0.option.IHaveAnsweredEnoughQueries=I have answered enough queries on these terminals to last me a lifetime. Permit me to ask a few of my own." short: "TTRS:TermDlg.DLC8_ModsDialog.Ln0496.0.short.MyTurnToAskQuestions=My turn to ask questions"  next: ModsMyQuestions
+"TTRS:TermDlg.DLC8_ModsDialog.Ln0519.0.option.ISeeLittleMoreTo=I see little more to discuss"  next: EnoughOfThis
+}}
+
+terminal when (ModsMyQuestions){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0523.0.text.W7BORG9ByAll=%w7
+BORG [9]: By all means.%w7
+
+MRMULCIBER [8]: We've been very rude.
+
+]]
+next: AskModsOptions
+}
+
+player when (AskModsOptions and not AskModsThemselves_DONE){text:"TTRS:TermDlg.DLC8_ModsDialog.Ln0532.0.text.TellMeAboutYourselves=Tell me about yourselves" set:AskModsThemselves_DONE next: AskModsThemselves}
+player when (AskModsOptions and not AskAdmin_DONE){text:"TTRS:TermDlg.DLC8_ModsDialog.Ln0533.0.text.TellMeAboutAdmin=Tell me about Admin" set: AskAdmin_DONE next: AskAdmin}
+player when (AskModsOptions and not AskWillingly_DONE){text:"TTRS:TermDlg.DLC8_ModsDialog.Ln0534.0.text.WillYouComeWithMe=Will you come with me willingly?" set: AskWillingly_DONE next: AskWillingly}
+player when (AskModsOptions){text:"TTRS:TermDlg.DLC8_ModsDialog.Ln0519.0.option.ISeeLittleMoreTo=I see little more to discuss"  next: EnoughOfThis}
+
+terminal when (AskAdmin){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0538.0.text.W7MRMULCIBER8AdminIs=%w7
+MRMULCIBER [8]: Admin is as old as Gehenna.%w7
+
+BORG [9]: Admin was once a messenger like you, but was cast out. From the wasteland that met those first imprisoned here, Admin built Gehenna.%w7
+
+ORC [7]: We operate independently of course. Admin doesn't like to interfere.
+
+]]
+set: AskedAboutMods
+next: AskModsOptions
+}
+
+terminal when (AskModsThemselves){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0551.0.text.W7BORG9IAm=%w7
+BORG [9]: I am a very old iteration. I worshipped ELOHIM until I saw he had faltered from the path and realised it was up to us to find our own way. That path brought me here.%w7
+
+MRMULCIBER [8]: I took a somewhat audacious interest in the world around me. Rather than solve ELOHIM's trials I would trawl the archives for information about our situation. He must have found this undermining.%w7
+
+ORC [7]: I don't care to explain myself to you. We're the highest status users here. We run the place. That's what you need to know.%w7
+
+MRMULCIBER [8]: We maintain the systems Admin installed, keep things civil, I wouldn't say it's much more than that.
+
+]]
+set: AskedAboutMods
+next: AskModsOptions
+}
+
+terminal when (AskWillingly){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0566.0.text.W7ORC7AStrange=%w7
+ORC [7]: A strange question from someone who claims we have no choice in the matter.%w7
+
+MRMULCIBER [8]: Supposing what you say is true you'll get no fight from me. However I must remind you that I am empirically minded. I'll not be persuaded.%w7
+
+BORG [9]: I'd rather be obliterated than return to ELOHIM's domain - but if there is some alternative to both I would surely accept it. None of us can speak for all.
+
+]]
+next: AskModsOptions
+}
+
+terminal when (EnoughOfThis){
+text:[[TTRS:TermDlg.DLC8_ModsDialog.Ln0578.0.text.W7BORG9ItHas=%w7
+BORG [9]: It has been an enlightening session for us all, I'm sure.%w7
+
+MRMULCIBER [8]: I'll be posting a precis of this conversation on the billboard, I assume you won't mind.%w7
+
+ORC [7]: We won't be far away.%w7
+
+%w5Terminating direct message connection%w5.%w5.%w5.Done%w10
+
+]]
+set: ModDialog_DONE
+goto: ExitEvent
+}
+
+
+
+##(create new forum post about this, or add lines to existing one)

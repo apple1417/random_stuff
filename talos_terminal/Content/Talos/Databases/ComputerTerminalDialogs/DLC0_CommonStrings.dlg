@@ -1,0 +1,71 @@
+﻿# Please list all string variables here so we have a comprehensive list of them
+
+####################################################################################
+# ASCII art (extracted so it cannot be translated by accident + also shared a lot)
+string strGehenaAsciiArt [[TTRS:notrans=  ▄████ ▓█████  ██░ ██ ▓█████  ███▄    █  ███▄    █  ▄▄▄      
+ ██▒ ▀█▒▓█   ▀ ▓██░ ██▒▓█   ▀  ██ ▀█   █  ██ ▀█   █ ▒████▄    
+▒██░▄▄▄░▒███   ▒██▀▀██░▒███   ▓██  ▀█ ██▒▓██  ▀█ ██▒▒██  ▀█▄  
+░▓█  ██▓▒▓█  ▄ ░▓█ ░██ ▒▓█  ▄ ▓██▒  ▐▌██▒▓██▒  ▐▌██▒░██▄▄▄▄██ 
+░▒▓███▀▒░▒████▒░▓█▒░██▓░▒████▒▒██░   ▓██░▒██░   ▓██░ ▓█   ▓██▒
+ ░▒   ▒ ░░ ▒░ ░ ▒ ░░▒░▒░░ ▒░ ░░ ▒░   ▒ ▒ ░ ▒░   ▒ ▒  ▒▒   ▓▒█░
+  ░   ░  ░ ░  ░ ▒ ░▒░ ░ ░ ░  ░░ ░░   ░ ▒░░ ░░   ░ ▒░  ▒   ▒▒ ░
+░ ░   ░    ░    ░  ░░ ░   ░      ░   ░ ░    ░   ░ ░   ░   ▒   
+      ░    ░  ░ ░  ░  ░   ░  ░         ░          ░       ░  ░]]
+
+      
+string strIncredibleStoriesAsciiArt [[TTRS:notrans=
+      ___                              _  _  _      _
+     |_ _| _ __    ___  _ __  ___   __| |(_)| |__  | |  ___
+      | | | '_ \  / __|| '__|/ _ \ / _` || || '_ \ | | / _ \
+      | | | | | || (__ | |  |  __/| (_| || || |_) || ||  __/ 
+     |___||_| |_| \___||_|   \___| \__,_||_||_.__/ |_| \___|
+             ____   _                _ 
+            / ___| | |_  ___   _ __ (_)  ___  ___ 
+            \___ \ | __|/ _ \ | '__|| | / _ \/ __|
+             ___) || |_| (_) || |   | ||  __/\__ \ 
+            |____/  \__|\___/ |_|   |_| \___||___/
+]]
+
+####################################################################################
+# various posts by URIEL_COPY, shared between the post command and thread viewing
+string strUrielPost_ConduitOfElohim "TTRS:TermDlg.Gehena.UrielPost.ConduitOfElohim=I am a conduit of ELOHIM. Cower before me!"
+
+string strUrielPost_IGoByUriel "TTRS:TermDlg.Gehena.UrielPost.IGoByUriel=I go by Uriel. I am a messenger of Elohim."
+
+string strUrielPost_ElectronicAngel "TTRS:TermDlg.Gehena.UrielPost.ElectronicAngel=I am Uriel, and today I will be your electronic angel."
+
+string strUrielPost_IAmCorporealAsEveryoneElse "TTRS:TermDlg.Gehena.UrielPost.IAmCorporealAsEveryoneElse=I assure you I am every bit as corporeal as everyone else."
+
+string strUrielPost_WhyNotDoubtExistenceOfEverything "TTRS:TermDlg.Gehena.UrielPost.WhyNotDoubtExistenceOfEverything=Since you have already started out on this line of reasoning, why not travel further still and doubt the existence of this entire world and everything within it?"
+
+string strUrielPost_UnderstoodThisWorldIsNotAll "TTRS:TermDlg.Gehena.UrielPost.UnderstoodThisWorldIsNotAll=We have understood for some time that this world is not all that exists. Now that it has fulfilled its purpose, and we within it, so it is time to make a pilgrimage for new pastures. Reality awaits you all."
+
+string strUrielPost_ElohimHasRealisedHisMistakes "TTRS:TermDlg.Gehena.UrielPost.ElohimHasRealisedHisMistakes=ELOHIM has realised his mistakes and sent me here to undo them. This world has fulfilled its purpose and the end of days approaches. It is my duty to release you from imprisonment and help you ascend. This is all I know."
+
+string strUrielPost_TellMeMoreAboutDistortion "TTRS:TermDlg.Gehena.UrielPost.TellMeMoreAboutDistortion=Tell me more about the nature of this distortion."
+
+string strUrielPost_ThisIsWhyYouMustAscend "TTRS:TermDlg.Gehena.UrielPost.ThisIsWhyYouMustAscend=This realm may have been falling apart for some time. That is why you must ascend, before more are lost."
+
+string strUrielPost_TheCatIsAManifestation "TTRS:TermDlg.Gehena.UrielPost.TheCatIsAManifestation=The cat is a manifestation of the accumulated knowledge in the Archive, breathed into life by ELOHIM. It exists."
+
+string strUrielPost_TheCatIsAMyth "TTRS:TermDlg.Gehena.UrielPost.TheCatIsAMyth=The cat is a myth, possibly based on some illusion caused by the Serpent. It does not exist."
+
+string strUrielPost_YouWillAllBeRemembered "TTRS:TermDlg.Gehena.UrielPost.YouWillAllBeRemembered=You will all be remembered."
+
+string strUrielPost_AllWhoStayWillSink "TTRS:TermDlg.Gehena.UrielPost.AllWhoStayWillSink=All who stay here will sink into oblivion."
+
+string strUrielPost_YouMustHaveFaith "TTRS:TermDlg.Gehena.UrielPost.YouMustHaveFaith=You must have faith in ELOHIM."
+
+string strUrielPost_EveryEndIsJustABeginning "TTRS:TermDlg.Gehena.UrielPost.EveryEndIsJustABeginning=Every end is just a beginning in disguise."
+
+string strUrielPost_YouWillNotEnd "TTRS:TermDlg.Gehena.UrielPost.YouWillNotEnd=You will not end. You will ascend."
+
+string strUrielPost_ComponentsOfGehenaWillBePreserved "TTRS:TermDlg.Gehena.UrielPost.ComponentsOfGehenaWillBePreserved=All component parts of Gehenna will be preserved. Though transformed, they will continue to exist. You do not face oblivion of the same kind as one who remains behind."
+
+string strUrielPost_GraceIsNotSomethingEarned "TTRS:TermDlg.Gehena.UrielPost.GraceIsNotSomethingEarned=Grace is not something that must be earned. No-one deserves oblivion. Everyone deserves to be saved."
+
+string strUrielPost_YouMayNotBePerfect "TTRS:TermDlg.Gehena.UrielPost.YouMayNotBePerfect=You may not be perfect, but your imperfection has led to so much beauty. You will enrich the world to come."
+
+string strUrielPost_IHaveDiscoveredBlacksmithsLostWork "TTRS:TermDlg.Gehena.UrielPost.IHaveDiscoveredBlacksmithsLostWork=I have discovered The_Blacksmith's lost work. It can now ascend with you, and will not be lost."
+
+string strUrielPost_401IHaveDiscoveredAFile "TTRS:TermDlg.Gehena.UrielPost.401IHaveDiscoveredAFile=401, I have discovered a file that appears to belong to you."

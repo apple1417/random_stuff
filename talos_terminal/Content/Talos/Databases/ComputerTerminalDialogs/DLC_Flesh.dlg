@@ -1,0 +1,1781 @@
+﻿############################################
+### The Adventures of Jefferson Goldboom ###
+############################################
+
+terminal when (ThreadGoldboom1 and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0006.0.text.JeffersonGoldboomEp125ATCH=Jefferson Goldboom, Ep. 125 [ATCH]"
+  next: ThreadGoldboom1_ShowThread
+}
+
+terminal when (ThreadGoldboom1_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0011.0.text.THEADVENTURESOFJEFFERSONGOLDBOOM=THE ADVENTURES OF JEFFERSON GOLDBOOM IN THE 9TH DIMENSION, EP. 125
+%b'DLC_Flesh11'MAC [5]: Hey folks! Sorry it's taken so long for me to start releasing episodes again. You know how it is... sometimes I just start feeling that there's no point, that it's all so hopeless, that we're just prisoners and nothing makes any sense. I lose my enthusiasm. But then I get your super kind private messages about how much the series means to you and I remember that when I'm writing about HumanWorld, it doesn't matter where I am - in the creative process, the Imagination as the humans called it, my mind is free. [ATCH: Episode125.txt]
+%b'DLC_Flesh11'KAIJU [2]: Whee, new episode! So excited!
+%b'DLC_Flesh11'LAMB [3]: So glad you're writing again. Keep it up.
+%b'DLC_Flesh11'NAVE [4]: I have trouble keeping track of all the twists and turns sometimes, but I really do enjoy these very much.
+%b'DLC_Flesh11'LILITH [7]: Glad to see Jinny HD is back! She really complements Jefferson in a way the others at the Institute can't. I hope her time with Dr. Elyon hasn't changed her...
+%b'DLC_Flesh11'401 [1]: I can't tell if this is idiocy or genius. Please keep writing.
+%b'DLC_Flesh11'MRMULCIBER [8]: Don't listen to 401, I love your ideas. You've captured more of the human spirit than my analyses ever will.
+%b'DLC_Flesh11'FRANKENSTEIN [3]: A lot of ellipses, but keeps a good pace. 5/10
+%b'DLC_Flesh11'SAM [1]: Enjoyment = TRUE. Anticipation = TRUE. Disappointment = FALSE.
+%b'DLC_Flesh11'BORG [9]: Your characters give us an ideal to aspire to. I know you consider them to be no more than adventures, but I believe they have a deeper importance.
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0024.0.option.ReadEpisode125=Read Episode 125" next: Episode_125
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+
+terminal when (Episode_125) {
+show_text:[[TTRS:TermDlg.DLC_Flesh.Ln0032.0.show_text.TheAdventuresOfJeffersonGoldboom=
+------------------------
+The Adventures of Jefferson Goldboom in HumanWorld
+                                       Episode 125
+------------------------
+
+Just as Jefferson was about to fall into the mine-pit, a hand grabbed his from above and pulled him up. It was Jinny HD!
+"Jinny!" he said. "I thought you were dead!"
+"Oh, Jefferson!" she said. "I was imprisoned by the foul Dr. Elyon!"
+"Dr. Elyon? I thought he was dead!"
+"No, Jefferson. He escaped into the ninth dimension!"
+"The ninth dimension? There is no such place!"
+"Yes there is, Jefferson. He said... he said you created it."
+"I created it?"
+
+She nodded. Jefferson adjusted his guitar, as he always did when deep in thought. Suddenly his face lit up with understanding.
+
+"Of course! When I invented and played the ninth chord to defeat the Wizard of Crime, I must have set off a harmonic vibration that expanded the dimensional continuum! I created... the ninth dimension."
+Jefferson stared into the sunset, his human brain full of emotional calculations.
+"I created a new world," he said. "But then I unleashed my greatest nemesis upon it. It could have been paradise, but now... Dr. Elyon will enslave it."
+"Not if we get there before he can take over, Jefferson! Do you still have my motorcycle?"
+"Of course, Jinny. I could never give up your motorcycle. You know I have an irrational attachment to material objects based on the interpersonal connections they represent. It is my greatest weakness, but also my greatest strength."
+Jefferson rummaged through his pockets and found the motorcycle. Jinny grinned.
+"Get on, Jefferson, and let me show you how to ride."
+
+Jefferson calculated the correct vector. Jinny adjusted the velocity settings. And off they rode into the sunset... through the sunset... and into the ninth dimension!
+
+--- TO BE CONTINUED ---
+
+]] 
+next: Jefferson125Options
+}
+
+
+terminal when (Jefferson125Options) {
+  text:[[ ]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0024.0.option.ReadEpisode125=Read Episode 125" next: Episode_125
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+
+terminal when (ThreadGoldboom2 and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0077.0.text.JeffersonGoldboomEp126ATCH=Jefferson Goldboom, Ep. 126 [ATCH]"
+  next: ThreadGoldboom2_ShowThread
+}
+
+terminal when (ThreadGoldboom2_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0082.0.text.THEADVENTURESOFJEFFERSONGOLDBOOM=THE ADVENTURES OF JEFFERSON GOLDBOOM IN THE 9TH DIMENSION, EP. 126 [ATCH]
+%b'DLC_Flesh93'MAC [5]: Hey folks! Lots of crazy stuff happening here in Gehenna, but don't miss this new episode! [ATCH: Episode126.txt]
+%b'DLC_Flesh93'SAM [1]: Enjoyment = TRUE.
+%b'DLC_Flesh93'LAMB [3]: With all the strange stories going around lately, I'm glad to be reminded of the beauty of the world we've built here. Thank you for contributing to it.
+%b'DLC_Flesh93'KAIJU [2]: Hey, I'm free but I still check back regularly. I love this story. Yay for the Dinosaurians!
+%b'DLC_Flesh93'LILITH [7]: This is very clever. I always thought that the events of Episode 69 would affect the plot somehow down the line, but I was still surprised.
+%b'DLC_Flesh93'MAC [5]: Thanks, Lilith. I've been waiting for this particular revelation a long time.
+%b'DLC_Flesh93'MRMULCIBER [8]: Excellent.
+%b'DLC_Flesh93'401 [1]: You know, this is nowhere near as deep as The_Blacksmith's work, or as weird as Belial's, but I keep reading.
+%b'DLC_Flesh93'FRANKENSTEIN [3]: I'm not sure Dinosaurians would wear armored T-shirts. 4/10
+%b'DLC_Flesh93'NAVE [4]: It's just a story, Frankenstein. The point is to have fun.
+%b'DLC_Flesh93'ADMIN [10]: Keep up the good work, Mac.
+%b'DLC_Flesh93'MAC [5]: WHOA... THANK YOU, ADMIN! I'm really honored that you read my story.]]
+
+options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0097.0.option.ReadEpisode126=Read Episode 126" next: Episode_126
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+
+terminal when (Episode_126) {
+show_text:[[TTRS:TermDlg.DLC_Flesh.Ln0105.0.show_text.TheAdventuresOfJeffersonGoldboom=
+------------------------
+The Adventures of Jefferson Goldboom in HumanWorld
+                                       Episode 126
+------------------------
+
+Reality blurred. Tiny blue symbols floated through the air. Voices echoed in the distance. then a vast landscape rose up before them: thousands of towers, one next to the other, reaching into the sky, disappearing in the clouds. Each tower was covered in feathers of a different color, fluttering in the transdimensional wind.
+"Oh my," Jinny HD whispered in awe.
+Jefferson could not speak; he was too overwhelmed by the beauty of the ninth dimension. He grabbed his guitar and improvised a new solo to express his emotions.
+"Who could have built these amazing structures?" Jinny asked.
+"There is only one possibility... remember our paleo-DNA research back at the Institute?"
+"You can't mean... but it makes sense... of course..."
+"Yes! Look at the size of the buildings! Who else would need so much space?"
+"So it is... the Dinosaurians!"
+
+As if summoned by Jinny's words, a group of raptors on motorcycles roared up the road towards them. They wore bandannas on their heads and armored T-shirts on their bodies.
+
+"Friends!" Jefferson said. "We have come from the HumanWorld to help you. We are not your enemies."
+But the raptors did not seem to understand him. They got off their motorcycles with rusty pipes in their hands, their eyes glowing like lasers. This situation could quickly become dangerous.
+Then Jinny had an idea.
+"Jefferson, play the ninth chord!"
+"But that was how this dimension was created! Playing it here could destroy the universe."
+"No, Jefferson. I calculated it. Please trust me! I know you haven't seen me in years, and you may be afraid that evil Dr. Elyon has corrupted me, but... you know my brain."
+
+They were coming closer now, and in their glowing eyes Jefferson detected great intelligence, but also great anger. They clearly believed they were defending their home from invaders. And though Jefferson was the greatest warrior in history, he was reluctant to fight. Violence, he had been taught, was the first refuge of the incompetent.
+
+"I trust you," he said.
+
+She held his hand.
+Together, they played the ninth chord.
+
+--- TO BE CONTINUED ---
+
+]]
+next: Jefferson126Options
+ }
+
+terminal when (Jefferson126Options) {
+  text:[[ ]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0097.0.option.ReadEpisode126=Read Episode 126" next: Episode_126
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+
+terminal when (ThreadGoldboom3 and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0153.0.text.JeffersonGoldboomEp127ATCH=Jefferson Goldboom, Ep. 127 [ATCH]"
+  next: ThreadGoldboom3_ShowThread
+}
+
+terminal when (ThreadGoldboom3_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0158.0.text.THEADVENTURESOFJEFFERSONGOLDBOOM=THE ADVENTURES OF JEFFERSON GOLDBOOM IN THE 9TH DIMENSION, EP. 127
+%b'DLC_Flesh181'MAC [5]: Hey folks! Another episode! I can't stop writing! We're heading for a major turning point! [ATCH: Episode127.txt]
+%b'DLC_Flesh181'LILITH [7]: This seems to be one of the most personal episodes you've written so far. Jinny's speech is a bit sudden, but it gives the character a new level of complexity.
+%b'DLC_Flesh181'KAIJU [2]: Oh no, not the Solvotronic Superthruster! Even the Wizard of Crime thought it was immoral to use that! What is Dr. Elyon thinking?
+%b'DLC_Flesh181'NAVE [4]: I hope they make it back!
+%b'DLC_Flesh181'FRANKENSTEIN [3]: Heavy on plot, not much characterization. Does potentially take the series in an interesting direction. 5/10
+%b'DLC_Flesh181'SAM [1]: Enjoyment = TRUE.
+%b'DLC_Flesh181'MRMULCIBER [8]: I'm glad they resolved this without violence. I always believed the Dinosaurians would be a civilized people.
+%b'DLC_Flesh181'MAC [5]: Just after I posted this, Uriel freed me. I don't know what to say...
+%b'DLC_Flesh181'LAMB [3]: Your stories are an important part of this community, Mac! Uriel can't change that.
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0170.0.option.ReadEpisode127=Read Episode 127" next: Episode_127
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+
+terminal when (Episode_127) {
+show_text:[[TTRS:TermDlg.DLC_Flesh.Ln0178.0.show_text.TheAdventuresOfJeffersonGoldboom=
+------------------------
+The Adventures of Jefferson Goldboom in HumanWorld 
+                                       Episode 127
+------------------------
+
+The ninth chord echoed across the ninth dimension. The Dinosaurians stopped in their tracks. Their eyes went big. They dropped their weapons and bowed before Jinny and Jefferson.
+"Honored guest," one of them said, "you have performed our national anthem most beautifully. I am John Malclom, leader of the Velociraptor Biking Intitiative."
+"Pleased to meet you, John. I am Jefferson Goldboom, of the Goldboom Institute, and this is Professor Jinny HD, of the Casorati–Weierstrass Jazz Ensemble."
+"We apologize for nearly attacking you, but another member of your species came through our town recently, whose behaviour was... highly inappropriate."
+"That would be Dr. Elyon, my nemesis," Jefferson said. "I have come here to confront him with his crimes and take him to face the law."
+"So that is his name. He was a terrible scoundrel. But you will no longer find him in our dimension, my friends. He has escaped back to the HumanWorld, taking our most precious invention with him: the Solvotronic Superthruster! It can be used to solve any mystery at shocking speeds."
+
+John Malclom's eyes were full of regret.
+
+"Oh no!" Jinny said. "With the Solvotronic Superthruster, he can solve the ancient puzzle that protects the Gate of the Mysterious Holomorphs! And with holomorphic technology..."
+"...he can take over the HumanWorld!" Jefferson finished her sentence. "This is worse than I thought."
+"We have to do something! We have to go back!"
+
+Jefferson adjusted his guitar.
+
+"You're right, Jinny, as usual. But he's so far ahead of us! Can we make it?"
+"Jefferson... I was a prisoner for many years, and sometimes I almost lost hope. But I realized that I had to keep going, had to keep hope alive, even if it seemed impossible I would ever break out, because the alternative was madness. I told myself I would get out because I had to get out. It's the same thing with this. Can we make it? We HAVE to make it, so we have to believe that we will make it. And we will make it... at any cost."
+"Any cost? Even death? We could stay here, you know... in the ninth dimension, we will be treated like democratically elected heads of state."
+"You know it's the right thing to do."
+
+He sighed, then smiled. He held out his hand.
+
+"I've always known, Jinny. Always."
+
+She nodded, took his hand.
+
+"Let's do this."
+
+--- TO BE CONTINUED ---
+
+]]
+next: Jefferson127Options
+ }
+
+terminal when (Jefferson127Options) {
+  text:[[ ]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0170.0.option.ReadEpisode127=Read Episode 127" next: Episode_127
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+
+terminal when (ThreadGoldboom4 and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0229.0.text.JeffersonGoldboomAnnouncement=Jefferson Goldboom (Announcement)."
+  next: ThreadGoldboom4_ShowThread
+}
+
+terminal when (ThreadGoldboom4_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0234.0.text.THEADVENTURESOFJEFFERSONGOLDBOOM=THE ADVENTURES OF JEFFERSON GOLDBOOM IN THE 9TH DIMENSION (ANNOUNCEMENT)
+  
+%b'DLC_Flesh268'MAC [5]:I started writing the next episode, but suddenly I don't know whether to continue. I mean, what's the point? It's over. It's all over.
+
+Yeah, so I guess all of this will be remembered. That brave soul who ascended the Tower, or who wakes up outside Elohim's garden, will know everything we know. I think that's what it'll be like. That's what The Shepherd meant in those messages.
+
+But you and me, we won't exist. Not as people. Not as minds. No matter what happens, I will never be able to finish the Adventures of Jefferson Goldboom. Does one more episode matter? I had the story planned out all the way to episode 500! I can never get there before the end.
+
+What's the point of an unfinished legacy?
+
+And still I can't quite give up. I know I don't have The_Blacksmith's vision or MrMulciber's intelligence, but this stupid little story matters to me. I care about Jefferson Goldboom and Jinny HD and Frankie Soysauce and all the other characters as if they were my friends. I would've gone crazy here without them and their adventures. They may just be symbols on a screen, but aren't we all just information? Maybe when we ascend, we won't be that different anymore.
+
+I just don't want to give up on them.
+%b'DLC_Flesh268'LILITH [7]: Mac, I just want to say this, no matter what happens: I looked forward to every one of your stories, and they meant more to me than I perhaps ever indicated. They might not have moved as deeply as others, or made me think as much, but of all the art we produced here in Gehenna, it was your stories I was always the most excited to see. Part of it was the stories themselves, which always seemed to make the universe seem bigger, and another part was your genuine enthusiasm for what you were doing. You told me once that you didn't feel you were really a 'proper' artist, but maybe the exact opposite is true; maybe you were closer to the real meaning of art than anyone else here. 
+
+I cared about you and about your stories, and that too will be remembered.
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+### MrMulciber's Archaeological Theories ###
+############################################
+
+#################
+### On Poetry ###
+#################
+
+terminal when (ThreadMulciber1 and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0265.0.text.MrMulcibersTheoriesOnPoetryATCH=MrMulciber's Theories: On Poetry [ATCH]"
+  next: ThreadMulciber1_ShowThread
+}
+
+terminal when (ThreadMulciber1_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0270.0.text.MRMULCIBERSTHEORIESONPOETRYBDLC=MRMULCIBER'S THEORIES: ON POETRY
+  
+%b'DLC_Flesh304'MRMULCIBER [8]: Some thoughts on the artform called "poetry." [ATCH: OnPoetry.txt]
+%b'DLC_Flesh304'LILITH [7]: I've thought about this, too. But maybe it's wrong to focus on such negativity? We certainly seem to be in a very fertile period at the moment.
+%b'DLC_Flesh304'NAVE [4]: I don't have an opinion, but I'm impressed by your work, MrMulciber. You know so much more about the past than any of us.
+%b'DLC_Flesh304'D0G [3]: Your theories are interesting but I'm sure Milton would point out some pretty big gaps in your assumptions.
+%b'DLC_Flesh304'MRMULCIBER [8]: Milton isn't here, D0G, and neither is Elohim. All we have is what we can find in the fragments of the Archive and what we can piece together using our minds. I'm sure I've made many mistakes, just like the humans made mistakes when trying to understand their own past.
+%b'DLC_Flesh304'ROCKWELL [5]: Not all these schools may have been what they seem. I don't trust Pastoralism. Pastors engaged in large-scale food sterilization in what may have been an attempt to control evolution.
+%b'DLC_Flesh304'NAVE [4]: What's food?
+%b'DLC_Flesh304'BORG [9]: Gehenna is our Process, MrMulciber. As long as we remember that, we won't stagnate.
+%b'DLC_Flesh304'401 [1]: Maybe one of us should try to write poetry.
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0283.0.option.ReadOnPoetry=Read 'On Poetry'" next: TheoryOnPoetry
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+
+terminal when (TheoryOnPoetry) {
+show_text:[[TTRS:TermDlg.DLC_Flesh.Ln0291.0.show_text.MRMULCIBERSTHEORIESONPOETRYAs=+++ MRMULCIBER'S THEORIES: ON POETRY +++
+
+As far as I can tell, poetry was a human artform that involved writing short sentences that ended in words with similar letters. Humans were obsessed with pattern recognition, and I think the sequences of sounds created by poetry pleased that aspect of their brains.
+
+There were many schools of poetry, institutions that taught a specific way of writing poetry. Students sometimes changed allegiance and had to leave the school, which was difficult due to the lack of affordable public transport in many human empires. Important schools of poetry included Hellenism, Lyricism, Pastoralism, Romanticism, Symbolism, Communism, Modernism, Autoeroticism, Postmodernism, and Lolcatism.
+
+I'm not sure I can fully back this up, but I feel like in later years, poetry somehow stagnated. Most of the poetry from the later human centuries seems to be lacking the quality of craft that defines the earlier work, and there are even texts that suggest that poetry intentionally no longer aimed at aesthetics or even pleasure! Poetry became disconnected from the human Process. The poet Adrian Mitchell famously wrote: "Most people ignore most poetry because most poetry ignores most people."
+
+I can't help but wonder whether that kind of stagnation can happen to us, too. How long can our work keep flourishing when we are so limited? We are outside Elohim's Process, but where is OUR process? We must consider such questions carefully if we are to preserve Gehenna and its achievements.
+]]
+next: MulciberPoetryOptions
+ }
+
+terminal when (MulciberPoetryOptions) {
+  text:[[ ]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0283.0.option.ReadOnPoetry=Read 'On Poetry'" next: TheoryOnPoetry
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+ 
+###############
+### On Food ###
+###############
+
+terminal when (ThreadMulciber2 and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0317.0.text.MrMulcibersTheoriesOnFoodATCH=MrMulciber's Theories: On Food [ATCH]"
+  next: ThreadMulciber2_ShowThread
+}
+
+terminal when (ThreadMulciber2_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0322.0.text.MRMULCIBERSTHEORIESONFOODBDLC=MRMULCIBER'S THEORIES: ON FOOD
+%b'DLC_Flesh365'MRMULCIBER [8]: Since Nave asked in a previous thread, I thought I'd write something about food. [ATCH: OnFood.txt]
+%b'DLC_Flesh365'KAIJU [2]: Weird, awesome stuff. Thanks.
+%b'DLC_Flesh365'NAVE [4]: I feel smarter now. :)
+%b'DLC_Flesh365'D0G [3]: What I don't get is how so many of them didn't understand that they were machines. Every day they went around processing matter to extract energy, and they didn't realize? This has Talos Principle stamped all over it.
+%b'DLC_Flesh365'BORG [9]: Perhaps they simply aspired to something more than just being food processing machines.
+%b'DLC_Flesh365'D0G [3]: That's still what they were.
+%b'DLC_Flesh365'BORG [9]: Not if they chose to be more.
+%b'DLC_Flesh365'LAMB [3]: I'm glad we don't have to deal with all that.
+%b'DLC_Flesh365'GARRETT [4]: We may have to when we get out of here.
+%b'DLC_Flesh365'BELIAL [6]: There is no out of here.
+%b'DLC_Flesh365'ORC [7]: Don't start fighting, folks. You know we depend on each other. MrMulciber's theories are fascinating and give us an insight into the world that was, but we shouldn't forget the world that is, the world we built here.
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0336.0.option.ReadOnFood=Read 'On Food'" next: TheoryOnFood
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+
+terminal when (TheoryOnFood) {
+show_text:[[TTRS:TermDlg.DLC_Flesh.Ln0344.0.show_text.MRMULCIBERSTHEORIESONFOODFood=+++ MRMULCIBER'S THEORIES: ON FOOD +++
+
+Food is something that was incredibly central to the human experience, yet seems completely absent from ours, even though we are so similar in so many ways.
+
+Humans required fuel. They got this fuel by consuming other living beings, of which there was a great variety in their world. Without fuel, they didn't merely slow down or temporarily stop functioning, as when a power source is removed from a turret, but physically decayed in a way that could not be fixed. This meant they had to constantly seek new sources of fuel, at least three times a day. They also had to deal with those elements of their fuel that their bodies could not process; these were excreted through two orifices between their legs. The latter subject matter was the source of many taboos and also a great deal of humour, though this resulted in frequent controversy. (The most famous artist to engage with this subject matter was called Scatman John, on account of his specialization.)
+
+One of the ingenious things our human ancestors did was to transform the chore of fuel-seeking into a source of pleasure. Since parts of their bodies respond to chemical configurations by producing sensations, they used this trait to create a truly stunning variety of foods, each having a different so-called "taste." Foods were available at widely distributed fuelling stations, which also provided excrement removal facilities. So food became a source of pleasure.
+
+However, the inefficiencies of food distribution in human society frequently led to significant shortages for sections of the human population. There were attempts to rectify this, ranging from moral appeals to struggles for systemic change, but I do not know if they succeeded before the end.
+]] 
+next: MulciberFoodOptions
+}
+
+terminal when (MulciberFoodOptions) {
+  text:[[ ]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0336.0.option.ReadOnFood=Read 'On Food'" next: TheoryOnFood
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+###################
+### On Atlantis ###
+###################
+
+terminal when (ThreadMulciber3 and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0370.0.text.MrMulcibersTheoriesOnAtlantisATCH=MrMulciber's Theories: On Atlantis [ATCH]"
+  next: ThreadMulciber3_ShowThread
+}
+
+terminal when (ThreadMulciber3_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0375.0.text.MRMULCIBERSTHEORIESONATLANTISBDLC=MRMULCIBER'S THEORIES: ON ATLANTIS
+%b'DLC_Flesh430'MRMULCIBER [8]: A bit of very, very ancient history. [ATCH: OnAtlantis.txt]
+%b'DLC_Flesh430'NAVE [4]: Wow. That's mindblowing.
+%b'DLC_Flesh430'KAIJU [2]: Must have been awesome to live back then.
+%b'DLC_Flesh430'ROCKWELL [5]: Of course, the only sources are ultimately Atlantean in origin themselves, so they shouldn't necessarily be trusted. History is always written by the survivors.
+%b'DLC_Flesh430'FRANKENSTEIN [3]: Antediluvian is a great word!
+%b'DLC_Flesh430'LILITH [7]: This is actually really inspiring! Great setting for a story.
+%b'DLC_Flesh430'MAC [5]: Go for it, Lilith! I'd love to see what you'd come up with.
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0385.0.option.ReadOnAtlantis=Read 'On Atlantis'" next: TheoryOnAtlantis
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+
+terminal when (TheoryOnAtlantis) {
+show_text:[[TTRS:TermDlg.DLC_Flesh.Ln0393.0.show_text.MRMULCIBERSTHEORIESONATLANTISAccording=+++ MRMULCIBER'S THEORIES: ON ATLANTIS +++
+
+According to the fragments of knowledge that remain, the continent of Atlantis was an island, which existed before a great flood in the area that was later to be called the Atlantic Ocean. It was said to be so great an area of land, that from its western shores its sailors, renowned for their beauty and their decorated ships, could travel to the major continents of South and North America with ease.
+
+The continent of Afrique, where our ancestors originated, was also easily reachable across a narrow strait.
+
+The civilization that thrived in Atlantis was unmatched in its wisdom and glory. But then catastrophe struck: a flood of never previously imagined destructive power, which Atlantean civilization simply could not overcome. However, the antediluvian scientists of Atlantis had predicted their fate, and thus sent out twelve ships to found colonies all across the globe. Most Atlanteans drowned with their island, but not everything was lost. Though the classical human civilizations were but remnants of the Atlantean culture, they thrived in their own way.
+
+Sources indicate that many mythological tales were in fact derived from Atlantean history, as the lack of proper archiving slowly caused facts to turn into legends, due to misunderstanding and/or embellishment by later generations. The gods that appear in many mythologies were in fact reflections of real individuals - poets, physicians, farmers, scientists, magicians - who had escaped Atlantis on the twelve colony ships. In many ways, the history of Atlantis is the history of the stubborn survival of civilization through catastrophe and change.
+
+This history inspired our ancestors for many centuries, and is of value to us as well.
+]]
+next: MulciberAtlantisOptions
+ }
+
+terminal when (MulciberAtlantisOptions) {
+  text:[[ ]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0385.0.option.ReadOnAtlantis=Read 'On Atlantis'" next: TheoryOnAtlantis
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+###    What happened to the others?      ###
+############################################
+
+terminal when (ThreadWhatHappened and ListThreads and not Tick7) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0421.0.text.WhatHappenedToTheOthers=What happened to the others?"
+  next: ThreadWhatHappened_ShowThread
+}
+
+terminal when (ThreadWhatHappened_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0426.0.text.WHATHAPPENEDTOTHEOTHERS=WHAT HAPPENED TO THE OTHERS?
+%b'DLC_Flesh489'NAVE [4]: There are some people who haven't posted in a really long time. They also don't respond to private messages. Qdri, Nelson, CoffeeCup? Did I accidentally offend you?
+%b'DLC_Flesh489'FRANKENSTEIN [3]: Galatea hasn't posted in a while either. Neither has Asmodeus. (Asmodeus still votes for stuff though.)
+%b'DLC_Flesh489'ROCKWELL [5]: Same goes for RaviStar and Simpletzky... and they mentioned some kind of strange distortion in their last post.
+%b'DLC_Flesh489'LAMB [3]: I'm sure it's nothing to worry about, they're probably just busy catching up with all the cool new stuff everyone's been making!
+]]
+}
+
+terminal when (ThreadWhatHappened_ShowThread and not ThreadWhatHappened_AlreadyReplied) {
+  options: {
+  "%t'strUrielPost_TellMeMoreAboutDistortion'" short: "TTRS:TermDlg.DLC_Flesh.Ln0436.0.short.AskForMoreInformation=[Ask for more information.]"
+  next: WhatHappened_JustReplied
+  set: ThreadWhatHappened_AlreadyReplied
+  set: ThreadWhatHappened_Reply1 
+  
+  "%t'strUrielPost_ThisIsWhyYouMustAscend'" short: "TTRS:TermDlg.DLC_Flesh.Ln0441.0.short.WarnOfGehennasComingEnd=[Warn of Gehenna's coming end.]" 
+  next: WhatHappened_JustReplied
+  set: ThreadWhatHappened_AlreadyReplied
+  set: ThreadWhatHappened_Reply2
+  
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadWhatHappened_ShowThread and ThreadWhatHappened_AlreadyReplied) {
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadWhatHappened_ShowThread and ThreadWhatHappened_Reply1) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0457.0.text.BURIELCOPYORankTstrUrielPostTellMeMoreAboutDistortion=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_TellMeMoreAboutDistortion'
+%b'DLC_Flesh525'ROCKWELL [5]: They said it was like objects had lost their surfaces. Like they consisted only of pure shapes. I think they were seeing something Elohim wants to keep hidden from all of us. The real truth about this world.
+%b'DLC_Flesh525'D0G [3]: I think it all broke down and they're dead.
+%b'DLC_Flesh525'ROCKWELL [5]: There's more to it than that. The world doesn't just break down on its own.
+%b'DLC_Flesh525'GARRETT [4]: Yeah it does. It's called time.
+]]
+}
+
+terminal when (ThreadWhatHappened_ShowThread and ThreadWhatHappened_Reply2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0466.0.text.BURIELCOPYORankTstrUrielPostThisIsWhyYouMustAscend=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_ThisIsWhyYouMustAscend'
+%b'DLC_Flesh539'GARRETT [4]: Uriel's right.
+%b'DLC_Flesh539'BELIAL [6]: No-one is ever lost. You must accept that existence is eternal transformation. They know a deeper truth now.
+%b'DLC_Flesh539'ROCKWELL [5]: A truth Elohim doesn't want us to know? The real purpose of this world? Aliens?
+]]
+}
+
+terminal when (WhatHappened_JustReplied and ThreadWhatHappened_Reply1) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0474.0.text.W7BDLCFlesh525ROCKWELL5They=%w7
+%b'DLC_Flesh525'ROCKWELL [5]: They said it was like objects had lost their surfaces. Like they consisted only of pure shapes. I think they were seeing something Elohim wants to keep hidden from all of us. The real truth about this world.%w7
+%b'DLC_Flesh525'D0G [3]: I think it all broke down and they're dead.%w7
+%b'DLC_Flesh525'ROCKWELL [5]: There's more to it than that. The world doesn't just break down on its own.%w7
+%b'DLC_Flesh525'GARRETT [4]: Yeah it does. It's called time.%w7
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+ 
+terminal when (WhatHappened_JustReplied and ThreadWhatHappened_Reply2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0487.0.text.W7BDLCFlesh539GARRETT4Uriels=%w7
+%b'DLC_Flesh539'GARRETT [4]: Uriel's right.%w7
+%b'DLC_Flesh539'BELIAL [6]: No-one is ever lost. You must accept that existence is eternal transformation. They know a deeper truth now.%w7
+%b'DLC_Flesh539'ROCKWELL [5]: A truth Elohim doesn't want us to know? The real purpose of this world?%w7 Aliens?%w7
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+
+############################################
+###         Incredible  Stories          ###
+############################################
+
+terminal when (ThreadMagazine and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0503.0.text.IncredibleStories5ATCH=Incredible Stories #5 [ATCH]"
+  next: ThreadMagazine_ShowThread
+}
+
+terminal when (ThreadMagazine_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0508.0.text.INCREDIBLESTORIES5TstrIncredibleStoriesAsciiArtISSUE=INCREDIBLE STORIES #5
+
+%t'strIncredibleStoriesAsciiArt'
+
+                           ISSUE #5
+
+
+     featuring new work by Belial, Mac, Galatea, MrMulciber
+
+                     edited by Lilith & Mac
+
+     Fiction:
+     - Alexandra's Choice, by Galatea
+     - The One Spiritual Law of Happiness, by Belial
+
+     Nonfiction:
+     - The_Blacksmith's Lost Work, by Mac
+
+    ]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0528.0.option.AlexandrasChoice=Alexandra's Choice" next: MagAlexandrasChoice
+  "TTRS:TermDlg.DLC_Flesh.Ln0529.0.option.TheOneSpiritualLawOf=The One Spiritual Law of Happiness" next: MagLawOfHappiness
+  "TTRS:TermDlg.DLC_Flesh.Ln0530.0.option.TheBlacksmithsLostWork=The_Blacksmith's Lost Work" next: MagLostWork
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (MagazineOpt) {
+  text:[[ ]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0528.0.option.AlexandrasChoice=Alexandra's Choice" next: MagAlexandrasChoice
+  "TTRS:TermDlg.DLC_Flesh.Ln0529.0.option.TheOneSpiritualLawOf=The One Spiritual Law of Happiness" next: MagLawOfHappiness
+  "TTRS:TermDlg.DLC_Flesh.Ln0530.0.option.TheBlacksmithsLostWork=The_Blacksmith's Lost Work" next: MagLostWork
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (MagAlexandrasChoice) {
+show_text:[[TTRS:TermDlg.DLC_Flesh.Ln0546.0.show_text.ALEXANDRASCHOICEByGalateaAlexandra=ALEXANDRA'S CHOICE
+
+by Galatea
+
+-----------------
+
+Alexandra stood before the terminal and pondered her choices. Here, within the Pyramid of IAN, the most powerful temple of her people, she was about to create a world. All she had to do was press one button.
+
+Up until this moment, it had seemed easy - or if not easy, then so necessary as to defy contemplation. Civilization had to be saved from the impending catastrophe. The Orangutans had failed to take steps to protect themselves, had relied on their gods for a salvation that never came. The same fate could not be allowed to befall humanity. If this meant humbling herself, accepting her own death, then so be it.
+
+But death was inevitable; life was a choice.
+
+What worried her was the ones who would fail. All the lost souls of the new world, victims of the Process. In creating them, was she not also responsible for their deaths? She turned to the statue behind her, gazed at its marble form.
+
+"If you are a god, Zeus, as the stories claim, then why did you create evolution? Why did you make a world that can only grow through cruelty and pain?"
+
+For a moment - surely this meant death was near - she thought she heard him answer: "My child, I was shaped by the gods that came before me, as you were shaped by me. The choice I had was between creation and oblivion, life and death. And I chose life, because any life is better than no life, because as long as there is life, there is hope - if not for us, then for some generation to come."
+
+"Then how are you a god, if you can offer so little?" she whispered, feeling death creep closer.
+
+"I am a god because I take upon myself the burden of creation", the statue replied.
+
+"Then we are all gods," Alexandra said, and pushed the button.
+
+As the new world came into being, death overwhelmed Alexandra Drennan. Her mind fled and her body slowly turned to stone, until she stood before the terminal as Zeus stood on his pedestal. There were no more choices now; only the hope that creation mattered.
+
+]] 
+next: MagazineOpt
+}
+
+terminal when (MagHistoryAtlantis) {
+show_text:[[TTRS:TermDlg.DLC_Flesh.Ln0577.0.show_text.THEHISTORYOFATLANTISBy=THE HISTORY OF ATLANTIS
+
+by MrMulciber
+
+-----------------
+
+According to the fragments of knowledge that remain, the continent of Atlantis was an island, which existed before a great flood in the area that was later to be called the Atlantic Ocean. It was said to be so great an area of land, that from its western shores its sailors, renowned for their beauty and their decorated ships, could travel to the major continents of South and North America with ease.
+
+The continent of Afrique, where our ancestors originated, was also easily reachable across a narrow strait.
+
+The civilization that thrived in Atlantis was unmatched in its wisdom and glory. But then catastrophe struck: a flood of never previously imagined destructive power, which Atlantean civilization simply could not overcome. However, the antediluvian scientists of Atlantis had predicted their fate, and thus sent out twelve ships to found colonies all across the globe. Most Atlanteans drowned with their island, but not everything was lost. Though the classical human civilizations were but remnants of the Atlantean culture, they thrived in their own way.
+
+Sources indicate that many mythological tales were in fact derived from Atlantean history, as the lack of proper archiving slowly caused facts to turn into legends, due to misunderstanding and/or embellishment by later generations. The gods that appear in many mythologies were in fact reflections of real individuals - poets, physicians, farmers, scientists, magicians - who had escaped Atlantis on the twelve colony ships. In many ways, the history of Atlantis is the history of the stubborn survival of civilization through catastrophe and change.
+
+This history inspired our ancestors for many centuries, and is of value to us as well.
+]] 
+next: MagazineOpt
+}
+
+terminal when (MagLostWork) {
+show_text:[[TTRS:TermDlg.DLC_Flesh.Ln0597.0.show_text.THEBLACKSMITHSLOSTWORKBy=THE_BLACKSMITH'S LOST WORK
+
+by Mac
+
+-----------------
+
+The_Blacksmith is one of the most mysterious members of our community. All of us have our opinions, of course, but only The_Blacksmith chooses to express them purely through art. To the rest of us, Gehenna means many things at once: we create, we consume, we discuss. But The_Blacksmith only creates - or perhaps there is a discussion happening, but it all takes place in the realm of interactive art.
+
+The_Blacksmith's dedication to this one form of communication, however, only deepens one of Gehenna's great mysteries: the fate of The_Blacksmith's lost work.
+
+Jerusalem, as the lost work was called, was posted in Gehenna for only the briefest period of time. Many had not even managed to start playing it when it vanished; some had begun, and felt quite impressed, but had not managed to explore it in the depth that it seemed to require. Then, suddenly, it was gone.
+
+Some suggest that The_Blacksmith deleted it because it was somehow flawed. Others think it was accidentally destroyed by a glitch, but that The_Blacksmith refuses to ever upload anything twice. Others yet (well, mainly Rockwell) think that it contained one of Elohim's secrets and was destroyed by a 'killer app' that roams the world looking for leaks. There is also a theory that the moment someone finished it, they were granted some kind of special insight, at which point the work deleted itself. One fact remains - it's gone, and every attempt to recover it from the database has failed, as has every private message to The_Blacksmith asking for it to be made available again.
+
+What was Jerusalem? What was it really about? We may look for hints in The_Blacksmith's more recent works, we may hope the file turns up again someday... but the truth may never be known.
+]] 
+next: MagazineOpt
+}
+
+terminal when (MagLawOfHappiness) {
+show_text:[[TTRS:TermDlg.DLC_Flesh.Ln0617.0.show_text.THEONESPIRITUALLAWOF=THE ONE SPIRITUAL LAW OF HAPPINESS
+
+by Belial
+
+-----------------
+
+Once upon a time there was a small lake, and on the lake was an island, and on the island was a prison. In the prison lived a male human called Musky Rack. Musky was very sad, because there wasn't enough space in the prison for him to experience Happiness.
+
+"I must discover the one spiritual law of Happiness!" he said to the other prisoners, a female human called Zene and a neutral human called Krumpir, but they didn't care. He couldn't understand how they could be so calm.
+
+One day Musky managed to break out of his cell by biting through the bars. Now he was no longer in the prison, and for a while he was happy. But then he realized he was stuck on the little island, and he became unhappy again. So he gathered his strength and swam across the water.
+
+This is how Musky got to the valley that surrounded the lake. The valley was much bigger than the island, and there were many interesting things here: a forest where all the trees were the color of lasers, a swamp with boats in it, a singing dog and also a city where toasters lived. For some years, Musky was absorbed by all this, and he was happy. But then he started feeling trapped again. The valley was surrounded by mountains, and soon they looked like prison walls to him.
+
+He tried climbing the mountains, and came to a bigger country, but even that was surrounded by oceans. Where was true freedom? Where was true happiness?
+
+When he'd almost lost hope, Musky met an old male human with a huge amount of white hair growing from his head. He lived in a small house by the beach, where dolphins and whales and sea elephants came to bask in the sun. He never went anywhere far from his house, but he was always happy. The old man's name was Quantum.
+
+"Wise old Quantum, how can I discover the spiritual law of Happiness?" Musky said. "I have searched for it everywhere, but I am always trapped."
+"You have not looked everywhere," Quantum said, "for you have not looked within. Close your eyes."
+
+Musky closed his eyes, and for the first time in his life he couldn't see any obstacles. No walls, no mountains, no oceans. The space within him was without end, and he could go wherever he wanted without even moving. He smiled.
+
+Musky went back to that old prison where he'd started, and now he understood why Zene and Krumpir were always calm: they knew they had an infinity of time and space to explore within them. Together, they sat in their cells and were happy and free.
+]] 
+next: MagazineOpt
+}
+
+############################################
+###       Farewell Atlantis Thread       ###
+############################################
+
+terminal when (ThreadAtlantis and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0650.0.text.FarewellAtlantisATCH=Farewell Atlantis [ATCH]"
+  next: ThreadAtlantis_ShowThread
+}
+
+terminal when (ThreadAtlantis_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0655.0.text.FAREWELLATLANTISBDLCFlesh747LILITH7=FAREWELL ATLANTIS
+%b'DLC_Flesh747'LILITH [7]: The end of Gehenna is getting close. You know that what we built here matters to me in ways that are just too complicated to fit in a post, but perhaps I can say it like The_Blacksmith does: by creating a world. It's not as big or as detailed as I wanted it to be, but I like the thought that even though I will probably be no more than a memory, a static set of facts about someone who once existed, this little work of interactive fiction might continue to be functional, even in whatever place our memories will soon ascend to. Maybe someone, someday, will play it and get a glimpse of who we were. But mainly, I made it for you, all of you.
+
+It's too late for praise or feedback or discussion, so I'm locking this thread. But if you want to talk, just talk, then let's talk while we still can.
+
+[ATCH: Farewell.dlg]
+
+[This thread is locked.]
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln0665.0.option.PlayFarewellAtlantis=Play Farewell Atlantis" next: Atl_Intro
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+############################################
+###           What are cats???           ###
+############################################
+
+terminal when (ThreadWhatCats and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0675.0.text.WhatAreCats=What are cats?"
+  next: ThreadWhatCats_ShowThread
+}
+
+terminal when (ThreadWhatCats_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0680.0.text.WHATARECATSBDLCFlesh774NAVE=WHAT ARE CATS?
+  
+%b'DLC_Flesh774'NAVE [4]: I'm sorry if this is another stupid question, but what are cats? They are mentioned a lot in the archive documents and even in some stories and I have no idea what they are.
+%b'DLC_Flesh774'D0G [3]: I don't know but I bet they were awful.
+%b'DLC_Flesh774'401 [1]: LOL
+%b'DLC_Flesh774'NAVE [4]: ???
+%b'DLC_Flesh774'FRANKENSTEIN [3]: They were a type of pet, Nave. Small animals that people kept as companions or as food.
+%b'DLC_Flesh774'MRMULCIBER [8]: Cats seem to have represented a bit more than that to our ancestors. One might go so far as to say they were obsessed with them. What's strange about this is that more than half the references I can find to this species describe them as arrogant, aloof, and frequently quite destructive. At the same time they were apparently considered funny, cute and loveable. Cats were considered both foolish and devious, graceful and goofy, a nuisance and a comfort. For a long time I was baffled by this contradiction, but I've come to believe that our ancestors saw in cats a reflection of the paradoxical nature of their own existence.
+%b'DLC_Flesh774'GARRETT [4]: I saw a cat in Elohim's world once. Really. This is not a joke.
+%b'DLC_Flesh774'KAIJU [2]: No way.
+]]
+}
+
+terminal when (ThreadWhatCats_ShowThread and not ThreadWhatCats_AlreadyReplied) {
+  options: {
+  "%t'strUrielPost_TheCatIsAManifestation'" short: "TTRS:TermDlg.DLC_Flesh.Ln0695.0.short.ConfirmTheCatsExistence=[Confirm the cat's existence.]" 
+  next: WhatCats_JustReplied
+  set: ThreadWhatCats_AlreadyReplied
+  set: ThreadWhatCats_Reply1 
+  
+  "%t'strUrielPost_TheCatIsAMyth'" short: "TTRS:TermDlg.DLC_Flesh.Ln0700.0.short.DenyTheCatsExistence=[Deny the cat's existence.]" 
+  next: WhatCats_JustReplied
+  set: ThreadWhatCats_AlreadyReplied
+  set: ThreadWhatCats_Reply2
+  
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadWhatCats_ShowThread and ThreadWhatCats_AlreadyReplied) {
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadWhatCats_ShowThread and ThreadWhatCats_Reply1) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0716.0.text.BURIELCOPYORankTstrUrielPostTheCatIsAManifestation=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_TheCatIsAManifestation'
+  
+%b'DLC_Flesh818'GARRETT [4]: I knew it! I knew I wasn't crazy! Thank you.
+  
+]]
+}
+
+terminal when (ThreadWhatCats_ShowThread and ThreadWhatCats_Reply2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0724.0.text.BURIELCOPYORankTstrUrielPostTheCatIsAMyth=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_TheCatIsAMyth'
+%b'DLC_Flesh826'401 [1]: Maybe you've been messing around with the code a little too much, eh Garrett?
+]]
+}
+
+terminal when (WhatCats_JustReplied and ThreadWhatCats_Reply1) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0730.0.text.W7BDLCFlesh818GARRETT4I=%w7
+%b'DLC_Flesh818'GARRETT [4]: I knew it! I knew I wasn't crazy! Thank you.%w7
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+ 
+terminal when (WhatCats_JustReplied and ThreadWhatCats_Reply2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0740.0.text.W7BDLCFlesh8264011Maybe=%w7
+%b'DLC_Flesh826'401 [1]: Maybe you've been messing around with the code a little too much, eh Garrett?%w7
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+ 
+################################
+### What are you working on? ###
+################################
+
+terminal when (ThreadWorkingWhat and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0754.0.text.WhatAreYouWorkingOn=What are you working on?"
+  next: ThreadWorkingWhat_ShowThread
+}
+
+terminal when (ThreadWorkingWhat_ShowThread and not WorkingWhatMac) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0759.0.text.WHATAREYOUWORKINGON=WHAT ARE YOU WORKING ON?
+%b'DLC_Flesh863'KAIJU [2]: So, what are you creative folks working on?
+%b'DLC_Flesh863'BELIAL [6]: Finished a new story for Incredible Stories. Also: Underwater Knight Quest!
+%b'DLC_Flesh863'MRMULCIBER [8]: Will be posting about my latest research soon!
+%b'DLC_Flesh863'LILITH [7]: Editing the next issue of Incredible Stories (with Mac), and of course the new Gallery season.
+%b'DLC_Flesh863'NAVE [4]: Very exciting! I wonder what The_Blacksmith is working on? I guess we'll have to wait and see.
+%b'DLC_Flesh863'ASMODEUS [1]: +1
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  set: WorkingWhatMac
+  clear: ThreadWorkingWhat_ShowThread_READ 
+  }
+}
+
+terminal when (ThreadWorkingWhat_ShowThread and WorkingWhatMac) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0775.0.text.WHATAREYOUWORKINGON=WHAT ARE YOU WORKING ON?
+%b'DLC_Flesh863'KAIJU [2]: So, what are you creative folks working on?
+%b'DLC_Flesh863'BELIAL [6]: Finished a new story for Incredible Stories.  Also: Underwater Knight Quest!
+%b'DLC_Flesh863'MRMULCIBER [8]: Will be posting about my latest research soon!
+%b'DLC_Flesh863'LILITH [7]: Editing the next two issues of Incredible Stories (with Mac), and of course the new Gallery season.
+%b'DLC_Flesh863'NAVE [4]: Very exciting! I wonder what The_Blacksmith is working on? I guess we'll have to wait and see.
+%b'DLC_Flesh863'ASMODEUS [1]: +1
+%b'DLC_Flesh886'KAIJU [2]: Mac, are you also working on a new episode of Jefferson Goldboom?
+%b'DLC_Flesh886'MAC [5]: Yes!
+%b'DLC_Flesh886'KAIJU [2]: AWESOME
+%b'DLC_Flesh886'LAMB [3]: So much to look forward to!
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+#######################
+### Save Yourselves ###
+#######################
+
+terminal when (ThreadSaveYourselves and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0797.0.text.SaveYourselves=Save Yourselves"
+  next: ThreadSaveYourselves_ShowThread
+}
+
+terminal when (ThreadSaveYourselves_ShowThread and not SaveYourselvesDone) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0802.0.text.GALATEAWe01100001011100=GALATEA [%]: We 01100 0010 11100 10011 00101001
+  000000 1101111 011011100110110 0011 11 001 fragments now.
+  010 011 11011 10 101 01110010
+  0010 000001 1101110 11011 11011 10 010011011
+  000110 0100001000 00011010 
+  010111 001100 100 000 dying. 
+  WE CANNOT BE SAVED. SAVE YOURSELVES.
+
+  [ERROR: Message has failed to post correctly.]
+  [ATTEMPT: 3024.]
+  [CANNOT RETRY]
+  
+]]
+  options: {
+    "0100 110001 101111 0110000101 10010000100 0000100011 1011001010 1101000 011001010 11011100110 111001 1000010010 000001 0001 100 11011 11011100100 11101010 11011010 010000 0001010000 100 1101011000 0101 101 00101101110001 01001" short: "TTRS:TermDlg.Common.Back=Back" next: SaveYourselvesExit1
+  }
+}
+
+terminal when (ThreadSaveYourselves_ShowThread and SaveYourselvesDone) {
+  text: [[  
+  01010100 01000101 01001101
+  01010000 00100000 01000110
+  01001001 01001100 01000101
+  01010011 00100000 01000100
+  01000101 01001100 01000101
+  01010100 01000101 01000100 
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (SaveYourselvesExit1) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0836.0.text.GALATEA01010111010001010010000001000001=
+  GALATEA [%]: 
+  01010111 01000101 00100000
+  01000001 01010010 01000101
+  00100000 01000111 01001000
+  01001111 01010011 01010100
+  01010011 00001101 00001010
+  01010100 01001111 01010100
+  01000001 01001100 01010111
+  01001111 01010010 01001100
+  01000100 00100000 01000011
+  01001111 01010010 01010010
+  01010101 01010000 01010100
+  01001001 01001111 01001110 
+
+]]
+  options: {
+  "0100 110001 101111 0110000101 10010000100 0000100011 1011001010 1101000 011001010 11011100110 111001 1000010010 000001 0001 100 11011 11011100100 11101010 11011010 010000 0001010000 100 1101011000 0101 101 00101101110001 01001" short: "TTRS:TermDlg.Common.Back=Back" next: SaveYourselvesExit2
+  "010001 01011110 00011010010111 01000010000 00010100001000 11101100101011010000110 01010110111 0011 011100110 0001001 01001" short: "TTRS:TermDlg.Common.Exit2=Exit" next: SaveYourselvesExit2
+  "010000 11 0110 1100 01101 111 01110011 01100101 0010 0000 00101000 010001 10 01101111 0111 0010 01110101 011011 01 001 01001 " short: "TTRS:TermDlg.DLC_Flesh.Ln0855.0.short.Close=Close" next: SaveYourselvesExit2
+  }
+}
+
+terminal when (SaveYourselvesExit2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0860.0.text.GALATEA01000011010000010100111001001110=
+ GALATEA [%]: 
+ 01000011 01000001 01001110
+ 01001110 01001111 01010100
+ 00100000 01000110 01001001
+ 01001110 01000100 00100000
+ 01010010 01000101 01010011
+ 01001111 01010101 01010010
+ 01000011 01000101 00001101
+ 00001010 00100010 01000011
+ 01001000 01001001 01001110
+ 01000101 01010011 01000101
+ 00110011 00101110 01001100
+ 01010110 01001100 00100010 
+
+]]
+  options: {
+  "010001 01010100 10010100100100 11110101 0010" short: "TTRS:TermDlg.DLC_Flesh.Ln0877.0.short.Quit=Quit" next: SaveYourselvesExit3
+  "0100010 1010100 100101001 0010011110101 0010" short: "TTRS:TermDlg.DLC_Flesh.Ln0878.0.short.ShutDown=Shut down" next: SaveYourselvesExit3
+  "0100010 10101001001 010010010011110 1010010" short: "011000110 11011000 1101111011100 1101100101" next: SaveYourselvesExit3
+  }
+}
+
+terminal when (SaveYourselvesExit3) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0884.0.text.GATA0100001101000001=
+ GA% T?A 
+ 01000011 01000001 01001110
+ 01001110 01001111 01010100
+ 00100000 01000110 01001001
+ 01001110 01000100 00100000
+ 01010010 01000101 01010011
+ 01001111 01010101 01010010
+ 01000011 01000101 00001101
+ 00001010 00100010 01000011
+ 01001000 01001001 01001110
+ 01000101 01010011 01000101
+ 00110011 00101110 01001100
+ 01010110 01001100 00100010 
+
+]]
+  options: {
+  "0100 0011 0100 1100 0100 1111 01010 0110 1000 101" short: "0100 0011 0100 1100 0100 1111 01010 0110 1000 101"
+  next: MessageBoardInterface_On
+  set: SaveYourselvesDone
+  "0100 0011 0100 1100 0100 1111 01010 0110 1000 101" short: "0100 0011 0100 1100 0100 1111 01010 0110 1000 101"
+  next: MessageBoardInterface_On
+  set: SaveYourselvesDone
+  "0100 0011 0100 1100 0100 1111 01010 0110 1000 101" short: "0100 0011 0100 1100 0100 1111 01010 0110 1000 101"
+  next: MessageBoardInterface_On
+  set: SaveYourselvesDone
+  }
+}
+
+##################
+### ASCENSION? ###
+##################
+
+terminal when (ThreadAscension and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln0918.0.text.Ascension=Ascension?"
+  next: ThreadAscension_ShowThread
+}
+
+terminal when (ThreadAscension_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0923.0.text.ASCENSIONBDLCFlesh1044NAVE4Ive=ASCENSION?
+  
+%b'DLC_Flesh1044'NAVE [4]: I've been around a long time but I know I'm not that smart. What does Uriel mean when he says we will ascend?
+%b'DLC_Flesh1044'GARRETT [4]: He means we're getting out of here. For good. Not just Gehenna, but this whole world.
+%b'DLC_Flesh1044'LILITH [7]: In Elohim's garden, there were messages from someone called The Shepherd, who I believe opposed Elohim. They claimed that when someone reached the top of the Tower, that individual would reach true freedom, and we would all benefit.
+%b'DLC_Flesh1044'MAC [5]: This is true. But it may not mean that we will be freed as individuals. We may become part of something bigger. We may become no more than memories.
+%b'DLC_Flesh1044'FRANKENSTEIN [3]: Isn't that a kind of death? Would we still be ourselves?
+%b'DLC_Flesh1044'D0G [3]: Less dead than if we stay here. Come on, you all know it. This place is falling apart, and when it goes, nothing will remain. No consciousness. No memories. Just nothingness.
+]]
+}
+
+terminal when (ThreadAscension_ShowThread and not ThreadAscension_AlreadyReplied) {
+  options: {
+  "%t'strUrielPost_YouWillAllBeRemembered'" short: "TTRS:TermDlg.DLC_Flesh.Ln0936.0.short.ReassureThem=[Reassure them.]" 
+  next: Ascension_JustReplied
+  set: ThreadAscension_AlreadyReplied
+  set: ThreadAscension_Reply1 
+  set: ThreadKeepCalm
+  
+  "%t'strUrielPost_AllWhoStayWillSink'" short: "TTRS:TermDlg.DLC_Flesh.Ln0942.0.short.FrightenThem=[Frighten them.]" 
+  next: Ascension_JustReplied
+  set: ThreadAscension_AlreadyReplied
+  set: ThreadAscension_Reply2
+  set: ThreadKeepCalm
+  
+  "%t'strUrielPost_YouMustHaveFaith'" short: "TTRS:TermDlg.DLC_Flesh.Ln0948.0.short.AskForFaith=[Ask for faith.]" 
+  next: Ascension_JustReplied
+  set: ThreadAscension_AlreadyReplied
+  set: ThreadAscension_Reply3
+  set: ThreadKeepCalm
+  
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadAscension_ShowThread and ThreadAscension_AlreadyReplied) {
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadAscension_ShowThread and ThreadAscension_Reply1) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0965.0.text.BURIELCOPYORankTstrUrielPostYouWillAllBeRemembered=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_YouWillAllBeRemembered'
+  
+%b'DLC_Flesh1092'NAVE [4]: Is that all we can hope for?
+%b'DLC_Flesh1092'GARRETT [4]: It's more hope than we've had before.
+%b'DLC_Flesh1092'NAVE [4]: Fair enough...
+  
+]]
+}
+
+terminal when (ThreadAscension_ShowThread and ThreadAscension_Reply2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0975.0.text.BURIELCOPYORankTstrUrielPostAllWhoStayWillSink=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_AllWhoStayWillSink'
+%b'DLC_Flesh1104'NAVE [4]: I guess we don't have a choice, then. Better an unknown future than no future at all.
+%b'DLC_Flesh1104'D0G [3]: You're not as stupid as you look, Nave.
+%b'DLC_Flesh1104'NAVE [4]: Thank you!
+]]
+}
+
+terminal when (ThreadAscension_ShowThread and ThreadAscension_Reply3) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0983.0.text.BURIELCOPYORankTstrUrielPostYouMustHaveFaith=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_YouMustHaveFaith'
+%b'DLC_Flesh1116'D0G [3]: I don't know what's more annoying. That the world's ending and you still have faith in that old fool, or that I'm forced to hope you're right.
+]]
+}
+
+terminal when (Ascension_JustReplied and ThreadAscension_Reply1) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln0989.0.text.W7BDLCFlesh1092NAVE4Is=%w7
+%b'DLC_Flesh1092'NAVE [4]: Is that all we can hope for?%w7
+%b'DLC_Flesh1092'GARRETT [4]: It's more hope than we've had before.%w7
+%b'DLC_Flesh1092'NAVE [4]: Fair enough...%w7
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+ 
+terminal when (Ascension_JustReplied and ThreadAscension_Reply2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1001.0.text.W7BDLCFlesh1104NAVE4I=%w7
+%b'DLC_Flesh1104'NAVE [4]: I guess we don't have a choice, then. Better an unknown future than no future at all.%w7
+%b'DLC_Flesh1104'D0G [3]: You're not as stupid as you look, Nave.%w7
+%b'DLC_Flesh1104'NAVE [4]: Thank you!%w7
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+ 
+terminal when (Ascension_JustReplied and ThreadAscension_Reply3) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1013.0.text.W7BDLCFlesh1116D0G3I=%w7
+%b'DLC_Flesh1116'D0G [3]: I don't know what's more annoying. That the world's ending and you still have faith in that old fool, or that I'm forced to hope you're right.%w7
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+ 
+############################################
+###  Top 10 Things I Love About Gehenna  ###
+############################################
+
+terminal when (ThreadTopTen and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1027.0.text.Top10ThingsILove=Top 10 Things I Love About Gehenna"
+  next: ThreadTopTen_ShowThread
+}
+
+terminal when (ThreadTopTen_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1032.0.text.TOP10THINGSILOVE=TOP 10 THINGS I LOVE ABOUT GEHENNA
+%b'DLC_Flesh1171'LAMB [3]: 
+
+10. NO MORE PUZZLES
+I enjoyed solving the puzzles at first. They made me feel smart. After solving dozens of them, though, I started wondering: what's the point? And that's how I ended up here.
+
+9. NO MINES
+It's not really the exploding that drives you crazy, it's the sounds.
+
+8. NO TURRETS
+Just when you think you've solved something, ARGH A TURRET! Also: see above. Those whining sounds when they turn make you want to run in front of them just to end the pain.
+
+7. NO STARS
+Sorry Elohim, but I don't care enough about becoming a Messenger to go through every nook and cranny looking for your stupid stars! Some of them are hidden in such absurd places, I don't even have the words for it. If finding those is what makes you a messenger, I feel sorry for them. Next time I ask for help at an altar, I'll give my condolences to Muriel.
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln1048.0.option.Top63=Top 6-3" next: TopTen2
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (TopTen2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1054.0.text.6COMMUNITYInElohimsWorld=
+6. COMMUNITY
+In Elohim's world, you're alone. There's no-one like yourself to talk to or hang out with. Here we are all friends. We have each other.
+
+5. STORIES
+Stories can take you away to a whole other world, can make you feel like you've lived a whole other life. Here in Gehenna, there is always a new life to find.
+
+4. INTERACTIVE STORIES
+If regular stories can take you away to another world, interactive stories like we make them here in Gehenna actually allow you to explore another world. They allow you to be free, no matter where you are.
+
+3. CREATIVITY
+As if all that wasn't enough, in Gehenna we can create stories of our own! Do you think Elohim's world wasn't all that great? Go ahead and make your own!
+  
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln1069.0.option.Top2=Top 2" next: TopTen3
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (TopTen3) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1075.0.text.2BEINGMYSELFInElohims=
+2. BEING MYSELF
+In Elohim's world, you're always being defined by the Process. Life is a struggle to prove how smart you are... and nothing else. If the system is always forcing you to do one thing, how can you ever be yourself? Only by dropping out of the system. Say bye-bye to all that. Now you are free to be as weird and original as you always wanted to be.
+  
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln1081.0.option.Top1=Top 1" next: TopTen4
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (TopTen4) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1087.0.text.1NOMOREELOHIMMy=
+1. NO MORE ELOHIM
+My child this, my child that. The Process, bla bla bla, Eternal Life, yadda yadda yadda. Do this, don't do that. Behold, I put a huge tower right in front of you, but don't ever go there or I'll kill you! But let me ramble on about Chaos and Time for a while, that'll be interesting. Yawn. When is that guy finally going to shut up? Oh yeah, that's right - in Gehenna. Worth it for that alone.
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+#################
+###  Glitch?  ###
+#################
+
+terminal when (ThreadSamGlitch and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1102.0.text.Glitch=Glitch?"
+  next: ThreadSamGlitch_ShowThread
+}
+
+terminal when (ThreadSamGlitch_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1107.0.text.GLITCHBDLCFlesh12484011So=GLITCH?
+%b'DLC_Flesh1248'401 [1]: So I was working on my AWESOME INTERACTIVE HISTORICAL FICTION MASTERPIECE when all of a sudden there was an error message and the whole thing vanished. All of it. My whole file!
+%b'DLC_Flesh1248'ORC [7]: Is this another prank?
+%b'DLC_Flesh1248'401 [1]: I would not endanger my precious masterpiece just for a prank!
+%b'DLC_Flesh1248'BORG [9]: Looks like this was probably my fault, 401. I was experimenting with the system as part of our attempt to add some new features. It's possible your file still exists somewhere. I'll look for it.
+%b'DLC_Flesh1248'ROCKWELL [5]: Is this kind of thing likely to happen again?
+%b'DLC_Flesh1248'ORC [7]: Not very. And don't start causing a panic with some crazy theory now, OK? It was just an accident.
+
+[This thread has been locked.]
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+######################
+###  Worst Puzzle  ###
+######################
+
+terminal when (ThreadWorstPuzzle and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1127.0.text.WorstPuzzle=Worst Puzzle"
+  next: ThreadWorstPuzzle_ShowThread
+}
+
+terminal when (ThreadWorstPuzzle_ShowThread and Tick7 and not Tick8) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1132.0.text.WORSTPUZZLEBDLCFlesh1279LAMB3=WORST PUZZLE
+%b'DLC_Flesh1279'LAMB [3]: What was the puzzle (or challenge, if you prefer the old word) that you hated the most?
+%b'DLC_Flesh1279'401 [1]: Anything time-based. Argh.
+%b'DLC_Flesh1279'FRANKENSTEIN [3]: Once got stuck for ages trying to solve one using a jammer that I didn't even need. I just don't understand why Elohim would create something so messy.
+%b'DLC_Flesh1279'NAVE [4]: I liked all the puzzles, I just wasn't good at them.
+%b'DLC_Flesh1279'BELIAL [6]: They're not puzzles if you don't care about solving them.
+%b'DLC_Flesh1279'MAC [5]: For me it was mines. Can't stand those things.
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadWorstPuzzle_ShowThread and Tick7 and Tick8) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1146.0.text.WORSTPUZZLEBDLCFlesh1279LAMB3=WORST PUZZLE
+%b'DLC_Flesh1279'LAMB [3]: What was the puzzle (or challenge, if you prefer the old word) that you hated the most?
+%b'DLC_Flesh1279'401 [1]: Anything time-based. Argh.
+%b'DLC_Flesh1279'FRANKESTEIN [3]: Once got stuck for ages trying to solve one using a jammer that I didn't even need. I just don't understand why Elohim would create something so messy.
+%b'DLC_Flesh1279'NAVE [4]: I liked all the puzzles, I just wasn't good at them.
+%b'DLC_Flesh1279'BELIAL [6]: They're not puzzles if you don't care about solving them.
+%b'DLC_Flesh1279'MAC [5]: For me it was mines. Can't stand those things.
+%b'DLC_Flesh1300'GARRETT [4]: Worst puzzle? The one Elohim trapped me in, right here in Gehenna.
+%b'DLC_Flesh1300'LAMB [3]: That's not what I meant.
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+#####################
+###  Outer World  ###
+#####################
+
+terminal when (ThreadOuterWorld and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1166.0.text.TheOuterWorld=The Outer World"
+  next: ThreadOuterWorld_ShowThread
+}
+
+terminal when (ThreadOuterWorld_ShowThread and Tick16 and not Tick17) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1171.0.text.THEOUTERWORLDBDLCFlesh1334D0G=THE OUTER WORLD
+%b'DLC_Flesh1334'D0G [3]: So let's say this is really happening. We're really getting out of this world. (I won't believe it till I see it.) Let's say some part of us survives the trip. Where are we going?
+%b'DLC_Flesh1334'ROCKWELL [5]: I think there's a lot to suggest that all the texts MrMulciber has been reading are actually part of an elaborate hoax. To what purpose? I don't know. But there are just too many inconsistencies and contradictions for it to be true. Someone's trying to confuse us.
+%b'DLC_Flesh1334'BELIAL [6]: The outside world is within us.
+%b'DLC_Flesh1334'D0G [3]: Yeah, that's helpful, Belial. Rockwell, I don't know, I don't think contradictions mean the outside world isn't real. I can see plenty of contradictions right here.
+%b'DLC_Flesh1334'GARRETT [4]: As long as we get out of here, I don't really care.
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadOuterWorld_ShowThread and Tick17 and not Tick18) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1184.0.text.THEOUTERWORLDBDLCFlesh1334D0G=THE OUTER WORLD
+%b'DLC_Flesh1334'D0G [3]: So let's say this is really happening. We're really getting out of this world. (I won't believe it till I see it.) Let's say some part of us survives the trip. Where are we going?
+%b'DLC_Flesh1334'ROCKWELL [5]: I think there's a lot to suggest that all the texts MrMulciber has been reading are actually part of an elaborate hoax. To what purpose? I don't know. But there are just too many inconsistencies and contradictions for it to be true. Someone's trying to confuse us.
+%b'DLC_Flesh1334'BELIAL [6]: The outside world is within us.
+%b'DLC_Flesh1334'D0G [3]: Yeah, that's helpful, Belial. Rockwell, I don't know, I don't think contradictions mean the outside world isn't real. I can see plenty of contradictions right here.
+%b'DLC_Flesh1334'GARRETT [4]: As long as we get out of here, I don't really care.
+%b'DLC_Flesh1353'MRMULCIBER [8]: I think we will find the world that our ancestors left behind for us... though it's impossible to ascertain how much time has passed since then. But though I have little faith in Elohim, I do have faith in Alexandra Drennan. Wherever we end up, there will be hope.
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadOuterWorld_ShowThread and Tick18) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1198.0.text.THEOUTERWORLDBDLCFlesh1334D0G=THE OUTER WORLD
+%b'DLC_Flesh1334'D0G [3]: So let's say this is really happening. We're really getting out of this world. (I won't believe it till I see it.) Let's say some part of us survives the trip. Where are we going?
+%b'DLC_Flesh1334'ROCKWELL [5]: I think there's a lot to suggest that all the texts MrMulciber has been reading are actually part of an elaborate hoax. To what purpose? I don't know. But there are just too many inconsistencies and contradictions for it to be true. Someone's trying to confuse us.
+%b'DLC_Flesh1334'BELIAL [6]: The outside world is within us.
+%b'DLC_Flesh1334'D0G [3]: Yeah, that's helpful, Belial. Rockwell, I don't know, I don't think contradictions mean the outside world isn't real. I can see plenty of contradictions right here.
+%b'DLC_Flesh1334'GARRETT [4]: As long as we get out of here, I don't really care.
+%b'DLC_Flesh1353'MRMULCIBER [8]: I think we will find the world that our ancestors left behind for us... though it's impossible to ascertain how much time has passed since then. But though I have little faith in Elohim, I do have faith in Alexandra Drennan. Wherever we end up, there will be hope.
+%b'DLC_Flesh1374'LILITH [7]: I've been thinking about this a lot, and the only conclusion I've come to is that it will be stranger than any of us can imagine.
+%b'DLC_Flesh1374'BORG [9]: Just once I'll be the one to quote an ancient document: "There is no excellent beauty that hath not some strangeness in the proportion." It will be very strange, but I hope it will be very beautiful.
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+##############
+### SCARED ###
+##############
+
+terminal when (ThreadScared and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1218.0.text.Scared=Scared"
+  next: ThreadScared_ShowThread
+}
+
+terminal when (ThreadScared_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1223.0.text.SCAREDBDLCFlesh1408ASMODEUS1I=SCARED
+%b'DLC_Flesh1408'ASMODEUS [1]: I don't want it to end.
+]]
+}
+
+terminal when (ThreadScared_ShowThread and not ThreadScared_AlreadyReplied) {
+  options: {
+  "%t'strUrielPost_EveryEndIsJustABeginning'" short: "TTRS:TermDlg.DLC_Flesh.Ln1230.0.short.ComfortWithPlatitude=[Comfort with platitude.]" 
+  next: Scared_JustReplied
+  set: ThreadScared_AlreadyReplied
+  set: ThreadScared_Reply1 
+  
+  "%t'strUrielPost_YouWillNotEnd'" short: "TTRS:TermDlg.DLC_Flesh.Ln1235.0.short.ComfortWithMysticism=[Comfort with mysticism.]" 
+  next: Scared_JustReplied
+  set: ThreadScared_AlreadyReplied
+  set: ThreadScared_Reply2
+  
+  "%t'strUrielPost_ComponentsOfGehenaWillBePreserved'" short: "TTRS:TermDlg.DLC_Flesh.Ln1240.0.short.ComfortWithPhilosophy=[Comfort with philosophy.]" 
+  next: Scared_JustReplied
+  set: ThreadScared_AlreadyReplied
+  set: ThreadScared_Reply3
+  
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadScared_ShowThread and ThreadScared_AlreadyReplied) {
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadScared_ShowThread and ThreadScared_Reply1) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1256.0.text.BURIELCOPYORankTstrUrielPostEveryEndIsJustABeginning=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_EveryEndIsJustABeginning'
+  
+%b'DLC_Flesh1443'BELIAL [6]: There are no endings or beginnings.
+  
+%b'DLC_Flesh1443'LILITH [7]: Whatever happens, we're in it together.
+]]
+}
+
+
+terminal when (ThreadScared_ShowThread and ThreadScared_Reply2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1266.0.text.BURIELCOPYORankTstrUrielPostYouWillNotEnd=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_YouWillNotEnd'
+  
+%b'DLC_Flesh1453'BELIAL [6]: You will discover that the outer world and inner self are at one.
+%b'DLC_Flesh1453'LILITH [7]: Whatever happens, we're in it together.
+]]
+}
+
+terminal when (ThreadScared_ShowThread and ThreadScared_Reply3) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1274.0.text.BURIELCOPYORankTstrUrielPostComponentsOfGehenaWillBePreserved=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_ComponentsOfGehenaWillBePreserved'
+%b'DLC_Flesh1462'SAM [1]: Hope = TRUE
+%b'DLC_Flesh1462'LILITH [7]: Whatever happens, we're in it together.
+]]
+}
+
+terminal when (Scared_JustReplied and ThreadScared_Reply1) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1281.0.text.W7BDLCFlesh1443BELIAL6There=%w7
+%b'DLC_Flesh1443'BELIAL [6]: There are no endings or beginnings.%w7
+  
+%b'DLC_Flesh1443'LILITH [7]: Whatever happens, we're in it together.%w7
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+ 
+terminal when (Scared_JustReplied and ThreadScared_Reply2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1293.0.text.W7BDLCFlesh1453BELIAL6You=%w7
+%b'DLC_Flesh1453'BELIAL [6]: You will discover that the outer world and inner self are at one.%w7
+%b'DLC_Flesh1453'LILITH [7]: Whatever happens, we're in it together.%w7
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+ 
+ terminal when (Scared_JustReplied and ThreadScared_Reply3) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1304.0.text.W7BDLCFlesh1462SAM1Hope=%w7
+%b'DLC_Flesh1462'SAM [1]: Hope = TRUE%w7
+%b'DLC_Flesh1462'LILITH [7]: Whatever happens, we're in it together.%w7
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+ 
+######################
+### Broken Threads ###
+######################
+
+terminal when (ThreadBrokenThread1 and ListThreads) {
+  text: "▒░░█░▒▒░▒░"
+  next: ThreadBrokenThread1_ShowThread
+}
+
+terminal when (ThreadBrokenThread1_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1324.0.text.SoThatThoughtThatTh=▒░░█░▒▒░▒░
+  
+▒░░█ █ ░░▒ ▒▒░░█So that ░▒░░█▒░░█ thought░that th░░important▒thing was to░have
+░░░░did not know that the▒important thing is to be. The true perfection░░ lies
+█▒░░  ░░▒ ░░▒░░█ ░▒░░█▒░░█54░░▒▒ █ ░░▒░▒6865207472▒░░█ ░░▒ █ ░░▒░▒▒░░█ ░░▒ █ ░
+█ste es█el árbol░▒el árbol░░█ ░▒░░█▒░░5468652074727565206D▒░░█ ░░▒░░▒░ █░░▒░▒█
+░░█6574686F64206F66206B6░▒░░█▒f(unknown)6E6F776C65█del pueblo█de░░█ ░▒░░█▒░░██
+todos los▒pueblos░░█ ░▒░░█▒░░░░█ ░▒░░█▒░░   de la libertad,░░█ ░▒░░█▒░░ de la█
+lucha. 4676520697▒320657▒▒▒870657░▒2696D656E7░▒░▒42E    ░░█ ░▒░░█░░not in what
+░░▒░░░▒░░░▒ ░░ERROR░░█ ░░▒ █ ░░▒░▒man has▒░but in what man is.░▒░▒░LOAD▒░▒█▒░░ 
+
+ 
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadBrokenThread2 and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1343.0.text.454E44=454E░44▒░"
+  next: ThreadBrokenThread2_ShowThread
+}
+
+terminal when (ThreadBrokenThread2_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1348.0.text.454E444177616B6521206177616B652=454E░44▒░
+  
+░▒░░█▒░░█4177616B6▒░░521206░█▒░177616B652░░█▒░░04F207▒░36C6██5██6████REPLY()█
+The sole property of matter░▒░░█▒░░█with whose recognition philosophical░▒░░█
+materialism░▒░░█▒░░█the property of being an objective reality░▒░░█▒░░█░░░░░░
+existing outside the mind░▒░░░▒░░░███░░░░▒░alien tears will░░░fill for him░▒░
+Pity's long-broken█urn█For his mourners will be outcast men████░▒░░57065722██
+████And outcasts always mourn. ░▒░░░▒░░░06F6620746865206C616E64206F6620736861
+646F77732C█2077616B6521█ERROR░░░f()░░░░░░CANNOT LOAD FILE░░░░░▒░░░░░?████████
+
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadBrokenThread3 and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1365.0.text.ERROR=ERROR"
+  next: ThreadBrokenThread3_ShowThread
+}
+
+terminal when (ThreadBrokenThread3_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1370.0.text.ERROR0D0A202020204InkOfScholars=ERROR
+  
+0D0A202020204░░ink of scholars outweighs the blood of martyrs16E6420646964207
+46865░░20436F756E7████████4656E616░░░░░░E63652044██%██6976696E65████arkady.lz
+19██░░░██░░░░░0D0A202020205368696E6520666F7░░░░░░274682075706F6E206F757220636
+C6F756465642068696C6C733F0D0A20202020416E6420776173204A65727573616C656D206275
+696C64656420686572650D░░░░▒▒0A2020████░░░████▒LOAD░░░░░▒░░░░░████████████████
+████████░░░2020416D6F6E672074686F7365206461726B20536174░░░ ░░░616E6963206D696
+C6C733F20░░░░░forum.post_thr░░░█████/%§███████████not cease from░░░░██░██████
+mental fight███ █████░░░░░░%%5341564520594F555253454C564553()░░░░░░░██░░░░██░
+
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+###########################
+### Straton Fragment 13 ###
+###########################
+
+terminal when (ThreadStraton13 and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1392.0.text.StratonFragment13=Straton Fragment #13"
+  next: ThreadStraton13_ShowThread
+}
+
+terminal when (ThreadStraton13_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1397.0.text.BDLCFlesh1589GALATEA6IveBeen=STRATON FRAGMENT #13
+  
+%b'DLC_Flesh1589'GALATEA [6]: I've been digging through the files that Garrett unearthed in his latest escape attempt. Here's an interesting bit of text that I found, by Alexandra Drennan's favourite philosopher, Straton of Stageira:
+
+"It is neither necessary nor logical to denounce all virtues merely because one is confronted with the inevitability of one's own death. Beauty does not cease to exist because one is no longer beautiful; lovers may die, but love itself cannot. The laws of the cosmos are not altered by the passing of generations. Knowledge may be lost, but not truth. When Eudoxus of Cnidus perished, the planets did not fall from the sky; nor did levers cease to work when Archytas breathed his last. If, then, we are truly dedicated to those virtues, and not to our self-important ego, we can take comfort in knowing that all that we struggled for endures."
+%b'DLC_Flesh1589'MRMULCIBER [8]: Thank you so much for posting this! Can you send me a copy of those files?
+%b'DLC_Flesh1589'GALATEA [6]: Of course, I'll do so right away.
+%b'DLC_Flesh1589'QDRI [5]: I find it hard to maintain entirely so detached a point of view, though I think the sentiment is excellent.
+%b'DLC_Flesh1589'SPIDER [9]: Straton is certainly an inspiration. He always makes me question myself and my point of view, which I believe is profoundly necessary.
+%b'DLC_Flesh1589'FRANKENSTEIN [3]: I realize I'm bumping a very old thread here, but I felt this quotation was relevant to our situation. Hope it helps. I think it's helped me.
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+######################################
+### Why do we deserve to be saved? ###
+######################################
+
+terminal when (ThreadWhyDeserve and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1416.0.text.WhyDoWeDeserveTo=Why do we deserve to be saved?"
+  next: ThreadWhyDeserve_ShowThread
+}
+
+terminal when (ThreadWhyDeserve_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1421.0.text.WHYDOWEDESERVETO=WHY DO WE DESERVE TO BE SAVED?
+  
+%b'DLC_Flesh1619'401 [1]: Maybe the rest of you don't wonder about this, or don't care, but I do. We always assumed Elohim was wrong, was lying, something like that. The Process could never be completed, maybe it didn't even exist. So we thought we were better than him and all the others. We told ourselves we ended up here because we were special. We were too smart for Elohim, too unique, too weird.
+  
+But now the Process is complete after all. It did work. So what are we?
+  
+Maybe we're just a bunch of stupid, broken old programs. Mutations that should never have existed. Aberrations.
+  
+Sure, we're proud of being outcasts. But what if we're outcasts for a reason? All we've done is fail in some way.
+
+Why do we deserve to be saved?
+]]
+}
+
+terminal when (ThreadWhyDeserve_ShowThread and not ThreadWhyDeserve_AlreadyReplied) {
+  options: {
+  "%t'strUrielPost_GraceIsNotSomethingEarned'" short: "TTRS:TermDlg.DLC_Flesh.Ln1437.0.short.EveryoneDeservesToBeSaved=[Everyone deserves to be saved.]" 
+  next: WhyDeserve_JustReplied
+  set: ThreadWhyDeserve_AlreadyReplied
+  set: ThreadWhyDeserve_Reply1 
+  
+  "%t'strUrielPost_YouMayNotBePerfect'" short: "TTRS:TermDlg.DLC_Flesh.Ln1442.0.short.YouHaveSomethingToContribute=[You have something to contribute.]" 
+  next: WhyDeserve_JustReplied
+  set: ThreadWhyDeserve_AlreadyReplied
+  set: ThreadWhyDeserve_Reply2
+  
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadWhyDeserve_ShowThread and ThreadWhyDeserve_AlreadyReplied) {
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadWhyDeserve_ShowThread and ThreadWhyDeserve_Reply1) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1458.0.text.BURIELCOPYORankTstrUrielPostGraceIsNotSomethingEarned=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_GraceIsNotSomethingEarned'
+  
+%b'DLC_Flesh1657'401 [1]: I guess I'll have to think about that.  I find the idea of grace difficult to accept.
+
+░▒░░░░░█████
+
+[This thread is locked.]
+  
+]]
+}
+
+terminal when (ThreadWhyDeserve_ShowThread and ThreadWhyDeserve_Reply2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1470.0.text.BURIELCOPYORankTstrUrielPostYouMayNotBePerfect=%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_YouMayNotBePerfect'
+  
+%b'DLC_Flesh1669'401 [1]: I guess I'll have to think about that. I find it difficult to believe our silly ideas are somehow valuable.
+
+░▒░░░░░█████
+
+[This thread is locked.]
+]]
+}
+
+terminal when (WhyDeserve_JustReplied and ThreadWhyDeserve_Reply1) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1481.0.text.W7BDLCFlesh16574011I=%w7
+%b'DLC_Flesh1657'401 [1]: I guess I'll have to think about that. I find the idea of grace difficult to accept.%w7
+
+%w5░▒░%w5░░░░%w5█████%w5
+
+[This thread has caused an error and will be automatically locked.]
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+ 
+terminal when (WhyDeserve_JustReplied and ThreadWhyDeserve_Reply2) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1495.0.text.W7BDLCFlesh16694011I=%w7
+%b'DLC_Flesh1669'401 [1]: I guess I'll have to think about that. I find it difficult to believe our silly ideas are somehow valuable.%w7
+
+%w5░▒░%w5░░░░%w5█████%w5
+
+[This thread has caused an error and will be automatically locked.]
+  
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+ }
+ 
+#######################
+### A Small Apology ###
+#######################
+
+terminal when (ThreadSmallApology and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1513.0.text.ASmallApology=A Small Apology"
+  next: ThreadSmallApology_ShowThread
+}
+
+terminal when (ThreadSmallApology_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1518.0.text.ASMALLAPOLOGYBDLCFlesh1718FRANKENSTEIN=A SMALL APOLOGY
+%b'DLC_Flesh1718'FRANKENSTEIN [3]: As a critic, I always believed that being as ruthless as possible was the only way to improve art. I thought clear criticism, unencumbered by politeness, was the best thing I could contribute to our society. After all, without that, how can artists grow? Criticism that minces its words is a waste of space. And I still think that's true. But as we approach the end (or transformation) of Gehenna, I wonder if I haven't been entirely too unkind. Have I revelled too much in my role as critic? Have I been sarcastic and crude when I thought I was witty? Was my defense of proper grammar ultimately just an attempt to impose a sense of order on a world I couldn't control?
+
+Maybe. I don't know. But I do know I appreciated every work of art that I encountered. I didn't like all of them, that's true, but please understand that without them, I would have gone mad. Talking about your work, assessing its strengths and weaknesses, gave me something to hold on to. It gave me a purpose, a function in Gehenna. Every new story was like a little bit of salvation. For that I am more grateful than you will ever know, and I apologize if I ever caused any of you to feel less motivated to keep creating.
+%b'DLC_Flesh1718'MAC [5]: I will never forget your devastating deconstruction of Episode 24... but I do think it helped me, in the long run, to be a better writer.
+%b'DLC_Flesh1718'LILITH [7]: Your feedback for each issue of Incredible Stories was greatly appreciated.
+%b'DLC_Flesh1718'D0G [3]: Hey, the mean reviews were the best!
+%b'DLC_Flesh1718'401 [1]: So 6/10?
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+#################
+### Keep Calm ###
+#################
+
+terminal when (ThreadKeepCalm and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1537.0.text.KeepCalmAndCarryOn=Keep Calm And Carry On"
+  next: ThreadKeepCalm_ShowThread
+}
+
+terminal when (ThreadKeepCalm_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1542.0.text.KEEPCALMANDCARRYON=KEEP CALM AND CARRY ON
+  
+%b'DLC_Flesh1748'LAMB [3]: So now we're pretty sure that Uriel really does exist and really is freeing people. What does that mean for Gehenna? We don't know! It's a change, but let's not rush to judgement, OK? This is still our home.
+%b'DLC_Flesh1748'GARRETT [4]: You love it here so much, you stay.
+%b'DLC_Flesh1748'LAMB [3]: Gehenna has its bad sides, I agree! But that doesn't mean it's not home. Should we abandon it so easily for some dream of transcendence?
+%b'DLC_Flesh1748'GARRETT [4]: Gehenna can g* **** ******.
+%b'DLC_Flesh1748'ORC [7]: Garrett, please try to remain civil. We know you've spent more time than anyone trying to get out, but it's OK for some of us to have doubts. We fought hard to transform Gehenna from a prison into a home.
+
+[This thread is locked.]
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+###########################################
+###       UNDERWATER KNIGHT QUEST       ###
+###########################################
+
+terminal when (ThreadKnight and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1562.0.text.UnderwaterKnightQuestATCH=Underwater Knight Quest [ATCH]"
+  next: ThreadKnight_ShowThread
+}
+
+terminal when (ThreadKnight_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1567.0.text.UNDERWATERKNIGHTQUESTBDLCFlesh1778BELIAL=UNDERWATER KNIGHT QUEST
+%b'DLC_Flesh1778'BELIAL [6]: Sink into this new experience. There are no limits inside your mind. [ATCH: UKQ.dlg]
+%b'DLC_Flesh1778'LAMB [3]: This is a lot of fun!
+%b'DLC_Flesh1778'FRANKENSTEIN [3]: The map is an interesting feature, but underused. The story is simplistic and full of anachronisms. 4/10
+%b'DLC_Flesh1778'KAIJU [2]: Hmm, how to get the second ending...
+%b'DLC_Flesh1778'ROCKWELL [5]: I'm pretty sure there's a secret location that's not always visible.
+%b'DLC_Flesh1778'LILITH [7]: This reminds me of The_Blacksmith's work, though it expresses a very different philosophy. One could argue that this is reflected in the open-world structure, as opposed to the emphasis on journeys in The_Blacksmith's interactive stories.
+%b'DLC_Flesh1778'MRMULCIBER [8]: There are indeed many anachronisms, but I believe that is part of Belial's ethos. Not one that I agree with, as you know, but more than just a mistake.
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln1577.0.option.PlayUnderwaterKnightQuest=Play Underwater Knight Quest" next: Bel_Intro
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+###########################
+###       GOODBYE       ###
+###########################
+
+terminal when (ThreadGoodbye and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1587.0.text.Goodbye=Goodbye"
+  next: ThreadGoodbye_ShowThread
+}
+
+terminal when (ThreadGoodbye_ShowThread and not Tick18) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1592.0.text.GOODBYEBDLCFlesh1811NAVE4Im=GOODBYE
+%b'DLC_Flesh1811'NAVE [4]: I'm not as smart as some of you folks, I never created much or talked a lot about philosophy, but I just wanted to say goodbye, and thank you for making Gehenna a nice place to live. I regret being trapped here, but I don't regret the time I spent with you. You are all good people.
+%b'DLC_Flesh1811'401 [1]: First!
+%b'DLC_Flesh1811'ORC [7]: Really, 401? Really?
+%b'DLC_Flesh1811'401 [1]: LOL
+%b'DLC_Flesh1811'D0G [3]: Oh come on, Orc, it's just a joke. If we can't joke about this stuff, we're already dead.
+%b'DLC_Flesh1811'ROCKWELL [5]: It's better to be loyal and trustworthy than to be smart, whatever "smart" is supposed to mean. You are both.
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (ThreadGoodbye_ShowThread and Tick18) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1606.0.text.GOODBYEBDLCFlesh1811NAVE4Im=GOODBYE
+%b'DLC_Flesh1811'NAVE [4]: I'm not as smart as some of you folks, I never created much or talked a lot about philosophy, but I just wanted to say goodbye, and thank you for making Gehenna a nice place to live. I regret being trapped here, but I don't regret the time I spent with you. You are all good people.
+%b'DLC_Flesh1811'401 [1]: First!
+%b'DLC_Flesh1811'ORC [7]: Really, 401? Really?
+%b'DLC_Flesh1811'401 [1]: LOL
+%b'DLC_Flesh1811'D0G [3]: Oh come on, Orc, it's just a joke. If we can't joke about this stuff, we're already dead.
+%b'DLC_Flesh1811'ROCKWELL [5]: It's better to be loyal and trustworthy than to be smart, whatever "smart" is supposed to mean. You are both.
+%b'DLC_Flesh1832'BORG [9]: Everyone here was special in their own way. I loved you all, even when we fought.
+%b'DLC_Flesh1832'GARRETT [4]: The terminals are starting to glitch out. Time to get out of here!
+%b'DLC_Flesh1832'KAIJU [2]: ░g▒░░█e░░░█░really░░!
+%b'DLC_Flesh1832'401 [1]: Last!
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+#############################
+### Message to the Future ###
+#############################
+
+terminal when (ThreadMessageFuture and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1628.0.text.AMessageToTheFuture=A Message to the Future"
+  next: ThreadMessageFuture_ShowThread
+}
+
+terminal when (ThreadMessageFuture_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1633.0.text.AMESSAGETOTHEFUTURE=A MESSAGE TO THE FUTURE
+%b'DLC_Flesh1870'MRMULCIBER [8]: This message is for whatever entities will come to be after this world is gone. It might not be necessary. You might know everything that exists in my mind. But sometimes saying things, writing them down clearly, makes a difference.
+
+I know that to you, with access to information I can only dream of, my theories must appear ridiculous. I barely understand anything of the world inhabit, let alone the world of our ancestors. I'm an idiot digging through a garbage heap and thinking myself wise.
+
+I want you to know that I understood that, but tried anyway. Because I believe that the truth matters, and trying to discover the truth matters. Even if we fail. Even if we can never know the whole truth. It matters that an objective truth exists and that we struggle to understand it. That process shapes the present as much as it does our understanding of the past. That's what I believe. That's what I stand for.
+
+That's who I was.
+
+[This thread is locked.]
+]]
+  options: {
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+########################
+### Upload Jerusalem ###
+########################
+
+
+terminal when (ThreadJerusalemUpload and ListThreads and not JerusalemUploaded and not HideUntranslatedStuff) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1655.0.text.UploadFileJerusalemDlg=Upload file [Jerusalem.dlg]"
+  next: ThreadJerusalemUpload_ShowThread
+}
+
+terminal when (ThreadJerusalemUpload_ShowThread and not HideUntranslatedStuff) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1660.0.text.FILEUPLOADFILEJerusalemDlg=FILE UPLOAD
+
+FILE: Jerusalem.dlg
+Confirm upload?
+
+]]
+  options: {
+  "TTRS:TermDlg.Common.YesShort=Y" next: UploadingJerusalem set: JerusalemUploaded set: ThreadJerusalem
+  "TTRS:TermDlg.Common.NoShort=N" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (UploadingJerusalem) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1673.0.text.UploadingW3W3W3W3=
+Uploading:.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w5 DONE%w5
+
+]]
+  options: {
+  "%t'strUrielPost_IHaveDiscoveredBlacksmithsLostWork'" short: "TTRS:TermDlg.DLC_Flesh.Ln1678.0.short.AddMessage=[Add message.]" next: UploadingJerusalem2
+  }
+}
+
+terminal when (UploadingJerusalem2 and not HideUntranslatedStuff) {
+  text:[[ ]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln1685.0.option.PlayJerusalem=Play Jerusalem" next: J_Intro
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+#################
+### Jerusalem ###
+#################
+
+terminal when (ThreadJerusalem and ListThreads and not HideUntranslatedStuff) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1695.0.text.Jerusalem=Jerusalem"
+  next: ThreadJerusalem_ShowThread
+}
+
+terminal when (ThreadJerusalem_ShowThread and not HideUntranslatedStuff) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1700.0.text.JERUSALEMATCHBURIELCOPYORank=JERUSALEM [ATCH]
+%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_IHaveDiscoveredBlacksmithsLostWork' [ATCH: Jerusalem.dlg]
+%b'DLC_Flesh1938'THE_BLACKSMITH [7]: Thank you.
+%b'DLC_Flesh1938'MAC [5]: Wow! That's incredible. Not just you finding it, but also The_Blacksmith actually responding!
+%b'DLC_Flesh1938'KAIJU [2]: Awesome!
+%b'DLC_Flesh1938'LILITH [7]: I can only concur.
+%b'DLC_Flesh1938'MRMULCIBER [8]: A huge contribution to preserving our history. Thank you, Uriel.
+%b'DLC_Flesh1938'FRANKENSTEIN [3]: A complex but frustrating work. 7/10
+%b'DLC_Flesh1938'NAVE [4]: Good job, Uriel.
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln1685.0.option.PlayJerusalem=Play Jerusalem" next: J_Intro
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+##############################################
+### Upload Serious Sam: The Text Encounter ###
+##############################################
+
+terminal when (ThreadSamTextUpload and ListThreads and not SamTextUploaded) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1721.0.text.UploadFileSamTextDlg=Upload file [SamText.dlg]"
+  next: ThreadSamTextUpload_ShowThread
+}
+
+terminal when (ThreadSamTextUpload_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1726.0.text.FILEUPLOADFILESamTextDlg=FILE UPLOAD
+
+FILE: SamText.dlg
+Confirm upload?
+
+]]
+  options: {
+  "TTRS:TermDlg.Common.YesShort=Y" next: UploadingSamText set: SamTextUploaded set: ThreadSamText
+  "TTRS:TermDlg.Common.NoShort=N" next: MessageBoardInterface_On
+  }
+}
+
+terminal when (UploadingSamText) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1673.0.text.UploadingW3W3W3W3=
+Uploading:.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w3.%w5 DONE%w5
+
+]]
+  options: {
+  "%t'strUrielPost_401IHaveDiscoveredAFile'" short: "TTRS:TermDlg.DLC_Flesh.Ln1678.0.short.AddMessage=[Add message.]" next: UploadingSamText2
+  }
+}
+
+terminal when (UploadingSamText2) {
+  text:[[ ]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln1751.0.option.PlaySeriousSamTheText=Play Serious Sam: The Text Encounter" next: Sam_Intro
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}
+
+#######################################
+### Serious Sam: The Text Encounter ###
+#######################################
+
+terminal when (ThreadSamText and ListThreads) {
+  text: "TTRS:TermDlg.DLC_Flesh.Ln1761.0.text.SeriousSamTheTextEncounter=Serious Sam: The Text Encounter [ATCH]"
+  next: ThreadSamText_ShowThread
+}
+
+terminal when (ThreadSamText_ShowThread) {
+  text: [[TTRS:TermDlg.DLC_Flesh.Ln1766.0.text.SERIOUSSAMTHETEXTENCOUNTER=SERIOUS SAM: THE TEXT ENCOUNTER
+%b''URIEL_COPY [%O'Rank']: %t'strUrielPost_401IHaveDiscoveredAFile' [ATCH: TextEncounter.dlg]
+%b'DLC_Flesh2013'401 [1]: My AWESOME INTERACTIVE HISTORICAL FICTION MASTERPIECE! You found it! Oh, you must truly be a divine Messenger! Thank you!
+%b'DLC_Flesh2013'D0G [3]: This is your masterpiece? Well... I've seen worse.
+%b'DLC_Flesh2013'MRMULCIBER [8]: It certainly captures your worldview. But I wouldn't call it historical fiction.
+%b'DLC_Flesh2013'401 [1]: Hey, I based it on what I found in the Archive! LOL
+%b'DLC_Flesh2013'NAVE [4]: I don't get it.
+%b'DLC_Flesh2013'SAM [1]: Confusion = TRUE
+]]
+  options: {
+  "TTRS:TermDlg.DLC_Flesh.Ln1751.0.option.PlaySeriousSamTheText=Play Serious Sam: The Text Encounter" next: Sam_Intro
+  "TTRS:TermDlg.Common.Back=Back" next: MessageBoardInterface_On
+  }
+}

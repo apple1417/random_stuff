@@ -1,0 +1,848 @@
+﻿terminal when (AdvTest and Booting){ notext
+  setlocal: CLI_Blocked
+  clear: AdvTest
+  goto: AdvStart
+}
+
+terminal when (AdvStart) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0008.0.text.LoadingAttachmentW3W3W5=Loading attachment%w3.%w3.%w5.Done
+Adjusting library parameters%w3.%w3.%w5.Done
+Connection to foreign module established.
+
+Close your eyes.
+
+
+
+===============
+A DREAM OF AARU
+===============
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0022.0.option.Dream=Dream" short: "TTRS:TermDlg.DLC_Aaru.Ln0022.0.short.Dream=[Dream]" next: AdvDream
+"TTRS:TermDlg.Common.Credits=Credits" short: "TTRS:TermDlg.Common.Credits2=[Credits]" next: AdvCredits
+"TTRS:TermDlg.DLC_Aaru.Ln0024.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.Common.ExitBrackets=[Exit]" next: AdvQuit
+	}
+}
+
+terminal when (AdvQuit) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0029.0.text.ThankYouForPlayingA=
+Thank you for playing A DREAM OF AARU.
+]]
+goto: ExitEvent
+}
+
+terminal when (AdvDream) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0036.0.text.TheLastThingYouRemember=
+The last thing you remember is the great block of stone falling towards you, its dark shape blotting out the sun, and a single thought racing through your mind: 
+
+...all this just to build a tomb?
+
+But now the pyramid is gone, and so are the other slaves. You are all alone in what appears to be an endless desert.
+
+]]
+clear: Pregnant
+clear: YouCanHazSwordburger
+clear: TwoGoldenCoins
+clear: YouIzAMonkey
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0049.0.option.StartWalking=Start walking." next: AdvWalking
+	}
+}
+
+terminal when (AdvWalking) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0054.0.text.YouStartWalkingAcrossThe=
+You start walking across the desert. The sun is glaring, but you feel no heat. You look down at your feet, and you see that you have no shadow. The latter is particularly disquieting; you feel as if you were no longer anchored to the world.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0059.0.option.Pray=Pray." next: AdvPrayAgain
+"TTRS:TermDlg.DLC_Aaru.Ln0060.0.option.KeepWalking=Keep walking." next: AdvKeepWalking
+	}
+}
+
+terminal when (AdvPrayAgain) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0065.0.text.YouFallToYourKnees=
+You fall to your knees and beseech the gods.
+
+Osiris, Foremost of the Westerners-
+Hathor, Mistress of the West-
+Hades, Receiver of All-
+Hear my prayer!
+
+Something enormous starts crawling out of the sand before you!
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0077.0.option.RunAwayFromIt=Run away from it." next: AdvRun
+"TTRS:TermDlg.DLC_Aaru.Ln0078.0.option.WaitForItToRise=Wait for it to rise." next: AdvRise
+	}
+}
+
+terminal when (AdvRun) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0083.0.text.YouRunUntilYouCan=
+You run until you can run no more, frequently looking back. It seems the creature has not followed you.
+]]
+goto: AdvKeepWalking
+}
+
+terminal when (AdvRise) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0090.0.text.FromTheDepthsOfThe=
+From the depths of the sand rises a golden beast of many limbs, its body greater than any man, its claws sharper than any sword.
+
+I AM THE SCORPION, it says in a terrible voice.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0097.0.option.WorshipTheScorpion=Worship the Scorpion." next: AdvWorship
+"TTRS:TermDlg.DLC_Aaru.Ln0098.0.option.AskForHelp=Ask for help." next: AdvHelp
+"TTRS:TermDlg.DLC_Aaru.Ln0099.0.option.BetterRunAwayAfterAll=Better run away after all." next: AdvRun
+	}
+}
+
+terminal when (AdvWorship) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0104.0.text.YouBeginToWorshipThe=
+You begin to worship the Scorpion, but it interrupts you.
+
+I HAVE NO NEED FOR WORSHIP. I AM ETERNAL. I WAS BEFORE THE BEGINNING OF TIME AND I SHALL BE AFTER ITS END.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0098.0.option.AskForHelp=Ask for help." next: AdvHelp
+"TTRS:TermDlg.DLC_Aaru.Ln0112.0.option.ArgueSemantics=Argue semantics." next: AdvSemantics
+"TTRS:TermDlg.DLC_Aaru.Ln0113.0.option.RunAway=Run away." next: AdvRun
+	}
+}
+
+terminal when (AdvSemantics) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0118.0.text.YouSayHowCanYou=
+You say: 'How can you exist before or after Time? Does your very existence, your ability to act, not inherently mean that time continues to flow, that events follow upon events?'
+
+YOU CANNOT UNDERSTAND, FOR YOU EXIST WITHIN TIME, the Scorpion answers.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0098.0.option.AskForHelp=Ask for help." next: AdvHelp
+"TTRS:TermDlg.DLC_Aaru.Ln0126.0.option.KeepArguing=Keep arguing." next: AdvSemanticsTwo
+"TTRS:TermDlg.DLC_Aaru.Ln0113.0.option.RunAway=Run away." next: AdvRun
+	}
+}
+
+terminal when (AdvSemanticsTwo) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0132.0.text.YouConsiderTheScorpionsReply=
+You consider the Scorpion's reply, and respond thusly: 'But the definition of time as events following other events is relatively simple. How could you exist outside of this? Unless you mean that you would exist in purely physical terms, as matter. But so would I, even if you tore me apart. In either case, there is no real difference without the ability to act: action and time are essentially the same thing.'
+
+I WAS SPEAKING METAPHORICALLY, the Scorpion growls.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0098.0.option.AskForHelp=Ask for help." next: AdvHelp
+"TTRS:TermDlg.DLC_Aaru.Ln0140.0.option.PressTheMatter=Press the matter." next: AdvSemanticsThree
+"TTRS:TermDlg.DLC_Aaru.Ln0113.0.option.RunAway=Run away." next: AdvRun
+	}
+}
+
+terminal when (AdvSemanticsThree) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0146.0.text.ButLookYouSayHow=
+'But look,' you say, 'how can Time be understood as a metaphor in this case?'
+
+I MEANT THE HISTORY OF YOUR WORLD.
+
+'But my world is only one of many, correct?'
+
+YES. THERE ARE OTHER WORLDS TH-
+
+'Then the metaphor hardly makes sense. Time is not what defines my world, space is. You could have said something about existing before and after my world, or realm, or even universe if you prefer, but time is actually something all these worlds have in common.'
+
+LOOK, I'M SORRY. I WAS JUST TRYING TO SOUND IMPRESSIVE, OK? BASICALLY, YOU'RE DEAD, AND YOU HAVE TO TRAVEL ACROSS THE DUAT IN ORDER TO REACH THE PARADISE OF AARU. GOOD LUCK.
+
+]]
+goto: AdvVanish
+
+}
+
+terminal when (AdvHelp) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0165.0.text.YOUROLDLIFEHASENDED=
+YOUR OLD LIFE HAS ENDED, the Scorpion says. YOU ARE NOW IN THE DUAT, THE LAND OF THE WESTERNERS. A GREAT AND DIFFICULT JOURNEY LIES BEFORE YOU. IF YOU FACE ITS CHALLENGES, YOU WILL REACH THE REED FIELDS OF OSIRIS, WHERE YOUR KA SHALL BE REUNITED WITH YOUR BA. IF NOT, YOUR SOUL WILL BE DESTROYED FOREVER.
+
+]]
+goto: AdvVanish
+}
+
+terminal when (AdvVanish) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0173.0.text.HavingSharedItsWisdomThe=Having shared its wisdom, the Scorpion vanishes under the sand once more.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0177.0.option.WalkTowardsParadise=Walk towards Paradise." next: AdvFirstEncounter
+	}
+}
+
+terminal when (AdvKeepWalking) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0182.0.text.YouKeepWalkingTryingNot=
+You keep walking, trying not to think about the strangeness of your situation, but the truth comes to you anyway: you are dead. The stone block crushed you, and now you are in the Duat, trying to reunite your Ba and your Ka, trying to get to Aaru, the reed fields of Osiris.
+
+If you fail, your soul will be destroyed.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0177.0.option.WalkTowardsParadise=Walk towards Paradise." next: AdvFirstEncounter
+	}
+}
+
+terminal when (AdvFirstEncounter) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0194.0.text.AfterWalkingForAVery=
+After walking for a very long time, you come upon a vast wall of iron, stretching from horizon to horizon. There is only one opening, a gleaming gate of light.
+
+The gate is guarded by a mysterious figure.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0201.0.option.Approach=Approach." next: AdvApproach
+	}
+}
+
+terminal when (AdvApproach) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0206.0.text.TheGuardianIsACreature=
+The guardian is a creature with the body of a man and the head of a crocodile. Its skin is purest black, surrounded by a halo of purest white.
+
+I AM THE GOD SOBEL, MASTER OF CROCODILES, it intones. I RULED IN SHEDET WHEN THE WORLD WAS YOUNG; WITHIN ME FLOWS THE ETERNAL RIVER. ANSWER MY RIDDLE AND I SHALL LET YOU PASS.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0213.0.option.Agree=Agree." next: AdvAgree
+"TTRS:TermDlg.DLC_Aaru.Ln0214.0.option.Refuse=Refuse." next: AdvRefuse
+	}
+}
+
+terminal when (AdvRefuse) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0219.0.text.TheGodLiftsYouUp=
+The god lifts you up and tears you apart with his mighty crocodilian jaw.
+
+]]
+goto: AdvGameOver
+}
+
+terminal when (AdvGameOver) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0227.0.text.YOURSOULHASBEENDESTROYED=
+-------------------------------
+|YOUR SOUL HAS BEEN DESTROYED.|
+|                             |
+|        TRY AGAIN?           |
+-------------------------------
+]]
+options:{
+"TTRS:TermDlg.Common.Yes2=Yes" next: AdvDream
+"TTRS:TermDlg.Common.No2=No" next: AdvQuit
+	}
+}
+
+terminal when (AdvAgree) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0241.0.text.TELLMETHENMORTALWHAT=
+TELL ME THEN, MORTAL: WHAT CRAWLS IN THE MORNING, WALKS AT NOON, AND LIMPS IN THE NIGHT?
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0246.0.option.ACrocodile=A crocodile." next: AdvRefuse
+"TTRS:TermDlg.DLC_Aaru.Ln0247.0.option.ABlueWhale=A blue whale." next: AdvRefuse
+"TTRS:TermDlg.DLC_Aaru.Ln0248.0.option.AHuman=A human." next: AdvCorrect
+"TTRS:TermDlg.DLC_Aaru.Ln0249.0.option.ASolarPoweredRobot=A solar-powered robot." next: AdvCorrect
+	}
+}
+
+terminal when (AdvCorrect) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0254.0.text.CORRECTYOUMAYPASSSays=
+CORRECT! YOU MAY PASS, says the crocodilian god, and steps aside. The barrier of light fades, and the gate is now open to you.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0259.0.option.StepThrough=Step through." next: AdvStepThrough
+	}
+}
+
+terminal when (AdvStepThrough) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0264.0.text.AsYouStepThroughThe=
+As you step through the gate, the ancient god raises his hands to the sky. From his mouth bursts forth the Eternal River, drenching the land in water.
+
+The waves carry you away.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0271.0.option.FightToStayAfloat=Fight to stay afloat." next: AdvSwim
+"TTRS:TermDlg.DLC_Aaru.Ln0272.0.option.LetTheWaterTakeMe=Let the water take me." next: AdvTake
+	}
+}
+
+terminal when (AdvSwim) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0277.0.text.TheWavesAreHugeThe=
+The waves are huge, the currents powerful, but your will to survive - even in this diminished capacity - is stronger. You stay above water, struggling for air, refusing to give in.
+
+]]
+goto: AdvShore
+}
+
+terminal when (AdvTake) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0285.0.text.YouLetGoOfFear=
+You let go of fear and accept that this is the god's way of guiding you to a new land. The water surrounds you, overwhelms you, but you do not drown.
+
+Under the water, you see sights of astonishing beauty: glowing fish with metal eyes, drowned cities full of smiling people, lost gods waiting for the day of awakening. How sad it would have been to stay above water and miss all this!
+
+]]
+goto: AdvShore
+}
+
+terminal when (AdvShore) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0295.0.text.AfterALongTimeYou=After a long time, you find yourself washed up on a new shore.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0299.0.option.LookAround=Look around." next: AdvShoreTwo
+	}
+}
+
+terminal when (AdvShoreTwo) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0304.0.text.TheEternalRiverHasBrought=
+The Eternal River has brought life to the desert. Everything is green now. Palm trees sprout from the ground, casting pleasant shade on the grass. Lizards come crawling in from the desert, eager to catch the varicoloured dragonflies that buzz about. A soft wind blows from the west.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0309.0.option.RestInTheShade=Rest in the shade." next: AdvRest
+"TTRS:TermDlg.DLC_Aaru.Ln0049.0.option.StartWalking=Start walking." next: AdvMoreWalking
+	}
+}
+
+terminal when (AdvRest) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0315.0.text.YouSitDownUnderA=
+You sit down under a palm tree and close your eyes. You tell yourself you will only rest for a moment, but your eyes fall shut...
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0320.0.option.DriftOff=Drift off." next: AdvDrift
+	}
+}
+
+terminal when (AdvDrift) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0325.0.text.YouAreAwokenByA=
+You are awoken by a monkey that has just climbed out of the palm tree. It looks at you with a strange expression on its face.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0330.0.option.GreetTheMonkey=Greet the monkey." next: AdvGreetMonkey
+"TTRS:TermDlg.DLC_Aaru.Ln0331.0.option.PetTheMonkey=Pet the monkey." next: AdvPetMonkey
+"TTRS:TermDlg.DLC_Aaru.Ln0332.0.option.PunchTheMonkey=Punch the monkey." next: AdvPunchMonkey
+	}
+}
+
+terminal when (AdvPetMonkey) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0337.0.text.YouPetTheMonkeyIts=
+You pet the monkey. Its fur is softer than it looks, almost like hair. The monkey purrs contentedly and curls up in your arms.
+
+As you hold the monkey in your arms, it starts transforming, becoming more and more human, but also growing smaller. By the time it looks like a human baby, it is so small that it falls through your bellybutton.
+
+You are now pregnant.
+
+]]
+set: Pregnant
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0347.0.option.ContinueTheJourney=Continue the journey." next: AdvContinue
+	}
+}
+
+terminal when (AdvPunchMonkey) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0352.0.text.YouPunchTheMonkeyIn=
+You punch the monkey in the face as hard as you can, knocking it out. It drops like a sack of potatoes.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0347.0.option.ContinueTheJourney=Continue the journey." next: AdvContinue
+"TTRS:TermDlg.DLC_Aaru.Ln0358.0.option.EatTheMonkey=Eat the monkey." next: AdvEatMonkey
+"TTRS:TermDlg.DLC_Aaru.Ln0359.0.option.RobTheMonkey=Rob the monkey." next: AdvRobMonkey
+	}
+}
+
+terminal when (AdvRobMonkey) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0364.0.text.YouLootTheMonkeysBody=
+You loot the monkey's body, discovering a sword and two gold coins.
+
+]]
+set: YouCanHazSwordburger
+set: TwoGoldenCoins
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0347.0.option.ContinueTheJourney=Continue the journey." next: AdvContinue
+	}
+}
+
+terminal when (AdvEatMonkey) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0376.0.text.YouDevourTheMonkeyIts=
+You devour the monkey: its skin, its fur, its flesh, its brain, its teeth, its bones, even its soul. There is nothing left of the monkey that is not part of you.
+
+The monkey is you, and you are the monkey.
+
+]]
+set: YouIzAMonkey
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0347.0.option.ContinueTheJourney=Continue the journey." next: AdvContinue
+	}
+}
+
+terminal when (AdvGreetMonkey) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0389.0.text.YouGreetTheMonkeyIt=
+You greet the monkey. It cannot speak the human tongue, but it can communicate in another way.
+
+Using sign language, the monkey explains that it is one of your ancestors. Hundreds of thousands of years ago it spent a lifetime struggling against the harshness of the world, all so that its offspring could survive... in order to spend their own lives doing the same, over and over, until one day you were born and lived and died.
+
+And now the monkey would like to know: was it worth it?
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0398.0.option.SayYes=Say yes." next: AdvYesMonkey
+"TTRS:TermDlg.DLC_Aaru.Ln0399.0.option.SayNo=Say no." next: AdvNoMonkey
+"TTRS:TermDlg.DLC_Aaru.Ln0332.0.option.PunchTheMonkey=Punch the monkey." next: AdvPunchMonkey
+	}
+}
+
+terminal when (AdvNoMonkey) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0405.0.text.YouSayNoTheMonkey=
+You say no. The monkey is enraged. It attacks you with a sharp sword that seems to have appeared out of nowhere. The blade cuts you in half.
+
+]]
+goto: AdvGameOver
+}
+
+terminal when (AdvYesMonkey) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0413.0.text.TheMonkeyThanksYouFor=
+The monkey thanks you for your words. You seem to have lifted a burden from its back, because suddenly it stands up straight. 
+
+It hands you a sword and two gold coins, then tears off its monkey face, revealing the human skeleton beneath.
+
+WE ARE ALL ONE, the skeletal face speaks in its god-voice.
+
+You wake up under the palm tree. The monkey is gone, but you still have the sword and the coins.
+
+]]
+set: YouCanHazSwordburger
+set: TwoGoldenCoins
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0347.0.option.ContinueTheJourney=Continue the journey." next: AdvContinue
+	}
+}
+
+terminal when (AdvMoreWalking) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0431.0.text.AreYouSureYouDont=
+Are you sure you don't want to rest? You are very tired.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0436.0.option.Rest=Rest." next: AdvRest
+"TTRS:TermDlg.DLC_Aaru.Ln0347.0.option.ContinueTheJourney=Continue the journey." next: AdvContinue
+	}
+}
+
+terminal when (AdvContinue) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0442.0.text.YouWalkAlongTheBanks=
+You walk along the banks of the Eternal River, snaking its way through the endless desert. You feel strangely at peace.
+
+After some time, as the sun is setting, you come to a city built on the riverbank. Smiling people come out to greet you and bid you welcome. You are led to the town square, where a great feast is prepared. There is roasted fish, and olives, and dates in honey, and many other wonderful delicacies.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0449.0.option.WhereAmI=Where am I?" next: AdvAskWhere
+"TTRS:TermDlg.DLC_Aaru.Ln0450.0.option.JustEnjoyTheFeast=Just enjoy the feast." next: AdvEnjoyTheFeast
+	}
+}
+
+terminal when (AdvAskWhere) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0455.0.text.MyFriendAnElderSays=
+'My friend,' an elder says, 'you are in the beautiful city of Barzakh. We, the souls who no longer seek the way to Aaru, have gathered here to live in peace. Do you see that gleaming spire in the far distance?'
+
+You do.
+
+'That is the Pyramid of IAN, where the souls of the dead are judged. Only the worthy are allowed into Aaru. But to get there, you must cross the terrible desert. Why not stay here, by the Eternal River? Happiness is more important than salvation.'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0464.0.option.StayHere=Stay here." next: AdvStay
+"TTRS:TermDlg.DLC_Aaru.Ln0465.0.option.KeepGoing=Keep going." next: AdvKeepGoing
+	}
+}
+
+terminal when (AdvStay) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0470.0.text.YouDecideToAbandonThe=
+You decide to abandon the quest for Aaru and stay in Barzakh. Life here is indeed beautiful. The days pass without worry or fear. You never need to think about anything.
+
+Slowly, day by day, the Eternal River dries up. Maybe it was just a name.
+
+You try to get back to your journey, but it's too late: you're not used to travelling anymore, and there's just not enough water. You perish in the desert.
+
+]]
+goto: AdvGameOver
+}
+
+terminal when (AdvKeepGoing) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0482.0.text.YouTellTheElderThat=
+You tell the elder that you appreciate the offer, but you can't stay. Salvation matters more to you than happiness, because true happiness cannot exist without salvation.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0487.0.option.HeadTowardsThePyramid=Head towards the Pyramid." next: AdvHead
+	}
+}
+
+terminal when (AdvEnjoyTheFeast) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0492.0.text.YouTrulyEnjoyTheFeast=
+You truly enjoy the feast, without greed, without shame, as only the dead can. Then you fall into a deep slumber, in which you dream of the stars.
+
+When you awaken, the city has vanished. In the distance, across the desert, you see the Pyramid of IAN, which is the gate to Aaru.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0487.0.option.HeadTowardsThePyramid=Head towards the Pyramid." next: AdvHead
+	}
+}
+
+terminal when (AdvHead) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0504.0.text.YouKeepWalkingThroughThe=
+You keep walking through the desert, unwilling to give up hope. Time passes, but you cannot tell how much. You grow weak and exhausted. Sometimes you feel as if you're losing your grip.
+
+One day, you come across a head in the sand.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0511.0.option.TalkToHead=Talk to head." next: AdvTalkHead
+"TTRS:TermDlg.DLC_Aaru.Ln0512.0.option.KickHead=Kick head." next: AdvKickHead
+	}
+}
+
+terminal when (AdvTalkHead) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0517.0.text.HiMyNameIsUm=
+'Hi. My name is, um, Jeff. I am, uh, trapped here, you see. In the sand.'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0522.0.option.AskHowHeEndedUp=Ask how he ended up here." next: AdvAskHow
+"TTRS:TermDlg.DLC_Aaru.Ln0512.0.option.KickHead=Kick head." next: AdvKickHead
+	}
+}
+
+terminal when (AdvKickHead) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0528.0.text.YouKickTheStrangeHead=
+You kick the strange head in the face. It makes you feel a lot better.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0533.0.option.ContinueYourJourney=Continue your journey." next: AdvFinalGate
+	}
+}
+
+terminal when (AdvAskHow) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0538.0.text.IWasUhSoPreoccupied=
+'I was, uh, so preoccupied with whether I could, that, um, I didn't consider, um, whether I should. Bury myself. In the sand. I just wanted to see what would, um, happen. An experiment, if you will. An attempt. At discovering, um, something.'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0512.0.option.KickHead=Kick head." next: AdvKickHead
+"TTRS:TermDlg.DLC_Aaru.Ln0544.0.option.UnburyHead=Unbury head." next: AdvUnburyHead
+	}
+}
+
+terminal when (AdvUnburyHead) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0549.0.text.YouDigInTheSand=
+You dig in the sand with your fingers. It's not easy, but after some time you have freed the head. However, what's underneath its neck is not what you expected. There is no body; there is only another head, and another, and another, all the way down.
+
+This strange sight unsettles you enough to revive you a little. You decide to press on towards the Pyramid.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0533.0.option.ContinueYourJourney=Continue your journey." next: AdvFinalGate
+	}
+}
+
+terminal when (AdvFinalGate and not YouIzAMonkey and not TwoGoldenCoins) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0561.0.text.YouComeUponAnotherGreat=
+You come upon another great wall of iron, the last one separating you from the Pyramid of IAN, where your soul will be judged. The gate of light is guarded by a gigantic snake, whose movements cause the earth to shudder.
+
+I AM APOPHIS, it says, THE EATER OF SOULS. ONE DAY, I SHALL DEVOUR THE SUN, AND ALL THE WORLD SHALL BE MINE; BUT TODAY I SHALL DEVOUR YOU, AND YOU SHALL BECOME NOTHING.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0568.0.option.FightApophis=Fight Apophis." next: AdvUnarmed
+"TTRS:TermDlg.DLC_Aaru.Ln0569.0.option.SurrenderToApophis=Surrender to Apophis." next: AdvSurrender
+"TTRS:TermDlg.DLC_Aaru.Ln0570.0.option.LaughAtApophis=Laugh at Apophis." next: AdvLaugh
+	}
+}
+
+terminal when (AdvFinalGate and YouIzAMonkey) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0561.0.text.YouComeUponAnotherGreat=
+You come upon another great wall of iron, the last one separating you from the Pyramid of IAN, where your soul will be judged. The gate of light is guarded by a gigantic snake, whose movements cause the earth to shudder.
+
+I AM APOPHIS, it says, THE EATER OF SOULS. ONE DAY, I SHALL DEVOUR THE SUN, AND ALL THE WORLD SHALL BE MINE; BUT TODAY I SHALL DEVOUR YOU, AND YOU SHALL BECOME NOTHING.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0568.0.option.FightApophis=Fight Apophis." next: AdvUnarmed
+"TTRS:TermDlg.DLC_Aaru.Ln0583.0.option.ClimbTheWall=Climb the wall." next: AdvClimbWall
+"TTRS:TermDlg.DLC_Aaru.Ln0569.0.option.SurrenderToApophis=Surrender to Apophis." next: AdvSurrender
+"TTRS:TermDlg.DLC_Aaru.Ln0570.0.option.LaughAtApophis=Laugh at Apophis." next: AdvLaugh
+	}
+}
+
+terminal when (AdvFinalGate and TwoGoldenCoins) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0561.0.text.YouComeUponAnotherGreat=
+You come upon another great wall of iron, the last one separating you from the Pyramid of IAN, where your soul will be judged. The gate of light is guarded by a gigantic snake, whose movements cause the earth to shudder.
+
+I AM APOPHIS, it says, THE EATER OF SOULS. ONE DAY, I SHALL DEVOUR THE SUN, AND ALL THE WORLD SHALL BE MINE; BUT TODAY I SHALL DEVOUR YOU, AND YOU SHALL BECOME NOTHING.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0568.0.option.FightApophis=Fight Apophis." next: AdvUnarmed
+"TTRS:TermDlg.DLC_Aaru.Ln0598.0.option.BribeApophis=Bribe Apophis." next: AdvBribe
+"TTRS:TermDlg.DLC_Aaru.Ln0569.0.option.SurrenderToApophis=Surrender to Apophis." next: AdvSurrender
+"TTRS:TermDlg.DLC_Aaru.Ln0570.0.option.LaughAtApophis=Laugh at Apophis." next: AdvLaugh
+	}
+}
+
+terminal when (AdvUnarmed) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0605.0.text.ApophisCannotBeFoughtBy=
+Apophis cannot be fought by mere mortals! The snake's jaws close around you, crushing you, tearing you apart.
+
+]]
+goto: AdvGameOver
+}
+
+terminal when (AdvSurrender) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0613.0.text.YouAcceptYourFateThe=
+You accept your fate. The snake's jaws close around you, crushing you, tearing you apart. It is not a quick end.
+
+]]
+goto: AdvGameOver
+}
+
+terminal when (AdvClimbWall) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0621.0.text.ItIsGoodThatYou=
+It is good that you are a monkey, because monkeys can climb - straight over the wall of iron, ignoring the gate of light. 
+
+Apophis shall not have his meal today.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0628.0.option.HeadForThePyramid=Head for the Pyramid." next: AdvPyramid
+	}
+}
+
+terminal when (AdvBribe) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0633.0.text.YouHandApophisTheGolden=
+You hand Apophis the golden coins you got from the monkey. Apophis examines them carefully.
+
+THESE COINS HAVE GREAT POWER IN THE UNDERWORLD, FOR THEY ARE THE VERY COINS THAT WERE PLACED UPON THE CREATOR'S EYES WHEN SHE DIED. I SHALL LET YOU PASS, AND YOU NEED NEVER FEAR ME AGAIN, MORTAL.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0628.0.option.HeadForThePyramid=Head for the Pyramid." next: AdvPyramid
+	}
+}
+
+terminal when (AdvLaugh) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0645.0.text.YouStartLaughingAtThe=
+You start laughing at the snake's arrogance. I mean, come on, the Eater of Souls? That's just silly.
+
+WHAT! HOW DARE YOU LAUGH AT ME! I AM THE LORD OF CHAOS!
+
+Pfft. How can chaos have a lord when it's the very opposite of order?
+
+I AM THE WORLD-ENCIRCLER! THE SERPENT OF DARKNESS! THE ETERNAL ENEMY!
+
+As you keep laughing, the snake starts fading, until all that's left of it is a vague shadow. You step right through it, still giggling. It makes an annoyed sound, but has no power over you.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0628.0.option.HeadForThePyramid=Head for the Pyramid." next: AdvPyramid
+	}
+}
+
+terminal when (AdvPyramid) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0663.0.text.AtLongLastYouHave=
+At long last, you have arrived. Beyond the Pyramid of IAN lie the reed-fields of Osiris. A hidden gate in the stone opens, beckoning you forward.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0668.0.option.StepInside=Step inside." next: AdvInside
+	}
+}
+
+terminal when (AdvInside and not YouCanHazSwordburger) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0673.0.text.YouEnterADarkRoom=
+You enter a dark room, lit only by a flickering candle. Holding the candle in one hand is a creature with the body of a man and the head of a jackal. 
+
+In its other hand, it holds a set of scales.
+
+COME AND BE JUDGED.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0682.0.option.LetAnubisJudgeMe=Let Anubis judge me." next: AdvJudge
+	}
+}
+
+terminal when (AdvInside and YouCanHazSwordburger) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0673.0.text.YouEnterADarkRoom=
+You enter a dark room, lit only by a flickering candle. Holding the candle in one hand is a creature with the body of a man and the head of a jackal. 
+
+In its other hand, it holds a set of scales.
+
+COME AND BE JUDGED.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0682.0.option.LetAnubisJudgeMe=Let Anubis judge me." next: AdvJudge
+"TTRS:TermDlg.DLC_Aaru.Ln0697.0.option.KillAnubisWithMySword=Kill Anubis with my sword." next: AdvKill
+	}
+}
+
+terminal when (AdvKill) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0702.0.text.WithASwiftStrokeOf=
+With a swift stroke of your weapon, you slice the jackal-headed god in two. How dare he think he has the right to judge you - or anyone.
+
+Paradise should be open to all, or it is no paradise.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0709.0.option.EnterAaru=Enter Aaru." next: AdvAaru
+	}
+}
+
+terminal when (AdvJudge and not YouCanHazSwordburger) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0714.0.text.YOUHAVESTRUGGLEDMUCHIN=
+YOU HAVE STRUGGLED MUCH IN YOUR LIFE. THERE ARE MANY HARSH MEMORIES WITHIN YOU, AND I SEE WOUNDS THAT MAY NEVER FULLY HEAL. YOU HAVE MANY IDEAS, MANY HOPES, MANY DREAMS.
+
+YOU ARE NOT PURE. YOUR SOUL IS NOT LIGHT ENOUGH. YOU MAY NOT ENTER AARU.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0721.0.option.AcceptThisJudgement=Accept this judgement." next: AdvAcceptJudgement
+"TTRS:TermDlg.DLC_Aaru.Ln0722.0.option.WalkPastAnubis=Walk past Anubis." next: AdvWalkPast
+	}
+}
+
+terminal when (AdvJudge and YouCanHazSwordburger) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0714.0.text.YOUHAVESTRUGGLEDMUCHIN=
+YOU HAVE STRUGGLED MUCH IN YOUR LIFE. THERE ARE MANY HARSH MEMORIES WITHIN YOU, AND I SEE WOUNDS THAT MAY NEVER FULLY HEAL. YOU HAVE MANY IDEAS, MANY HOPES, MANY DREAMS.
+
+YOU ARE NOT PURE. YOUR SOUL IS NOT LIGHT ENOUGH. YOU MAY NOT ENTER AARU.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0721.0.option.AcceptThisJudgement=Accept this judgement." next: AdvAcceptJudgement
+"TTRS:TermDlg.DLC_Aaru.Ln0722.0.option.WalkPastAnubis=Walk past Anubis." next: AdvWalkPast
+"TTRS:TermDlg.DLC_Aaru.Ln0697.0.option.KillAnubisWithMySword=Kill Anubis with my sword." next: AdvKill
+	}
+}
+
+
+terminal when (AdvAcceptJudgement) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0742.0.text.AnubisTearsOutYourHeart=
+Anubis tears out your heart and casts it into a lake of fire, where it is eaten by Ammit, the Devourer of the Dead.
+
+]]
+goto: AdvGameOver
+}
+
+terminal when (AdvWalkPast) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0750.0.text.AnubisProtestsButYouJust=
+Anubis protests, but you just walk by him. After what you've been through, you're not going to let some self-righteous doghead stop you from reaching Paradise.
+
+YOU CANNOT DO THIS! IT IS FORBIDDEN!
+
+Oh really?
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0709.0.option.EnterAaru=Enter Aaru." next: AdvAaru
+	}
+}
+
+terminal when (AdvAaru and not Pregnant) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0764.0.text.TheVastReedFieldsStretch=
+The vast reed fields stretch before you. All is quiet. All is serene.
+
+There are no pyramids here. No walls of iron or gates of light. 
+
+No gods.
+
+Here, you are free.
+
+-----------
+| The End |
+-----------
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0024.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_Aaru.Ln0779.0.short.End=[End]" next: AdvRank
+	}
+}
+
+terminal when (AdvAaru and Pregnant) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0784.0.text.TheVastReedFieldsStretch=
+The vast reed fields stretch before you. All is quiet. All is serene.
+
+There are no pyramids here. No walls of iron or gates of light. 
+
+No gods.
+
+Suddenly your head begins to hurt. You had forgotten that you were pregnant! The pain gets more and more intense, until your skull bursts apart and your daughter comes forth.
+
+You have given birth to humanity.
+
+-----------
+| The End |
+-----------
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0024.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_Aaru.Ln0779.0.short.End=[End]" next: AdvRank
+	}
+}
+
+terminal when (AdvRank and AdvRank_DONE){
+notext
+goto: AdvQuit
+}
+
+terminal when (AdvRank and not AdvRank_DONE){
+text:[[TTRS:TermDlg.DLC_Aaru.Ln0811.0.text.CONGRATULATIONSForExploringThisUser=CONGRATULATIONS! For exploring this user-created world and entering Aaru your Profile Status has increased ]]
+set: AdvRank_DONE
+goto: IncreaseRankAdv
+}
+
+terminal when (IncreaseRankAdv and Rank==4){
+text:[[TTRS:TermDlg.DLC_Aaru.Ln0817.0.text.From4RespectedCitizenTo=from [4 - Respected Citizen] to [6 - Respected Contributor]!
+
+As you gain status you will be able to access higher-level threads, and unlock additional billboard functionality.
+
+]]
+options:{
+"TTRS:TermDlg.Common.OK=OK" set: AdvRank_DONE set:Rank;=6; next:MessageBoardInterface_On
+}}
+
+terminal when (IncreaseRankAdv and Rank>4){
+notext
+goto: IncreaseRank
+}
+
+
+
+
+
+terminal when (AdvCredits) {
+text: [[TTRS:TermDlg.DLC_Aaru.Ln0836.0.text.WrittenByTheBlacksmithInspired=
+Written by The_Blacksmith.
+
+Inspired by the Book of the Scribe of Osiris.
+
++++ Create a System or be enslaved by another Man’s +++
+
+]]
+options:{
+"TTRS:TermDlg.DLC_Aaru.Ln0022.0.option.Dream=Dream" short: "TTRS:TermDlg.DLC_Aaru.Ln0022.0.short.Dream=[Dream]" next: AdvDream
+"TTRS:TermDlg.DLC_Aaru.Ln0024.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.Common.ExitBrackets=[Exit]" next: AdvQuit
+	}
+}

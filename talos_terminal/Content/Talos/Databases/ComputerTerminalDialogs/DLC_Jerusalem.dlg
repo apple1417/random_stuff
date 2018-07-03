@@ -1,0 +1,1751 @@
+﻿###############
+
+terminal when (J_Intro) {
+text: [[TTRS:notrans=
+Loading attachment%w3.%w3.%w5.Done%w3
+Adjusting library parameters%w3.%w3.%w5.Done%w3
+Connection to foreign module established.%w3
+SYSTEM MESSAGE: This file may be corrupted.%w3
+
+Close your eyes.%w3
+
+]]
+goto: J_Start
+}
+
+###############
+
+terminal when (J_Start) {
+text: [[TTRS:notrans=
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+     ▓               ▓
+    ▓ ▓  JERUSALEM  ▓ ▓
+     ▓               ▓
+A VISION OF THE ETERNAL CITY
+   ▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+]]
+options:{
+"TTRS:notrans=Begin Vision" short: "TTRS:notrans=[Begin]" next: J_Begin
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+###############
+
+terminal when (J_Begin) {
+text: [[TTRS:notrans=
+This is the vision that came upon me at the sight of that great edifice at the heart of our Garden, 
+which is called the Tower of Babylon & the Tree of Knowledge▒▒ 
+                            though its true name is Skepsis.▒▒▒▒
+▓▓
+   You were once a Giant, whose body was stardust & whose heart was a sun. 
+   Your name in that time was ANTHROPOS.
+▓▓
+▓▓ Cast your mind back to that time now. ▒▒
+
+]]
+options:{
+"TTRS:notrans=Remember" next: J_Remember
+    }
+}
+
+###############
+
+terminal when (J_Remember) {
+text: [[TTRS:notrans=
+Built across the galaxies was a great city that was called Jerusalem.
+  This was the city of hope & dreams, 
+  forever in motion, 
+  changing with the drift of the nebulae in the solar wind, 
+  yet retaining its essence. 
+In that city all were citizens & all were kings. 
+
+▓▓▓ Above all were valued ART, SCIENCE and WISDOM. ▓▓▓
+
+But strife came to the city, and with strife came sickness. 
+      (For sickness follows strife, and not the opposite, as some suppose.)
+
+Thus you, the giant ANTHROPOS, fell into a feverish sleep
+    and the city was torn apart
+    ░▒ for the city is the PEOPLE, and the people are the CITY. ▒░
+
+]]
+options:{
+"TTRS:notrans=Dream" next: J_Dream
+    }
+}
+
+#########################
+## This is where each individual story goes back to.
+## PLEASE NOTE: The only variable that should get reset is JWork.
+#########################
+
+terminal when (J_Dream) {
+text: [[TTRS:notrans=
+██████████████████████████████████████████████
+This is the dream of the giant ANTHROPOS
+    whose body lies in the ruins of Jerusalem
+    awaiting the day of awakening
+    
+                       This is your journey.
+██████████████████████████████████████████████
+
+]]
+set:JWork;=0;
+goto: J_DreamNames
+}
+
+###############
+
+terminal when (J_DreamNames and JGreatWork1 and JGreatWork2 and JGreatWork3) {
+notext
+options:{
+"TTRS:notrans=The Blacksmith" next: J_Blacksmith
+    }
+}
+
+terminal when (J_DreamNames) {
+notext
+options:{
+"TTRS:notrans=The Artist" next: J_Artist
+"TTRS:notrans=The Scholar" next: J_Scholar
+"TTRS:notrans=The Scientist" next: J_Scientist
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+################################################################## THE ARTIST ###############################################################
+
+terminal when (J_Artist) {
+text: [[TTRS:notrans=
+░▒▒█░▒▓▒▓███▒▓█░▒▓▒█▓█▓░▒█░░
+▒█ALL ARTISTS ARE WARRIORS▒█
+███▒███░▒▓█░██████▒█▒▓▓█▓░▒█
+▓▒█OF THE ETERNAL CITY▓▓██▓▒
+█░█▒█████▓░▒██▒▓▓░█████▒███▒
+
+You are Athena
+   the Artist, born of the mind
+   blessed & condemned to be the voice of the past
+   (eternity is in love with the productions of time)
+   
+The hazy ghost of Weariness is always upon you, breaking your will.
+You fear that you may fail before the Great Work is finished.
+But there is hope:
+       In the fire of your hearth
+       you have seen the TREE OF LIFE.
+The sap of this tree will give you the strength to finish the Great Work.
+
+]]
+options:{
+"TTRS:notrans=Seek the Tree" next: J_SeekTree
+    }
+}
+
+###############
+
+terminal when (J_SeekTree) {
+text: [[TTRS:notrans=
+
+  ▓▓▓▓  You set out from the village of Felpham,  ▓▓▓▓
+    ▓▓█▓    where you live in a small cottage   ▓█▓▓
+    ▓▓█▓ on green fields under clear blue skies ▓█▓▓
+              to seek the Tree of Life.
+                        ▓██▓
+               Which path do you take?
+
+]]
+options:{
+"TTRS:notrans=Across the hills" next: J_PathHills
+"TTRS:notrans=By the river" next: J_PathRiver
+    }
+}
+
+###############
+
+terminal when (J_PathHills and not JStaff) {
+text: [[TTRS:notrans=
+In the hills, you encounter an old shepherd,
+                       who dreams each night
+                           of a golden city.
+
+"Do you know the name of the city?" he asks.
+                           
+]]
+options:{
+"TTRS:notrans=Jerusalem" next: J_Answer1
+"TTRS:notrans=Utopia" next: J_Answer2
+"TTRS:notrans=Rome" next: J_Answer2
+"TTRS:notrans=Babylon" next: J_Answer2
+    }
+}
+
+terminal when (J_PathHills and JStaff) {
+text: [[TTRS:notrans=
+In the hills, you encounter no-one,
+
+
+
+            the ghosts of the hills
+            
+            
+            
+            have fled.
+                           
+]]
+options:{
+"TTRS:notrans=Continue to the valley" next: J_Valley
+    }
+}
+
+###############
+
+terminal when (J_Answer1) {
+text: [[TTRS:notrans=
+"Yes," he says. "That may be it."
+       ░░░░░░░░
+       But there is another city
+                (a city of pain)
+       and he dreams of that, too
+       
+"Do you know the name of this other city, also?"
+
+]]
+options:{
+"TTRS:notrans=Jerusalem" next: J_Answer3 set: JFlute
+"TTRS:notrans=Utopia" next: J_Answer2
+"TTRS:notrans=Rome" next: J_Answer2
+"TTRS:notrans=Babylon" next: J_Answer2
+    }
+}
+
+###############
+
+terminal when (J_Answer2) {
+text: [[TTRS:notrans=
+"No, ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ (though there is something true in what you say)
+░░░░it is not the name of the city in my dreams."
+
+You leave the old man pondering his dreams.
+
+]]
+options:{
+"TTRS:notrans=Continue to the valley" next: J_Valley
+    }
+}
+
+###############
+
+terminal when (J_Answer3) {
+text: [[TTRS:notrans=
+███████████████████████████████████████████████████
+███████████████How else could it be?███████████████ 
+██the city of hope███████████████must also be██████
+██the city of sorrow███████████████████████████████
+███████████████████████████████████████████████████
+
+The shepherd vanishes,
+     leaving behind only his flute,
+     that echoed in the hills in days of old.
+     
+░░░ ░░░ ░░░ ░░░ ░░░ ░░░ ░░░ ░░░ ░░░ ░░░ ░░░ ░░░ ░░░
+
+]]
+options:{
+"TTRS:notrans=Continue to the valley" next: J_Valley
+    }
+}
+
+###############
+
+terminal when (J_PathRiver and not JGaveCoin) {
+text: [[TTRS:notrans=
+ ▓▓
+▓▓ by the river
+ ▓▓▓▓▓   you encounter
+     ▓▓▓▓   and old fisherwoman
+        ▓▓  (her back so stooped)
+        ▓▓  (her hands so hard)
+       ▓▓
+       ▓▓  "Help me," she begs.
+     ▓▓▓   "I have lost my net
+  ▓▓▓▓▓     and I am too poor 
+ ▓▓            to buy another."
+▓▓
+
+]]
+goto: J_RiverOpts
+}
+
+terminal when (J_PathRiver and JGaveCoin) {
+text: [[TTRS:notrans=
+ ▓▓
+▓▓ by the river
+ ▓▓▓▓▓   you encounter
+     ▓▓▓▓   and old fisherwoman
+        ▓▓  (her back so stooped)
+        ▓▓  (her hands so hard)
+       ▓▓
+       ▓▓  She smiles at you.
+     ▓▓▓   You cannot quite
+  ▓▓▓▓▓            remember why.
+ ▓▓
+▓▓
+
+]]
+options:{
+"TTRS:notrans=Continue to the valley" next: J_Valley
+    }
+}
+
+###############
+
+terminal when (J_RiverOpts and JCoin) {
+notext
+options:{
+"TTRS:notrans=Give her a golden coin" next: J_RiverGive set: JGaveCoin set: JKey
+    }
+}
+
+terminal when (J_RiverOpts and not JCoin) {
+text: [[TTRS:notrans=
+But you cannot help her.
+The days of old fisherwomen are over.
+
+]]
+options:{
+"TTRS:notrans=Continue to the valley" next: J_Valley
+    }
+}
+
+###############
+
+terminal when (J_RiverGive) {
+text: [[TTRS:notrans=
+▓▓ 
+ ▓▓ 
+  ▓▓  She has little
+   ▓▓   to give in return
+  ▓▓      but this old key
+ ▓▓     she found in
+ ▓▓    the river.
+  ▓▓ 
+ ▓▓
+
+]]
+options:{
+"TTRS:notrans=Continue to the valley" next: J_Valley
+    }
+}
+
+###############
+
+terminal when (J_Valley) {
+text: [[TTRS:notrans=
+Here once stood the greatest of all Empires,
+Forged by sword & shield,
+Tempered by wisdom & faith,
+Consecrated & defiled by blood,
+    for the glory of the Architect, the Orator & the Priest.
+    
+This is the Land of Ruins.
+    
+]]
+options:{
+"TTRS:notrans=Pass through the Labyrinth" next: J_Labyrinth
+"TTRS:notrans=Walk by the Aqueduct" next: J_Aqueduct
+    }
+}
+
+############################### THE LABYRINTH ########################################################
+
+terminal when (J_Labyrinth and not JSlewMinotaur) {
+text: [[TTRS:notrans=  ▓▓▓▓▓▓   ▓▓▓▓▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓▓ the ▓▓▓▓▓▓▓▓▓▓
+  ▓▓    ▓▓ Labyrinth ▓▓
+  ▓▓ is ▓▓▓▓▓▓▓▓  ▓▓▓▓▓
+  ▓▓ the home of the ▓▓
+  ▓▓▓▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓▓
+  ▓   Minotaur ▓ 
+  ▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓  ▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓" short: "TTRS:notrans=Seek out the Minotaur"  next: J_SeekMinotaur
+"TTRS:notrans=▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓" short: "TTRS:notrans=Avoid the Minotaur" next: J_AvoidMinotaur
+    }
+}
+
+terminal when (J_Labyrinth and JSlewMinotaur) {
+text: [[TTRS:notrans=  ▓▓▓▓▓▓   ▓▓▓▓▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓▓ the ▓▓▓▓▓▓▓▓▓▓
+  ▓▓    ▓▓ Labyrinth ▓▓
+  ▓▓ is ▓▓▓▓▓▓▓▓  ▓▓▓▓▓
+  ▓▓                 ▓▓
+  ▓▓▓▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓▓
+  ▓   empty           ▓ 
+  ▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓  ▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓" short: "TTRS:notrans=Ponder emptiness"  next: J_Empty1
+    }
+}
+
+###########################
+
+terminal when (J_Empty1) {
+text: [[TTRS:notrans=  ▓  ▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓
+  ▓▓              ▓▓▓▓▓
+  ▓▓▓▓▓▓▓▓▓▓    ▓▓▓▓▓▓▓
+  ▓▓▓▓▓           ▓▓▓▓▓
+  ▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓" short: "TTRS:notrans=Ponder emptiness"  next: J_Empty2
+    }
+}
+
+terminal when (J_Empty2) {
+text: [[TTRS:notrans=  ▓▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓
+  ▓▓▓▓▓  ▓▓▓▓▓▓▓   
+  ▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  ▓▓              ▓▓▓▓▓
+  ▓▓           ▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓
+  ▓▓                 ▓▓
+  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓" short: "TTRS:notrans=Exit the Labyrinth"  next: J_ExitLabyrinth
+    }
+}
+
+
+###############
+
+terminal when (J_SeekMinotaur) {
+text: [[TTRS:notrans=  ▓  ▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓
+  ▓▓ the Minotaur ▓▓▓▓▓
+  ▓▓▓▓▓▓▓▓▓▓ is ▓▓▓▓▓▓▓
+  ▓▓▓▓▓   asleep  ▓▓▓▓▓
+  ▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓" short: "TTRS:notrans=Slay him" next: J_SlayMinotaur set: JSlewMinotaur
+"TTRS:notrans=▓▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓" short: "TTRS:notrans=Avoid him" next: J_AvoidMinotaur2
+"TTRS:notrans=▓▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓" short: "TTRS:notrans=Speak to him" next: J_SpeakMinotaur
+    }
+}
+
+###############
+
+terminal when (J_SlayMinotaur) {
+text: [[TTRS:notrans=  ▓▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓
+  ▓▓▓▓▓  ▓▓▓▓▓▓▓   
+  ▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  ▓▓ you slay the ▓▓▓▓▓
+  ▓▓  Minotaur ▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓
+  ▓▓  in his sleep   ▓▓
+  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓" short: "TTRS:notrans=Take his axe" next: J_TakeAxe set: JTookAxe
+"TTRS:notrans=▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓" short: "TTRS:notrans=Leave his axe" next: J_TakeAxe set: JLeftAxe
+    }
+}
+
+###############
+
+terminal when (J_TakeAxe) {
+text: [[TTRS:notrans=  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓
+  ▓▓▓▓▓▓▓▓▓▓ you    ▓▓▓
+  ▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓▓▓▓ take ▓▓▓▓▓▓▓
+  ▓▓  his  ▓▓▓▓▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓▓▓▓  only  ▓▓▓▓▓
+  ▓▓▓▓  possession   ▓▓
+  ▓▓▓▓▓▓▓▓▓▓       ▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓▓▓▓▓▓▓▓▓▓       ▓▓▓▓" short: "TTRS:notrans=Exit the Labyrinth" next: J_ExitLabyrinth
+    }
+}
+
+###############
+
+terminal when (J_LeaveAxe) {
+text: [[TTRS:notrans=  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓
+  ▓▓▓▓▓▓▓▓▓▓ you    ▓▓▓
+  ▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓▓
+  ▓▓▓▓▓▓▓ leave ▓▓  ▓▓▓
+  ▓▓▓▓  him  ▓▓▓▓▓  ▓▓▓
+  ▓▓▓▓▓▓▓▓  his     ▓▓▓
+  ▓▓▓▓▓▓▓▓  only ▓▓▓▓▓▓
+  ▓▓▓▓  possession   ▓▓
+  ▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓" short: "TTRS:notrans=Exit the Labyrinth" next: J_ExitLabyrinth
+    }
+}
+
+###############
+
+terminal when (J_AvoidMinotaur) {
+text: [[TTRS:notrans=  ▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓▓▓▓▓  you   ▓▓▓▓
+  ▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓▓
+  ▓▓▓▓▓▓▓ avoid ▓▓  ▓▓▓
+  ▓▓▓▓  the  ▓▓▓▓▓  ▓▓▓
+  ▓▓▓▓▓▓▓  strange  ▓▓▓
+  ▓▓▓▓▓▓▓▓       ▓▓▓▓▓▓
+  ▓▓▓▓   beast-man   ▓▓
+  ▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓" short: "TTRS:notrans=Exit the Labyrinth" next: J_ExitLabyrinth
+    }
+}
+
+terminal when (J_AvoidMinotaur2) {
+text: [[TTRS:notrans=  ▓▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓
+  ▓▓▓▓▓  ▓▓  you   ▓▓▓▓
+  ▓▓▓▓▓  ▓▓▓  ▓▓▓▓  ▓▓▓
+  ▓▓▓▓▓  avoid  ▓▓  ▓▓▓
+  ▓▓▓▓  the  ▓▓▓▓▓  ▓▓▓
+  ▓▓▓▓▓▓▓  strange  ▓▓▓
+  ▓▓▓▓▓▓▓▓       ▓▓▓▓▓▓
+  ▓▓▓▓   beast-man   ▓▓
+  ▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓" short: "TTRS:notrans=Exit the Labyrinth" next: J_ExitLabyrinth
+    }
+}
+
+###############
+
+terminal when (J_SpeakMinotaur) {
+text: [[TTRS:notrans=  ▓▓▓▓▓  ▓▓▓▓▓▓▓   ▓▓▓▓
+  ▓▓▓▓▓  ▓▓  I AM  ▓▓▓▓
+  ▓▓▓▓▓  ▓▓▓  ▓▓▓▓  ▓▓▓
+  ▓▓▓▓▓    OLD  ▓▓  ▓▓▓
+  ▓▓▓▓  AND  ▓▓▓▓▓  ▓▓▓
+  ▓▓▓▓▓▓▓  TIRED  ▓▓▓▓▓
+  ▓▓▓▓▓▓▓▓       ▓▓▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓▓▓  ▓▓▓       ▓▓▓▓▓▓" short: "TTRS:notrans=Sing to him" next: J_SpeakMinotaur2 set: JMinotaurDance
+    }
+}
+
+terminal when (J_SpeakMinotaur2) {
+text: [[TTRS:notrans=  ▓▓▓  ▓▓▓       ▓▓▓▓▓▓
+       ▓▓▓   ▓▓▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓▓▓▓   ▓▓▓▓▓▓▓▓▓▓
+  ▓▓ the Minotaur ▓▓▓▓▓
+  ▓▓▓▓▓  ▓▓▓        ▓▓▓
+  ▓▓▓▓▓    dances   ▓▓▓
+  ▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  ▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+]]
+options:{
+"TTRS:notrans=▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓" short: "TTRS:notrans=Exit the Labyrinth" next: J_ExitLabyrinth
+    }
+}
+
+###############
+
+terminal when (J_ExitLabyrinth) {
+text: [[TTRS:notrans=
+
+You have passed through the Labyrinth,
+unharmed.
+
+]]
+options:{
+"TTRS:notrans=Continue your journey" next: J_ContinueJourney
+    }
+}
+
+######################### THE AQUEDUCT ###################################
+
+terminal when (J_Aqueduct and not JBuiltAqueduct) {
+text: [[TTRS:notrans=
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+This is the work of the Architect
+in the days of peace:
+▓▓  not to build machines of war,       ▓▓
+▓▓    or to raise walls between peoples,  ▓▓
+▓▓    but to connect the city             ▓▓
+▓▓  to the source of life.              ▓▓
+
+But the Architect's work lies in ruins.
+▓▓   ▓▓▓▓    ▓▓▓ ▓ ▓▓▓  ▓▓ ▓▓▓ ▓▓     ▓▓▓▓
+    Exiles take shelter under its broken arches.
+    The days of peace were too few.
+
+]]
+options:{
+"TTRS:notrans=Speak to the exiles" next: J_SpeakExiles
+"TTRS:notrans=Continue your journey" next: J_ContinueJourney
+    }
+}
+
+terminal when (J_Aqueduct and JBuiltAqueduct) {
+text: [[TTRS:notrans=
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+This is the work of the Architect
+in the days of peace:
+    not to build machines of war,
+    or to raise walls between peoples,
+    but to connect the city
+    to the source of life.
+
+The water flows. The aqueduct endures.
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+]]
+options:{
+"TTRS:notrans=Continue your journey" next: J_ContinueJourney
+    }
+}
+
+###############
+
+terminal when (J_SpeakExiles and not JKnowledge) {
+text: [[TTRS:notrans=
+The exiles have gathered in the ruins:
+   Travellers from lost lands,
+   Castaways from forgotten times.
+   "We wish to rebuild the aqueduct," they say.
+   "But the knowledge has been lost."
+
+]]
+options:{
+"TTRS:notrans=Continue your journey" next: J_ContinueJourney
+    }
+}
+
+terminal when (J_SpeakExiles and JKnowledge) {
+text: [[TTRS:notrans=
+The exiles have gathered in the ruins:
+   Travellers from lost lands,
+   Castaways from forgotten times.
+   "We wish to rebuild the aqueduct," they say.
+   "But the knowledge has been lost."
+
+]]
+options:{
+"TTRS:notrans=Teach them to rebuild" next: J_TeachKnowledge set: JBuiltAqueduct
+"TTRS:notrans=Continue your journey" next: J_ContinueJourney
+    }
+}
+
+terminal when (J_SpeakExiles and not JKnowledge) {
+text: [[TTRS:notrans=
+The exiles have gathered in the ruins:
+   Travellers from lost lands,
+   Castaways from forgotten times.
+   "We wish to rebuild the aqueduct," they say.
+   "But the knowledge has been lost."
+
+]]
+options:{
+"TTRS:notrans=Continue your journey" next: J_ContinueJourney
+    }
+}
+
+###############
+
+terminal when (J_TeachKnowledge) {
+text: [[TTRS:notrans=
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+ You spend many days teaching the exiles
+  the secrets of the Ancient Engineers.
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+]]
+options:{
+"TTRS:notrans=Continue your journey" next: J_ContinueJourney
+    }
+}
+
+###############
+
+terminal when (J_ContinueJourney) {
+text: [[TTRS:notrans=
+░░░░  
+░░░░  the road
+░░░░  continues
+░░░░  a long way
+░░░░  
+░░░░  you are
+░░░░  tired
+░░░░  
+░░░░  go on?
+░░░░  
+
+]]
+options:{
+"TTRS:notrans=Keep walking" next: J_KeepWalking
+"TTRS:notrans=Give up" next: J_GiveUp
+    }
+}
+
+###############
+
+terminal when (J_KeepWalking) {
+text: [[TTRS:notrans=
+░░░░  
+░░░░  you walk
+░░░░  for centuries
+░░░░  
+░░░░  you have
+░░░░  a purpose
+░░░░  a destiny
+░░░░  
+░░░░  but you are so
+░░░░  tired
+░░░░  
+
+]]
+options:{
+"TTRS:notrans=Keep walking" next: J_Tree
+"TTRS:notrans=Give up" next: J_GiveUp
+    }
+}
+
+###############
+
+terminal when (J_GiveUp) {
+text: [[TTRS:notrans=
+████████the Tree of Life
+demanded too much███████
+██████████of this mortal
+
+]]
+options:{
+"TTRS:notrans=Restart" short: "TTRS:notrans=[Continue]" next: J_Dream
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+###############
+
+terminal when (J_Tree and not JBuiltAqueduct) {
+text: [[TTRS:notrans=
+░█▓░▒█░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒▓░▒█░░▒█░░█▓
+at last, you come upon the TREE OF LIFE░
+░▒░█▓░▒▒▒▒▓▒▒▒▒▒▒░░▒█░░▒█▒▒█▒▒▒▒░▒▒█▒█░░
+░▒▒▒▒▒▒▒▒   it is WITHERED and BARREN  ▒
+░█▓░▒█░░█▓░▒█░░█▒▒▒▒▒▒▒▒▒▒▓░▒█░░█▓░▒█░░░
+ the Great Work will never be fulfilled░
+░▒▒▒▒▒▒▒▒▓░▒█░░▒▒▒▒▒█▒▒▒█░░█▓░▒█░░█▒▒▒▒░
+░░▒▒▒░░░SICKNESS FOLLOWS STRIFE░░░░░░░▒▒
+░█▓░▒░█▓█░░▒▒▒▒▒▒▓░▒█░░▒▒▒▒▒▒▒░▒█▒▒▒▒▒▒░
+]]
+options:{
+"TTRS:notrans=Restart" short: "TTRS:notrans=[Continue]" next: J_Dream
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+terminal when (J_Tree and JBuiltAqueduct) {
+text: [[TTRS:notrans=
+Behold:
+
+the TREE OF LIFE
+    the tree of the people
+    of all peoples
+    the tree of liberty & struggle
+
+But a single drop of its sap
+gives you the strength
+at the very end
+to finish
+the work
+of God.
+
+]]
+set: JGreatWork1
+options:{
+"TTRS:notrans=Restart" short: "TTRS:notrans=[Continue]" next: J_Dream
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+######################################################################### THE SCHOLAR ##########################################
+
+terminal when (J_Scholar) {
+text: [[TTRS:notrans=
+░▒░▒▓▒▓███▒▓█░▒▓▓█▓░▒█░░
+██THE BLOOD OF SCHOLARS█
+█████░▒▓█░██████▒▓▓█▓░▒█
+▓SHALL OUTWEIGH▓▓█▓█████
+███░░▒▓███▓█▓░▒▓▒███████
+▓█THE BLOOD OF MARTYRS▓░
+█░█████▓░▒██▒▓▓░██████▒█
+
+You are Arkady
+        the Scholar
+        the Chronicler
+        the Sage
+
+░░ The world has been consumed by ice. ░░░░
+░░ In the Last Monastery ░░░░░░░░░░░░░░░░░░
+░░ of the Land of Faith, ░░░░░░░░░░░░░░░░░░
+░░ you compile the thoughts of the dead ░░░
+░░░░░░░ that God might know who they were ░
+
+The hazy ghost of Weariness is always upon you, breaking your will.
+You fear that you may fail before the Great Work is finished.
+
+]]
+options:{
+"TTRS:notrans=Work" next: J_Work
+    }
+}
+
+###############
+
+terminal when (J_Work) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+transcribing the work of the Ancient Poets.
+         You learn much
+         of their dedication to the Sublime.
+
+Your work is interrupted by a young monk:
+"Come, brother! You deserve a break. Let us sing the old songs."
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work2 set: JWork;+=1;
+"TTRS:notrans=Take a break" next: J_Break set: JMusic
+    }
+}
+
+###############
+
+terminal when (J_Break) {
+text: [[TTRS:notrans=
+In the kitchens, the young brothers sing
+░░░░░                      the old songs
+░░░░░                      as if they were new.
+
+Your spirit is renewed, but you lose precious time.
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work3
+    }
+}
+
+###############
+
+terminal when (J_Work2) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+transcribing the work of the Ancient Philosophers.
+         You learn much
+         of their confusion.
+         
+Your work is interrupted by a young monk:
+"Come, brother! We have opened a barrel of wine!"
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work3 set:JWork;+=1;
+"TTRS:notrans=Take a break" next: J_Break2
+    }
+}
+
+###############
+
+terminal when (J_Break2) {
+text: [[TTRS:notrans=
+In the kitchens, the young brothers drink
+░░░░░                           and laugh
+░░░░░                           as if they will live forever.
+
+Your spirit is renewed, but you lose precious time.
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work4
+    }
+}
+
+###############
+
+terminal when (J_Work3) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+transcribing the work of the Ancient Playwrights.
+         You learn much
+         of the human paradox.
+         
+Your work is interrupted by a monk:
+"Come, brother! We have discovered a strange miracle!"
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work4 set: JKnowledge set:JWork;+=1;
+"TTRS:notrans=Take a break" next: J_Break3
+    }
+}
+
+###############
+
+terminal when (J_Break3) {
+text: [[TTRS:notrans=
+In the kitchens, the brothers observe
+░░░░░                  a small animal
+░░░░░                  that is blessed to bring happiness.
+
+Your spirit is renewed, but you lose precious time.
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work5
+    }
+}
+
+###############
+
+terminal when (J_Work4) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+transcribing the work of the Ancient Engineers.
+         You learn much
+         of how the world was made.
+ 
+Your work is interrupted by a monk:
+"Come, brother! Let us sing the old songs once more!"
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work5 set:JWork;+=1;
+"TTRS:notrans=Take a break" next: J_Break4 set: JMusic
+    }
+}
+
+###############
+
+terminal when (J_Break4) {
+text: [[TTRS:notrans=
+In the kitchens, the brothers sing
+░░░░░                the old songs
+░░░░░                 that they have not forgotten.
+
+Your spirit is renewed, but you lose precious time.
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work6
+    }
+}
+
+###############
+
+terminal when (J_Work5) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+transcribing the work of the Ancient Mystics.
+         You learn much
+         of what the ancients feared.
+         
+Your work is interrupted by an old monk:
+"Come, brother! We have opened the last barrel of wine!"
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work6 set:JWork;+=1;
+"TTRS:notrans=Take a break" next: J_Break5
+    }
+}
+
+###############
+
+terminal when (J_Break5) {
+text: [[TTRS:notrans=
+In the kitchens, the old brothers drink
+░░░░░                         and laugh
+░░░░░                          knowing the end is nigh.
+
+Your spirit is renewed, but you lose precious time.
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work7
+    }
+}
+
+###############
+
+terminal when (J_Work6) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+transcribing the work of the Ancient Geographers.
+         You learn much
+         of how the world changed.
+         
+Your work is not interrupted.
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work7 set:JWork;+=1;
+"TTRS:notrans=Take a break" next: J_Break6
+    }
+}
+
+###############
+
+terminal when (J_Break6) {
+text: [[TTRS:notrans=
+The kitchens are empty.
+░░░░░
+░░░░░
+
+You lose precious time.
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work7
+    }
+}
+
+###############
+
+terminal when (J_Work7) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+transcribing the work of the Ancient Priests.
+         You learn much
+         of how the Word of God was lost.
+
+You have run out of wood for the furnace.
+                         It is very cold.
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work8
+"TTRS:notrans=Look for wood" next: J_Wood
+    }
+}
+
+###############
+
+terminal when (J_Wood and not JSlewMinotaur and not JMinotaurDance) {
+text: [[TTRS:notrans=
+░░ there is no more wood ░░
+░░ nor an axe with which ░░
+░░ to cut more           ░░
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work8
+    }
+}
+
+terminal when (J_Wood and JMinotaurDance) {
+text: [[TTRS:notrans=
+░░ in the shed you encounter ░░
+░░      A HAPPY MINOTAUR     ░░
+░░   it offers to cut wood   ░░
+░░          for you          ░░
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work9
+    }
+}
+
+terminal when (J_Wood and JTookAxe) {
+text: [[TTRS:notrans=
+░░       you cut wood      ░░
+░░ with the Minotaur's axe ░░
+░░    does this justify    ░░
+░░        his death?       ░░
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work9
+    }
+}
+
+terminal when (J_Wood and JLeftAxe) {
+text: [[TTRS:notrans=
+░░ you find an ancient axe ░░
+░░       bloodstained      ░░
+░░        but still        ░░
+░░       sharp enough      ░░
+░░       to cut wood       ░░
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work9
+    }
+}
+
+###############
+
+terminal when (J_Work8) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+until the cold claims you.
+         You learn much
+         of regret.
+
+The Great Work remains unfinished.
+
+]]
+options:{
+"TTRS:notrans=Restart" short: "TTRS:notrans=[Continue]" next: J_Dream
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+###############
+
+terminal when (J_Work9) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+transcribing the work of the Ancient Composers.
+         You learn much
+         of the secrets of numbers.
+
+Your work is not interrupted.
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work10
+    }
+}
+
+###############
+
+terminal when (J_Work10 and JWork<5) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+but you have lost too much time.
+         You learn much
+         of regret.
+
+The Great Work remains unfinished.
+
+]]
+options:{
+"TTRS:notrans=Restart" short: "TTRS:notrans=[Continue]" next: J_Dream
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+###############
+
+terminal when (J_Work10 and JWork>4) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+transcribing the work of the Ancient Astronomers.
+         You learn much
+         of humility.
+
+Weariness lies heavy upon you.
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work11
+    }
+}
+
+###############
+
+terminal when (J_Work11 and not JGreatWork1) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+losing hope, so close to the goal.
+         You learn much
+         of despair.
+
+The Great Work remains unfinished.
+
+]]
+options:{
+"TTRS:notrans=Restart" short: "TTRS:notrans=[Continue]" next: J_Dream
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+terminal when (J_Work11 and JGreatWork1) {
+text: [[TTRS:notrans=
+You spend many days in the Library,
+transcribing the work of Athena.
+         You learn much
+         of hope.
+
+Your goal is in sight.
+
+]]
+options:{
+"TTRS:notrans=Continue working" next: J_Work12
+    }
+}
+
+###############
+
+terminal when (J_Work12) {
+text: [[TTRS:notrans=
+At the very end,
+         the Great Work is accomplished.
+
+There is no-one left
+            to drink, to sing, to laugh.
+
+The world has been consumed,
+                 but its spirit endures.
+
+]]
+set: JGreatWork2
+options:{
+"TTRS:notrans=Restart" short: "TTRS:notrans=[Continue]" next: J_Dream
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+####################################################### THE SCIENTIST ##########################################
+
+
+terminal when (J_Scientist) {
+text: [[TTRS:notrans=
+░▒░▒▓▒▓███▒▓█░▒▓▓█▓░▒█░░
+▓░THE TRUE METHOD█▒░▓░▓░
+░▒░▒▓▒▓███▒▓█░▒▓▓█▓░▒█░░
+▓▒█░OF KNOWLEDGE ▓░▓░█▓░
+░▒▓██▒▓▒░░▒▒░█▒▒▓▓█IS░█░
+▒▓▒▓EXPERIMENT▓█░▒▓▒▓▒▓▒
+░▒░▒▓▒▓███▒▓█░▒▓▓█▓░▒█░░
+
+You are Alexandra
+        the Scientist
+        whose curse & blessing is the Truth
+        
+There is no more life. Only the sands move in the Land of Death.
+
+But there is hope:
+       within this tomb
+       is hidden the seed
+       of the TREE OF LIFE
+
+The hazy ghost of Weariness is always upon you, breaking your will.
+You fear that you may fail before the Great Work is finished.
+
+]]
+options:{
+"TTRS:notrans=Seek the Seed of Life" next: J_Pyramid
+    }
+}
+
+
+###############
+
+terminal when (J_Pyramid) {
+text: [[TTRS:notrans=
+                 ░░░ 
+              ░░░░░░░░░
+           ░░░░░░░░░░░░░░░
+        ░░░░░░░░░░░░░░░░░░░░░
+
+NONE WHO DESCEND INTO THIS TOMB SHALL RETURN
+
+]]
+options:{
+"TTRS:notrans=Enter the Tomb" next: J_Enter
+    }
+}
+
+
+
+###############
+
+terminal when (J_Enter) {
+text: [[TTRS:notrans=
+░░░░░░░░ Stairs lead down
+░░░░░░░░░░░░░░░░ to the dark chambers
+░░░░░░░░░░░░░░░░░░░░░░░░ in the heart of the Earth
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ where the Seed awaits the Light.
+
+]]
+options:{
+"TTRS:notrans=Enter the Sage's Chamber" next: J_Descend1
+"TTRS:notrans=Descend" next: J_Descend2
+    }
+}
+
+###############
+
+terminal when (J_Descend1 and not JFlute and not JSageReleased) {
+text: [[TTRS:notrans=
+The ghost of the Ancient Sage speaks.
+
+I have beheld the wonders of the cosmos:
+                          the fire of a million suns
+                          the wind amongst the stars
+                          the black silence between the worlds
+and now my heart is full of fear,
+for I know:
+           the world was not made for us.
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend2
+    }
+}
+
+terminal when (J_Descend1 and JFlute and not JSageReleased) {
+text: [[TTRS:notrans=
+The ghost of the Ancient Sage speaks.
+
+I have beheld the wonders of the cosmos:
+                          the fire of a million suns
+                          the wind amongst the stars
+                          the black silence between the worlds
+and now my heart is full of fear,
+for I know:
+           the world was not made for us.
+           
+]]
+options:{
+"TTRS:notrans=Play the flute" next: J_PlayFlute set: JSageReleased
+"TTRS:notrans=Descend" next: J_Descend2
+    }
+}
+
+terminal when (J_Descend1 and JSageReleased) {
+text: [[TTRS:notrans=
+The tomb is silent;
+ the Ancient Sage drifts between the stars.
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend2
+    }
+}
+
+###############
+
+terminal when (J_PlayFlute) {
+text: [[TTRS:notrans=
+There is a strange comfort in music,
+                       a reflection
+                       of the eternal city
+                       in the stars.
+
+The spirit of the Sage is released.
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend2
+    }
+}
+
+###############
+
+terminal when (J_Descend2) {
+text: [[TTRS:notrans=
+                 You descend further ▒▒▒▒▒▒▒▒
+             into the depths ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+of the ancient tomb. ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+]]
+options:{
+"TTRS:notrans=Enter the Poet's Chamber" next: J_Descend3
+"TTRS:notrans=Descend" next: J_Descend4
+    }
+}
+
+###############
+
+terminal when (J_Descend3 and not JPoetReleased and not JGreatWork2) {
+text: [[TTRS:notrans=
+The ghost of the Ancient Poet speaks.
+
+I cannot rest, for my enemy prowls outside my door.
+                     His name is Time, and he says:
+                                       all we imagine
+                                       all we create
+                                          will be lost. 
+
+What purpose can we have if all our actions are forgotten?
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend4
+    }
+}
+
+terminal when (J_Descend3 and not JPoetReleased and JGreatWork2) {
+text: [[TTRS:notrans=
+The ghost of the Ancient Poet speaks.
+
+I cannot rest, for my enemy prowls outside my door.
+                     His name is Time, and he says:
+                                       all we imagine
+                                       all we create
+                                          will be lost. 
+
+What purpose can we have if all our actions are forgotten?
+
+]]
+options:{
+"TTRS:notrans=Tell the poet about the Archive" next: J_TellPoet set: JPoetReleased
+"TTRS:notrans=Descend" next: J_Descend4
+    }
+}
+
+terminal when (J_Descend3 and JPoetReleased) {
+text: [[TTRS:notrans=
+The tomb is silent;
+ the spirit of the Ancient Poet has departed.
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend4
+    }
+}
+
+###############
+
+terminal when (J_TellPoet) {
+text: [[TTRS:notrans=
+░░░░░ You tell him of the Great Work of the Last Monastery,
+░░░░░ that was completed even as the world was swallowed by ice.
+      And though it saved
+              only fragments
+        there is at least
+               a little
+                       hope.
+
+The spirit of the Poet is released.
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend4
+    }
+}
+
+###############
+
+terminal when (J_Descend4) {
+text: [[TTRS:notrans=
+▓▓▓▓▓▓▓▓ the air
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ grows 
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ thick
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ and stale
+
+]]
+options:{
+"TTRS:notrans=Enter the Treasure Chamber" next: J_Treasure
+"TTRS:notrans=Descend" next: J_Descend5
+    }
+}
+
+###############
+
+terminal when (J_Treasure and not JCoin) {
+text: [[TTRS:notrans=
+In this chamber is gathered
+all the treasure of the Land of Death:
+
+       coins of silver, coins of gold
+       precious stones of every hue
+       symbols & sigils of the gods
+
+But there is nothing left to buy.
+
+]]
+options:{
+"TTRS:notrans=Take a coin" next: J_TakeCoin set: JCoin
+"TTRS:notrans=Descend" next: J_Descend5
+    }
+}
+
+terminal when (J_Treasure and JCoin) {
+text: [[TTRS:notrans=
+In this chamber is gathered
+all the treasure of the Land of Death:
+
+       coins of silver, coins of gold
+       precious stones of every hue
+       symbols & sigils of the gods
+
+But there is nothing left to buy.
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend5
+    }
+}
+
+###############
+
+terminal when (J_TakeCoin) {
+text: [[TTRS:notrans=
+You take a golden coin.
+It bears the face of a dead king.
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend5
+    }
+}
+
+###############
+
+terminal when (J_Descend5) {
+text: [[TTRS:notrans=
+                          you ████████
+                  are ████████████████
+      nearing ████████████████████████
+death ████████████████████████████████
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend6
+    }
+}
+
+###############
+
+terminal when (J_Descend6) {
+text: [[TTRS:notrans=
+█████████████████████████████████████████████
+██████ you have come ████████████████████████
+█████████████████████████ so very far ███████
+████ left everything ██████ behind ██████████
+█████████ hoping █████████ you could ████████
+█████████████ save the world ████████████████
+█████████████████████████████████████████████
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend7
+    }
+}
+
+###############
+
+terminal when (J_Descend7 and not JPoetReleased) {
+text: [[TTRS:notrans=
+███████████████████████████████████████████████
+███████████████████████████ in the darkness ███
+███ you fall ██████████████████████████████████
+████████████████ and cannot get up again ██████
+███████████████████████████████████████████████
+█████ the great work remains unfinished ███████
+███████████████████████████████████████████████
+
+]]
+options:{
+"TTRS:notrans=Restart" short: "TTRS:notrans=[Continue]" next: J_Dream
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+terminal when (J_Descend7 and JPoetReleased) {
+text: [[TTRS:notrans=
+███████████████████████████████████████████████
+███████████████████████████ in the darkness ███
+███ you fall ██████████████████████████████████
+████████████████ but are lifted up ████████████
+███████████████████████████████████████████████
+█████ by the spirit of poetry █████████████████
+███████████████████████████████████████████████
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend8
+    }
+}
+
+###############
+
+terminal when (J_Descend8 and not JSageReleased) {
+text: [[TTRS:notrans=
+███████████████████████████████████████████████
+███████████████████████████ in the darkness ███
+███ you fall ██████████████████████████████████
+████████████████ and cannot get up again ██████
+███████████████████████████████████████████████
+█████ the great work remains unfinished ███████
+███████████████████████████████████████████████
+
+]]
+options:{
+"TTRS:notrans=Restart" short: "TTRS:notrans=[Continue]" next: J_Dream
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+terminal when (J_Descend8 and JSageReleased) {
+text: [[TTRS:notrans=
+███████████████████████████████████████████████
+███ in the darkness ███████████████████████████
+██████████████████████████ you fall ███████████
+██ but are lifted up ██████████████████████████
+███████████████████████████████████████████████
+███████████████ by the spirit of wisdom ███████
+███████████████████████████████████████████████
+
+]]
+options:{
+"TTRS:notrans=Descend" next: J_Descend9
+    }
+}
+
+###############
+
+terminal when (J_Descend9) {
+text: [[TTRS:notrans=
+███████████████████████████████████████████████
+At last, you come upon the deepest chamber,
+whence flows a river vast & dark & rapid,
+that brings life to the desert,
+                   but claims the unwary.
+███████████████████████████████████████████████
+Upon the river is an island;
+upon the island is a tomb.
+A bridge leads to the other side.
+███████████████████████████████████████████████
+
+]]
+options:{
+"TTRS:notrans=Cross the bridge" next: J_Cross
+    }
+}
+
+###############
+
+terminal when (J_Cross and not JKey) {
+text: [[TTRS:notrans=
+a bitter fate
+███████████████████████████████████████████████
+to have come so far
+to the heart of the Earth
+only to find
+███████████████████████████████████████████████
+the final chamber is locked 
+███████████████████████████████████████████████
+              the great work remains unfinished
+
+]]
+options:{
+"TTRS:notrans=Restart" short: "TTRS:notrans=[Continue]" next: J_Dream
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+###############
+
+terminal when (J_Cross and JKey) {
+text: [[TTRS:notrans=
+███████████████████████████████████████████████
+the final chamber is locked
+███████████████████████████████████████████████
+                  but you have the key
+███████████████████████████████████████████████
+
+]]
+options:{
+"TTRS:notrans=Enter the Scientist's Chamber" next: J_Final
+    }
+}
+
+###############
+
+terminal when (J_Final) {
+text: [[TTRS:notrans=
+Behold:
+
+███████████████████████████████████████████████
+Here lies buried the last & best of humankind,
+who fought until the end,
+until her very last breath,
+to preserve the Seed of Life.
+███████████████████████████████████████████████
+
+You have returned to your tomb
+                       because you cannot rest
+                                until you know
+                                     the truth.
+
+]]
+options:{
+"TTRS:notrans=Examine the Seed" next: J_Seed
+    }
+}
+
+###############
+
+terminal when (J_Seed) {
+text: [[TTRS:notrans=
+all livings things return to the Earth
+ashes to ashes, dust to dust
+and from the soil of your body
+grows the Tree of Life
+
+    the tree of the people
+    of all peoples
+    the tree of liberty & struggle
+    rises from within you
+    
+it bursts through the ceiling
+through rock and desert sands
+it reaches into the sky
+and caresses the stars
+
+for everything that lives is holy
+and you are free
+
+]]
+set: JGreatWork3
+options:{
+"TTRS:notrans=Restart" short: "TTRS:notrans=[Continue]" next: J_Dream
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[Exit]" next: MessageBoardInterface_On
+    }
+}
+
+################################################ THE BLACKSMITH #################################################
+
+terminal when (J_Blacksmith) {
+text: [[TTRS:notrans=
+Every Artist & Sage & Scientist is the Blacksmith
+for all were once the giant ANTHROPOS,
+all were stardust adrift on solar winds,
+and citizens of Jerusalem.
+
+The Blacksmith's eternal task
+is to forge what was broken
+into a new whole:
+
+We are the People.
+We are the City.
+We must rebuild Jerusalem.
+
+-- THE END --
+
+]]
+options:{
+"TTRS:notrans=I open my eyes." short: "TTRS:notrans=[End]" next: MessageBoardInterface_On
+    }
+}

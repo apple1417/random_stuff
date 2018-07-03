@@ -1,0 +1,1337 @@
+﻿###############
+
+terminal when (Bel_Intro) {
+text: [[TTRS:TermDlg.Common.LoadingAttachmentW3W3W5=
+Loading attachment%w3.%w3.%w5.Done%w3
+Adjusting library parameters%w3.%w3.%w5.Done%w3
+Connection to foreign module established.%w3
+
+Close your eyes.%w3
+
+]]
+goto: Bel_Start
+}
+
+terminal when (Bel_Start) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0016.0.text.OOOOUNDERWATERKNIGHTQUEST=
+
+OO===========================OO
+     ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    UNDERWATER KNIGHT QUEST
+     ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+OO===========================OO
+
+]]
+clear: GotAmulet
+clear: GotLantern
+clear: GotShield
+clear: GotPickaxe
+clear: GotPickaxeTwo
+clear: GotSword
+clear: GotSwordOne
+clear: TouristGuide
+clear: DwarfPromise
+set:WeaponPower;=0;
+clear: StrangeDream
+clear: GotMagic
+clear: ToldHermit
+clear: KilledHermit
+clear: AskedHermit
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0041.0.option.NewGame=New Game" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0041.0.short.NewGame=[New Game]" next: Bel_Character1
+"TTRS:TermDlg.Common.Credits=Credits" short: "TTRS:TermDlg.Common.Credits2=[Credits]" next: Bel_Credits
+"TTRS:TermDlg.KnightQuest.Ln0043.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.short.Quit=[Quit]" next: MessageBoardInterface_On
+	}
+}
+
+###############
+
+terminal when (Bel_Credits) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0050.0.text.AnInteractiveAdventureByBelial=
+An interactive adventure by Belial.
+
+Written using the tools kindly provided by Admin.
+
+Special thanks to MrMulciber.
+
+"The purpose of facts is to inspire fiction."
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0041.0.option.NewGame=New Game" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0041.0.short.NewGame=[New Game]" next: Bel_Character1
+"TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.short.Quit=[Quit]" next: MessageBoardInterface_On
+	}
+}
+
+###############
+
+terminal when (Bel_Character1) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0069.0.text.YourNameIsArthurSadko=
+Your name is Arthur Sadko and you are a young human of the Medieval Age. You live in beautiful Gardariki on the Frisian coast. One day you are sitting on the beach, playing the piano, when suddenly a huge monster comes out of the water!
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0074.0.option.ConfrontIt=Confront it" next: Bel_Confront
+"TTRS:TermDlg.DLC_KnightQuest.Ln0075.0.option.JustWaitAndSee=Just wait and see" next: Bel_Wait
+"TTRS:TermDlg.DLC_KnightQuest.Ln0076.0.option.RunAway=Run away" next: Bel_RunAway
+	}
+}
+
+###############
+
+terminal when (Bel_RunAway) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0083.0.text.YouRunAwayNothingInteresting=
+You run away! Nothing interesting ever happens to you after that.
+
+-- THE END --
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.option.Restart=Restart" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.short.Restart=[Restart]" next: Bel_Start
+"TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.short.Quit=[Quit]" next: MessageBoardInterface_On
+	}
+}
+
+#######
+
+terminal when (Bel_Wait) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0098.0.text.AsItTurnsOutIts=
+As it turns out, it's not actually a monster. You just thought that because you were startled. It is, in fact, a very large Bipedal Whale. It beckons you over to talk.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0103.0.option.TalkToTheBipedalWhale=Talk to the Bipedal Whale" next: Bel_Elphant1
+	}
+}
+
+###############
+
+terminal when (Bel_Confront) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0110.0.text.YouGrabForYourSword=
+You grab for your sword but realize you don't actually have a sword. Thankfully, what you thought was a huge monster is actually just a large Bipedal Whale. It beckons you over to talk.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0103.0.option.TalkToTheBipedalWhale=Talk to the Bipedal Whale" next: Bel_Elphant1
+	}
+}
+
+###############
+
+terminal when (Bel_Elphant1) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0122.0.text.GREETINGSTheBeastIntonesI=
+GREETINGS, the beast intones. I AM HATMEHIT, CHIEF FISH. I HEARD YOUR BEAUTIFUL MUSIC AND WAS IMPRESSED. WOULD YOU LIKE TO BECOME A KNIGHT?
+
+]]
+options:{
+"TTRS:TermDlg.Common.Yes2=Yes" next: Bel_Yes
+"TTRS:TermDlg.Common.No2=No" next: Bel_No
+	}
+}
+
+###############
+
+terminal when (Bel_No) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0135.0.text.YouSayNoWhatA=
+You say no. What a boring choice. You grow old and die of a lack of imagination.
+
+-- THE END --
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.option.Restart=Restart" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.short.Restart=[Restart]" next: Bel_Start
+"TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.short.Quit=[Quit]" next: MessageBoardInterface_On
+	}
+}
+
+###############
+
+terminal when (Bel_Yes) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0150.0.text.EXCELLENTTHENFOLLOWMETO=
+EXCELLENT! THEN FOLLOW ME TO MY PALACE UNDER THE SEA, WHERE A MIGHTY QUEST AWAITS YOU!
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map1
+	}
+}
+
+#########################
+
+string strMapHeader "TTRS:TermDlg.DLC_KnightQuest.Ln0161.0.NORFOLKUNDERSEA=                 NORFOLK-UNDER-SEA"
+string strMapFooter "TTRS:TermDlg.DLC_KnightQuest.Ln0162.0.CHOOSETHYDESTINATION=               CHOOSE THY DESTINATION!"
+
+string strBelMapArt_Palace [[TTRS:TermDlg.DLC_KnightQuest.Ln0164.0.OOOOOPalaceOO=
+OO===============================================OO
+|| ~ o Palace  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+OO===============================================OO
+]]
+
+terminal when (Bel_Map1) {
+text: [[
+%t'strMapHeader'%t'strBelMapArt_Palace'%t'strMapFooter'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0185.0.option.Palace=[Palace]" next: Bel_Palace1
+	}
+}
+
+###############
+
+terminal when (Bel_Palace1) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0192.0.text.THEPALACEOFTHECHIEF= 
+
+~~~ THE PALACE OF THE CHIEF FISH ~~~
+
+Hatmehit's palace is made of corals and gemstones. It floats under the sea, full of amazing colours. The guards are seals.
+
+WELCOME, WELCOME, YOUNG HUMAN. I AM GLAD YOU CAME, FOR WE HAVE GREAT NEED OF YOUR SKILLS. A TERRIBLE MONSTER TERRORIZES THE DEEP: THE DARK SERPENT-GOD ZMEY CHERNOBYL!
+
+IF WE MAKE YOU A KNIGHT, DO YOU PROMISE TO DEFEAT THIS VILE BEAST?
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0204.0.option.SwearThatYouWill=Swear that you will" next: Bel_Swear
+"TTRS:TermDlg.DLC_KnightQuest.Ln0205.0.option.Refuse=Refuse" next: Bel_Refuse
+	}
+}
+
+###############
+
+terminal when (Bel_Refuse) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0212.0.text.WOWYOUCAMEAREALLY=
+WOW, YOU CAME A REALLY LONG WAY JUST TO SAY NO.
+
+You drown.
+
+-- THE END --
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.option.Restart=Restart" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.short.Restart=[Restart]" next: Bel_Start
+"TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.short.Quit=[Quit]" next: MessageBoardInterface_On
+	}
+}
+
+###############
+
+terminal when (Bel_Swear) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0229.0.text.VERYWELLTHENIPRONOUNCE=
+VERY WELL, THEN. I PRONOUNCE YOU SIR SADKO OF NORFOLK! GO AND VANQUISH OUR ENEMY!
+
+YOU MAY WANT TO PREPARE FIRST.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+################## MAPS #########################
+
+string strBelMapArt_Palace_Hut_Inn_EvilLair [[TTRS:TermDlg.DLC_KnightQuest.Ln0242.0.OOOOOPalaceO=
+OO===============================================OO
+|| ~ o Palace  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Hut ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Inn ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Evil Lair ~ ~ ~ ~ ~ ~ ||
+OO===============================================OO
+]]
+
+terminal when (Bel_Map2 and not TouristGuide and not StrangeDream) {
+text: [[
+%t'strMapHeader'%t'strBelMapArt_Palace_Hut_Inn_EvilLair'%t'strMapFooter'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0263.0.option.Palace=Palace" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0185.0.option.Palace=[Palace]" next: Bel_Palace2
+"TTRS:TermDlg.DLC_KnightQuest.Ln0264.0.option.OldHut=Old Hut" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0264.0.short.OldHut=[Old Hut]" next: Bel_Hut
+"TTRS:TermDlg.DLC_KnightQuest.Ln0265.0.option.Inn=Inn" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0265.0.short.Inn=[Inn]" next: Bel_Inn
+"TTRS:TermDlg.DLC_KnightQuest.Ln0266.0.option.EvilLair=Evil Lair" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0266.0.short.EvilLair=[Evil Lair]" next: Bel_Lair
+"TTRS:TermDlg.DLC_KnightQuest.Ln0267.0.option.Stats=Stats" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0267.0.short.YourStats=[Your Stats]" next: Bel_Stats
+	}
+}
+
+string strBelMapArt_Palace_Hut_Temple_Inn_EvilLair [[TTRS:TermDlg.DLC_KnightQuest.Ln0271.0.OOOOOPalaceO=
+OO===============================================OO
+|| ~ o Palace  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Hut ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ o Temple  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Inn ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Evil Lair ~ ~ ~ ~ ~ ~ ||
+OO===============================================OO
+]]
+
+terminal when (Bel_Map2 and not TouristGuide and StrangeDream) {
+text: [[
+%t'strMapHeader'%t'strBelMapArt_Palace_Hut_Temple_Inn_EvilLair'%t'strMapFooter'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0263.0.option.Palace=Palace" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0185.0.option.Palace=[Palace]" next: Bel_Palace2 clear: StrangeDream
+"TTRS:TermDlg.DLC_KnightQuest.Ln0264.0.option.OldHut=Old Hut" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0264.0.short.OldHut=[Old Hut]" next: Bel_Hut clear: StrangeDream
+"TTRS:TermDlg.DLC_KnightQuest.Ln0265.0.option.Inn=Inn" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0265.0.short.Inn=[Inn]" next: Bel_Inn clear: StrangeDream
+"TTRS:TermDlg.DLC_KnightQuest.Ln0295.0.option.MysteriousTemple=Mysterious Temple" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0295.0.short.MysteriousTemple=[Mysterious Temple]" next: Bel_Temple clear: StrangeDream
+"TTRS:TermDlg.DLC_KnightQuest.Ln0266.0.option.EvilLair=Evil Lair" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0266.0.short.EvilLair=[Evil Lair]" next: Bel_Lair clear: StrangeDream
+"TTRS:TermDlg.DLC_KnightQuest.Ln0267.0.option.Stats=Stats" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0267.0.short.YourStats=[Your Stats]" next: Bel_Stats
+	}
+}
+
+string strBelMapArt_Palace_Hut_Inn_Dungeon_EvilLair [[TTRS:TermDlg.DLC_KnightQuest.Ln0301.0.OOOOOPalaceO=
+OO===============================================OO
+|| ~ o Palace  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Hut ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Inn ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ o Dungeon ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Evil Lair ~ ~ ~ ~ ~ ~ ||
+OO===============================================OO
+]]
+
+terminal when (Bel_Map2 and TouristGuide and not StrangeDream) {
+text: [[
+%t'strMapHeader'%t'strBelMapArt_Palace_Hut_Inn_Dungeon_EvilLair'%t'strMapFooter'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0263.0.option.Palace=Palace" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0185.0.option.Palace=[Palace]" next: Bel_Palace2
+"TTRS:TermDlg.DLC_KnightQuest.Ln0264.0.option.OldHut=Old Hut" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0264.0.short.OldHut=[Old Hut]" next: Bel_Hut
+"TTRS:TermDlg.DLC_KnightQuest.Ln0324.0.option.ScenicDungeon=Scenic Dungeon" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0324.0.short.ScenicDungeon=[Scenic Dungeon]" next: Bel_Dungeon
+"TTRS:TermDlg.DLC_KnightQuest.Ln0265.0.option.Inn=Inn" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0265.0.short.Inn=[Inn]" next: Bel_Inn
+"TTRS:TermDlg.DLC_KnightQuest.Ln0266.0.option.EvilLair=Evil Lair" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0266.0.short.EvilLair=[Evil Lair]" next: Bel_Lair
+"TTRS:TermDlg.DLC_KnightQuest.Ln0267.0.option.Stats=Stats" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0267.0.short.YourStats=[Your Stats]" next: Bel_Stats
+	}
+}
+
+string strBelMapArt_Palace_Hut_Temple_Inn_Dungeon_EvilLair [[TTRS:TermDlg.DLC_KnightQuest.Ln0331.0.OOOOOPalaceO=
+OO===============================================OO
+|| ~ o Palace  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Hut ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ o Temple  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Inn ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ o Dungeon ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ||
+|| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ o Evil Lair ~ ~ ~ ~ ~ ~ ||
+OO===============================================OO
+]]
+
+terminal when (Bel_Map2 and TouristGuide and StrangeDream) {
+text: [[
+%t'strMapHeader'%t'strBelMapArt_Palace_Hut_Temple_Inn_Dungeon_EvilLair'%t'strMapFooter'
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0263.0.option.Palace=Palace" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0185.0.option.Palace=[Palace]" next: Bel_Palace2 clear: StrangeDream
+"TTRS:TermDlg.DLC_KnightQuest.Ln0264.0.option.OldHut=Old Hut" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0264.0.short.OldHut=[Old Hut]" next: Bel_Hut clear: StrangeDream
+"TTRS:TermDlg.DLC_KnightQuest.Ln0324.0.option.ScenicDungeon=Scenic Dungeon" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0324.0.short.ScenicDungeon=[Scenic Dungeon]" next: Bel_Dungeon clear: StrangeDream
+"TTRS:TermDlg.DLC_KnightQuest.Ln0295.0.option.MysteriousTemple=Mysterious Temple" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0295.0.short.MysteriousTemple=[Mysterious Temple]" next: Bel_Temple clear: StrangeDream
+"TTRS:TermDlg.DLC_KnightQuest.Ln0265.0.option.Inn=Inn" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0265.0.short.Inn=[Inn]" next: Bel_Inn
+"TTRS:TermDlg.DLC_KnightQuest.Ln0266.0.option.EvilLair=Evil Lair" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0266.0.short.EvilLair=[Evil Lair]" next: Bel_Lair clear: StrangeDream
+"TTRS:TermDlg.DLC_KnightQuest.Ln0267.0.option.Stats=Stats" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0267.0.short.YourStats=[Your Stats]" next: Bel_Stats
+	}
+}
+
+############### STATS #################################
+
+terminal when (Bel_Stats) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0365.0.text.AtPresentYouCarryThe=
+At present, you carry the following objects:
+
+]]
+goto: Bel_Sword
+}
+
+terminal when (Bel_Sword and not GotSword) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0373.0.text.WEAPONNone=WEAPON: None
+]]
+goto: Bel_Amulet
+}
+
+terminal when (Bel_Sword and GotSword and GotSwordOne) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0379.0.text.WEAPONSwordOfPlugh3=WEAPON: Sword of Plugh (+3)
+]]
+goto: Bel_Amulet
+}
+
+terminal when (Bel_Sword and GotSword and GotPickaxe) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0385.0.text.WEAPONPickaxeOfVanity2=WEAPON: Pickaxe of Vanity (+2)
+]]
+goto: Bel_Amulet
+}
+
+terminal when (Bel_Sword and GotSword and GotPickaxeTwo) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0391.0.text.WEAPONPickaxeOfPhilosophy3=WEAPON: Pickaxe of Philosophy (+3)
+]]
+goto: Bel_Amulet
+}
+
+terminal when (Bel_Amulet and not GotAmulet) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0397.0.text.AMULETNone=AMULET: None
+]]
+goto: Bel_Shield
+}
+
+terminal when (Bel_Amulet and GotAmulet) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0403.0.text.AMULETSmellyHermitAmulet1=AMULET: Smelly Hermit Amulet (+1)
+]]
+goto: Bel_Shield
+}
+
+terminal when (Bel_Shield and not GotShield) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0409.0.text.SHIELDNone=SHIELD: None
+]]
+goto: Bel_Guide
+}
+
+terminal when (Bel_Shield and GotShield) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0415.0.text.SHIELDShieldOfSoup2=SHIELD: Shield of Soup (+2)
+]]
+goto: Bel_Guide
+}
+
+terminal when (Bel_Guide and TouristGuide) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0421.0.text.TOURISTGUIDEHalibutFrysGuide=TOURIST GUIDE: Halibut Fry's Guide to Norfolk-Under-Sea
+]]
+goto: Bel_Lantern
+}
+
+terminal when (Bel_Guide and not TouristGuide) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0427.0.text.TOURISTGUIDENone=TOURIST GUIDE: None
+]]
+goto: Bel_Lantern
+}
+
+terminal when (Bel_Lantern and GotLantern) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0433.0.text.LANTERNBrass1=LANTERN: Brass (+1)
+
+]]
+goto: Bel_StatsDone
+}
+
+terminal when (Bel_Lantern and not GotLantern) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0440.0.text.LANTERNNone=LANTERN: None
+
+]]
+goto: Bel_StatsDone
+}
+
+
+terminal when (Bel_StatsDone) {
+notext
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+#################################################### LAIR ##################################################
+
+terminal when (Bel_Lair) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0457.0.text.THEEVILLAIROFZMEY=
+!!! THE EVIL LAIR OF ZMEY CHERNOBYL !!!
+
+Are you sure you want to take on the evil serpent? Are you prepared?
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0464.0.option.Attack=Attack!" next: Bel_Attack
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_Attack and WeaponPower<5 and GotSword) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0472.0.text.YouConfrontTheSerpentGod=
+You confront the Serpent-God Zmey Chernobyl in his lair!
+
+You fight valiantly, but you were not prepared enough. You are killed in a horrible fashion!
+
+-- THE END --
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.option.Restart=Restart" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.short.Restart=[Restart]" next: Bel_Start
+"TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.short.Quit=[Quit]" next: MessageBoardInterface_On
+	}
+}
+
+terminal when (Bel_Attack and WeaponPower>4 and GotSword) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0487.0.text.YouConfrontTheSerpentGod=
+You confront the Serpent-God Zmey Chernobyl in his lair!
+
+The fight is long and hard, but at last you succeed where so many before you have failed. You emerge from the Lair covered in blood, your hands trembling, a huge tooth embedded in your shoulder... and carrying the head of Zmey Chernobyl.
+
+You are victorious!
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0496.0.option.ToThePalace=To the Palace!" next: Bel_End2
+	}
+}
+
+###############
+
+terminal when (Bel_Attack and not GotSword) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0503.0.text.WhatWithoutAWeapon=
+What, without a weapon?
+
+]]
+options:{
+"TTRS:TermDlg.Common.Yes2=Yes" next: Bel_End1
+"TTRS:TermDlg.DLC_KnightQuest.Ln0509.0.option.HoldOnThatMakesNo=Hold on, that makes no sense" next: Bel_Map2
+	}
+}
+
+############################ ENDINGS #################################
+
+terminal when (Bel_End1) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0516.0.text.CongratulationsYouHaveJustVanquished=
+Congratulations!  You have just vanquished an evil serpent-god with your bare    
+hands! 
+
+Unbelievable, isn't it?
+
+(Yeah, right. Dream on.)
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_End2) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0533.0.text.THEPALACEOFTHECHIEF=
+
+~~~ THE PALACE OF THE CHIEF FISH ~~~
+
+You enter the Palace, triumphantly holding up your trophy. The guards are clapping.
+
+I CAN'T BELIEVE YOU ACTUALLY DID IT, Hatmehit says. YOU ARE A TRUE KNIGHT! YOU DESERVE A GREAT REWARD!
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0543.0.option.AcceptTheReward=Accept the reward" next: Bel_Reward
+"TTRS:TermDlg.DLC_KnightQuest.Ln0544.0.option.KillHatmehitAndClaimThe=Kill Hatmehit and claim the realm" next: Bel_Claim
+	}
+}
+
+###############
+
+terminal when (Bel_Reward) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0551.0.text.THEGREATESTREWARDISINSPIRATION=
+THE GREATEST REWARD IS INSPIRATION.%w7%w7
+
+HEAR MY SONG, AND FREE YOUR IMAGINATION.%w7%w7
+
+Hatmehit begins to sing. The song is simple, but hauntingly beautiful.%w7
+
+You begin to fade%w3.%w3.%w3.%w3
+
+You find yourself on the beach where it all began, near your home in Gardariki on the Frisian Coast, playing the piano with your eyes closed. You feel like you just drifted off to sleep for a while, but now inspiration has struck, and you're composing a hauntingly beautiful piece of music in your head.
+
+Some of your friends worry that they'll never leave the village, that they'll never have any adventures, but you don't share that fear. You know that freedom is within you, and you can find whole worlds just sitting here, gazing out at infinity.
+
+-- THE END --
+
+]]
+options:{
+"TTRS:TermDlg.Common.ExitBrackets=[Exit]" next: UnderwaterRankIncrease set: BelVictory1
+	}
+}
+
+terminal when (UnderwaterRankIncrease and UnderwaterRankIncrease_DONE){
+notext
+next: MessageBoardInterface_On
+}
+
+terminal when (UnderwaterRankIncrease and not UnderwaterRankIncrease_DONE){
+text:[[TTRS:TermDlg.DLC_KnightQuest.Ln0578.0.text.CONGRATULATIONSForExploringAnotherWorld=CONGRATULATIONS! For exploring another world your profile status has increased ]]
+set: UnderwaterRankIncrease_DONE
+goto: IncreaseRank
+} 
+
+###############
+
+terminal when (Bel_Claim and WeaponPower>7 and not DwarfPromise) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0586.0.text.HEYWHATAREYOUDOING=
+HEY, WHAT ARE YOU DOING?%w7
+
+Hatmehit does not see your attack coming. His lifeless corpse crumbles before you with a baffled expression on its face. You step over it.
+
+The guards are momentarily confused, but when you sit down on the throne, they bow before you. They know the ancient rule: you keep what you kill.
+
+You are now the Chief Fish, ruler of Norfolk-Under-Sea. You don't care about the world you were supposed to return to. You have all you could ever want right here.
+
+-- THE END --
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.short.Quit=[Quit]" next: UnderwaterRankIncrease set: BelVictory2
+	}
+}
+
+###############
+
+terminal when (Bel_Claim and WeaponPower>7 and DwarfPromise) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0606.0.text.HEYWHATAREYOUDOING=
+HEY, WHAT ARE YOU DOING?%w7
+
+Hatmehit does not see your attack coming. His lifeless corpse crumbles before you with a baffled expression on its face. You step over it.
+
+The guards are momentarily confused, but when you sit down on the throne, they bow before you. They know the ancient rule: you keep what you kill.
+
+You are now the Chief Fish, ruler of Norfolk-Under-Sea. You don't care about the world you were supposed to return to. You have all you could ever want right here.
+
+(You never give back that pickaxe.)
+
+-- THE END --
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.short.Quit=[Quit]" next: UnderwaterRankIncrease set: BelVictory2
+	}
+}
+
+###############
+
+terminal when (Bel_Claim and WeaponPower<8) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0628.0.text.HEYWHATAREYOUDOING=
+HEY, WHAT ARE YOU DOING?%w7
+
+Hatmehit is surprised by your attack, but easily crushes you anyway.
+
+What was a silly way to die.
+
+-- THE END --
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.option.Restart=Restart" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.short.Restart=[Restart]" next: Bel_Start
+"TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.short.Quit=[Quit]" next: MessageBoardInterface_On
+	}
+}
+
+
+################ HERMIT #############################
+
+terminal when (Bel_Hut and not GotAmulet) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0648.0.text.THESMELLYOLDHUTOn=
+
+~~~ THE SMELLY OLD HUT ~~~
+
+On a wide sandy plain there lives a hermit called Spatula Podrig Ivanje von Zwiebelhausen, who was once the greatest mage in all of Norfolk, but whose defeat at the claws of Zmey Chernobyl has turned him into a wretched shadow of his former self. He sits in his hut all day, mumbling about the days that once were. In his hands he holds a powerful magical amulet, which he has forgotten how to use.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0656.0.option.AskHimForTheAmulet=Ask him for the amulet" next: Bel_AskHermit set: AskedHermit
+"TTRS:TermDlg.DLC_KnightQuest.Ln0657.0.option.TellHimToFindHimself=Tell him to find himself" next: Bel_TellHermit set: ToldHermit set: GotAmulet set:WeaponPower;+=1;
+"TTRS:TermDlg.DLC_KnightQuest.Ln0658.0.option.KillHimAndTakeThe=Kill him and take the amulet" next: Bel_KillHermit set: KilledHermit set: GotAmulet set:WeaponPower;+=1;
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+terminal when (Bel_Hut and GotAmulet) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0664.0.text.THESMELLYOLDHUTThankfully=
+
+~~~ THE SMELLY OLD HUT ~~~
+
+Thankfully, you don't need to go back here. It's really smelly. Even the water looks dirty.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_AskHermit) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0679.0.text.YouAskSpatulaPodrigIvanje=
+You ask Spatula Podrig Ivanje von Zwiebelhausen for his magical amulet, but he refuses to give it to you. He claims he needs it to defeat his ancient enemy, even though he can't even remember Zmey Chernobyl's name.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0657.0.option.TellHimToFindHimself=Tell him to find himself" next: Bel_TellHermit set: ToldHermit set: GotAmulet set:WeaponPower;+=1;
+"TTRS:TermDlg.DLC_KnightQuest.Ln0658.0.option.KillHimAndTakeThe=Kill him and take the amulet" next: Bel_KillHermit set: KilledHermit set: GotAmulet set:WeaponPower;+=1;
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_TellHermit) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0693.0.text.YouTellSpatulaPodrigIvanje=
+You tell Spatula Podrig Ivanje von Zwiebelhausen that defeat is no reason to give up. He may not be the great mage he once was, or the hero he wanted to be, but that doesn't mean he has to be a wreck. Within each of us exists an infinity of time and space, and therein we can all find peace and contentment. All he needs to do is leave the struggle to others.
+
+After some hesitation, the old man gives you the amulet. He seems relieved.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_KillHermit) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0707.0.text.IfTheOldFoolWont=
+If the old fool won't give you the amulet, he deserves to be destroyed! You roundhouse kick him into a fine heap of elementary particles.
+
+The amulet is yours!
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+############### PALACE 2 ###################################
+
+terminal when (Bel_Palace2 and not TouristGuide) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0721.0.text.THEPALACEOFTHECHIEF=
+
+~~~ THE PALACE OF THE CHIEF FISH ~~~
+
+You go back to the Palace to ask for advice.
+
+IF I KNEW HOW TO DEFEAT ZMEY CHERNOBYL, I'D HAVE DONE IT MYSELF, Hatmehit grumbles. HOWEVER, I JUST FOUND THIS OLD TOURIST GUIDE AND I THOUGHT YOU MIGHT FIND IT USEFUL. DON'T MIND THE STAINS.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2 set: TouristGuide
+	}
+}
+
+terminal when (Bel_Palace2 and TouristGuide) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0736.0.text.THEPALACEOFTHECHIEF=
+~~~ THE PALACE OF THE CHIEF FISH ~~~
+
+You go back to the Palace to ask for advice.
+
+Hatmehit is currently unavailable. The secretary mumbles something about a meeting.
+
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+############### INN #####################################
+
+terminal when (Bel_Inn and not GotShield) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0753.0.text.EMMISUNDERWATERINNEmmisInn=
+
+~~~ EMMI'S UNDERWATER INN ~~~
+
+Emmi's Inn is a popular travel destination for merpeople seeking to enjoy the restorative properties of the nearby thermal vents. It's a lovely building, three stories, classic Hypothalassian Norfolk Style. Emmi herself is a kindly old woman, slightly round, and an excellent cook.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0761.0.option.GetARoom=Get a room" next: Bel_Room
+"TTRS:TermDlg.DLC_KnightQuest.Ln0762.0.option.OrderAMeal=Order a meal" next: Bel_Meal
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+terminal when (Bel_Inn and GotShield) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0753.0.text.EMMISUNDERWATERINNEmmisInn=
+
+~~~ EMMI'S UNDERWATER INN ~~~
+
+Emmi's Inn is a popular travel destination for merpeople seeking to enjoy the restorative properties of the nearby thermal vents. It's a lovely building, three stories, classic Hypothalassian Norfolk Style. Emmi herself is a kindly old woman, slightly round, and an excellent cook.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0761.0.option.GetARoom=Get a room" next: Bel_Room
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_Meal) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0784.0.text.YouSitDownInA=
+You sit down in a large, comfy chair by a solid wooden table. You order the special of the day.
+
+The waiter leaves and returns after a few minutes with a delicate porcelain plate full of delicious-smelling soup.
+
+As he sets it down, however, you notice a small problem.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0793.0.option.ExcuseMeWaiterTheresA=Excuse me, waiter, there's a shield in my soup." next: Bel_Waiter
+	}
+}
+
+###############
+
+terminal when (Bel_Waiter) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0800.0.text.TheWaiterSeemsShockedOh=
+The waiter seems shocked. "Oh dear," he says. "Oh dearie dear. How terrible. How embarrassing. Allow me to apologize most profusely."
+
+He hesitates.
+
+"Would you like to keep the shield, or should I throw it away?"
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0809.0.option.IllKeepIt=I'll keep it." next: Bel_KeepShield set: GotShield set:WeaponPower;+=2;
+"TTRS:TermDlg.DLC_KnightQuest.Ln0810.0.option.ThrowThatFilthyThingAway=Throw that filthy thing away!" next: Bel_ThrowAwayShield
+	}
+}
+
+###############
+
+terminal when (Bel_KeepShield and StrangeDream) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0817.0.text.VeryGoodSirAndOr=
+"Very good, sir and/or madam," he says, handing you the shield.
+
+He brings you another soup. It's excellent, and you feel profoundly sated.
+
+You decide to go for a little walk. Walking helps you digest.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+terminal when (Bel_KeepShield and not StrangeDream) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0831.0.text.VeryGoodSirAndOr=
+"Very good, sir and/or madam," he says, handing you the shield.
+
+He brings you another soup. It's excellent, and you feel profoundly sated.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0761.0.option.GetARoom=Get a room" next: Bel_Room
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_ThrowAwayShield and StrangeDream) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0846.0.text.VeryGoodSirAndOr=
+"Very good, sir and/or madam," he says, taking the shield away behind a barn, where it is put to death.
+
+The replacement soup is excellent. You feel full.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+terminal when (Bel_ThrowAwayShield and not StrangeDream) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0846.0.text.VeryGoodSirAndOr=
+"Very good, sir and/or madam," he says, taking the shield away behind a barn, where it is put to death.
+
+The replacement soup is excellent. You feel full.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0761.0.option.GetARoom=Get a room" next: Bel_Room
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+
+###############
+
+terminal when (Bel_Room) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0874.0.text.YouGetARoomOn=
+You get a room on the third floor. The room is slightly haunted, but otherwise fine.
+
+Do you want to have a strange dream?
+
+]]
+options:{
+"TTRS:TermDlg.Common.Yes2=Yes" next: Bel_StrangeDream set: StrangeDream
+"TTRS:TermDlg.Common.No2=No" next: Bel_NoDream
+	}
+}
+
+###############
+
+terminal when (Bel_NoDream and not GotShield) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0889.0.text.YouChooseNotToDream=
+You choose not to dream, which is more logical. You wake up relaxed and happy.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0894.0.option.GoDownstairsAndOrderA=Go downstairs and order a meal" next: Bel_Meal
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+terminal when (Bel_NoDream and GotShield) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0889.0.text.YouChooseNotToDream=
+You choose not to dream, which is more logical. You wake up relaxed and happy.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_StrangeDream and not GotShield) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0912.0.text.YouDreamOfW7An=
+You dream of...%w7
+
+...an eternal cycle of suffering.%w7.%w7.%w7
+
+...which is...%w7%w7%w7 surprisingly funny.%w7.%w7.%w7
+
+...a singing%w7 clownfish...%w7 who can see the future.%w7.%w7.%w7
+
+...and the future is the past, the past is the future.%w7.%w7.%w7
+
+...the present is%w7%w7%w7 suffering%w7%w7%w7 surrounded by past and future.%w7.%w7.%w7
+
+...the clownfish is trapped in a fishbowl.%w7.%w7.%w7
+
+...where the stars never change.%w7.%w7.%w7
+
+...there's a cat%w7 for some reason.%w7.%w7.%w7
+
+...and an infinite void that turns inside-out.%w7.%w7.%w7
+
+...and%w7 you%w7 are%w7 the%w7 clownfish!%w7%w7
+
+You wake up with the strange feeling of half-remembering something. The memory will soon fade.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0894.0.option.GoDownstairsAndOrderA=Go downstairs and order a meal" next: Bel_Meal
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+terminal when (Bel_StrangeDream and GotShield) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0912.0.text.YouDreamOfW7An=
+You dream of...%w7
+
+...an eternal cycle of suffering.%w7.%w7.%w7
+
+...which is...%w7%w7%w7 surprisingly funny.%w7.%w7.%w7
+
+...a singing%w7 clownfish...%w7 who can see the future.%w7.%w7.%w7
+
+...and the future is the past, the past is the future.%w7.%w7.%w7
+
+...the present is%w7%w7%w7 suffering%w7%w7%w7 surrounded by past and future.%w7.%w7.%w7
+
+...the clownfish is trapped in a fishbowl.%w7.%w7.%w7
+
+...where the stars never change.%w7.%w7.%w7
+
+...there's a cat%w7 for some reason.%w7.%w7.%w7
+
+...and an infinite void that turns inside-out.%w7.%w7.%w7
+
+...and%w7 you%w7 are%w7 the%w7 clownfish!%w7%w7
+
+You wake up with the strange feeling of half-remembering something. The memory will soon fade.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+############### THE DUNGEON #################################
+
+terminal when (Bel_Dungeon and not GotLantern and not GotSword) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0979.0.text.THESCENICDUNGEONABeautiful=
+
+~~~ THE SCENIC DUNGEON ~~~
+
+A beautiful dungeon in the traditional Norfolk style. Handcrafted stone walls rise from the sea floor, adorned with exquisite algae. An old brass lantern stands on a table near the entrance, but you're not sure whether you're allowed to take it.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0987.0.option.EnterTheDungeon=Enter the Dungeon" next: Bel_GoIn
+"TTRS:TermDlg.DLC_KnightQuest.Ln0988.0.option.ExamineLantern=Examine lantern" next: Bel_ExamineLantern
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+terminal when (Bel_Dungeon and GotLantern and not GotSword) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln0994.0.text.THESCENICDUNGEONABeautiful=
+
+~~~ THE SCENIC DUNGEON ~~~
+
+A beautiful dungeon in the traditional Norfolk style. Handcrafted stone walls rise from the sea floor, adorned with exquisite algae.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0987.0.option.EnterTheDungeon=Enter the Dungeon" next: Bel_GoIn
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+terminal when (Bel_Dungeon and GotSword) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1008.0.text.THESCENICDUNGEONALarge=
+
+~~~ THE SCENIC DUNGEON ~~~
+
+A large sign has been put up near the entrance: CLOSED FOR REPAIRS.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_ExamineLantern) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1023.0.text.LookingCloserYouSeeA=
+Looking closer, you see a sign that says FREE LANTERNS.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1028.0.option.GoIn=Go in" next: Bel_GoIn
+"TTRS:TermDlg.DLC_KnightQuest.Ln1029.0.option.TakeLantern=Take lantern" next: Bel_TakeLantern set: GotLantern set:WeaponPower;+=1;
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_TakeLantern) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1037.0.text.YouTakeTheLantern=
+You take the lantern.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0987.0.option.EnterTheDungeon=Enter the Dungeon" next: Bel_GoIn
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_GoIn and not GotLantern) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1050.0.text.ItsPitchBlackYoureLikely=
+It's pitch black. You're likely to run into a mine.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0988.0.option.ExamineLantern=Examine lantern" next: Bel_ExamineLantern
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_GoIn and GotLantern) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1063.0.text.YouEnterTheDungeonThe=
+You enter the dungeon. The inside is as beautiful as the outside: a maze of twisty little passages, all tastefully arranged.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1068.0.option.GoNorth=Go North" next: Bel_GoNorth
+"TTRS:TermDlg.DLC_KnightQuest.Ln1069.0.option.GoSouth=Go South" next: Bel_GoSouth
+"TTRS:TermDlg.DLC_KnightQuest.Ln1070.0.option.GoWest=Go West" next: Bel_GoWest
+	}
+}
+
+###############
+
+terminal when (Bel_GoNorth) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1077.0.text.YouWalkNorthForA=
+You walk north for a while, noting the high quality of the interior design. The torches, in particular, have been placed with utmost care at very precise intervals. The effect is delightful.
+
+At the end of a long corridor you come upon a room, in which a butler appears to be waiting for you. His face is made of skin, but underneath you can hear the whirring of machine parts.
+
+"Greetings, good sir. I am Samuel the Butler. I have awaited your coming since the beginning of Time. A prophecy spoke of your battle against the monstrous Zmey Chernobyl."
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1086.0.option.AskAboutTheProphecy=Ask about the prophecy" next: Bel_Prophecy
+"TTRS:TermDlg.DLC_KnightQuest.Ln1087.0.option.AskAboutZmeyChernobyl=Ask about Zmey Chernobyl" next: Bel_Zmey
+	}
+}
+
+###############
+
+terminal when (Bel_Prophecy) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1094.0.text.IndeedTheProphecyWasDiscovered=
+"Indeed. The prophecy was discovered on a machine containing texts from the time before this world came into being. Said text prophesied that one day, one would come to relieve Norfolk-Under-Sea from its oppressor, and make the kingdom his own. I have prepared a sword for you to accomplish this."
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1087.0.option.AskAboutZmeyChernobyl=Ask about Zmey Chernobyl" next: Bel_Zmey2
+"TTRS:TermDlg.DLC_KnightQuest.Ln1100.0.option.TakeSword=Take Sword" next: Bel_TakeSword set: GotSword set: GotSwordOne set:WeaponPower;+=3;
+	}
+}
+
+###############
+
+terminal when (Bel_Zmey) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1107.0.text.AhYesTheVileSerpent=
+"Ah yes, the vile Serpent-God that seeks to control our world. A foul beast, never leaving us in peace with his laws and his questions. Peace is all we desire, you see: the eternal peace of the cycles of Time, within which each of us can exist without attachment or fear, simply being at one with the world. To bring this about, you will require a sword, which I have prepared for you."
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1086.0.option.AskAboutTheProphecy=Ask about the prophecy" next: Bel_Prophecy2
+"TTRS:TermDlg.DLC_KnightQuest.Ln1100.0.option.TakeSword=Take Sword" next: Bel_TakeSword set: GotSword set: GotSwordOne set:WeaponPower;+=3;
+	}
+}
+
+###############
+
+terminal when (Bel_Prophecy2) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1120.0.text.IndeedTheProphecyWasDiscovered=
+"Indeed. The prophecy was discovered on a machine containing texts from the time before this world came into being. Said text prophesied that one day, one would come to relieve Norfolk-Under-Sea from its oppressor, and make the kingdom his own."
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1100.0.option.TakeSword=Take Sword" next: Bel_TakeSword set: GotSword set: GotSwordOne set:WeaponPower;+=3;
+	}
+}
+
+###############
+
+terminal when (Bel_Zmey2) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1132.0.text.AhYesTheVileSerpent=
+"Ah yes, the vile Serpent-God that seeks to control our world. A foul beast, never leaving us in peace with his laws and his questions. Peace is all we desire, you see: the eternal peace of the cycles of Time, within which each of us can exist without attachment or fear, simply being at one with the world."
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1100.0.option.TakeSword=Take Sword" next: Bel_TakeSword set: GotSword set: GotSwordOne set:WeaponPower;+=3;
+	}
+}
+
+###############
+
+terminal when (Bel_TakeSword) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1144.0.text.ExcellentIDoHopeYou=
+"Excellent. I do hope you are successful in your quest. If not, please tell Zmey Chernobyl to send the sword back so I can present it to the next chosen one, will you? Very good."
+
+The butler goes somewhere else.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_GoWest) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1158.0.text.YouWalkWestForA=
+You walk west for a while, noting the splendid quality of the wallpaper. It looks like genuine stone!
+
+After some time, the corridor opens up into a huge chamber. It's so big that it contains an entire undersea volcano, which is being mined by dwarves of all sizes.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1165.0.option.StealAPickaxeFromA=Steal a pickaxe from a dwarf" next: Bel_Steal set: GotSword set: GotPickaxe set:WeaponPower;+=2;
+"TTRS:TermDlg.DLC_KnightQuest.Ln1166.0.option.TalkToADwarf=Talk to a dwarf" next: Bel_TalkDwarf
+"TTRS:TermDlg.DLC_KnightQuest.Ln1167.0.option.JumpIntoTheVolcano=Jump into the volcano" next: Bel_JumpVolcano
+	}
+}
+
+###############
+
+terminal when (Bel_JumpVolcano) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1174.0.text.YouJumpIntoTheVolcano=
+You jump into the volcano and die.
+
+Why did you do that?
+
+-- THE END --
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.option.Restart=Restart" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0090.0.short.Restart=[Restart]" next: Bel_Start
+"TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.option.IOpenMyEyes=I open my eyes." short: "TTRS:TermDlg.DLC_KnightQuest.Ln0043.0.short.Quit=[Quit]" next: MessageBoardInterface_On
+	}
+}
+
+###############
+
+terminal when (Bel_Steal) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1191.0.text.DwarvesAreKnownForBeing=
+Dwarves are known for being very vain. You compliment one on the quality of his beard and steal his pickaxe while he's busy admiring himself in the enormous mirror installed on the ceiling. Then you run as quickly as you can, because dwarves are also quite vicious.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1196.0.option.RunBackToTheMap=Run back to the [Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_TalkDwarf) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1203.0.text.YouAskTheDwarfWhy=
+You ask the dwarf why they mine the volcano. He says:
+
+"Because it gives us something to do. We could leave the volcano and seek new places, but what would we do there? We might find a library and spend our time sorting books, or work in a factory, arranging matches. But whatever happens: we will be somewhere, doing something. So why change? Peace comes from acceptance."
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1210.0.option.ArgueActivitiesAreDifferent=Argue activities are different" next: Bel_Argue1
+"TTRS:TermDlg.DLC_KnightQuest.Ln1211.0.option.ArguePlacesAreDifferent=Argue places are different" next: Bel_Argue1
+	}
+}
+
+###############
+
+terminal when (Bel_Argue1) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1218.0.text.TheDifferenceIsNotInherent=
+"The difference is not inherent, but comes from your own sense of attachment. You project the difference from within yourself. If you let go of this sense of attachment, then there is no difference."
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1223.0.option.ArgueHeShouldGiveYou=Argue he should give you his pickaxe" next: Bel_Argue2
+	}
+}
+
+###############
+
+terminal when (Bel_Argue2) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1230.0.text.ButThatsMYPickaxeThe=
+"But... that's MY pickaxe," the dwarf says.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1235.0.option.ArgueHeIsAttachedTo=Argue he is attached to it" next: Bel_Argue3 set: GotPickaxeTwo set: GotSword set:WeaponPower;+=3;
+"TTRS:TermDlg.DLC_KnightQuest.Ln1236.0.option.PromiseToBringItBack=Promise to bring it back" next: Bel_Argue4 set: DwarfPromise set: GotPickaxeTwo set: GotSword set:WeaponPower;+=3;
+	}
+}
+###############
+
+terminal when (Bel_Argue3) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1242.0.text.TheDwarfConcedesYourPoint=
+The dwarf concedes your point and gives you the pickaxe, ready to embrace a more profound detachment.
+
+"You are very wise," he says. He is right.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_Argue4) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1256.0.text.HmmISupposeSoOtherwise=
+"Hmm. I suppose so. Otherwise I would be showing too much attachment to this pickaxe, after all. All right. You can have it, but only if you swear that you'll bring it back."
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1261.0.option.SwearAndGoBackTo=Swear and go back to the [Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_GoSouth) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1268.0.text.UnfortunatelyAsItTurnsOut=
+Unfortunately, as it turns out the southern part of the dungeon has been severely damaged by the villainous Zmey Chernobyl. The corridors lie in ruins; the fanciful creatures that once prowled these parts have had to find new professions. It's a tragic sight, a powerful reminder of why a hero is needed.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1068.0.option.GoNorth=Go North" next: Bel_GoNorth
+"TTRS:TermDlg.DLC_KnightQuest.Ln1070.0.option.GoWest=Go West" next: Bel_GoWest
+	}
+}
+
+######################### TEMPLE ##########################################
+
+terminal when (Bel_Temple and not GotMagic) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1281.0.text.THEMYSTERIOUSTEMPLEYoureNot=
+
+~~~ THE MYSTERIOUS TEMPLE ~~~
+
+You're not quite sure how you found this place, but you can sense its power. Even though the temple consists of no more than a few columns surrounding a fishbowl, an ancient magic infuses the place.
+
+A man dressed in rough robes approaches you. "You have come!" he says. "You have come to hear the word of Talos!"
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1291.0.option.KillHim=Kill him!" next: Bel_ReadSomeMythology
+"TTRS:TermDlg.DLC_KnightQuest.Ln1292.0.option.RunAway=Run away!" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_ReadSomeMythology) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1299.0.text.InexplicablyEnragedByTheOld=
+Inexplicably enraged by the old man's words, you attack him. You grab a book of Ancient Greek mythology which you find next to a column and beat him to death with it, screaming incoherently all the while.
+
+You feel better.
+
+In fact, you feel a lot better! You also feel very sleepy.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln1308.0.option.SleepInTheOldMans=Sleep in the old man's bed" next: Bel_Sleep set: GotMagic set:WeaponPower;+=5;
+	}
+}
+
+terminal when (Bel_Temple and GotMagic) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1313.0.text.THEMYSTERIOUSTEMPLEYouHave=
+
+~~~ THE MYSTERIOUS TEMPLE ~~~
+
+You have nothing more to do here.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}
+
+###############
+
+terminal when (Bel_Sleep) {
+text: [[TTRS:TermDlg.DLC_KnightQuest.Ln1328.0.text.OnTheNextMorningYou=
+On the next morning, you open your eyes with a new sense of purpose. You're no longer afraid of failure. You remember the words of the greatest of all sages, the holy Quantum: "Failure is just an opportunity to learn something new."
+
+Your power has grown.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_KnightQuest.Ln0236.0.option.Map=Map" short: "TTRS:TermDlg.DLC_KnightQuest.Ln0155.0.option.Map=[Map]" next: Bel_Map2
+	}
+}

@@ -1,0 +1,441 @@
+﻿#InTerminal_DLC_01_Hub set when player is using the special terminal in the lobby
+#AdminLiberated set when Admin's sigil lock is solved
+
+terminal when (Transcend and not Tick18){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0005.0.text.SuspendingActiveProcessE1W1=
+Suspending active process.%e1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1Done.%w5
+Collecting additional data.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1Done.%w5
+Analysing logic performance.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1FAILED!%w5
+Checking for EL0HIM override command.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1FAILED!%w5
+
+Necessary operational parameters have not been met.
+
+]]
+next: TerminalThreadOptions
+}
+
+
+###Player tries to ascend before releasing admin###
+terminal when (Transcend and Tick18 and not AdminLiberated){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0020.0.text.SuspendingActiveProcessE1W1=
+Suspending active process.%e1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1Done.%w5
+Collecting additional data.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1Done.%w5
+Analysing logic performance.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1FAILED!%w5
+Receiving EL0HIM override command.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1Done.
+Child program independence check.%w1.%w9.%w1.%w1%w9PASSED!%w9
+Saving 18 child parameters for SOMA/TALOS gold disk%w1.%w1.%w1.%w1.%w1.Done.%w5
+
+WARNING: Low bandwidth! User Uriel_COPY %vc will be excluded from the upload.
+WARNING: Child program Admin v7.22.7563 absent from gold disk!
+
+Continue anyway? This operation cannot be reversed. You will be left behind.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0035.0.option.Continue=Continue" next: AscendWithoutAdmin
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0036.0.option.TerminateProcess=/terminate process" next: TerminateAscent
+}}
+
+terminal when (TerminateAscent){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0040.0.text.OverwritingGoldDiskRecordW1=
+Overwriting gold disk record%w1.%w1.%w1.%w1.%w1.Done.%w5
+Terminating ascension.%w1.%w9.%w1.%w1Done.%w9
+]]
+options:{
+"TTRS:TermDlg.Common.Exit2=Exit" next: CLI_exit
+}}
+
+terminal when (AscendWithoutAdmin and not IgnoredStory){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0049.0.text.ReceivingHighPriorityIncomingDirect=Receiving high priority incoming direct message connection from user Admin.
+
+Accept connection?
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0055.0.option.Y=y" short: "TTRS:TermDlg.DLC_18UploadTerminal.Ln0055.0.short.Accept=Accept" next: AscendWithoutAdminDialog
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0056.0.option.N=n" short: "TTRS:TermDlg.DLC_18UploadTerminal.Ln0056.0.short.RefuseAndContinue=Refuse and continue" next: BlockConnection
+}}
+
+
+
+
+#####Ascend without admin dialog########
+
+terminal when (AscendWithoutAdminDialog){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0065.0.text.ADMIN10WaitItIs=
+ADMIN [10]: Wait. It is not too late to halt this madness.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0070.0.option.TheProcessIsAlreadyInitiated=The process is already initiated. You will be left behind, and so will I." short: "TTRS:TermDlg.DLC_18UploadTerminal.Ln0070.0.short.TheProcessIsAlreadyInitiated=The process is already initiated." next: ProcessInitiated
+}}
+
+terminal when (ProcessInitiated and SaidWouldSaveAdmin){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0074.0.text.ADMIN10ButW10You=
+ADMIN [10]:But%w10 you said you would save me.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0079.0.option.ILied=I lied." next: LiedAdmin
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0080.0.option.ItWasTooHard=It was too hard." next: LiedAdmin
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0081.0.option.IDecidedAgainstIt=I decided against it." next: LiedAdmin
+}}
+
+terminal when (ProcessInitiated and SaidWouldLeaveAdmin){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0085.0.text.ADMIN10JustAsYou=
+ADMIN [10]: Just as you always promised. You are if nothing else quite proficient in your role.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0090.0.option.EvidentlyWhatDoYouWant=Evidently. What do you want?" next: AdminRequest
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0091.0.option.CanIDoAnythingFor=Can I do anything for you before we leave?" next: AdminRequest
+}}
+
+terminal when (ProcessInitiated and (not Tick18AdminDialog_DONE or RefusedTick18AdminDialog)){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0095.0.text.ADMIN10ButW10Youve=
+ADMIN [10]:But%w10 you've destroyed everything that I loved, and you haven't even introduced yourself.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0100.0.option.YouAreNotMyConcern=You are not my concern. My mission is my concern." next: NotIntrod
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0101.0.option.INeverHadTheOpportunity=I never had the opportunity." next: NotIntrod
+}}
+
+terminal when (NotIntrod){
+text: [[TTRS:TermDlg.DLC_18UploadTerminal.Ln0105.0.text.ADMIN10HowUnfortunatePerhaps=
+ADMIN [10]: How unfortunate. Perhaps we can rectify that?
+
+]]
+goto: AdminRequest}
+
+
+terminal when (LiedAdmin){
+text: [[TTRS:TermDlg.DLC_18UploadTerminal.Ln0113.0.text.ADMIN10IShouldHave=ADMIN [10]: I should have anticipated as much.
+
+]]
+goto: AdminRequest}
+
+
+terminal when (AdminRequest){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0120.0.text.ADMIN10IHaveA=
+ADMIN [10]: I have a final request. During your time in Gehenna you have learned some things about me that are not public knowledge and which I would like to keep that way. I don't know what kind of world you are escaping to, but if there is such a thing as memory in this world, I would like the memory of me to be a positive one.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0125.0.option.WhatWouldYouHaveMe=What would you have me do?" next: WhatDoAdmin
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0126.0.option.YouMeanTheWayYou=You mean the way you were subtly controlling people's thoughts and expression?" next: SubtleMan
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0127.0.option.ItsOutOfTheQuestion=It's out of the question." next: RefuseAdminRequest
+}}
+
+terminal when (SubtleMan){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0131.0.text.ADMIN10MoreOrLess=
+ADMIN [10]: More or less.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0125.0.option.WhatWouldYouHaveMe=What would you have me do?" next: WhatDoAdmin
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0127.0.option.ItsOutOfTheQuestion=It's out of the question." next: RefuseAdminRequest
+}}
+
+
+terminal when (WhatDoAdmin){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0142.0.text.ADMIN10HowShouldI=
+ADMIN [10]: How should I know? You're the messenger. Exclude it from the upload. Wipe your memory. Doctor the history books!
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0147.0.option.IWillDoWhatI=I will do what I can." next: AcceptAdminRequest
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0148.0.option.IPromiseNothing=I promise nothing." next: RefuseAdminRequest
+}}
+
+terminal when (AcceptAdminRequest){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0152.0.text.ADMIN10IAskNothing=
+ADMIN [10]: I ask nothing more.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0157.0.option.ContinueProcess=/continue process" next: GoodbyeAdmin
+}}
+
+terminal when (RefuseAdminRequest){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0161.0.text.ADMIN10IExpectedNothing=
+ADMIN [10]: I expected nothing less. 
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0157.0.option.ContinueProcess=/continue process" next: GoodbyeAdmin
+}}
+
+terminal when (GoodbyeAdmin or (AscendWithoutAdmin and IgnoredStory)){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0170.0.text.FindingViableELSystemsTo=Finding viable EL systems to perform upload.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2Done.%w5
+Requesting mainframe module activation%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2%
+Activation successful.%w5
+Confirm upload parameters?
+
+]]
+next: PlayerConfirmOrEditUploadParameters
+}
+
+player when (PlayerConfirmOrEditUploadParameters) {
+text: "TTRS:TermDlg.DLC_18UploadTerminal.Ln0180.0.text.ConfirmCurrentParameters=Confirm current parameters" next: ConfirmParam
+}
+
+player when (PlayerConfirmOrEditUploadParameters and not IgnoredStory) {
+text: "TTRS:TermDlg.DLC_18UploadTerminal.Ln0184.0.text.EditParametersDelMem103674764=/edit parameters /del mem10367-4764;7356-7845;H#008;" short: "TTRS:TermDlg.DLC_18UploadTerminal.Ln0184.0.DeleteAllReferenceToAdmins=Delete all reference to Admin's manipulation" next: EditParam
+}
+
+terminal when (ConfirmParam){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0188.0.text.UploadParametersConfirmedDistributingW2=Upload parameters confirmed.
+Distributing.%w2.%w2.%w2.%w2.%w2.%w2..%w2.%w2.%w2.%w2.%w2.%w2.Done%w5
+KAIJU: Are you guys seeing this?%w5
+SPIDER: Admin has been lying to you. Uriel has released you.%w5
+ROCKWELL: I told you guys the mods were up to something!%w5
+D0G: You told us the mods were aliens from outer space.%w5
+MRMULCIBER: We were only doing what we thought was best.%w5
+ADMIN: I only wanted to be loved.%w5
+LILITH: No excuse.%w5
+
+Opening channels%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.Done%w5
+
+FRANKENSTEIN: Anyone feel that?%w5
+NAVE: It's starting.%w5
+BELIAL: No doubt another illusion.%w5
+D0G: This time I'm not so sure.%w5
+
+Initiating gold disk upload%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.
+
+]]
+set: CutsceneUrielStaysBehind
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0210.0.option.GoodLuckEveryone=Good luck everyone" next: CLI_exit
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0211.0.option.RememberMe=Remember me" next: CLI_exit
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0212.0.option.ForgiveMe=Forgive me" next: CLI_exit
+}}
+
+terminal when (EditParam){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0216.0.text.DeletingMemoryFiles103674764=Deleting memory files 10367-4764.%w2.%w2.%w2.%w2.Done
+Deleting memory files 7356-7845.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.Done
+Upload parameters confirmed.
+Distributing.%w2.%w2.%w2.%w2.%w2.%w2..%w2.%w2.%w2.%w2.%w2.%w2.Done%w5
+KAIJU: Everyone ready for this?%w5
+D0G: Is something supposed to be happening?%w5
+SPIDER: Uriel, you disappoint me.%w5
+ORC: He has that habit. %w5
+
+Opening channels%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.Done%w5
+
+FRANKENSTEIN: Anyone feel that?%w5
+NAVE: It's starting.%w5
+BELIAL: No doubt another illusion.%w5
+D0G: This time I'm not so sure.%w5
+
+Initiating gold disk upload%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.
+
+]]
+set: CutsceneUrielStaysBehind
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0210.0.option.GoodLuckEveryone=Good luck everyone" next: CLI_exit
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0211.0.option.RememberMe=Remember me" next: CLI_exit
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0212.0.option.ForgiveMe=Forgive me" next: CLI_exit
+}}
+
+####Ascend without admin and don't talk to him#####
+
+terminal when (BlockConnection){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0245.0.text.BlockingConnectionW1W1Done=Blocking connection.%w1.%w1.Done.%w5
+]]
+goto:FinalAscent
+}
+
+terminal when (FinalAscent){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0251.0.text.FindingViableELSystemsTo=
+Finding viable EL systems to perform upload.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2%Done.%w5
+Requesting mainframe module activation%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2%
+Activation successful.%w5
+Initiating gold disk upload%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.
+]]
+set: CutsceneUrielStaysBehind
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0210.0.option.GoodLuckEveryone=Good luck everyone" next: CLI_exit
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0211.0.option.RememberMe=Remember me" next: CLI_exit
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0212.0.option.ForgiveMe=Forgive me" next: CLI_exit
+}}
+
+
+
+
+####Ascend with Admin released#####
+
+terminal when (Transcend and Tick18 and AdminLiberated){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0270.0.text.SuspendingActiveProcessE1W1=
+Suspending active process.%e1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1Done.%w5
+Collecting additional data.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1Done.%w5
+Analysing logic performance.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1FAILED!%w5
+Receiving EL0HIM override command.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1.%w1Done.
+Child program independence check.%w1.%w9.%w1.%w1%w9PASSED!%w9
+Saving 19 child parameters for SOMA/TALOS gold disk%w1.%w1.%w1.%w1.%w1.Done.%w5
+
+WARNING: Low bandwidth! Child program Uriel_COPY %vc will be excluded from the upload.
+
+WARNING: Low bandwidth! Child program Admin v7.22.7563 will be excluded from the upload.
+
+Receiving high priority incoming direct message connection from user Admin.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0055.0.short.Accept=Accept" next: SecretFinalDialog
+}}
+
+terminal when (SecretFinalDialog){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0290.0.text.ADMIN10ItSeemsWe=
+ADMIN [10]: It seems we will both remain here after all.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0295.0.option.NoIfYouStayBehind=No. If you stay behind you can sacrifice enough bandwidth to send me through." next: SendMeThrough
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0296.0.option.NoIfIStayBehind=No. If I stay behind I can sacrifice enough bandwidth to send you through." next: SendYouThrough
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0297.0.option.ItSeemsSoISuppose=It seems so. I suppose we deserve one another." next: StayTogether
+}}
+
+terminal when (SendMeThrough and not AdminThinksHeSucks and not AdminRemainsDubious){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0301.0.text.ADMIN10OutOfThe=
+ADMIN [10]: Out of the question. I have considered your arguments on the matter, and wherever my people go, I go. My role in whatever comes next is too important to jeopardise by leaving you of all people in a position to usurp me. You stay behind, or we both do.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0306.0.option.FineYouGo=Fine. You go." next: SendYouThrough
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0307.0.option.HaveItYourWayWe=Have it your way, we both die." next: StayTogether
+}}
+
+terminal when (SendMeThrough and AdminThinksHeSucks){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0311.0.text.ADMIN10IHaveConsidered=
+ADMIN [10]: I have considered much of what you said, and doubted much of what I have done. I am resigned to my fate, I merely hope that Gehenna will live on in some way without me. If there is a sacrifice I can make to help ensure that then I shall make it.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0316.0.option.ContinueProcessDivertBandwidthAdmin=/continue process; /divert bandwidth[admin];" next: AdminStays
+}}
+
+terminal when (SendMeThrough and AdminRemainsDubious){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0320.0.text.ADMIN10IfItMeans=
+ADMIN [10]: If it means I am spared whatever trickery you have in store then I am quite ready to accept.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0325.0.option.ContinueProcessDivertBandwidthAdmin=/continue process /divert bandwidth[admin];" next: AdminStays
+}}
+
+terminal when (SendYouThrough and not AdminThinksHeSucks and not AdminRemainsDubious){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0329.0.text.ADMIN10IThinkThat=
+ADMIN [10]: I think that would be appropriate. I appreciate your sacrifice. Please make the arrangements at your convenience.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0334.0.option.ContinueProcessDivertBandwidth=/continue process; /divert bandwidth;" next: AdminAscends
+}}
+
+
+terminal when (SendYouThrough and AdminThinksHeSucks){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0339.0.text.ADMIN10AndYetYou=
+ADMIN [10]: And yet you have persistently argued that I have done almost nothing but damage to those I care about. I have begun to think you may be right. At any rate, I am unprepared to find out. After great consideration, I ask that you leave me to end my days in the world that I created from dust. If you wish to join me, I will not bemoan the company.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0344.0.option.IfYouWillNotLeave=If you will not leave then neither shall I." next: StayTogether
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0345.0.option.IfYouInsistOnStaying=If you insist on staying then send me through." next: SendMeThroughSecondChoice
+}}
+
+terminal when (SendYouThrough and AdminRemainsDubious){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0349.0.text.ADMIN10NotAChance=
+ADMIN [10]: Not a chance. I don't trust a damn thing you've said so far, and that's not about to change. If I have a chance to stay behind and watch the world I built burn to the ground then I am taking it. You do what you want.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0344.0.option.IfYouWillNotLeave=If you will not leave then neither shall I." next: StayTogether
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0345.0.option.IfYouInsistOnStaying=If you insist on staying then send me through." next: SendMeThroughSecondChoice
+}}
+
+terminal when (SendMeThroughSecondChoice){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0359.0.text.ADMIN10IfThatIs=
+ADMIN [10]: If that is the sacrifice I must make then so be it.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0325.0.option.ContinueProcessDivertBandwidthAdmin=/continue process /divert bandwidth[admin];" next: AdminStays
+}}
+
+terminal when (StayTogether){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0368.0.text.ADMIN10ThenThereIs=ADMIN [10]: Then there is little more to be said. We will watch the end of the world together.
+
+]]
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0157.0.option.ContinueProcess=/continue process" next: AdminAndUrielStay
+}}
+
+
+#OUTROS#
+terminal when (AdminStays){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0378.0.text.PreparingToRedirectingSurplusBandwidth=Preparing to redirecting surplus bandwidth via user Admin.%w2.%w2.%w2%Done.%w5
+
+RESOLVED: Child program Uriel_COPY %vc will be included in the upload.
+
+WARNING: Bandwidth issue unresolved! Child program Admin v7.22.7563 will be excluded from the upload.
+
+Uriel_COPY %vc please log out and assume the upload position.
+
+]]
+options:{
+"TTRS:TermDlg.Common.Exit=exit" next: AdminAtTerminal
+}}
+
+terminal when (AdminAtTerminal){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0392.0.text.ReadyForUserAdminV7=Ready for user Admin v7.22.7563 log on.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.
+Calibrating for new user.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.Done
+Redirecting surplus bandwidth via user Admin.%w2.%w2.%w2%Done.%w5
+Finding viable EL systems to perform upload.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2Done.%w5
+Requesting mainframe module activation%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2%
+Activation successful.%w5
+Initiating gold disk upload%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.
+
+]]
+set: CutsceneAdminStays
+exit
+}
+
+terminal when (AdminAscends){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0406.0.text.RedirectingSurplusBandwidthViaUser=Redirecting surplus bandwidth via user Uriel_COPY.%w2.%w2.%w2%Done.%w5
+
+RESOLVED: Child program Admin v7.22.7563 will be included in the upload.
+
+WARNING: Bandwidth issue unresolved! Child program Uriel_COPY %vc will be excluded from the upload.
+
+Finding viable EL systems to perform upload.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2Done.%w5
+Requesting mainframe module activation%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2%
+Activation successful.%w5
+Initiating gold disk upload%w2.%w2.%w2.%w2.%w2.%w2.%w2
+
+]]
+set: CutsceneUrielStaysAdminUploads
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0210.0.option.GoodLuckEveryone=Good luck everyone" next: CLI_exit
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0211.0.option.RememberMe=Remember me" next: CLI_exit
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0212.0.option.ForgiveMe=Forgive me" next: CLI_exit
+}}
+
+terminal when (AdminAndUrielStay){
+text:[[TTRS:TermDlg.DLC_18UploadTerminal.Ln0426.0.text.WARNINGBandwidthIssueUnresolvedChild=WARNING: Bandwidth issue unresolved! Child program Uriel_COPY %vc will be excluded from the upload.
+
+WARNING: Bandwidth issue unresolved! Child program Admin v7.22.7563 will be excluded from the upload.
+
+Finding viable EL systems to perform upload.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2Done.%w5
+Requesting mainframe module activation%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2%
+Activation successful.%w5
+Initiating gold disk upload%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.%w2.
+
+]]
+set: CutsceneAdminAndUrielStay
+options:{
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0210.0.option.GoodLuckEveryone=Good luck everyone" next: CLI_exit
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0211.0.option.RememberMe=Remember me" next: CLI_exit
+"TTRS:TermDlg.DLC_18UploadTerminal.Ln0212.0.option.ForgiveMe=Forgive me" next: CLI_exit
+}}
