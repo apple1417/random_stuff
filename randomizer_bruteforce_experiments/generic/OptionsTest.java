@@ -1,9 +1,10 @@
-package randomizer_bruteforce.generic;
+package randomizer_bruteforce_experiments.generic;
 
 import java.util.HashMap;
 import java.util.Random;
 import randomizer_bruteforce.Enums.RandomizerMode;
 import randomizer_bruteforce.Enums.ScavengerMode;
+import randomizer_bruteforce.GeneratorGeneric;
 import randomizer_bruteforce.TalosProgress;
 
 /*

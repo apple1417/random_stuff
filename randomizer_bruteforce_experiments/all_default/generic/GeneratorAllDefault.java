@@ -1,4 +1,4 @@
-package randomizer_bruteforce.all_default.generic;
+package randomizer_bruteforce_experiments.all_default.generic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +11,7 @@ import randomizer_bruteforce.TalosProgress;
 
 public class GeneratorAllDefault implements Generator {
     public String getInfo() {
-        return "All Default Settings, v11.0.2";
+        return "All Default Settings, v11.0.3";
     }
 
     /*

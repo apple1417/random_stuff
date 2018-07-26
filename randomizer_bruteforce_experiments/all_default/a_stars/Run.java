@@ -1,10 +1,10 @@
-package randomizer_bruteforce.all_default.a_stars;
+package randomizer_bruteforce_experiments.all_default.a_stars;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import randomizer_bruteforce.all_default.generic.GeneratorAllDefault;
+import randomizer_bruteforce_experiments.all_default.generic.GeneratorAllDefault;
 import randomizer_bruteforce.SeedScheduler;
 import randomizer_bruteforce.TalosProgress;
 
@@ -47,7 +47,7 @@ class Run {
             String output = String.format("%d (%d)", progress.getVar("Randomizer_Seed"), starCount);
             System.out.println(output);
             try {
-                Files.write(Paths.get("randomizer_bruteforce/all_default/a_stars/output.txt"), (output + "\n").getBytes(), StandardOpenOption.APPEND);
+                Files.write(Paths.get("randomizer_bruteforce_experiments/all_default/a_stars/output.txt"), (output + "\n").getBytes(), StandardOpenOption.APPEND);
             } catch (IOException e) {}
         }
     }

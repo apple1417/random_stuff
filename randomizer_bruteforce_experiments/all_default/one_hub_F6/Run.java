@@ -1,4 +1,4 @@
-package randomizer_bruteforce.all_default.one_hub_F6;
+package randomizer_bruteforce_experiments.all_default.one_hub_F6;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -50,7 +50,7 @@ class Run {
             String output = String.format("%d, %s, %d", progress.getVar("Randomizer_Seed"), progress.getChecksum(), progress.getVar("Code_Floor6"));
             System.out.println(output);
             try {
-                Files.write(Paths.get("randomizer_bruteforce/all_default/one_hub_F6/output.txt"), (output + "\n").getBytes(), StandardOpenOption.APPEND);
+                Files.write(Paths.get("randomizer_bruteforce_experiments/all_default/one_hub_F6/output.txt"), (output + "\n").getBytes(), StandardOpenOption.APPEND);
             } catch (IOException e) {}
         }
     }

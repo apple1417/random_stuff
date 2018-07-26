@@ -1,6 +1,6 @@
-package randomizer_bruteforce.all_default.required_hubs;
+package randomizer_bruteforce_experiments.all_default.required_hubs;
 
-import randomizer_bruteforce.all_default.generic.GeneratorAllDefault;
+import randomizer_bruteforce_experiments.all_default.generic.GeneratorAllDefault;
 import randomizer_bruteforce.SeedScheduler;
 import randomizer_bruteforce.TalosProgress;
 

@@ -1,4 +1,4 @@
-package randomizer_bruteforce.all_default.one_hub_F6;
+package randomizer_bruteforce_experiments.all_default.one_hub_F6;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +20,7 @@ import randomizer_bruteforce.TalosProgress;
 
 class GeneratorF6 implements Generator {
     public String getInfo() {
-        return "All default settings, one hub F6, v11.0.2";
+        return "All default settings, one hub F6, v11.0.3";
     }
 
     private static HashMap<String, Integer> TETRO_INDEXES = new HashMap<String, Integer>();
