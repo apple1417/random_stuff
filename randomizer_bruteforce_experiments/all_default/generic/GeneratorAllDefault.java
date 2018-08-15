@@ -11,7 +11,7 @@ import randomizer_bruteforce.TalosProgress;
 
 public class GeneratorAllDefault implements Generator {
     public String getInfo() {
-        return "All Default Settings, v11.0.3";
+        return "All Default Settings, v11.1.0";
     }
 
     /*
