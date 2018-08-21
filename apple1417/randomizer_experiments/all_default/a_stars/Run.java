@@ -1,12 +1,12 @@
-package randomizer_bruteforce_experiments.all_default.a_stars;
+package apple1417.randomizer_experiments.all_default.a_stars;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import randomizer_bruteforce_experiments.all_default.generic.GeneratorAllDefault;
-import randomizer_bruteforce.SeedScheduler;
-import randomizer_bruteforce.TalosProgress;
+import apple1417.randomizer_experiments.all_default.generic.GeneratorAllDefault;
+import apple1417.randomizer.SeedScheduler;
+import apple1417.randomizer.TalosProgress;
 
 class Run {
     public static void main(String[] args) {

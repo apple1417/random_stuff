@@ -1,11 +1,11 @@
-package randomizer_bruteforce_experiments.generic;
+package apple1417.randomizer_experiments.generic;
 
 import java.util.HashMap;
 import java.util.Random;
-import randomizer_bruteforce.Enums.RandomizerMode;
-import randomizer_bruteforce.Enums.ScavengerMode;
-import randomizer_bruteforce.GeneratorGeneric;
-import randomizer_bruteforce.TalosProgress;
+import apple1417.randomizer.Enums.RandomizerMode;
+import apple1417.randomizer.Enums.ScavengerMode;
+import apple1417.randomizer.GeneratorGeneric;
+import apple1417.randomizer.TalosProgress;
 
 /*
   Generates a seed + checksum with each combination of options that'd affect it

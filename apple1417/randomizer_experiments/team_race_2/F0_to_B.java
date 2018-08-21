@@ -1,4 +1,4 @@
-package randomizer_bruteforce_experiments.team_race_2;
+package apple1417.randomizer_experiments.team_race_2;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,10 +7,10 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import randomizer_bruteforce.Enums.World;
-import randomizer_bruteforce.GeneratorGeneric;
-import randomizer_bruteforce.SeedScheduler;
-import randomizer_bruteforce.TalosProgress;
+import apple1417.randomizer.Enums.World;
+import apple1417.randomizer.GeneratorGeneric;
+import apple1417.randomizer.SeedScheduler;
+import apple1417.randomizer.TalosProgress;
 
 class F0_to_B {
     private static HashMap<String, Integer> options;

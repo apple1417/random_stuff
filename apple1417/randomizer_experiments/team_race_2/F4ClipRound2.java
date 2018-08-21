@@ -1,4 +1,4 @@
-package randomizer_bruteforce_experiments.team_race_2;
+package apple1417.randomizer_experiments.team_race_2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,9 +11,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import randomizer_bruteforce.Enums.World;
-import randomizer_bruteforce.GeneratorGeneric;
-import randomizer_bruteforce.TalosProgress;
+import apple1417.randomizer.Enums.World;
+import apple1417.randomizer.GeneratorGeneric;
+import apple1417.randomizer.TalosProgress;
 
 class F4ClipRound2 {
     public static void main(String[] args) {

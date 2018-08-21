@@ -1,8 +1,8 @@
-package randomizer_bruteforce_experiments.all_default.required_hubs;
+package apple1417.randomizer_experiments.all_default.required_hubs;
 
-import randomizer_bruteforce_experiments.all_default.generic.GeneratorAllDefault;
-import randomizer_bruteforce.SeedScheduler;
-import randomizer_bruteforce.TalosProgress;
+import apple1417.randomizer_experiments.all_default.generic.GeneratorAllDefault;
+import apple1417.randomizer.SeedScheduler;
+import apple1417.randomizer.TalosProgress;
 
 class Run {
     public static void main(String[] args) {

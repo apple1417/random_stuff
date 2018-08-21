@@ -1,28 +1,23 @@
-package randomizer_bruteforce_experiments.all_default.one_hub_F6;
+package apple1417.randomizer_experiments.all_default.generic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import randomizer_bruteforce.Enums.Arranger;
-import randomizer_bruteforce.Generator;
-import randomizer_bruteforce.MarkerGroup;
-import randomizer_bruteforce.Rand;
-import randomizer_bruteforce.TalosProgress;
+import apple1417.randomizer.Enums.Arranger;
+import apple1417.randomizer.Generator;
+import apple1417.randomizer.MarkerGroup;
+import apple1417.randomizer.Rand;
+import apple1417.randomizer.TalosProgress;
 
-/*
-  This is very similar to the generic all default generator, with all the same optimizations,
-   but there's one more - if a grey sigil is placed outside of A we can immediently stop
-  F6 is generally placed quite late but this still ends up giving roughly a 10% speed boost
-
-  If used to generate seeds already known to work it'll be the exact same speed as (if not
-   slightly slower than) the generic default settings one
-*/
-
-class GeneratorF6 implements Generator {
+public class GeneratorAllDefault implements Generator {
     public String getInfo() {
-        return "All default settings, one hub F6, v11.1.0";
+        return "All Default Settings, v11.1.0";
     }
 
+    /*
+      Define all our constants
+      A few variables get destroyed during generation so they have backup versions
+    */
     private static HashMap<String, Integer> TETRO_INDEXES = new HashMap<String, Integer>();
     private static HashMap<Arranger, String[]> BACKUP_LOCKED = new HashMap<Arranger, String[]>();
     private HashMap<Arranger, String[]> locked = new HashMap<Arranger, String[]>(BACKUP_LOCKED);
@@ -32,6 +27,13 @@ class GeneratorF6 implements Generator {
         "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "CMessenger"
     };
 
+    /*
+      I'm not checking worlds here because random portals is off, so the three
+       groups that don't normally have a world assigned go first, as they'd
+       normally be first on the list to be checked
+      I can also combine marker groups that would normally unlock at the same time,
+       as long as it doesn't change the overall order or the markers
+    */
     private MarkerGroup[] BACKUP_MARKERS = {
         new MarkerGroup(() -> true, new ArrayList<String>(Arrays.asList(
             "A1-Peephole", "A1-PaSL", "A1-Outnumbered", "A1-ASooR",
@@ -134,8 +136,9 @@ class GeneratorF6 implements Generator {
         )))
     };
 
-    GeneratorF6() {
+    public GeneratorAllDefault() {
         BACKUP_LOCKED.put(Arranger.A1_GATE, new String[] {});
+        // No random portals means we alwasy start in A, so A gate would be fixed
         BACKUP_LOCKED.put(Arranger.A_GATE, new String[] {"DI1", "DJ3", "DL1", "DZ2"});
         BACKUP_LOCKED.put(Arranger.B_GATE, new String[] {});
         BACKUP_LOCKED.put(Arranger.C_GATE, new String[] {});
@@ -159,24 +162,25 @@ class GeneratorF6 implements Generator {
         }
     }
 
-    // We can't just return null but an uninitalized TalosProgress is good enough
-    private static TalosProgress empty;
     public TalosProgress generate(long seed) {
         TalosProgress progress = new TalosProgress();
         progress.setVar("Randomizer_Seed", (int)seed);
         Rand r = new Rand(seed);
 
+        // Clone what would normally be destroyed
         locked = new HashMap<Arranger, String[]>(BACKUP_LOCKED);
         MarkerGroup[] markers = new MarkerGroup[BACKUP_MARKERS.length];
         for (int i = 0; i < BACKUP_MARKERS.length; i++) {
             markers[i] = BACKUP_MARKERS[i].clone();
         }
 
+        // These help with the checksum, can't just do dummy calls
         progress.setVar("PaintItemSeed", r.next(0, 8909478));
         progress.setVar("Code_Floor4", r.next(1, 999));
         progress.setVar("Code_Floor5", r.next(1, 999));
         progress.setVar("Code_Floor6", r.next(4, 9)*100 + r.next(4, 9)*10 + r.next(4, 9));
 
+        // Portals will always be in this order, just need it for the checksum
         for (int i = 0; i < PORTAL_ORDER.length; i++) {
             progress.setVar(PORTAL_ORDER[i], i + 1);
         }
@@ -187,19 +191,23 @@ class GeneratorF6 implements Generator {
         Arranger currentArranger;
         ArrayList<Arranger> accessableArrangers = new ArrayList<Arranger>();
         ArrayList<MarkerGroup> openMarkers = new ArrayList<MarkerGroup>();
+        // I still need to use the open/closed markers system but I can hardcode the indexes
         ArrayList<Integer> closedMarkers = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6));
 
         while (arrangerStage != -1 || accessableArrangers.size() > 0) {
+            // Find new markers
             for (int i = 0; i < closedMarkers.size(); i++) {
                 int index = closedMarkers.get(i);
                 if (markers[index].isOpen()) {
                     openMarkers.add(markers[index]);
                     closedMarkers.remove(i);
                     availableMarkers += markers[index].getSize();
+                    // Indexes shift down when we remove something
                     i--;
                 }
             }
 
+            // Work out arranger unlocking
             switch (arrangerStage) {
                 case 0: {
                     accessableArrangers.add(Arranger.A_GATE);
@@ -243,6 +251,11 @@ class GeneratorF6 implements Generator {
 
             currentArranger = accessableArrangers.remove(r.next(0, accessableArrangers.size() - 1));
             String[] sigils = locked.remove(currentArranger);
+
+            /*
+              Wrong hub softlock prevention
+              This is slightly simpler because we know you're going to start in A
+            */
             if (checkGates && (currentArranger == Arranger.B_GATE || currentArranger == Arranger.C_GATE)) {
                 if (r.next(0, 99) < 25) {
                     sigils = new String[] {
@@ -271,6 +284,7 @@ class GeneratorF6 implements Generator {
                         closedMarkers.addAll(Arrays.asList(14, 15, 16, 17, 18, 19, 20, 21, 22, 23));
                     }
 
+                    // Find new spots
                     ArrayList<MarkerGroup> tempOpenMarkers = new ArrayList<MarkerGroup>();
                     int tempAvailableMarkers = 0;
                     for (int index : closedMarkers) {
@@ -280,6 +294,7 @@ class GeneratorF6 implements Generator {
                         }
                     }
 
+                    // Place unique sigils in new spots
                     for (String sigil : uniqueSigils) {
                         int index = r.next(0, tempAvailableMarkers - 1);
                         for (MarkerGroup group : tempOpenMarkers) {
@@ -303,6 +318,7 @@ class GeneratorF6 implements Generator {
                 }
             }
 
+            // Place sigils
             for (String sigil : sigils) {
                 int index = r.next(0, availableMarkers - 1);
                 for (MarkerGroup group : openMarkers) {
@@ -310,10 +326,6 @@ class GeneratorF6 implements Generator {
                         index -= group.getSize();
                     } else {
                         String randMarker = group.getMarkers().remove(index);
-                        // If a grey is placed outside of A (or in A star), immediently return
-                        if (sigil.charAt(0) == 'E' && (randMarker.charAt(0) != 'A' || randMarker.charAt(1) == '*')) {
-                            return empty;
-                        }
                         progress.setVar(randMarker, TETRO_INDEXES.get(sigil));
                         availableMarkers -= 1;
                         if (group.getSize() < 1) {
