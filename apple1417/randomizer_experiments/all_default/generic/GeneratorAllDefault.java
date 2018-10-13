@@ -11,7 +11,7 @@ import apple1417.randomizer.TalosProgress;
 
 public class GeneratorAllDefault implements Generator {
     public String getInfo() {
-        return "All Default Settings, v11.2.0";
+        return "All Default Settings, v12.0.0";
     }
 
     /*
