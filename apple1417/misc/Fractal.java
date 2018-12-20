@@ -12,10 +12,11 @@ import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+import javafx.concurrent.Task;
 
 // This javafx stuff is kind of tacked on because it was annoying not knowing how much was generated
 public class Fractal extends Application {
@@ -27,6 +28,7 @@ public class Fractal extends Application {
 
     private static PixelWriter pw;
     private static WritableImage wrImg;
+    private Task<Void> task;
     public void start(Stage stage) {
         Group root = new Group();
 
@@ -34,9 +36,10 @@ public class Fractal extends Application {
         pw = wrImg.getPixelWriter();
 
         ImageView imgView = new ImageView(wrImg);
-        root.getChildren().add(imgView);
         imgView.fitWidthProperty().bind(stage.widthProperty());
         imgView.fitHeightProperty().bind(stage.heightProperty());
+        imgView.setPreserveRatio(true);
+        root.getChildren().add(imgView);
 
         // Make sure the aspect ratio is right
         int w = 750;
@@ -48,45 +51,53 @@ public class Fractal extends Application {
             w = 750*WIDTH/HEIGHT;
             h = 750;
         }
-        Scene scene = new Scene(root, w, h, Color.WHITE);
+        Scene scene = new Scene(root, w, h);
+
+
         stage.setTitle("Fractal Generator");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         // Quick hack so it doesn't continue generating when you close the window
         stage.setOnCloseRequest((WindowEvent e) -> System.exit(0));
 
         // UI will freeze if I don't thread this
-        new Thread("Fractal Generator") {public void run(){
+        task = new Task<Void>() {public Void call() {
             generate();
-            //System.exit(0);
-        }}.start();
+            return null;
+        }};
+        task.setOnSucceeded((e) -> {
+            stage.setTitle("COMPLETE - Fractal Generator");
+        });
+        new Thread(task).start();
     }
 
 
-
-    private static final int WIDTH = 4096;
-    private static final int HEIGHT = 4096;
+    // Sometimes a dimension is commented out if the fractal isn't square
+    //private static final int WIDTH = 8192;
+    private static final int HEIGHT = 2048;
     private static final boolean TEN_PERCENT_GRID = false;
-
     private static void generate() {
         for (int y = 0; y < HEIGHT; y++) { for (int x = 0; x < WIDTH; x++) {
-
             final int finalColour;
             if (TEN_PERCENT_GRID && ((x % (WIDTH/10)) == 0 || (y % (HEIGHT/10)) == 0)) {
                 finalColour = 0xff00ffff;
             } else {
                 // Here you manually switch the function to get the fractal you want
-                finalColour = mandlebrot(x, y);
+                finalColour = mistakeThatLookedCool(x, y);
             }
             final int finalX = x;
             final int finalY = y;
             Platform.runLater(() -> pw.setArgb(finalX, finalY, finalColour));
         }}
 
-        try {
-            BufferedImage img = SwingFXUtils.fromFXImage(wrImg, null);
-            ImageIO.write(img, "png", new File(path));
-        } catch (IOException e) {}
+        // If I just try to save normally the last few pixels might not have been written yet
+        Platform.runLater(() -> {
+            try {
+                BufferedImage img = SwingFXUtils.fromFXImage(wrImg, null);
+                ImageIO.write(img, "png", new File(path));
+            } catch (IOException e) {}
+        });
     }
 
     private static int RGB(int r, int g, int b) {
@@ -154,14 +165,14 @@ public class Fractal extends Application {
     }
 
     // We also want to update width for this one cause it's not a square
-    /*
-    private static final int WIDTH = HEIGHT*11/7;
+
+    private static final int WIDTH = (int) (HEIGHT*11/6.5);
     private static final int MAX_ITER = 512;
     private static final double MIN_X = -5.5;
     private static final double MAX_X = 5.5;
     private static final double MIN_Y = -3.25;
-    private static final double MAX_Y = 3.75;
-    */
+    private static final double MAX_Y = 3.25;
+
     private static int mistakeThatLookedCool(int x, int y) {
         double scale_x = ((double) x) * (MAX_X - MIN_X)/WIDTH + MIN_X;
         double scale_y = ((double) y) * (MAX_Y - MIN_Y)/HEIGHT + MIN_Y;
@@ -189,13 +200,13 @@ public class Fractal extends Application {
     private static final double MAX_X = 1;
     private static final double MIN_Y = -0.5;
     private static final double MAX_Y = 0.5;
-    */
-    private static final int MAX_ITER = 4096;
+
+    private static final int MAX_ITER = 8192;
     private static final double MIN_X = -2.25;
     private static final double MAX_X = -1.25;
     private static final double MIN_Y = -0.5;
     private static final double MAX_Y = 0.5;
-
+    */
     private static int mandlebrot(int x, int y) {
         double scale_x = ((double) x) * (MAX_X - MIN_X)/WIDTH + MIN_X;
         double scale_y = ((double) y) * (MAX_Y - MIN_Y)/HEIGHT + MIN_Y;
