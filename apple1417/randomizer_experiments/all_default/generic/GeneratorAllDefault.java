@@ -11,7 +11,7 @@ import apple1417.randomizer.TalosProgress;
 
 public class GeneratorAllDefault implements Generator {
     public String getInfo() {
-        return "All Default Settings, v12.0.0";
+        return "All Default Settings, v12.2.0";
     }
 
     /*
@@ -138,7 +138,7 @@ public class GeneratorAllDefault implements Generator {
 
     public GeneratorAllDefault() {
         BACKUP_LOCKED.put(Arranger.A1_GATE, new String[] {});
-        // No random portals means we alwasy start in A, so A gate would be fixed
+        // No random portals means we always start in A, so A gate would be fixed
         BACKUP_LOCKED.put(Arranger.A_GATE, new String[] {"DI1", "DJ3", "DL1", "DZ2"});
         BACKUP_LOCKED.put(Arranger.B_GATE, new String[] {});
         BACKUP_LOCKED.put(Arranger.C_GATE, new String[] {});
@@ -336,6 +336,9 @@ public class GeneratorAllDefault implements Generator {
                 }
             }
         }
+
+        progress.setVar("Randomizer_ExtraSeed", r.next(1, 0x7FFFFFFF));
+
         return progress;
     }
 }

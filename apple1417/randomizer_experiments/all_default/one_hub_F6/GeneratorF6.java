@@ -20,7 +20,7 @@ import apple1417.randomizer.TalosProgress;
 
 class GeneratorF6 implements Generator {
     public String getInfo() {
-        return "All default settings, one hub F6, v12.0.0";
+        return "All default settings, one hub F6, v12.2.0";
     }
 
     private static HashMap<String, Integer> TETRO_INDEXES = new HashMap<String, Integer>();
@@ -324,6 +324,9 @@ class GeneratorF6 implements Generator {
                 }
             }
         }
+
+        progress.setVar("Randomizer_ExtraSeed", r.next(1, 0x7FFFFFFF));
+
         return progress;
     }
 }
