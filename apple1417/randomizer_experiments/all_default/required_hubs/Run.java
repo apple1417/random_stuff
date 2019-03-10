@@ -1,6 +1,6 @@
 package apple1417.randomizer_experiments.all_default.required_hubs;
 
-import apple1417.randomizer_experiments.all_default.generic.GeneratorAllDefault;
+import apple1417.randomizer.GeneratorGeneric;
 import apple1417.randomizer.SeedScheduler;
 import apple1417.randomizer.TalosProgress;
 
@@ -13,7 +13,7 @@ class Run {
             max = Integer.parseInt(args[1]);
         } catch (ArrayIndexOutOfBoundsException|NumberFormatException e){}
 
-        SeedScheduler s = new SeedScheduler(() -> new GeneratorAllDefault(),
+        SeedScheduler s = new SeedScheduler(() -> new GeneratorGeneric(),
                                             (TalosProgress p) -> evaluate(p),
                                             () -> printData());
         s.start(min, max);
@@ -62,6 +62,30 @@ class Run {
         "C7-Carrier Pigeons", "C7-DMS", "C7-Star", "C7-Prison Break", "C7-Crisscross",
         "CM-Star"
     };
+    private static String[] ALL_MARKERS = {
+        "A1-PaSL", "A1-Beaten Path", "A1-Outnumbered", "A1-OtToU", "A1-ASooR", "A1-Trio", "A1-Peephole", "A1-Star",
+        "A2-Guards", "A2-Hall of Windows", "A2-Suicide Mission", "A2-Star",
+        "A3-Stashed for Later", "A3-ABTU", "A3-ABTU Star", "A3-Swallowed the Key", "A3-AEP", "A3-Clock Star",
+        "A4-Branch it Out", "A4-Above All That", "A4-Push it Further", "A4-Star", "A4-DCtS",
+        "A5-Two Boxes", "A5-Two Boxes Star", "A5-YKYMCTS", "A5-Over the Fence", "A5-OLB", "A5-FC", "A5-FC Star",
+        "A6-Mobile Mindfield", "A6-Deception", "A6-Door too Far", "A6-Bichromatic", "A6-Star",
+        "A7-LFI", "A7-Trapped Inside", "A7-Two Buzzers", "A7-Star", "A7-WiaL", "A7-Pinhole",
+        "B1-WtaD", "B1-Third Wheel", "B1-Over the Fence", "B1-RoD", "B1-SaaS", "B1-Star",
+        "B2-Tomb", "B2-Star", "B2-MotM", "B2-Moonshot", "B2-Higher Ground",
+        "B3-Blown Away", "B3-Star", "B3-Sunshot", "B3-Eagle's Nest", "B3-Woosh",
+        "B4-Self Help", "B4-Double-Plate", "B4-TRA", "B4-TRA Star", "B4-RPS", "B4-ABUH", "B4-WAtC", "B4-Sphinx Star",
+        "B5-SES", "B5-Plates", "B5-Two Jammers", "B5-Iron Curtain", "B5-Chambers", "B5-Obelisk Star",
+        "B6-Crisscross", "B6-JDaW", "B6-Egyptian Arcade",
+        "B7-AFaF", "B7-WLJ", "B7-BSbS", "B7-BSbS Star", "B7-BLoM", "B7-Star",
+        "C1-Conservatory", "C1-MIA", "C1-Labyrinth", "C1-Blowback", "C1-Star",
+        "C2-ADaaF", "C2-Star", "C2-Rapunzel", "C2-Cemetery", "C2-Short Wall",
+        "C3-Three Connectors", "C3-Jammer Quarantine", "C3-BSLS", "C3-Weathertop", "C3-Star",
+        "C4-Armory", "C4-Oubliette", "C4-Oubliette Star", "C4-Stables", "C4-Throne Room", "C4-Throne Room Star",
+        "C5-Time Flies", "C5-Time Flies Star", "C5-Time Crawls", "C5-Dumbwaiter", "C5-Dumbwaiter Star", "C5-UCaJ", "C5-UCAJ Star",
+        "C6-Seven Doors", "C6-Star", "C6-Circumlocution", "C6-Two Way Street",
+        "C7-Carrier Pigeons", "C7-DMS", "C7-Star", "C7-Prison Break", "C7-Crisscross",
+        "CM-Star"
+    };
 
     /*
       These store the total amount of seeds as follows:
@@ -98,6 +122,7 @@ class Run {
 
         int endingAB = endingType(progress, A_B_MARKERS);
         int endingAC = endingType(progress, A_C_MARKERS);
+        int endingAll = endingType(progress, ALL_MARKERS);
 
         // Both hubs
         if (DI_count >= 2 && DJ_count >= 3) {
@@ -113,9 +138,9 @@ class Run {
                 total[endingAC]++;
             } else {
                 threeHub[0]++;
-                threeHub[7]++;
+                threeHub[endingAll]++;
                 total[0]++;
-                total[7]++;
+                total[endingAll]++;
             }
 
         // B first
@@ -127,9 +152,9 @@ class Run {
                 total[endingAB]++;
             } else {
                 threeHub[0]++;
-                threeHub[7]++;
+                threeHub[endingAll]++;
                 total[0]++;
-                total[7]++;
+                total[endingAll]++;
             }
 
         // C first
@@ -141,9 +166,9 @@ class Run {
                 total[endingAC]++;
             } else {
                 threeHub[0]++;
-                threeHub[7]++;
+                threeHub[endingAll]++;
                 total[0]++;
-                total[7]++;
+                total[endingAll]++;
             }
 
         } else {
