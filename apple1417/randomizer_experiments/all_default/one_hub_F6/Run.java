@@ -2,13 +2,32 @@ package apple1417.randomizer_experiments.all_default.one_hub_F6;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import apple1417.randomizer.SeedScheduler;
 import apple1417.randomizer.TalosProgress;
 
 class Run {
+    // If to generate a spreadsheet using RandomizerToSpreadsheet for each successful seed
+    private static final boolean spreadsheet = true;
+    private static Runtime rt;
     public static void main(String[] args) {
+        if (spreadsheet) {
+            /*
+              Create spreadsheet folder if it doesn't already exist
+              Could also clear the folder here but that's a little messy and RandomizerToSpreadsheet
+               will overwrite files
+            */
+            try {
+                Path path = Paths.get("apple1417/randomizer_experiments/all_default/one_hub_F6/sheets");
+                if (!Files.isDirectory(path)) {
+                    Files.createDirectory(path);
+                }
+            } catch (IOException e) {}
+        }
+        rt = Runtime.getRuntime();
+
         int min = 0;
         int max = 0x7FFFFFFF;
         try {
@@ -47,10 +66,19 @@ class Run {
             }
         }
         if (lCount >= 2 && zCount >= 2) {
-            String output = String.format("%d, %s, %d", progress.getVar("Randomizer_Seed"), progress.getChecksum(), progress.getVar("Code_Floor6"));
+            int seed = progress.getVar("Randomizer_Seed");
+            String output = String.format("%d, %s, %d", seed, progress.getChecksum(), progress.getVar("Code_Floor6"));
             System.out.println(output);
             try {
-                Files.write(Paths.get("randomizer_bruteforce_experiments/all_default/one_hub_F6/output.txt"), (output + "\n").getBytes(), StandardOpenOption.APPEND);
+                Files.write(Paths.get("apple1417/randomizer_experiments/all_default/one_hub_F6/output.txt"), (output + "\n").getBytes(), StandardOpenOption.APPEND);
+
+                if (spreadsheet) {
+                    rt.exec(String.format(
+                        "java -jar RandomizerToSpreadsheet.jar -s=%s apple1417/randomizer_experiments/all_default/one_hub_F6/sheets/%s.xlsx",
+                        seed,
+                        seed
+                    ));
+                }
             } catch (IOException e) {}
         }
     }
